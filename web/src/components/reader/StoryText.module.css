@@ -3,8 +3,8 @@
   max-width: var(--fp-measure);
   margin-inline: auto;
   font-family: var(--fp-font-reading);
-  font-size: var(--fp-read-size);
-  line-height: var(--fp-read-leading);
+  font-size: calc(var(--fp-read-size) * var(--fp-read-k));
+  line-height: calc(var(--fp-read-leading) + var(--fp-read-leading-k));
   font-optical-sizing: auto;
   font-variant-ligatures: common-ligatures;
   color: var(--fp-ink);

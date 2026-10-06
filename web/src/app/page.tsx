@@ -36,7 +36,7 @@ export default function Home() {
     .map((s) => ({ slug: s.slug, title: s.title, minutes: s.minutes }));
 
   return (
-    <main className={`page ${styles.home}`}>
+    <main className={`page page--wide ${styles.home}`}>
       <Masthead right={<span className={`mono ${styles.date}`}>{weekday(today.date)}</span>} />
       <TodayHero
         story={{ ...toCard(today), hook: today.hook, paragraphs: today.blocks.filter((b) => b.type === "p").length }}

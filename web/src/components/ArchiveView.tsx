@@ -6,7 +6,7 @@ import type { Route } from "next";
 import { Cover } from "./Cover";
 import { Countdown } from "./Countdown";
 import { useHydrated, useShelf } from "@/lib/shelf";
-import { humanDate } from "@/lib/date";
+import { humanDate, plural } from "@/lib/date";
 import type { StoryCard } from "@/lib/types";
 import styles from "./ArchiveView.module.css";
 
@@ -100,7 +100,7 @@ export function ArchiveView({ cards, tomorrow }: Props) {
 
         <div className={styles.bar}>
           <span className={`mono ${styles.count}`}>
-            {filtered.length === cards.length ? `${cards.length} выпусков` : `найдено ${filtered.length}`}
+            {filtered.length === cards.length ? `${cards.length} ${plural(cards.length, ["выпуск", "выпуска", "выпусков"])}` : `найдено ${filtered.length}`}
             {hydrated && readCount > 0 && ` · прочитано ${readCount}`}
           </span>
           <div className={styles.toggle} role="group" aria-label="Вид">

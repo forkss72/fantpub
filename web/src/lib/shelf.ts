@@ -5,7 +5,7 @@ import type { ReactionKey } from "./types";
 
 /** Everything lives in this browser. No account, no guilt. */
 export type Theme = "auto" | "paper" | "dusk" | "night";
-export type ReadingFont = "literata" | "ptserif" | "onest";
+export type ReadingFont = "literata" | "classic" | "onest";
 
 export type Prefs = {
   theme: Theme;
@@ -63,6 +63,7 @@ function load(): ShelfState {
     if (raw) {
       const parsed = JSON.parse(raw) as Partial<ShelfState>;
       state = { ...EMPTY, ...parsed, prefs: { ...DEFAULT_PREFS, ...(parsed.prefs ?? {}) } };
+      if (!["literata", "classic", "onest"].includes(state.prefs.font)) state.prefs = { ...state.prefs, font: "literata" };
     }
   } catch {
     state = EMPTY;

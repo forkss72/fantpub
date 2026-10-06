@@ -62,3 +62,14 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+@media (min-width: 860px) {
+  .home {
+    gap: 44px;
+  }
+  .rules ol {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 26px 30px 26px 50px;
+  }
+}

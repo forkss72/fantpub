@@ -48,7 +48,9 @@
 
   /* reading defaults (overridden by data-* on <html>) */
   --fp-read-size: 19px;
-  --fp-read-leading: 1.62;
+  --fp-read-leading: 1.58;
+  --fp-read-k: 1;
+  --fp-read-leading-k: 0;
   --fp-measure: 34em;
 
   /* shape & motion */
@@ -144,11 +146,14 @@
 }
 
 /* reading preferences */
-:root[data-font="ptserif"] {
-  --fp-font-reading: var(--font-ptserif), "PT Serif", Georgia, serif;
+:root[data-font="classic"] {
+  --fp-font-reading: var(--font-oldstandard), "Old Standard TT", Georgia, serif;
+  --fp-read-k: 1.06;
 }
 :root[data-font="onest"] {
   --fp-font-reading: var(--font-onest), "Onest", system-ui, sans-serif;
+  --fp-read-k: 0.96;
+  --fp-read-leading-k: -0.05;
 }
 :root[data-size="1"] { --fp-read-size: 16px; }
 :root[data-size="2"] { --fp-read-size: 17.5px; }

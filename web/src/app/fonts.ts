@@ -1,4 +1,4 @@
-import { IBM_Plex_Mono, Literata, Lora, Onest, PT_Serif } from "next/font/google";
+import { IBM_Plex_Mono, Literata, Lora, Old_Standard_TT, Onest } from "next/font/google";
 
 /** Display: wordmark, titles, big numbers. */
 export const lora = Lora({
@@ -17,12 +17,12 @@ export const literata = Literata({
   display: "swap",
 });
 
-/** Second reading option: classic Russian serif. Not preloaded — only used on demand. */
-export const ptSerif = PT_Serif({
+/** «Классика»: revival of the Russian book face Chekhov and Grin were printed in. Loaded on demand. */
+export const oldStandard = Old_Standard_TT({
   subsets: ["cyrillic", "latin"],
   weight: ["400", "700"],
   style: ["normal", "italic"],
-  variable: "--font-ptserif",
+  variable: "--font-oldstandard",
   display: "swap",
   preload: false,
 });
@@ -43,4 +43,4 @@ export const plexMono = IBM_Plex_Mono({
   preload: false,
 });
 
-export const fontVars = [lora, literata, ptSerif, onest, plexMono].map((f) => f.variable).join(" ");
+export const fontVars = [lora, literata, oldStandard, onest, plexMono].map((f) => f.variable).join(" ");

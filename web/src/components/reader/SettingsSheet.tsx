@@ -12,9 +12,9 @@ const THEMES: { key: Theme; label: string }[] = [
 ];
 
 const FONTS: { key: ReadingFont; label: string; note: string; family: string }[] = [
-  { key: "literata", label: "Литерата", note: "книжная, как в Google Play Книгах", family: "var(--font-literata)" },
-  { key: "ptserif", label: "PT Serif", note: "классическая русская антиква", family: "var(--font-ptserif)" },
-  { key: "onest", label: "Онест", note: "без засечек, для экрана", family: "var(--font-onest)" },
+  { key: "literata", label: "Книжный", note: "Литерата — шрифт Google Play Книг", family: "var(--font-literata)" },
+  { key: "classic", label: "Классика", note: "как печатали при Чехове и Грине", family: "var(--font-oldstandard)" },
+  { key: "onest", label: "Без засечек", note: "Онест — чисто, как в мессенджере", family: "var(--font-onest)" },
 ];
 
 /** Bottom sheet with reading settings. Native <dialog>, light-dismiss. */

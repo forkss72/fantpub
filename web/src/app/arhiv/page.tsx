@@ -4,7 +4,7 @@ import { ArchiveView } from "@/components/ArchiveView";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getPublishedStories, getTomorrowTeaser } from "@/lib/content";
 import { toCard } from "@/lib/cards";
-import { issueOpensAt } from "@/lib/date";
+import { issueOpensAt, plural } from "@/lib/date";
 import styles from "./page.module.css";
 
 export const revalidate = 300;
@@ -25,7 +25,7 @@ export default function ArchivePage() {
       <header className={styles.head}>
         <h1 className={`display ${styles.title}`}>Архив</h1>
         <p className={styles.lead}>
-          {cards.length} выпусков, и все открыты. Целая печать на корешке значит, что рассказ вас ещё ждёт.
+          {cards.length} {plural(cards.length, ["выпуск", "выпуска", "выпусков"])}, и все открыты. Целая печать на корешке значит, что рассказ вас ещё ждёт.
         </p>
       </header>
       <ArchiveView

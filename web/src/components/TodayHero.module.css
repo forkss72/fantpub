@@ -326,6 +326,19 @@
     justify-items: start;
   }
   .stageWrap {
-    min-height: 520px;
+    min-height: 600px;
+  }
+  .bookButton {
+    scale: 1.3;
+  }
+  .ledge {
+    bottom: 0;
+    width: 380px;
+  }
+  .title {
+    font-size: 56px;
+  }
+  .says {
+    max-width: 480px;
   }
 }

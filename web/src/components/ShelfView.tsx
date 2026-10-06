@@ -166,7 +166,7 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
         <div className={styles.settingsRow}>
           <span className={styles.settingsNow}>
             {shelf.prefs.theme === "auto" ? "Тема по системе" : shelf.prefs.theme === "paper" ? "Бумага" : shelf.prefs.theme === "dusk" ? "Сумерки" : "Ночь"} ·{" "}
-            {shelf.prefs.font === "literata" ? "Литерата" : shelf.prefs.font === "ptserif" ? "PT Serif" : "Онест"} · размер {shelf.prefs.size} ·{" "}
+            {shelf.prefs.font === "literata" ? "Книжный шрифт" : shelf.prefs.font === "classic" ? "Классика" : "Без засечек"} · размер {shelf.prefs.size} ·{" "}
             {shelf.prefs.blind ? "слепое чтение" : "автор виден"}
           </span>
           <button type="button" className="pill pill--ghost" onClick={() => setSettings(true)}>
