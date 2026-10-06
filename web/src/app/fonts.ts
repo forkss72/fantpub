@@ -2,7 +2,7 @@ import { IBM_Plex_Mono, Literata, Lora, Old_Standard_TT, Onest } from "next/font
 
 /** Display: wordmark, titles, big numbers. */
 export const lora = Lora({
-  subsets: ["cyrillic", "latin"],
+  subsets: ["cyrillic"],
   style: ["normal", "italic"],
   variable: "--font-lora",
   display: "swap",
@@ -10,7 +10,7 @@ export const lora = Lora({
 
 /** Default reading face (made by Google for Play Books). */
 export const literata = Literata({
-  subsets: ["cyrillic", "latin"],
+  subsets: ["cyrillic"],
   style: ["normal", "italic"],
   variable: "--font-literata",
   display: "swap",
@@ -20,7 +20,7 @@ export const literata = Literata({
 
 /** «Классика»: revival of the Russian book face Chekhov and Grin were printed in. Loaded on demand. */
 export const oldStandard = Old_Standard_TT({
-  subsets: ["cyrillic", "latin"],
+  subsets: ["cyrillic"],
   weight: ["400", "700"],
   style: ["normal", "italic"],
   variable: "--font-oldstandard",
@@ -30,14 +30,14 @@ export const oldStandard = Old_Standard_TT({
 
 /** Interface + third reading option (sans). */
 export const onest = Onest({
-  subsets: ["cyrillic", "latin"],
+  subsets: ["cyrillic"],
   variable: "--font-onest",
   display: "swap",
 });
 
 /** Dates, issue numbers, service labels. */
 export const plexMono = IBM_Plex_Mono({
-  subsets: ["cyrillic", "latin"],
+  subsets: ["cyrillic"],
   weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",

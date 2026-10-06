@@ -45,7 +45,7 @@ d.dataset.theme=t;d.dataset.font=p.font||'literata';d.dataset.size=String(p.size
 var m=document.querySelector('meta[name="theme-color"]');if(m){m.setAttribute('content',t==='paper'?'#f6f2e7':t==='dusk'?'#24201a':'#121211')}
 var q=new URLSearchParams(location.search);
 if(location.pathname.indexOf('/rasskaz/')===0){var slug=location.pathname.split('/')[2];
-var bl=q.get('z')==='1'||(sessionStorage.getItem('fantpub:blind')===slug&&p.blind!==false&&!(s.read||{})[slug]);if(bl){d.dataset.blind='1'}}
+var bl=q.get('z')==='1'||(sessionStorage.getItem('fantpub:blind')===slug&&p.blind!==false&&!(s.read||{})[slug]);if(bl){d.dataset.blind='1';document.addEventListener('DOMContentLoaded',function(){var h=document.querySelector('h1');if(h&&d.dataset.blind==='1'){d.dataset.realTitle=document.title;document.title='\u00ab'+h.textContent.trim()+'\u00bb \u2014 рассказ дня \u00b7 FantPub'}})}}
 }catch(e){}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -57,8 +57,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <div id="app-root">{children}</div>
         <BottomNav />
-        <Analytics />
         <ClientEffects />
+        {/* Turn on Web Analytics in the Vercel project first, then set NEXT_PUBLIC_ANALYTICS=1 */}
+        {process.env.NEXT_PUBLIC_ANALYTICS === "1" && <Analytics />}
       </body>
     </html>
   );

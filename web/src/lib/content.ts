@@ -33,6 +33,8 @@ export function typograph(text: string): string {
     .replace(/\.\.\./g, "…");
   // lookbehind keeps chains like «и в доме» intact
   t = t.replace(SHORT_WORDS, `$1${NBSP}`);
+  // numbers stay with what they count: «1830 году», «12 апреля», «XX века»
+  t = t.replace(/(\d|[IVXLC]{2,})[ \t]+(?=[А-Яа-яЁё])/g, `$1${NBSP}`);
   // particles stick to the previous word
   t = t.replace(/\s+(ли|же|бы|ж|б)(?=[\s.,!?…:;»)]|$)/g, `${NBSP}$1`);
   return t;

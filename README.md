@@ -25,4 +25,5 @@ cd web && npm install && npm run dev
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | канонический адрес сайта (OG, sitemap) |
 | `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Upstash Redis для общих счётчиков реакций; без них реакции сохраняются только у читателя |
-| `CRON_SECRET` | защита cron-маршрута ежедневной смены выпуска |
+| `CRON_SECRET` | защита cron-маршрута ежедневной смены выпуска (уже задан) |
+| `NEXT_PUBLIC_ANALYTICS` | `1` — включить Vercel Web Analytics (сначала включите Analytics в настройках проекта) |

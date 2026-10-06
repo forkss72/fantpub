@@ -181,13 +181,14 @@ export function applyPrefs(p: Prefs) {
 
 /* ─── shelf key: move your shelf to another device without an account ─── */
 
-type KeyPayload = { r: [string, number][]; x: [string, ReactionKey][]; p: Prefs };
+type KeyPayload = { r: [string, number][]; x: [string, ReactionKey][]; p: Prefs; g?: [string, boolean][] };
 
 export function exportKey(s: ShelfState = getShelf()): string {
   const payload: KeyPayload = {
     r: Object.entries(s.read).map(([k, t]) => [k, Math.round(t / 1000)]),
     x: Object.entries(s.reactions),
     p: s.prefs,
+    g: Object.entries(s.guesses),
   };
   const bytes = new TextEncoder().encode(JSON.stringify(payload));
   let bin = "";
@@ -201,13 +202,15 @@ export function importKey(key: string): boolean {
     const bin = atob(b64);
     const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
     const payload = JSON.parse(new TextDecoder().decode(bytes)) as KeyPayload;
+    if (!Array.isArray(payload.r) || !Array.isArray(payload.x)) return false;
     updateShelf((s) => {
       const read = { ...s.read };
       for (const [slug, t] of payload.r) read[slug] = Math.max(read[slug] ?? 0, t * 1000);
       const reactions = { ...s.reactions, ...Object.fromEntries(payload.x) };
+      const guesses = { ...s.guesses, ...Object.fromEntries(payload.g ?? []) };
       const opened = { ...s.opened };
       for (const slug of Object.keys(read)) opened[slug] = opened[slug] ?? read[slug];
-      return { ...s, read, reactions, opened, prefs: { ...s.prefs, ...payload.p }, introSeen: true };
+      return { ...s, read, reactions, guesses, opened, prefs: { ...s.prefs, ...payload.p }, introSeen: true };
     });
     applyPrefs(getShelf().prefs);
     return true;

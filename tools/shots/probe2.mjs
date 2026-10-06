@@ -1,0 +1,11 @@
+import { chromium } from "playwright-core";
+const browser = await chromium.launch({ channel: "chrome", headless: true });
+const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: "ru-RU" });
+const page = await ctx.newPage();
+await page.goto("http://localhost:3100/rasskaz/grobovshchik?z=1", { waitUntil: "networkidle" });
+await page.waitForTimeout(2500);
+console.log("title(z=1):", await page.title(), "| blind:", await page.evaluate(() => document.documentElement.dataset.blind));
+await page.evaluate(() => window.scrollTo(0, 380));
+await page.waitForTimeout(400);
+await page.screenshot({ path: process.argv[2] });
+await browser.close();

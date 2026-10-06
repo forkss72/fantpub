@@ -236,6 +236,10 @@ img {
   -webkit-user-drag: none;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 /* ─── helpers ─── */
 .display {
   font-family: var(--fp-font-display);

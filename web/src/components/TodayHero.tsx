@@ -64,7 +64,7 @@ export function TodayHero({ story, dayIndex, alternatives }: Props) {
     if (reduce) return go();
 
     if (firstTimeToday) {
-      updateShelf((s) => ({ ...s, ritualDay: dayIndex }));
+      updateShelf((s) => ({ ...s, ritualDay: dayIndex, introSeen: true }));
       navigator.vibrate?.(14);
       setBreaking(true);
       timers.current.push(window.setTimeout(() => setPhase("front"), 420));

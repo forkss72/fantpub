@@ -20,7 +20,7 @@ export default function AboutPage() {
       <main className={`page ${styles.page}`}>
       <Masthead />
       <header className={styles.hero}>
-        <Pabchik pose="sealed-book" size={170} priority />
+        <Pabchik pose="sealed-book" size={170} />
         <h1 className={`display ${styles.title}`}>
           Дом историй, <em>открытый для всех</em>
         </h1>

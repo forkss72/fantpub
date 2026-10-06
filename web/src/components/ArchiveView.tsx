@@ -41,6 +41,10 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
   const [unread, setUnread] = useState(false);
   const [view, setView] = useState<"shelf" | "calendar" | "list">("shelf");
 
+  // today's issue keeps its author under the seal here too (until read, if blind reading is on)
+  const sealed = (c: StoryCard) => c.issue === todayIssue && (!hydrated || (shelf.prefs.blind && !shelf.read[c.slug]));
+  const authorOf = (c: StoryCard) => (sealed(c) ? "автор под печатью" : c.authorName);
+
   const genres = useMemo(() => {
     const counts = new Map<string, number>();
     cards.forEach((c) => c.genres.forEach((g) => counts.set(g, (counts.get(g) ?? 0) + 1)));
@@ -51,7 +55,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
     if (genre !== "all" && !c.genres.includes(genre)) return false;
     if (!LENGTHS.find((l) => l.key === len)!.test(c.minutes)) return false;
     if (unread && hydrated && shelf.read[c.slug]) return false;
-    if (q && !`${c.title} ${c.authorName} ${c.mood} ${c.genres.join(" ")}`.toLowerCase().includes(q)) return false;
+    if (q && !`${c.title} ${sealed(c) ? "" : c.authorName} ${c.mood} ${c.genres.join(" ")}`.toLowerCase().includes(q)) return false;
     return true;
   });
 
@@ -71,7 +75,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
   return (
     <div className={styles.wrap}>
       <div className={styles.controls}>
-        <label className={styles.search}>
+        <label className={styles.search} hidden={view === "calendar"}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="6.5" />
             <path d="M16 16l4.5 4.5" />
@@ -102,7 +106,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
         </div>
 
         <div className={styles.bar}>
-          <span className={`mono ${styles.count}`} role="status" aria-live="polite">
+          <span className={`mono ${styles.count}`} role="status" aria-live="polite" style={view === "calendar" ? { visibility: "hidden" } : undefined}>
             {filtered.length === cards.length ? `${cards.length} ${plural(cards.length, ["выпуск", "выпуска", "выпусков"])}` : `найдено ${filtered.length}`}
             {hydrated && readCount > 0 && ` · прочитано ${readCount}`}
           </span>
@@ -175,7 +179,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
                       <span className={styles.caption}>
                         <span className={styles.capTitle}>{c.title}</span>
                         <span className={styles.capMeta}>
-                          {c.authorName} · {c.minutes} мин
+                          {authorOf(c)} · {c.minutes} мин
                         </span>
                       </span>
                       {read && <span className="sr-only">прочитано</span>}
@@ -199,7 +203,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
                       <span className={styles.rowBody}>
                         <span className={styles.rowTitle}>{c.title}</span>
                         <span className={styles.rowMeta}>
-                          {c.authorName} · {c.genres.map(genreLabel).join(", ")} · {c.minutes} мин
+                          {authorOf(c)} · {c.genres.map(genreLabel).join(", ")} · {c.minutes} мин
                         </span>
                       </span>
                       <span className={styles.rowMark} aria-label={read ? "прочитано" : "не прочитано"} />

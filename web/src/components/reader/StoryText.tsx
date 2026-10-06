@@ -20,7 +20,10 @@ function inline(text: string): React.ReactNode[] {
 
 /** The story itself: server-rendered, readable without JS, indexable. */
 export function StoryText({ blocks }: { blocks: Block[] }) {
-  const firstP = blocks.findIndex((b) => b.type === "p");
+  // ::first-letter would swallow a dialogue dash and draw a green bar — no initial then
+  const firstIdx = blocks.findIndex((b) => b.type === "p");
+  const firstBlock = blocks[firstIdx];
+  const firstP = firstBlock && "text" in firstBlock && /^[—–-]/.test(firstBlock.text) ? -1 : firstIdx;
   const pIndex = blocks.map((_, i) => blocks.slice(0, i).filter((b) => b.type === "p").length);
   return (
     <div className={styles.text} data-story-text>
@@ -40,9 +43,17 @@ export function StoryText({ blocks }: { blocks: Block[] }) {
           );
         }
         if (b.type === "epigraph") {
+          // «строка / строка — Подпись»: verse lines and the signature on their own lines
+          const [verse, sign] = b.text.split(/\s+—\s+(?=[^—]+$)/);
+          const lines = verse.split(/\s+\/\s+/);
           return (
             <blockquote key={i} className={styles.epigraph}>
-              {inline(b.text)}
+              {lines.map((l, j) => (
+                <span key={j} className={styles.verse}>
+                  {inline(l)}
+                </span>
+              ))}
+              {sign && <span className={styles.sign}>— {sign}</span>}
             </blockquote>
           );
         }

@@ -22,6 +22,7 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
   const [settings, setSettings] = useState(false);
   const [copied, setCopied] = useState(false);
   const [pendingKey, setPendingKey] = useState<string | null>(null);
+  const [keyError, setKeyError] = useState(false);
   const [now, setNow] = useState(0);
 
   useEffect(() => {
@@ -47,7 +48,8 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
   async function copyKey() {
     const link = `${SITE_URL}/polka#key=${exportKey()}`;
     try {
-      if (navigator.share) {
+      // phones: system share sheet; desktops: just copy
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
         await navigator.share({ title: "Ключ от моей полки FantPub", url: link });
         return;
       }
@@ -75,7 +77,8 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
               type="button"
               className="pill pill--sage"
               onClick={() => {
-                importKey(pendingKey);
+                const ok = importKey(pendingKey);
+                setKeyError(!ok);
                 setPendingKey(null);
                 history.replaceState(null, "", "/polka");
               }}
@@ -94,6 +97,12 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
             </button>
           </div>
         </div>
+      )}
+
+      {keyError && (
+        <p className={styles.import} role="alert">
+          Ключ не подошёл: похоже, ссылка скопировалась не целиком. Попробуйте скопировать её ещё раз на старом устройстве.
+        </p>
       )}
 
       <dl className={styles.stats}>

@@ -7,7 +7,7 @@ export default function NotFound() {
     <main className="page" style={{ display: "grid", gap: 24 }}>
       <Masthead />
       <div style={{ display: "grid", justifyItems: "center", gap: 14, textAlign: "center", paddingTop: 30 }}>
-        <Pabchik pose="sad" size={160} priority />
+        <Pabchik pose="sad" size={160} />
         <h1 className="display" style={{ margin: 0, fontSize: 34 }}>
           Такой книги на полке нет
         </h1>

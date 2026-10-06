@@ -21,10 +21,9 @@
   box-shadow: inset 0 0 0 1.5px var(--fp-ink);
 }
 .avatar img {
-  width: 116%;
-  height: 116%;
-  max-width: none;
-  margin-top: 14%;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 

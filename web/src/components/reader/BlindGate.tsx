@@ -6,6 +6,7 @@ import { getShelf } from "@/lib/shelf";
 /**
  * Puts author & year under the seal for client-side navigations from today's ritual
  * (the inline head script covers full page loads). Runs before paint — no flash.
+ * While sealed, the tab title is masked too and kept masked even if Next re-applies metadata.
  */
 export function BlindGate({ slug, title }: { slug: string; title: string }) {
   useLayoutEffect(() => {
@@ -17,13 +18,22 @@ export function BlindGate({ slug, title }: { slug: string; title: string }) {
       const s = getShelf();
       blind = riddle || (fromRitual && s.prefs.blind && !s.read[slug]);
     } catch {}
-    if (blind) {
-      html.dataset.blind = "1";
-      // the tab title and history entry must not give the author away either
+    if (!blind) {
+      if (html.dataset.blind === "1") delete html.dataset.blind;
+      return;
+    }
+    html.dataset.blind = "1";
+    const masked = `«${title}» — рассказ дня · FantPub`;
+    const apply = () => {
+      if (html.dataset.blind !== "1" || document.title === masked) return;
       html.dataset.realTitle = document.title;
-      document.title = `«${title}» — рассказ дня · FantPub`;
-    } else if (html.dataset.blind === "1") delete html.dataset.blind;
+      document.title = masked;
+    };
+    apply();
+    const mo = new MutationObserver(apply);
+    mo.observe(document.head, { subtree: true, childList: true, characterData: true });
     return () => {
+      mo.disconnect();
       delete html.dataset.blind;
       delete html.dataset.realTitle;
     };

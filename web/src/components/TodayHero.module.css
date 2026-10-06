@@ -9,8 +9,8 @@
   position: relative;
   display: grid;
   place-items: center;
-  padding: 26px 0 30px;
-  min-height: 400px;
+  padding: 14px 0 26px;
+  min-height: 372px;
   animation: rise 900ms var(--fp-ease-out) both;
 }
 

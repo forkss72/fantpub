@@ -15,7 +15,7 @@ export function IntroCard() {
   };
   return (
     <section className={styles.card} aria-labelledby="intro-title">
-      <Pabchik pose="explaining" size={92} className={styles.figure} priority />
+      <Pabchik pose="explaining" size={92} className={styles.figure} />
       <div className={styles.text}>
         <h2 id="intro-title" className={styles.title}>
           Я Пабчик, домовой этого дома историй

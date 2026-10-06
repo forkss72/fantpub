@@ -109,7 +109,7 @@ export function OgStory({ story }: { story: StoryMeta }) {
 /** 1080×1350 card for VK posts / stories — the «folded sheet». */
 export function ShareCard({ story }: { story: StoryMeta }) {
   const cloth = CLOTHS[story.cloth] ?? CLOTHS.forest;
-  const quote = story.quote && story.quote.length <= 260 ? story.quote : "";
+  const quote = story.quote && story.quote.length <= 260 ? story.quote.replace(/[.]$/, "") : "";
   return (
     <div style={{ width: 1080, height: 1350, display: "flex", flexDirection: "column", alignItems: "center", background: PAPER, color: INK, padding: "90px 90px 80px", position: "relative" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 700, background: "radial-gradient(circle at 50% 55%, rgba(203,221,155,.6), rgba(246,242,231,0) 62%)", display: "flex" }} />

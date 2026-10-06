@@ -72,6 +72,7 @@ export function EndOfStory(props: Props) {
     } catch {}
     const real = document.documentElement.dataset.realTitle;
     if (real) document.title = real;
+    if (location.search.includes("z=1")) history.replaceState(history.state, "", location.pathname);
     window.setTimeout(() => revealRef.current?.focus({ preventScroll: false }), 60);
   }
   /* eslint-enable react-hooks/immutability */
@@ -311,7 +312,7 @@ function Share({ slug, title, minutes }: { slug: string; title: string; minutes:
     const target = kind === "riddle" ? riddle : url;
     const text = kind === "riddle" ? `«${title}» — рассказ на ${minutes} мин. Угадаете автора?` : `«${title}» — рассказ на ${minutes} мин в FantPub`;
     try {
-      if (navigator.share) {
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
         await navigator.share({ title: `«${title}»`, text, url: target });
         return;
       }
