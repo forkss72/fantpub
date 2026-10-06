@@ -160,3 +160,35 @@ export function ShareCard({ story }: { story: StoryMeta }) {
     </div>
   );
 }
+
+/** 1200×630 default preview for the site: a fan of three clothbound books and the seal. */
+export function OgSite() {
+  const books: { motif: string; cloth: "forest" | "oxblood" | "ink"; rot: number; x: number; y: number }[] = [
+    { motif: "window", cloth: "forest", rot: -12, x: 60, y: 120 },
+    { motif: "star", cloth: "ink", rot: 6, x: 290, y: 70 },
+    { motif: "rose", cloth: "oxblood", rot: -3, x: 175, y: 95 },
+  ];
+  return (
+    <div style={{ width: 1200, height: 630, display: "flex", background: PAPER, color: INK, position: "relative" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: 640, height: 630, background: "radial-gradient(circle at 50% 50%, rgba(203,221,155,.6), rgba(246,242,231,0) 62%)", display: "flex" }} />
+      <div style={{ width: 600, height: 630, position: "relative", display: "flex" }}>
+        {books.map((b) => (
+          <div key={b.motif} style={{ position: "absolute", left: b.x, top: b.y, transform: `rotate(${b.rot}deg)`, boxShadow: "0 30px 40px -18px rgba(52,42,18,.55)", display: "flex" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={svgDataUri(coverSvg({ motif: b.motif, cloth: b.cloth, width: 240, height: 360 }))} width={240} height={360} alt="" />
+          </div>
+        ))}
+        <div style={{ position: "absolute", left: 400, top: 380, display: "flex" }}>
+          <SealMark size={120} issue={1} />
+        </div>
+      </div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 70px 0 10px" }}>
+        <div style={{ fontFamily: "Plex", fontSize: 20, letterSpacing: 3, color: "#6b6658", display: "flex" }}>РАССКАЗ НА КАЖДЫЙ ДЕНЬ</div>
+        <div style={{ fontFamily: "Lora", fontWeight: 600, fontSize: 96, lineHeight: 1, marginTop: 14, display: "flex" }}>FantPub</div>
+        <div style={{ fontFamily: "Lora", fontStyle: "italic", fontSize: 34, lineHeight: 1.3, color: "#4a473d", marginTop: 26, display: "flex" }}>
+          Одна книга в день. Сломайте печать, прочитайте за 5–10 минут и угадайте автора.
+        </div>
+      </div>
+    </div>
+  );
+}

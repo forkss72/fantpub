@@ -3,11 +3,11 @@
  * at 00:00 Moscow time (UTC+3, no DST). Everything in the past is open forever,
  * only the future is closed.
  */
-export const LAUNCH_DATE = "2026-09-24";
+export const LAUNCH_DATE = "2026-09-27";
 export const MSK_OFFSET_MS = 3 * 60 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-const launchUtcMidnight = Date.UTC(2026, 8, 24); // months are 0-based → September
+const launchUtcMidnight = Date.UTC(2026, 8, 27); // months are 0-based → September
 
 /** Moscow calendar day index since launch (0 = launch day). */
 export function dayIndex(now: number = Date.now()): number {

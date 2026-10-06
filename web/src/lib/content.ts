@@ -11,8 +11,10 @@ const STORIES_DIR = path.join(CONTENT_DIR, "stories");
 let storiesCache: Story[] | null = null;
 let authorsCache: Record<string, Author> | null = null;
 
+const CACHE = process.env.NODE_ENV === "production";
+
 export function getAuthors(): Record<string, Author> {
-  if (authorsCache) return authorsCache;
+  if (authorsCache && CACHE) return authorsCache;
   const raw = fs.readFileSync(path.join(CONTENT_DIR, "authors.json"), "utf8");
   authorsCache = JSON.parse(raw) as Record<string, Author>;
   return authorsCache;
@@ -63,7 +65,7 @@ function wordCount(blocks: Block[]): number {
 }
 
 function loadAll(): Story[] {
-  if (storiesCache) return storiesCache;
+  if (storiesCache && CACHE) return storiesCache;
   const authors = getAuthors();
   const files = fs.existsSync(STORIES_DIR) ? fs.readdirSync(STORIES_DIR).filter((f) => f.endsWith(".md")) : [];
   const stories = files.map((file) => {
