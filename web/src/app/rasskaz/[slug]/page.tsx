@@ -11,6 +11,7 @@ import { PabchikSays } from "@/components/Pabchik";
 import { ReaderBar } from "@/components/reader/ReaderBar";
 import { ReadingTracker } from "@/components/reader/ReadingTracker";
 import { BlindGate } from "@/components/reader/BlindGate";
+import { QuoteShare } from "@/components/reader/QuoteShare";
 import { EndOfStory } from "@/components/reader/EndOfStory";
 import { Colophon } from "@/components/reader/Colophon";
 import { StoryText } from "@/components/reader/StoryText";
@@ -218,6 +219,7 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
         </nav>
       </main>
       <ReadingTracker slug={story.slug} paragraphs={paragraphs} minutes={story.minutes} />
+      <QuoteShare slug={story.slug} title={story.title} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </>
   );

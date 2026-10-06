@@ -1,0 +1,23 @@
+.btn {
+  position: absolute;
+  z-index: 40;
+  translate: -50% 0;
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--fp-ink);
+  color: var(--fp-paper);
+  font-family: var(--fp-font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: var(--fp-shadow-float);
+  animation: pop 220ms var(--fp-ease-out);
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    translate: -50% 6px;
+  }
+}

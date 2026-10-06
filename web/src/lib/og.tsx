@@ -109,7 +109,7 @@ export function OgStory({ story }: { story: StoryMeta }) {
 /** 1080×1350 card for VK posts / stories — the «folded sheet». */
 export function ShareCard({ story }: { story: StoryMeta }) {
   const cloth = CLOTHS[story.cloth] ?? CLOTHS.forest;
-  const quote = story.quote && story.quote.length < 220 ? story.quote : "";
+  const quote = story.quote && story.quote.length <= 260 ? story.quote : "";
   return (
     <div style={{ width: 1080, height: 1350, display: "flex", flexDirection: "column", alignItems: "center", background: PAPER, color: INK, padding: "90px 90px 80px", position: "relative" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 700, background: "radial-gradient(circle at 50% 55%, rgba(203,221,155,.6), rgba(246,242,231,0) 62%)", display: "flex" }} />
@@ -143,12 +143,15 @@ export function ShareCard({ story }: { story: StoryMeta }) {
         </div>
       </div>
       {quote ? (
-        <div style={{ fontFamily: "Lora", fontStyle: "italic", fontSize: 40, lineHeight: 1.35, textAlign: "center", marginTop: 80, display: "flex" }}>«{quote}»</div>
+        <div style={{ fontFamily: "Lora", fontStyle: "italic", fontSize: quote.length > 150 ? 34 : 42, lineHeight: 1.35, textAlign: "center", marginTop: 72, display: "flex" }}>«{quote}»</div>
       ) : (
         <div style={{ fontFamily: "Lora", fontStyle: "italic", fontSize: 44, lineHeight: 1.3, textAlign: "center", marginTop: 80, display: "flex" }}>
           Рассказ на {story.minutes} минут. Угадаете автора?
         </div>
       )}
+      <div style={{ fontFamily: "Plex", fontSize: 22, letterSpacing: 3, color: "#6b6658", marginTop: 34, display: "flex" }}>
+        РАССКАЗ НА {story.minutes} МИН · УГАДАЕТЕ АВТОРА?
+      </div>
       <div style={{ flex: 1, display: "flex" }} />
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
         <div style={{ fontFamily: "Lora", fontWeight: 600, fontSize: 38, display: "flex" }}>FantPub</div>

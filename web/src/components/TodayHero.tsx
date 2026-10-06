@@ -10,6 +10,7 @@ import { PabchikSays } from "./Pabchik";
 import { markOpened, updateShelf, useHydrated, useShelf } from "@/lib/shelf";
 import { humanDate } from "@/lib/date";
 import type { StoryCard } from "@/lib/types";
+import { CLOTHS } from "@/lib/cloth";
 import styles from "./TodayHero.module.css";
 
 type Props = {
@@ -88,7 +89,7 @@ export function TodayHero({ story, dayIndex, alternatives }: Props) {
 
   return (
     <section className={styles.hero} aria-labelledby="today-title">
-      <div className={styles.stageWrap} data-phase={phase}>
+      <div className={styles.stageWrap} data-phase={phase} style={{ "--spot": (CLOTHS[story.cloth] ?? CLOTHS.forest).bg } as React.CSSProperties}>
         <div className={styles.spot} aria-hidden="true" />
         <div className={styles.gobo} aria-hidden="true" />
         <button
