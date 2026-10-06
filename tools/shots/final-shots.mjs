@@ -31,10 +31,7 @@ const older = slugs.slice(1);
 const readMany = Object.fromEntries(older.slice(0, 7).map((s, i) => [s, Date.now() - (i + 1) * 864e5]));
 
 await shot("01-home", async (p) => { await p.goto(base + "/", { waitUntil: "networkidle" }); await p.waitForTimeout(1600); }, { state: seen() });
-await shot("02-ritual", async (p) => {
-  await p.goto(base + "/", { waitUntil: "networkidle" }); await p.waitForTimeout(1300);
-  await p.click('button[aria-label^="Сломать"]'); await p.waitForTimeout(1380);
-}, { state: seen() });
+// 02-ritual: the animation outruns this helper's settle delay — use ritual-shot.mjs.
 await shot("03-reader", async (p) => {
   await p.goto(base + "/", { waitUntil: "networkidle" }); await p.waitForTimeout(1300);
   await p.click('button[aria-label^="Сломать"]'); await p.waitForURL(/rasskaz/, { timeout: 10000 }); await p.waitForTimeout(1500);
