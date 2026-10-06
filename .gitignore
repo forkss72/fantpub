@@ -1,0 +1,26 @@
+# deps & builds
+node_modules/
+.next/
+out/
+.vercel/
+*.log
+.DS_Store
+*.tsbuildinfo
+web/next-env.d.ts
+.env*
+!.env.example
+
+# private / third-party material — stays on the owner's machine
+research/refs/
+research/sources/
+research/mobbin/
+research/codex-test/
+research/webguides/
+research/brand/old_*
+research/style-concepts/*.png
+research/style-concepts/log_*
+research/mascot/**/*.png
+research/mascot/**/log_*
+research/mascot/**/.log_*
+tools/shots/node_modules/
+.claude/

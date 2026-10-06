@@ -1,0 +1,64 @@
+.home {
+  display: grid;
+  gap: 34px;
+}
+
+.date {
+  color: var(--fp-ink-3);
+}
+
+.tomorrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 14px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: 1px dashed var(--fp-line-strong);
+  color: var(--fp-ink-2);
+  font-size: 15px;
+  text-align: center;
+}
+.tomorrow strong {
+  font-weight: 600;
+  color: var(--fp-ink);
+}
+.tomorrowSeal {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--fp-sage-wax);
+  box-shadow: inset 1px 1px 0 rgb(255 255 255 / 0.6), inset -1px -1px 0 rgb(0 0 0 / 0.25), 0 1px 2px rgb(0 0 0 / 0.3);
+}
+.tomorrowTimer {
+  font-family: var(--fp-font-mono);
+  font-size: 13px;
+  color: var(--fp-ink-3);
+}
+
+.rules ol {
+  list-style: decimal;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 18px 20px 18px 40px;
+  border-radius: var(--fp-radius-md);
+  background: var(--fp-paper-sunken);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fp-ink-2);
+}
+.rules li::marker {
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  color: var(--fp-ink);
+}
+.rules strong {
+  color: var(--fp-ink);
+  font-weight: 600;
+}
+.rules a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

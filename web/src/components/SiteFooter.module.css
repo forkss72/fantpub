@@ -1,0 +1,24 @@
+.footer {
+  display: grid;
+  gap: 10px;
+  padding: 24px 0 8px;
+  border-top: 1px solid var(--fp-line);
+  color: var(--fp-ink-3);
+  font-size: 13px;
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.links a {
+  color: var(--fp-ink-2);
+}
+.links a:hover {
+  color: var(--fp-ink);
+}
+.legal {
+  margin: 0;
+  max-width: 46ch;
+  line-height: 1.5;
+}

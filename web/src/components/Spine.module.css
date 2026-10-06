@@ -1,0 +1,79 @@
+.spine {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 8px;
+  border-radius: 3px 3px 2px 2px;
+  color: var(--foil);
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.32), rgb(255 255 255 / 0.12) 30%, rgb(255 255 255 / 0.02) 60%, rgb(0 0 0 / 0.28)),
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.07) 0 1px, transparent 1px 3px),
+    var(--cloth);
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.18),
+    2px 0 0 rgb(0 0 0 / 0.08);
+  transition:
+    transform var(--fp-dur-2) var(--fp-ease-out),
+    translate 380ms var(--fp-spring);
+}
+
+.band {
+  width: 100%;
+  height: 4px;
+  border-block: 1px solid var(--foil);
+  opacity: 0.8;
+}
+
+.title {
+  flex: 1;
+  min-height: 0;
+  margin: 8px 0;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 12.5px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(180deg, var(--foil), var(--foil-hi) 50%, var(--foil));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.foot {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+
+.issue {
+  font-family: var(--fp-font-mono);
+  font-size: 10px;
+  opacity: 0.85;
+}
+
+/* sealed = little whole wax dot; read = sage bookmark tab */
+.mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fp-sage-wax);
+  box-shadow: inset 1px 1px 0 rgb(255 255 255 / 0.55), inset -1px -1px 0 rgb(0 0 0 / 0.25), 0 1px 1px rgb(0 0 0 / 0.35);
+}
+.spine[data-state="read"] .mark {
+  width: 10px;
+  height: 14px;
+  border-radius: 1px;
+  background: var(--fp-sage);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+  box-shadow: none;
+}
+.spine[data-state="today"] {
+  outline: 2px solid var(--fp-sage);
+  outline-offset: 2px;
+}

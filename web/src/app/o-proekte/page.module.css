@@ -1,0 +1,80 @@
+.page {
+  display: grid;
+  gap: 30px;
+}
+.hero {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  text-align: center;
+}
+.title {
+  margin: 0;
+  font-size: clamp(34px, 9vw, 52px);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.title em {
+  font-style: italic;
+  font-weight: 400;
+}
+.lead {
+  margin: 0;
+  max-width: 40ch;
+  color: var(--fp-ink-2);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.section {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--fp-radius-lg);
+  background: var(--fp-paper-raised);
+  box-shadow: var(--fp-shadow-card);
+}
+.h {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 4px;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 23px;
+}
+.num {
+  font-family: var(--fp-font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--fp-sage-ink);
+  min-width: 1.5em;
+}
+.list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--fp-ink-2);
+  line-height: 1.5;
+}
+.list strong {
+  color: var(--fp-ink);
+  font-weight: 600;
+}
+.p {
+  margin: 0;
+  color: var(--fp-ink-2);
+  line-height: 1.6;
+}
+.p a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cta {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

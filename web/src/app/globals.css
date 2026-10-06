@@ -1,0 +1,398 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────
+   FantPub 2.0 — «Сургучная печать»
+   One material (paper), one hero (the book), one bold detail per screen.
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  /* paper & ink — day («Бумага») */
+  --fp-paper: #f6f2e7;
+  --fp-paper-raised: #fcfaf4;
+  --fp-paper-sunken: #ece6d6;
+  --fp-ink: #1d1c17;
+  --fp-ink-2: #4a473d;
+  --fp-ink-3: #6b6658;
+  --fp-line: rgb(29 28 23 / 0.12);
+  --fp-line-strong: rgb(29 28 23 / 0.22);
+
+  /* brand */
+  --fp-sage: #cbdd9b;
+  --fp-sage-wax: #b9cf84;
+  --fp-sage-ink: #4e5d25;
+  --fp-forest: #26301c;
+  --fp-on-sage: #1d1c17;
+  --fp-on-forest: #f6f2e7;
+  --fp-wax: #b23a22;
+  --fp-gilt: #a88848;
+  --fp-gilt-hi: #e4cf97;
+  --fp-pencil: #c9472b;
+
+  /* vellum («калька») — the only translucent material */
+  --fp-vellum: rgb(252 250 244 / 0.72);
+  --fp-vellum-line: rgb(29 28 23 / 0.1);
+
+  /* materials */
+  --fp-grain-opacity: 0.05;
+  --fp-shadow-book: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 26px 40px -18px rgb(52 42 18 / 0.5),
+    0 6px 12px -6px rgb(52 42 18 / 0.3);
+  --fp-shadow-card: 0 1px 2px rgb(52 42 18 / 0.08), 0 10px 28px -14px rgb(52 42 18 / 0.22);
+  --fp-shadow-float: 0 1px 0 rgb(255 255 255 / 0.7) inset, 0 12px 30px -10px rgb(52 42 18 / 0.35);
+  --fp-shadow-btn: 0 1px 0 rgb(255 255 255 / 0.55) inset, 0 8px 18px -10px rgb(40 48 12 / 0.6);
+
+  /* type */
+  --fp-font-display: var(--font-lora), "Lora", Georgia, serif;
+  --fp-font-ui: var(--font-onest), "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fp-font-mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+  --fp-font-reading: var(--font-literata), "Literata", Georgia, serif;
+
+  /* reading defaults (overridden by data-* on <html>) */
+  --fp-read-size: 19px;
+  --fp-read-leading: 1.62;
+  --fp-measure: 34em;
+
+  /* shape & motion */
+  --fp-radius-sm: 8px;
+  --fp-radius-md: 16px;
+  --fp-radius-lg: 28px;
+  --fp-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --fp-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --fp-ease-seal: cubic-bezier(0.3, 1.4, 0.5, 1);
+  --fp-spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+  --fp-dur-1: 120ms;
+  --fp-dur-2: 240ms;
+  --fp-dur-3: 480ms;
+  --fp-dur-4: 900ms;
+
+  --fp-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --fp-nav-h: 64px;
+
+  color-scheme: light;
+  accent-color: var(--fp-sage-ink);
+}
+
+/* «Сумерки» — warm dark, no blue, no flashes */
+:root[data-theme="dusk"] {
+  --fp-paper: #24201a;
+  --fp-paper-raised: #2d2820;
+  --fp-paper-sunken: #1b1813;
+  --fp-ink: #ece3cf;
+  --fp-ink-2: #c3b9a2;
+  --fp-ink-3: #968d79;
+  --fp-line: rgb(236 227 207 / 0.12);
+  --fp-line-strong: rgb(236 227 207 / 0.22);
+  --fp-sage: #b5c785;
+  --fp-sage-wax: #a9bc79;
+  --fp-sage-ink: #cbdd9b;
+  --fp-forest: #303b24;
+  --fp-wax: #e0664a;
+  --fp-gilt: #cdb27a;
+  --fp-gilt-hi: #ecd9a6;
+  --fp-pencil: #e57b5c;
+  --fp-vellum: rgb(45 40 32 / 0.74);
+  --fp-vellum-line: rgb(236 227 207 / 0.1);
+  --fp-grain-opacity: 0.035;
+  --fp-shadow-book: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 26px 44px -18px rgb(0 0 0 / 0.75);
+  --fp-shadow-card: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 28px -14px rgb(0 0 0 / 0.6);
+  --fp-shadow-float: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 12px 30px -10px rgb(0 0 0 / 0.7);
+  --fp-shadow-btn: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 8px 18px -10px rgb(0 0 0 / 0.7);
+  color-scheme: dark;
+}
+
+/* «Ночь» — graphite, OLED-friendly, warm off-white text */
+:root[data-theme="night"] {
+  --fp-paper: #121211;
+  --fp-paper-raised: #1b1b19;
+  --fp-paper-sunken: #0a0a09;
+  --fp-ink: #e2ded4;
+  --fp-ink-2: #aba697;
+  --fp-ink-3: #827d70;
+  --fp-line: rgb(226 222 212 / 0.11);
+  --fp-line-strong: rgb(226 222 212 / 0.2);
+  --fp-sage: #a7b97a;
+  --fp-sage-wax: #9aad6f;
+  --fp-sage-ink: #c3d58f;
+  --fp-forest: #2a3520;
+  --fp-wax: #d9634a;
+  --fp-gilt: #c2a872;
+  --fp-gilt-hi: #e2cf9f;
+  --fp-pencil: #de7a5d;
+  --fp-vellum: rgb(27 27 25 / 0.76);
+  --fp-vellum-line: rgb(226 222 212 / 0.09);
+  --fp-grain-opacity: 0.025;
+  --fp-shadow-book: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 26px 44px -18px rgb(0 0 0 / 0.85);
+  --fp-shadow-card: 0 1px 2px rgb(0 0 0 / 0.5), 0 10px 28px -14px rgb(0 0 0 / 0.7);
+  --fp-shadow-float: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 30px -10px rgb(0 0 0 / 0.8);
+  --fp-shadow-btn: 0 1px 0 rgb(255 255 255 / 0.2) inset, 0 8px 18px -10px rgb(0 0 0 / 0.8);
+  color-scheme: dark;
+}
+
+/* no-JS visitors with a dark system theme get «Сумерки» */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --fp-paper: #24201a;
+    --fp-paper-raised: #2d2820;
+    --fp-paper-sunken: #1b1813;
+    --fp-ink: #ece3cf;
+    --fp-ink-2: #c3b9a2;
+    --fp-ink-3: #968d79;
+    --fp-line: rgb(236 227 207 / 0.12);
+    --fp-sage-ink: #cbdd9b;
+    --fp-vellum: rgb(45 40 32 / 0.74);
+    color-scheme: dark;
+  }
+}
+
+/* reading preferences */
+:root[data-font="ptserif"] {
+  --fp-font-reading: var(--font-ptserif), "PT Serif", Georgia, serif;
+}
+:root[data-font="onest"] {
+  --fp-font-reading: var(--font-onest), "Onest", system-ui, sans-serif;
+}
+:root[data-size="1"] { --fp-read-size: 16px; }
+:root[data-size="2"] { --fp-read-size: 17.5px; }
+:root[data-size="3"] { --fp-read-size: 19px; }
+:root[data-size="4"] { --fp-read-size: 21px; }
+:root[data-size="5"] { --fp-read-size: 23.5px; }
+:root[data-leading="airy"] { --fp-read-leading: 1.85; }
+
+/* ─── base ─── */
+html {
+  background: var(--fp-paper);
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: var(--fp-paper);
+  color: var(--fp-ink);
+  font-family: var(--fp-font-ui);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color var(--fp-dur-3) var(--fp-ease-out), color var(--fp-dur-3) var(--fp-ease-out);
+}
+
+/* paper grain: static, never over reading text (reader sheet sits above it) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--fp-grain-opacity);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -.25'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+  mix-blend-mode: multiply;
+}
+:root[data-theme="dusk"] body::before,
+:root[data-theme="night"] body::before {
+  mix-blend-mode: screen;
+  filter: invert(1);
+}
+
+#app-root {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--fp-sage) 70%, transparent);
+  color: var(--fp-on-sage);
+}
+
+:focus-visible {
+  outline: 2px solid var(--fp-sage-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+/* ─── helpers ─── */
+.display {
+  font-family: var(--fp-font-display);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+}
+.mono {
+  font-family: var(--fp-font-mono);
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum" 1;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page {
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  padding-bottom: calc(var(--fp-nav-h) + 40px + var(--fp-safe-bottom));
+}
+.page--wide {
+  max-width: 1080px;
+}
+
+/* paper tag / label («бирка») */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--fp-paper-raised);
+  border: 1px solid var(--fp-line);
+  color: var(--fp-ink-2);
+  font-family: var(--fp-font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* primary pill */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--fp-ink);
+  color: var(--fp-paper);
+  font-family: var(--fp-font-ui);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  box-shadow: var(--fp-shadow-btn);
+  transition: transform var(--fp-dur-2) var(--fp-ease-out), background-color var(--fp-dur-2);
+}
+.pill:active {
+  transform: scale(0.97);
+}
+.pill--sage {
+  background: var(--fp-sage);
+  color: var(--fp-on-sage);
+}
+.pill--ghost {
+  background: transparent;
+  color: var(--fp-ink);
+  box-shadow: inset 0 0 0 1px var(--fp-line-strong);
+}
+.pill .pill__meta {
+  font-family: var(--fp-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+/* hand-drawn pencil underline */
+.pencil-underline {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M2 7 C 40 3, 80 9, 120 5 S 180 4, 198 6' fill='none' stroke='%23c9472b' stroke-width='2.2' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 0.42em;
+  background-position: 0 100%;
+  padding-bottom: 0.08em;
+}
+
+/* ─── view transitions ─── */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--fp-ease-out);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+}
+::view-transition-old(.page) {
+  animation: vt-out 180ms var(--fp-ease-out) both;
+}
+::view-transition-new(.page) {
+  animation: vt-in 340ms var(--fp-ease-out) both;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+::view-transition-group(site-nav) {
+  animation: none;
+  z-index: 100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fp-dur-3: 1ms;
+    --fp-dur-4: 1ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ─── blind reading: author & year stay under the seal until the end ─── */
+.fp-author-sealed {
+  display: none;
+}
+:root[data-blind="1"] .fp-author-real {
+  display: none;
+}
+:root[data-blind="1"] .fp-author-sealed {
+  display: inline;
+}

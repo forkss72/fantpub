@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FantPub — образцы шрифтов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..800;1,7..72,300..800&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300..900;1,300..900&family=Spectral:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Alegreya:ital,wght@0,400..900;1,400..900&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Piazzolla:ital,opsz,wght@0,8..30,400..800;1,8..30,400..800&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..700&family=Onest:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Ysabeau+Office:ital,wght@0,400..700;1,400..700&family=Commissioner:slnt,wght@-12..0,400..700&family=Manrope:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Playfair+Display:wght@400..900&family=Unbounded:wght@400..800&family=Yeseva+One&family=Prata&family=Forum&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Bona+Nova:wght@400;700&family=Alice&family=Oranienbaum&display=swap" rel="stylesheet">
+<style>
+  :root { --muted:#7A7064; --line:#E3DACB; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#EDE6D8; color:#2A251F; font: 14px/1.4 "Onest", system-ui, sans-serif; padding:24px; }
+  h1 { font: 600 28px/1.2 "Onest", sans-serif; margin:0 0 4px; }
+  h2 { font: 600 18px/1.2 "Onest", sans-serif; margin:32px 0 12px; }
+  .note { color:var(--muted); max-width:920px; margin:0 0 8px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, 375px); gap:16px; }
+  .card { width:375px; background:#F7F2E8; border:1px solid var(--line); border-radius:14px; padding:16px; color:#2A251F; }
+  .card.sepia { background:#F1E5CC; border-color:#E2D2B1; color:#43351F; }
+  .card.night { background:#171612; border-color:#2a2822; color:#D8D0C2; -webkit-font-smoothing:antialiased; }
+  .meta { font: 500 12px/1.3 "Onest", sans-serif; color:var(--muted); margin-bottom:10px; display:flex; justify-content:space-between; gap:8px; }
+  .night .meta { color:#8E8677; }
+  .story { width:343px; font-size:19px; line-height:1.55; hyphens:auto; -webkit-hyphens:auto; hyphenate-limit-chars: 6 3 2; text-wrap: pretty; hanging-punctuation: first allow-end last; }
+  .story p { margin:0; text-indent:1.25em; }
+  .story p:first-of-type { text-indent:0; }
+  .story .t { font-size:13px; line-height:1.4; margin-top:10px; text-indent:0; color:var(--muted); }
+  .night .story .t { color:#8E8677; }
+  /* рекомендованный набор */
+  .rk .kicker { font: 600 11px/1.2 "Onest", sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#3F5A2A; margin-bottom:6px; }
+  .night.rk .kicker { color:#CBDD9B; }
+  .sepia.rk .kicker { color:#4F5F2B; }
+  .rk .title { font: 700 32px/1.08 "Old Standard TT", serif; margin:0 0 4px; text-wrap: balance; }
+  .rk .by { font: 400 14px/1.3 "Onest", sans-serif; color:var(--muted); margin-bottom:14px; }
+  .night.rk .by { color:#8E8677; }
+  .rk .story p:first-of-type::first-letter { -webkit-initial-letter: 3; initial-letter: 3; font-family:"Old Standard TT", serif; font-weight:700; margin-inline-end:.06em; color:#3F5A2A; }
+  .night.rk .story p:first-of-type::first-letter { color:#CBDD9B; }
+  .sepia.rk .story p:first-of-type::first-letter { color:#4F5F2B; }
+  .chips { display:flex; gap:8px; margin-top:14px; }
+  .chip { flex:1; text-align:center; border:1px solid #D9CFBD; border-radius:10px; padding:8px 4px; font-size:16px; }
+  .chip.on { border-color:#2A251F; border-width:2px; padding:7px 3px; }
+  .night .chip { border-color:#3a372f; } .night .chip.on { border-color:#D8D0C2; }
+  .chip small { display:block; font: 400 10px/1.2 "Onest", sans-serif; color:var(--muted); margin-top:2px; }
+  .disp { font-size:44px; line-height:1.05; margin:4px 0 6px; }
+  .disp2 { font-size:26px; line-height:1.15; margin:0 0 6px; }
+</style>
+</head>
+<body>
+<h1>FantPub — образцы шрифтов для читалки</h1>
+<p class="note">Отчёт: <code>research/07_fonts.md</code>. Колонка текста 343 px: ширина iPhone 375 минус поля 16 px. Кегль 19 px, интервал 1,55, <code>hyphens: auto</code>, абзацный отступ 1,25 em. Текст: А. П. Чехов, «Дама с собачкой» (1899, общественное достояние). Буквица через <code>initial-letter</code> работает в Chrome и Safari. В Firefox её нет, и это нормально.</p>
+
+<h2>0. Рекомендованный набор: Literata · Old Standard TT · Onest — в трёх темах</h2>
+<div class="grid" id="rec"></div>
+
+<h2>1. Антиквы для текста (тема «Бумага»)</h2>
+<div class="grid" id="serif"></div>
+
+<h2>2. Ночная тема</h2>
+<div class="grid" id="night"></div>
+
+<h2>3. Гротески. У Golos, Onest и Manrope нет своего курсива, браузер наклоняет прямое начертание</h2>
+<div class="grid" id="sans"></div>
+
+<h2>4. Заголовки и бренд</h2>
+<div class="grid" id="display"></div>
+
+<script>
+const text = `<p>Говорили, что на набережной появилось новое лицо: дама с собачкой. Дмитрий Дмитрич Гуров, проживший в Ялте уже две недели и привыкший тут, тоже стал интересоваться новыми лицами.</p><p>— Он не кусается, — сказала она и покраснела.</p><p class="t"><i>Курсив: «ёлочки», „лапки“, тире — дефис-нечто, № 1899… тидлц</i> · Ёжик ЩЖЫ Дл ДЛ ф</p>`;
+const recText = `<p>Говорили, что на набережной появилось новое лицо: <i>дама с собачкой</i>. Дмитрий Дмитрич Гуров, проживший в Ялте уже две недели и привыкший тут, тоже стал интересоваться новыми лицами.</p><p>— Он не кусается, — сказала она и покраснела.</p>`;
+const rec = [
+  ["Literata", "Книжный · по умолчанию", "", "font-size:19px", 0],
+  ["Old Standard TT", "Классика · кегль ×1,05", "", "font-size:20px", 1],
+  ["Onest", "Без засечек · кегль ×0,96", "", "font-size:18.25px; line-height:1.5", 2],
+  ["Literata", "Сепия", "sepia", "font-size:19px", 0],
+  ["Literata", "Ночь", "night", "font-size:19px", 0],
+  ["Old Standard TT", "Ночь", "night", "font-size:20px", 1],
+];
+function chips(on){
+  const c=[["Literata","Книжный"],["Old Standard TT","Классика"],["Onest","Без засечек"]];
+  return `<div class="chips">${c.map(([f,l],i)=>`<div class="chip${i===on?' on':''}" style="font-family:'${f}'">Аа<small>${l}</small></div>`).join('')}</div>`;
+}
+rec.forEach(([f,m,cls,st,on])=>{
+  const el=document.createElement('div'); el.className='card rk '+cls;
+  el.innerHTML=`<div class="meta"><span>${f}</span><span>${m}</span></div><div class="kicker">Рассказ дня · 7 мин</div><div class="title">Дама с собачкой</div><div class="by">Антон Чехов, 1899</div><div class="story" style="font-family:'${f}'; ${st}">${recText}</div>${chips(on)}`;
+  document.getElementById('rec').appendChild(el);
+});
+const serif = [
+  ["Literata", "x 0,51 · 119 КБ", ""],
+  ["Old Standard TT", "x 0,46 · 67 КБ", "font-size:20px"],
+  ["PT Serif", "x 0,50 · 92 КБ", ""],
+  ["Source Serif 4", "x 0,48 · 170 КБ", ""],
+  ["Lora", "x 0,50 · 120 КБ", ""],
+  ["Merriweather", "x 0,56 · 297 КБ", "font-weight:300"],
+  ["Spectral", "x 0,45 · 101 КБ", ""],
+  ["EB Garamond", "x 0,40 · 141 КБ · 22 px", "font-size:22px"],
+  ["Alegreya", "x 0,45 · 133 КБ", ""],
+  ["Charis SIL", "x 0,48 · 97 КБ (≈ Charter)", ""],
+  ["Piazzolla", "x 0,48 · 169 КБ", ""],
+  ["Vollkorn", "x 0,46 · 145 КБ", ""],
+];
+const night = [["Literata","ночь",""],["Old Standard TT","ночь, 20 px","font-size:20px"],["EB Garamond","ночь, 22 px, вес 450","font-size:22px; font-weight:450"],["Lora","ночь",""],["PT Serif","ночь",""],["Onest","ночь","font-size:18.25px"]];
+const sans = [
+  ["Golos Text","x 0,53 · 59 КБ · без курсива",""],["Onest","x 0,53 · 49 КБ · без курсива",""],["Manrope","x 0,54 · 38 КБ · без курсива",""],
+  ["Inter","x 0,55 · 136 КБ · наклонный",""],["Source Sans 3","x 0,49 · 92 КБ · курсив",""],["PT Sans","x 0,50 · 77 КБ · курсив",""],
+  ["Ysabeau Office","x 0,41 · 137 КБ · курсив","font-size:21px"],["Commissioner","x 0,50 · 98 КБ · ось slnt",""],
+];
+const display = [
+  ["Old Standard TT", "700 · 21 КБ · рекомендую", "font-weight:700"],
+  ["Literata", "opsz 72, 600 · 32 КБ", "font-variation-settings:'opsz' 72; font-weight:600"],
+  ["Lora", "600 · 33 КБ", "font-weight:600"],
+  ["Alice", "400 · 28 КБ", ""],
+  ["Playfair", "opsz 120, 600 · 47 КБ", "font-variation-settings:'opsz' 120; font-weight:600"],
+  ["Playfair Display", "700 · брейншторм", "font-weight:700"],
+  ["Cormorant Garamond", "600 · 58 КБ", "font-weight:600"],
+  ["Unbounded", "600 · 80 КБ", "font-weight:600"],
+  ["Alegreya", "800", "font-weight:800"],
+  ["Vollkorn", "800", "font-weight:800"],
+  ["Yeseva One", "400", ""],
+  ["Prata", "400", ""],
+  ["Forum", "400", ""],
+  ["Bona Nova", "700", "font-weight:700"],
+  ["Oranienbaum", "400", ""],
+  ["Piazzolla", "opsz 30, 800", "font-variation-settings:'opsz' 30; font-weight:800"],
+];
+function card(target, f, meta, style, cls){
+  const el=document.createElement('div'); el.className='card '+(cls||'');
+  el.innerHTML=`<div class="meta"><span>${f}</span><span>${meta}</span></div><div class="story" style="font-family:'${f}'; ${style}">${text}</div>`;
+  document.getElementById(target).appendChild(el);
+}
+serif.forEach(([f,m,s])=>card('serif',f,m,s));
+night.forEach(([f,m,s])=>card('night',f,m,s,'night'));
+sans.forEach(([f,m,s])=>card('sans',f,m,s));
+display.forEach(([f,m,s])=>{
+  const el=document.createElement('div'); el.className='card';
+  el.innerHTML=`<div class="meta"><span>${f}</span><span>${m}</span></div><div style="font-family:'${f}'; ${s}"><div class="disp">FantPub</div><div class="disp2">Дама с собачкой</div><div class="disp2" style="font-size:20px">Рассказ дня · № 128 · Ёж ЩЖЫ</div></div>`;
+  document.getElementById('display').appendChild(el);
+});
+</script>
+</body>
+</html>

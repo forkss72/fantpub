@@ -1,0 +1,46 @@
+.hint {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: var(--fp-radius-lg);
+  background: color-mix(in oklab, var(--fp-sage) 30%, var(--fp-paper-raised));
+}
+.title {
+  margin: 0;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 18px;
+}
+.text {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--fp-ink-2);
+}
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--fp-paper);
+  rotate: -90deg;
+  font-size: 13px;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.row :global(.pill) {
+  min-height: 42px;
+  padding: 0 18px;
+  font-size: 14.5px;
+}
+.later {
+  border: 0;
+  background: none;
+  color: var(--fp-ink-3);
+  font-size: 14px;
+  padding: 10px;
+}

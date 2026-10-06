@@ -1,0 +1,91 @@
+.text {
+  width: 100%;
+  max-width: var(--fp-measure);
+  margin-inline: auto;
+  font-family: var(--fp-font-reading);
+  font-size: var(--fp-read-size);
+  line-height: var(--fp-read-leading);
+  font-optical-sizing: auto;
+  font-variant-ligatures: common-ligatures;
+  color: var(--fp-ink);
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hanging-punctuation: first;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.text p {
+  margin: 0;
+  text-indent: 1.4em;
+}
+
+/* Russian book convention: indent, no gap; the first paragraph opens with an initial */
+.text p.first,
+.break + p,
+.heading + p,
+.epigraph + p {
+  text-indent: 0;
+}
+
+.first::first-letter {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 3.35em;
+  line-height: 0.82;
+  color: var(--fp-sage-ink);
+}
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+  .first::first-letter {
+    float: none;
+    margin: 0 0.12em 0 0;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-initial-letter: 3;
+    initial-letter: 3;
+  }
+}
+
+.break {
+  margin: 1.1em 0 !important;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: var(--fp-font-display);
+  font-size: 1.15em;
+  letter-spacing: 0.3em;
+  color: var(--fp-ink-3);
+}
+
+.heading {
+  margin: 1.6em 0 0.6em;
+  text-align: center;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.04em;
+}
+
+.epigraph {
+  margin: 0 0 1.4em auto;
+  max-width: 80%;
+  font-style: italic;
+  font-size: 0.9em;
+  color: var(--fp-ink-2);
+  text-align: right;
+}
+
+.text em {
+  font-style: italic;
+}
+.text strong {
+  font-weight: 600;
+}
+
+/* reading position marker (set by ReadingTracker) */
+.text p[data-resume="1"] {
+  background: linear-gradient(90deg, color-mix(in oklab, var(--fp-sage) 45%, transparent), transparent 70%);
+  border-radius: 6px;
+  transition: background 1.6s ease 1.2s;
+}

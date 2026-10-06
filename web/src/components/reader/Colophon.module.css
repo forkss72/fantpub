@@ -1,0 +1,35 @@
+.colophon {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--fp-line);
+}
+.h {
+  margin: 0 0 10px;
+  color: var(--fp-ink-3);
+}
+.list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--fp-ink-2);
+}
+.list > div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 10px;
+}
+.list dt {
+  color: var(--fp-ink-3);
+}
+.list dd {
+  margin: 0;
+}
+.list a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--fp-line-strong);
+}

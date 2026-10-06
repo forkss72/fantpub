@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FantPub — доска бренда</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Onest:wght@300..800&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Ysabeau+Office:wght@300..800&family=Unbounded:wght@300..900&family=Martian+Mono:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* ===== Рекомендованные токены (см. 08_brand_audit.md) ===== */
+:root{
+  --fp-paper:#F6F2E7; --fp-paper-raised:#FCFAF4; --fp-paper-sunken:#ECE6D6;
+  --fp-ink:#1D1C17; --fp-ink-2:#4A473D; --fp-ink-3:#6B6658; --fp-line:rgba(29,28,23,.12);
+  --fp-sage:#CBDD9B; --fp-sage-wax:#B9CF84; --fp-sage-ink:#4E5D25; --fp-forest:#26301C;
+  --fp-on-sage:#1D1C17; --fp-on-forest:#F6F2E7; --fp-wax:#B23A22; --fp-gilt:#A88848;
+  --fp-shadow-book:0 1px 0 rgba(255,255,255,.7) inset, 0 18px 30px -14px rgba(52,42,18,.45), 0 4px 8px -4px rgba(52,42,18,.25);
+  --fp-font-display:"Lora", Georgia, serif;
+  --fp-font-reading:"Literata", Georgia, serif;
+  --fp-font-ui:"Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+[data-theme="night"]{
+  --fp-paper:#171612; --fp-paper-raised:#211F1A; --fp-paper-sunken:#0F0E0B;
+  --fp-ink:#ECE6D6; --fp-ink-2:#B9B2A0; --fp-ink-3:#8C8676; --fp-line:rgba(236,230,214,.12);
+  --fp-sage:#B5C785; --fp-sage-wax:#A9BC79; --fp-sage-ink:#CBDD9B; --fp-forest:#2A3520;
+  --fp-on-sage:#1D1C17; --fp-on-forest:#ECE6D6; --fp-wax:#E0664A; --fp-gilt:#CDB27A;
+  --fp-shadow-book:0 1px 0 rgba(255,255,255,.06) inset, 0 22px 40px -16px rgba(0,0,0,.8);
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fp-paper);color:var(--fp-ink);font-family:var(--fp-font-ui);line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 16px 80px}
+h1{font-family:var(--fp-font-display);font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-family:var(--fp-font-display);font-weight:600;font-size:28px;margin:56px 0 16px}
+h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--fp-ink-3);margin:20px 0 8px;font-weight:600}
+p.lead{color:var(--fp-ink-2);max-width:760px;margin:0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.card{background:var(--fp-paper-raised);border:1px solid var(--fp-line);border-radius:18px;padding:22px}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:99px;background:var(--fp-paper-sunken);color:var(--fp-ink-2);margin-bottom:10px}
+.mark{display:flex;align-items:center;justify-content:center;height:240px;border-radius:12px;margin:8px 0 4px}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.sw div{border-radius:10px;height:64px;padding:6px 8px;font-size:11px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(0,0,0,.08)}
+.voice{margin:0;padding-left:18px;color:var(--fp-ink-2);font-size:14px}
+.voice li{margin:4px 0}
+.spec{border-top:1px solid var(--fp-line);padding-top:10px}
+.old{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.old img{max-width:100%;border-radius:12px;border:1px solid var(--fp-line)}
+.toggle{font:inherit;font-size:14px;padding:8px 14px;border-radius:99px;border:1px solid var(--fp-line);background:var(--fp-paper-raised);color:var(--fp-ink);cursor:pointer}
+/* mini UI demo */
+.demo{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start}
+.phone{background:var(--fp-paper);border:1px solid var(--fp-line);border-radius:32px;padding:20px 18px 24px;max-width:360px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--fp-ink-3)}
+.wm{font-family:var(--fp-font-display);font-weight:600;font-size:22px;color:var(--fp-ink);letter-spacing:-.01em}
+.book{position:relative;margin:26px auto 14px;width:190px;height:270px;border-radius:4px 10px 10px 4px;background:linear-gradient(90deg,rgba(0,0,0,.25) 0 6px,rgba(255,255,255,.08) 6px 9px,transparent 9px),var(--fp-forest);box-shadow:var(--fp-shadow-book);color:var(--fp-on-forest);padding:22px 18px 18px 26px;display:flex;flex-direction:column;justify-content:space-between}
+.book .t{font-family:var(--fp-font-display);font-size:22px;line-height:1.1}
+.book .n{font-family:var(--fp-font-ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+[data-theme="night"] .book{outline:1px solid rgba(205,178,122,.25);outline-offset:-1px}
+.book .seal{position:absolute;right:-18px;bottom:30px;width:84px;height:84px;filter:drop-shadow(0 6px 6px rgba(0,0,0,.3))}
+.meta{text-align:center;color:var(--fp-ink-3);font-size:13px}
+.btn{display:block;margin:14px auto 0;font:600 16px/1 var(--fp-font-ui);padding:15px 28px;border-radius:99px;border:0;background:var(--fp-sage);color:var(--fp-on-sage);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 6px 14px -8px rgba(60,70,20,.6)}
+.note{display:flex;gap:12px;margin-top:18px;background:var(--fp-paper-raised);border:1px solid var(--fp-line);border-radius:16px;padding:12px 14px;font-size:14px;color:var(--fp-ink-2)}
+.note b{color:var(--fp-ink)}
+.reader{background:var(--fp-paper-raised);border:1px solid var(--fp-line);border-radius:20px;padding:26px 24px;font-family:var(--fp-font-reading);font-size:19px;line-height:1.6;color:var(--fp-ink)}
+.reader .h{font-family:var(--fp-font-display);font-size:28px;line-height:1.15;margin:0 0 4px}
+.reader .by{font-family:var(--fp-font-ui);font-size:13px;color:var(--fp-ink-3);margin-bottom:16px}
+.reader a{color:var(--fp-sage-ink)}
+.react{display:flex;gap:8px;margin-top:16px;font-family:var(--fp-font-ui);font-size:14px}
+.react span{padding:8px 14px;border-radius:99px;border:1px solid var(--fp-line)}
+.react span.on{background:var(--fp-sage);color:var(--fp-on-sage);border-color:transparent}
+code{font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Аудит бренда · 06.10.2026 · рабочая доска, не финальный дизайн</span>
+  <h1>FantPub: было, три направления, рекомендация</h1>
+  <p class="lead">Спутник отчёта <code>08_brand_audit.md</code>. Знаки нарисованы кодом как эскизы, чтобы показать идею, форму и масштаб. Это не финальная отрисовка.</p>
+
+  <h2>Было (FantPub 1.0)</h2>
+  <div class="old">
+    <img src="old_banner_avatar.png" alt="Старый баннер ВК и круглый аватар" style="width:min(640px,100%)">
+    <img src="old_logo_x3.png" alt="Старый круглый знак, увеличено" style="width:200px">
+  </div>
+
+  <h2>Три направления</h2>
+  <div class="grid3">
+
+    <!-- 1 -->
+    <div class="card">
+      <span class="tag">1 · бережное</span>
+      <h3 style="margin-top:0">«Печать издателя»</h3>
+      <div class="mark" style="background:#F6F2E7">
+        <svg width="210" height="210" viewBox="0 0 240 240" aria-label="Знак: круглая печать">
+          <defs><path id="ring1" d="M120 120 m-84 0 a84 84 0 1 1 168 0 a84 84 0 1 1 -168 0"/></defs>
+          <circle cx="120" cy="120" r="108" fill="#CBDD9B"/>
+          <circle cx="120" cy="120" r="98" fill="none" stroke="#1D1C17" stroke-width="1.5"/>
+          <circle cx="120" cy="120" r="70" fill="none" stroke="#1D1C17" stroke-width="1"/>
+          <text font-family="Onest" font-size="12.5" font-weight="600" fill="#1D1C17"><textPath href="#ring1" textLength="518" lengthAdjust="spacing">РАССКАЗ ДНЯ · ИЗДАЁТСЯ С 2020 · FANTPUB · </textPath></text>
+          <text x="120" y="116" text-anchor="middle" font-family="Lora" font-weight="500" font-size="40" fill="#1D1C17">Fant</text>
+          <text x="122" y="152" text-anchor="middle" font-family="Lora" font-weight="500" font-size="40" fill="#1D1C17">Pub!</text>
+        </svg>
+      </div>
+      <div class="sw">
+        <div style="background:#F6F2E7">бумага<br>#F6F2E7</div>
+        <div style="background:#1D1C17;color:#F6F2E7">чернила<br>#1D1C17</div>
+        <div style="background:#CBDD9B">шалфей<br>#CBDD9B</div>
+        <div style="background:#4E5D25;color:#F6F2E7">шалфей-тёмн.<br>#4E5D25</div>
+        <div style="background:#26301C;color:#F6F2E7">хвоя<br>#26301C</div>
+        <div style="background:#B23A22;color:#fff">сургуч<br>#B23A22</div>
+      </div>
+      <div class="spec">
+        <h3>Шрифты</h3>
+        <div style="font-family:Lora;font-size:30px;line-height:1.1">Читай короткие рассказы</div>
+        <div style="font-family:Onest;font-size:15px;color:var(--fp-ink-2)">Onest: интерфейс, кнопки, метаданные · 7 мин</div>
+        <h3>Голос</h3>
+        <ul class="voice">
+          <li>Выпуск №214. Семь минут, один поворот.</li>
+          <li>Дочитали? Оцените финал одним касанием.</li>
+          <li>Следующий выпуск будет готов к семи утра.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <span class="tag">2 · среднее</span>
+      <h3 style="margin-top:0">«Паб историй»</h3>
+      <div class="mark" style="background:#F2E9D8">
+        <svg width="220" height="220" viewBox="0 0 240 240" aria-label="Знак: вывеска паба">
+          <path d="M28 30 H190 M40 30 q-12 0 -12 14" stroke="#22190F" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M60 30 q16 22 40 0 M150 30 q16 22 40 0" stroke="#22190F" stroke-width="2" fill="none"/>
+          <line x1="78" y1="32" x2="78" y2="56" stroke="#22190F" stroke-width="2"/>
+          <line x1="168" y1="32" x2="168" y2="56" stroke="#22190F" stroke-width="2"/>
+          <path d="M60 210 V96 q0 -40 63 -40 q63 0 63 40 V210 Z" fill="#1F3D2E" stroke="#C39A52" stroke-width="5"/>
+          <path d="M72 200 V100 q0 -32 51 -32 q51 0 51 32 V200 Z" fill="none" stroke="#C39A52" stroke-width="1.2"/>
+          <!-- Пабчик -->
+          <g transform="translate(123 122)" stroke="#CBDD9B" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M-28 6 q0 -34 28 -34 q28 0 28 34 q0 24 -28 24 q-28 0 -28 -24 Z"/>
+            <path d="M-6 -28 q2 -10 8 -12 M2 -28 q6 -8 12 -6"/>
+            <circle cx="-11" cy="2" r="9"/><circle cx="11" cy="2" r="9"/><path d="M-2 1 h4"/>
+            <circle cx="-11" cy="3" r="1.6" fill="#CBDD9B"/><circle cx="11" cy="3" r="1.6" fill="#CBDD9B"/>
+            <path d="M-5 17 q5 4 10 0"/>
+          </g>
+          <text x="123" y="186" text-anchor="middle" font-family="Old Standard TT" font-weight="700" font-size="22" letter-spacing="2" fill="#C39A52">FANTPUB</text>
+          <text x="123" y="200" text-anchor="middle" font-family="Old Standard TT" font-style="italic" font-size="10.5" fill="#CBDD9B">истории с 2020</text>
+        </svg>
+      </div>
+      <div class="sw">
+        <div style="background:#F2E9D8">крем<br>#F2E9D8</div>
+        <div style="background:#22190F;color:#F2E9D8">чернила<br>#22190F</div>
+        <div style="background:#1F3D2E;color:#F2E9D8">бутыл. зелёный<br>#1F3D2E</div>
+        <div style="background:#C39A52">латунь<br>#C39A52</div>
+        <div style="background:#CBDD9B">шалфей (лампа)<br>#CBDD9B</div>
+        <div style="background:#6B4A33;color:#F2E9D8">дерево<br>#6B4A33</div>
+      </div>
+      <div class="spec">
+        <h3>Шрифты</h3>
+        <div style="font-family:'Old Standard TT';font-size:30px;line-height:1.1">Сегодня подаём Бирса</div>
+        <div style="font-family:'Ysabeau Office';font-size:16px;color:var(--fp-ink-2)">Ysabeau Office: интерфейс · 8 минут · финал с подвохом</div>
+        <h3>Голос</h3>
+        <ul class="voice">
+          <li>Добрый вечер. Сегодня подаём Бирса: восемь минут, финал с подвохом.</li>
+          <li>Ваш столик у окна свободен. Продолжить с того же места?</li>
+          <li>На сегодня всё. Новую историю подадим утром.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <span class="tag">3 · смелое</span>
+      <h3 style="margin-top:0">«Фант»</h3>
+      <div class="mark" style="background:#F4F1EA">
+        <svg width="230" height="200" viewBox="0 0 260 220" aria-label="Знак: фант-билет">
+          <g transform="rotate(-6 130 110)">
+          <path d="M30 50 H230 V95 a15 15 0 0 0 0 30 V170 H30 V125 a15 15 0 0 0 0 -30 Z" fill="#CBDD9B" stroke="#121212" stroke-width="2"/>
+          <line x1="178" y1="54" x2="178" y2="166" stroke="#121212" stroke-width="2" stroke-dasharray="4 5"/>
+          <text x="104" y="138" text-anchor="middle" font-family="Unbounded" font-weight="800" font-size="74" fill="#121212">Ф</text>
+          <text x="204" y="104" text-anchor="middle" font-family="Martian Mono" font-size="11" fill="#121212">№</text>
+          <text x="204" y="126" text-anchor="middle" font-family="Martian Mono" font-weight="600" font-size="15" fill="#121212">0214</text>
+          <text x="46" y="70" font-family="Martian Mono" font-size="8.5" fill="#121212">FANTPUB · РАССКАЗ ДНЯ</text>
+          </g>
+          <g transform="translate(200 168) rotate(14)">
+            <circle r="30" fill="none" stroke="#E0452B" stroke-width="3"/>
+            <circle r="24" fill="none" stroke="#E0452B" stroke-width="1"/>
+            <text y="4" text-anchor="middle" font-family="Martian Mono" font-weight="700" font-size="8.5" fill="#E0452B">ВСКРЫТ</text>
+          </g>
+        </svg>
+      </div>
+      <div class="sw">
+        <div style="background:#F4F1EA">газетная бумага<br>#F4F1EA</div>
+        <div style="background:#121212;color:#F4F1EA">чернила<br>#121212</div>
+        <div style="background:#E0452B;color:#121212">штамп<br>#E0452B</div>
+        <div style="background:#B4361F;color:#fff">штамп-текст<br>#B4361F</div>
+        <div style="background:#CBDD9B">фант (шалфей)<br>#CBDD9B</div>
+        <div style="background:#B8B2A3">перфорация<br>#B8B2A3</div>
+      </div>
+      <div class="spec">
+        <h3>Шрифты</h3>
+        <div style="font-family:Unbounded;font-weight:700;font-size:26px;line-height:1.1">Тяни фант №214</div>
+        <div style="font-family:'Martian Mono';font-size:13px;color:var(--fp-ink-2)">Martian Mono: номера, метки, интерфейс · 07 МИН</div>
+        <h3>Голос</h3>
+        <ul class="voice">
+          <li>Тяните фант. Кто автор, узнаете в конце.</li>
+          <li>Фант №214: 62% не угадали автора. А вы?</li>
+          <li>Сегодняшний фант вытянут. Следующий завтра в 7:00.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>Рекомендация: «Сургучная печать»</h2>
+  <p class="lead">Форма от направления 1, роль маскота и голос от 2, сквозная нумерация выпусков от 3. Знак — печать из зелёного сургуча с Пабчиком: колофон издательства, как пингвин у Penguin. Каждый день книга запечатана, и её «распечатывают».</p>
+  <div style="margin:16px 0"><button class="toggle" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme==='night' ? '' : 'night'">День / ночь</button></div>
+
+  <div class="demo">
+    <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:18px">
+      <svg width="220" height="220" viewBox="0 0 240 240" aria-label="Знак: сургучная печать с Пабчиком">
+        <defs>
+          <radialGradient id="wax" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#E2EDC0"/><stop offset=".45" stop-color="#C3D78C"/><stop offset="1" stop-color="#93A862"/></radialGradient>
+          <path id="ring2" d="M120 120 m-70 0 a70 70 0 1 1 140 0 a70 70 0 1 1 -140 0"/>
+        </defs>
+        <path fill="url(#wax)" d="M227.8 120.0 Q227.8 120.0 227.2 124.7 Q226.6 129.3 225.5 133.9 Q224.4 138.4 222.5 142.7 Q220.6 146.9 217.8 150.8 Q215.1 154.6 212.2 158.1 Q209.4 161.7 207.2 165.4 Q205.0 169.0 203.6 173.3 Q202.1 177.5 200.8 182.1 Q199.4 186.6 197.1 190.7 Q194.8 194.8 191.4 197.9 Q188.0 201.1 184.0 203.4 Q180.0 205.8 176.1 208.1 Q172.2 210.5 168.5 213.2 Q164.7 215.9 160.7 218.5 Q156.8 221.0 152.4 222.7 Q147.9 224.3 143.2 224.6 Q138.5 225.0 133.8 224.6 Q129.1 224.1 124.6 223.4 Q120.0 222.7 115.6 221.9 Q111.2 221.1 106.9 219.9 Q102.6 218.7 98.5 217.2 Q94.4 215.7 90.2 214.4 Q86.1 213.2 81.6 212.5 Q77.1 211.9 72.3 211.5 Q67.4 211.0 62.7 209.8 Q58.0 208.6 54.0 205.9 Q50.1 203.3 47.2 199.5 Q44.4 195.6 42.0 191.6 Q39.6 187.5 37.0 183.7 Q34.4 179.9 31.5 176.3 Q28.7 172.7 26.3 168.8 Q23.9 164.8 22.6 160.4 Q21.4 155.9 21.1 151.2 Q20.9 146.6 20.9 142.0 Q21.0 137.5 20.8 133.1 Q20.5 128.7 20.1 124.4 Q19.8 120.0 19.6 115.6 Q19.4 111.2 19.5 106.7 Q19.5 102.3 19.6 97.7 Q19.7 93.1 19.7 88.3 Q19.7 83.5 20.3 78.6 Q20.9 73.8 22.8 69.4 Q24.8 65.0 28.3 61.6 Q31.8 58.2 35.9 55.6 Q40.1 52.9 43.9 50.3 Q47.8 47.8 51.0 44.7 Q54.3 41.7 57.5 38.5 Q60.7 35.4 64.5 32.8 Q68.2 30.3 72.5 28.8 Q76.8 27.4 81.2 26.5 Q85.6 25.6 89.9 24.5 Q94.1 23.4 98.3 21.8 Q102.4 20.2 106.7 18.5 Q111.0 16.9 115.5 15.8 Q120.0 14.7 124.6 14.3 Q129.3 13.9 134.0 13.8 Q138.7 13.8 143.5 14.3 Q148.2 14.8 152.7 16.3 Q157.2 17.7 161.1 20.6 Q165.0 23.4 168.2 27.2 Q171.4 30.9 174.3 34.6 Q177.3 38.2 180.5 41.1 Q183.8 43.9 187.6 46.2 Q191.4 48.6 195.2 51.2 Q198.9 53.8 201.8 57.2 Q204.8 60.6 206.8 64.7 Q208.8 68.7 210.6 72.8 Q212.4 76.9 214.6 80.8 Q216.8 84.8 219.3 88.7 Q221.8 92.7 223.8 97.0 Q225.8 101.3 226.8 106.0 Q227.7 110.6 227.7 115.3 Z"/>
+        <circle cx="120" cy="120" r="84" fill="none" stroke="#7E9450" stroke-width="2"/>
+        <circle cx="120" cy="120" r="85.5" fill="none" stroke="#E6F0C8" stroke-width="1" opacity=".7"/>
+        <text font-family="Onest" font-size="11.5" font-weight="700" fill="#4E5D25"><textPath href="#ring2" textLength="432" lengthAdjust="spacing">FANTPUB · РАССКАЗ ДНЯ · ВЫПУСК КАЖДОЕ УТРО · </textPath></text>
+        <g transform="translate(120 128)" stroke="#3F4D1E" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-34 6 q0 -40 34 -40 q34 0 34 40 q0 28 -34 28 q-34 0 -34 -28 Z"/>
+          <path d="M-8 -33 q2 -12 10 -14 M2 -33 q8 -10 15 -7"/>
+          <circle cx="-13" cy="2" r="11"/><circle cx="13" cy="2" r="11"/><path d="M-2 1 h4"/>
+          <circle cx="-13" cy="3" r="2" fill="#3F4D1E"/><circle cx="13" cy="3" r="2" fill="#3F4D1E"/>
+          <path d="M-6 21 q6 5 12 0"/>
+        </g>
+      </svg>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center">
+        <div style="text-align:center">
+          <div style="font-family:var(--fp-font-display);font-weight:600;font-size:40px;letter-spacing:-.015em;line-height:1">FantPub</div>
+          <div style="font-size:13px;color:var(--fp-ink-3);margin-top:6px">рассказ на каждый день</div>
+        </div>
+        <!-- малые размеры -->
+        <svg width="48" height="48" viewBox="0 0 48 48" aria-label="Иконка 48 px"><circle cx="24" cy="24" r="22" fill="#CBDD9B"/><g stroke="#1D1C17" stroke-width="2.4" fill="none"><circle cx="17" cy="25" r="6"/><circle cx="31" cy="25" r="6"/><path d="M23 24.5h2"/></g></svg>
+        <svg width="24" height="24" viewBox="0 0 48 48" aria-label="Иконка 24 px"><circle cx="24" cy="24" r="23" fill="#CBDD9B"/><g stroke="#1D1C17" stroke-width="3.4" fill="none"><circle cx="16.5" cy="25" r="6.5"/><circle cx="31.5" cy="25" r="6.5"/></g></svg>
+        <svg width="16" height="16" viewBox="0 0 48 48" aria-label="Иконка 16 px"><circle cx="24" cy="24" r="24" fill="#CBDD9B"/><g stroke="#1D1C17" stroke-width="4.5" fill="none"><circle cx="16" cy="25" r="7"/><circle cx="32" cy="25" r="7"/></g></svg>
+      </div>
+      <div class="sw" style="width:100%">
+        <div style="background:var(--fp-paper);color:var(--fp-ink)">--fp-paper</div>
+        <div style="background:var(--fp-ink);color:var(--fp-paper)">--fp-ink</div>
+        <div style="background:var(--fp-sage);color:#1D1C17">--fp-sage</div>
+        <div style="background:var(--fp-sage-ink);color:var(--fp-paper)">--fp-sage-ink</div>
+        <div style="background:var(--fp-forest);color:var(--fp-on-forest)">--fp-forest</div>
+        <div style="background:var(--fp-wax);color:#fff">--fp-wax</div>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="top"><span class="wm">FantPub</span><span>Выпуск №214 · 6 октября</span></div>
+      <div class="book">
+        <div class="n">Рассказ дня</div>
+        <div class="t">Заколоченное окно</div>
+        <div class="n">автор под печатью</div>
+        <svg class="seal" viewBox="0 0 240 240"><circle cx="120" cy="120" r="104" fill="#BFD487"/><circle cx="120" cy="120" r="84" fill="none" stroke="#7E9450" stroke-width="4"/><g transform="translate(120 128)" stroke="#3F4D1E" stroke-width="7" fill="none" stroke-linecap="round"><circle cx="-15" cy="2" r="14"/><circle cx="15" cy="2" r="14"/><path d="M-2 1 h4"/></g></svg>
+      </div>
+      <div class="meta">7 минут · мистика</div>
+      <button class="btn">Открыть</button>
+      <div class="meta" style="margin-top:6px;font-size:12px">печать сломается, это нормально</div>
+      <div class="note">
+        <svg width="40" height="40" viewBox="0 0 48 48" style="flex:none"><circle cx="24" cy="24" r="22" fill="var(--fp-sage)"/><g stroke="#1D1C17" stroke-width="2.4" fill="none"><circle cx="17" cy="25" r="6"/><circle cx="31" cy="25" r="6"/><path d="M23 24.5h2"/></g></svg>
+        <div><b>Пабчик:</b> короткий, страшный и честный. Финал многие перечитывают дважды. Без спойлеров, обещаю.</div>
+      </div>
+    </div>
+
+    <div class="reader">
+      <div class="h">Заколоченное окно</div>
+      <div class="by">Literata · 19/1.6 · текст-заглушка для проверки набора, не цитата</div>
+      Съешь же ещё этих мягких французских булок, да выпей чаю. Так выглядит основной текст: спокойный, тёплый, с <a href="#">выделенной ссылкой</a> и без лишнего контраста.
+      <div class="react"><span class="on">!</span><span>Ожидал</span><span>Не моё</span></div>
+    </div>
+  </div>
+</div>
+<script>if(location.hash==="#night")document.documentElement.dataset.theme="night";</script>
+</body>
+</html>

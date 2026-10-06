@@ -1,0 +1,39 @@
+.page {
+  display: grid;
+  gap: 28px;
+}
+.head {
+  display: grid;
+  gap: 8px;
+  padding-top: 10px;
+}
+.kicker {
+  margin: 0;
+  color: var(--fp-ink-3);
+}
+.title {
+  margin: 0;
+  font-size: clamp(36px, 10vw, 56px);
+  line-height: 1.02;
+}
+.bio {
+  margin-top: 10px;
+  padding: 14px 16px;
+  border-radius: var(--fp-radius-md);
+  background: var(--fp-paper-raised);
+  box-shadow: var(--fp-shadow-card);
+}
+.list {
+  display: grid;
+  gap: 10px;
+}
+.h {
+  margin: 0 0 4px;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 21px;
+}
+.soon {
+  margin: 0;
+  color: var(--fp-ink-2);
+}

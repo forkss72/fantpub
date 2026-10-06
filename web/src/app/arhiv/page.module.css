@@ -1,0 +1,21 @@
+.page {
+  display: grid;
+  gap: 22px;
+}
+.head {
+  display: grid;
+  gap: 6px;
+  padding-top: 10px;
+}
+.title {
+  margin: 0;
+  font-size: clamp(38px, 10vw, 60px);
+  line-height: 1;
+}
+.lead {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--fp-ink-2);
+  font-size: 16px;
+  line-height: 1.5;
+}
