@@ -10,6 +10,7 @@ import { getDeviceId, markRead, setGuess, setReaction, useHydrated, useShelf } f
 import { EMPTY_COUNTS, REACTIONS, STATS_THRESHOLD, total, type Counts } from "@/lib/reactions";
 import type { ReactionKey, StoryCard } from "@/lib/types";
 import { SITE_URL } from "@/lib/site";
+import { plural } from "@/lib/date";
 import styles from "./EndOfStory.module.css";
 
 type Props = {
@@ -32,13 +33,9 @@ export function EndOfStory(props: Props) {
   const shelf = useShelf();
   const hydrated = useHydrated();
   const finRef = useRef<HTMLDivElement>(null);
-  const [blind, setBlind] = useState(false);
+  const revealRef = useRef<HTMLDivElement>(null);
   const [answer, setAnswer] = useState<string | null>(null);
   const [justRead, setJustRead] = useState(false);
-
-  useEffect(() => {
-    setBlind(document.documentElement.dataset.blind === "1");
-  }, []);
 
   // reaching «Конец» marks the story as read
   useEffect(() => {
@@ -65,26 +62,26 @@ export function EndOfStory(props: Props) {
     }
   }, [slug]);
 
+  // Blind state lives on <html data-blind> (set before paint), so CSS hides/shows
+  // the riddle, the reveal and the note even before hydration.
+  /* eslint-disable react-hooks/immutability -- the seal is page-level DOM state (<html data-blind>, document.title) */
+  function unseal() {
+    document.documentElement.dataset.blind = "0";
+    try {
+      sessionStorage.removeItem("fantpub:blind");
+    } catch {}
+    const real = document.documentElement.dataset.realTitle;
+    if (real) document.title = real;
+    window.setTimeout(() => revealRef.current?.focus({ preventScroll: false }), 60);
+  }
+  /* eslint-enable react-hooks/immutability */
+
   function guess(choice: string) {
     const right = choice === author.slug;
     setAnswer(choice);
     setGuess(slug, right);
     navigator.vibrate?.(right ? [10, 40, 10] : 18);
-    window.setTimeout(() => {
-      document.documentElement.dataset.blind = "0";
-      try {
-        sessionStorage.removeItem("fantpub:blind");
-      } catch {}
-      setBlind(false);
-    }, 900);
-  }
-
-  function revealWithoutGuess() {
-    document.documentElement.dataset.blind = "0";
-    try {
-      sessionStorage.removeItem("fantpub:blind");
-    } catch {}
-    setBlind(false);
+    window.setTimeout(unseal, 900);
   }
 
   const readCount = hydrated ? Object.keys(shelf.read).length : 0;
@@ -101,9 +98,8 @@ export function EndOfStory(props: Props) {
         </span>
       </div>
 
-      {/* 1 · the riddle */}
-      {blind ? (
-        <div className={`${styles.card} ${styles.guess}`}>
+      {/* 1 · the riddle (blind only) and the reveal (otherwise) — toggled by CSS on <html data-blind> */}
+      <div className={`fp-blind-only ${styles.card} ${styles.guess}`}>
           <p className={`mono ${styles.kicker}`}>Печать ещё цела</p>
           <h2 className={styles.h}>Кто написал этот рассказ?</h2>
           <div className={styles.options}>
@@ -116,12 +112,19 @@ export function EndOfStory(props: Props) {
               );
             })}
           </div>
-          <button type="button" className={styles.skip} onClick={revealWithoutGuess}>
+          <p className="sr-only" role="status" aria-live="polite">
+            {answer === null ? "" : answer === author.slug ? "Верно!" : "Не угадали."}
+          </p>
+          <button type="button" className={styles.skip} onClick={unseal}>
             Просто покажите
           </button>
         </div>
-      ) : (
-        <div className={`${styles.card} ${styles.reveal}`} data-answered={answer !== null || (hydrated && slug in shelf.guesses)}>
+      <div
+        ref={revealRef}
+        tabIndex={-1}
+        className={`fp-reveal-only ${styles.card} ${styles.reveal}`}
+        data-answered={answer !== null || (hydrated && slug in shelf.guesses)}
+      >
           <span className={styles.brokenSeal} aria-hidden="true" />
           <div>
             <p className={`mono ${styles.kicker}`}>
@@ -132,7 +135,7 @@ export function EndOfStory(props: Props) {
                 : "Печать сломана"}
             </p>
             <p className={styles.revealText}>
-              Это был{" "}
+              Автор —{" "}
               <Link href={`/avtor/${author.slug}` as Route} className={styles.authorLink}>
                 {author.name}
               </Link>
@@ -143,14 +146,13 @@ export function EndOfStory(props: Props) {
             </p>
           </div>
         </div>
-      )}
 
       {/* 2 · one-tap reaction + honest stats */}
       <Reactions slug={slug} />
 
       {/* 3 · Pabchik's note */}
       {note && (
-        <aside className={styles.note} aria-labelledby={`note-${slug}`}>
+        <aside className={`fp-reveal-only ${styles.note}`} aria-labelledby={`note-${slug}`}>
           <p className={`mono ${styles.noteHead}`} id={`note-${slug}`}>
             Записка Пабчика · № {issue}
           </p>
@@ -201,7 +203,7 @@ export function EndOfStory(props: Props) {
           </Link>
         )}
         <Link href="/polka" className={styles.toShelf}>
-          На вашей полке {readCount > 0 ? `уже ${readCount}` : "пока пусто"} <span aria-hidden="true">→</span>
+          {readCount > 0 ? `На вашей полке ${readCount} ${plural(readCount, ["книга", "книги", "книг"])}` : "Ваша полка"} <span aria-hidden="true">→</span>
         </Link>
         {readCount >= 3 && <InstallHint />}
       </div>
@@ -293,7 +295,7 @@ function Reactions({ slug }: { slug: string }) {
             ? `${Math.round((top.n / t) * 100)}% читателей — ${top.stat}.`
             : failed
               ? "Реакция сохранена на вашей полке. Общий счётчик читателей включим совсем скоро."
-              : `Спасибо! Вы среди первых ${Math.max(t, 1)} читателей этого выпуска. Проценты покажем, когда наберётся ${STATS_THRESHOLD} голосов.`}
+              : `Спасибо, голос учтён. Пока голосов ${Math.max(t, 1)} — проценты покажем, когда их станет ${STATS_THRESHOLD}.`}
         </p>
       )}
     </div>
@@ -307,7 +309,7 @@ function Share({ slug, title, minutes }: { slug: string; title: string; minutes:
 
   async function share(kind: "link" | "riddle") {
     const target = kind === "riddle" ? riddle : url;
-    const text = kind === "riddle" ? `«${title}» — ${minutes} минут. Угадаете автора?` : `«${title}» — рассказ на ${minutes} минут в FantPub`;
+    const text = kind === "riddle" ? `«${title}» — рассказ на ${minutes} мин. Угадаете автора?` : `«${title}» — рассказ на ${minutes} мин в FantPub`;
     try {
       if (navigator.share) {
         await navigator.share({ title: `«${title}»`, text, url: target });
@@ -335,7 +337,7 @@ function Share({ slug, title, minutes }: { slug: string; title: string; minutes:
         </button>
         <a
           className="pill pill--ghost"
-          href={`https://vk.com/share.php?url=${encodeURIComponent(`${url}?utm_source=vk`)}&title=${encodeURIComponent(`«${title}» — рассказ на ${minutes} минут`)}`}
+          href={`https://vk.com/share.php?url=${encodeURIComponent(`${url}?utm_source=vk`)}&title=${encodeURIComponent(`«${title}» — рассказ на ${minutes} мин`)}`}
           target="_blank"
           rel="noopener"
         >

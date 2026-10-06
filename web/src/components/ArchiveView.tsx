@@ -102,7 +102,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
         </div>
 
         <div className={styles.bar}>
-          <span className={`mono ${styles.count}`}>
+          <span className={`mono ${styles.count}`} role="status" aria-live="polite">
             {filtered.length === cards.length ? `${cards.length} ${plural(cards.length, ["выпуск", "выпуска", "выпусков"])}` : `найдено ${filtered.length}`}
             {hydrated && readCount > 0 && ` · прочитано ${readCount}`}
           </span>
@@ -167,7 +167,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
                 const read = hydrated && !!shelf.read[c.slug];
                 return (
                   <li key={c.slug}>
-                    <Link href={`/rasskaz/${c.slug}` as Route} className={styles.item} data-read={read}>
+                    <Link href={`/rasskaz/${c.slug}` as Route} className={styles.item} data-read={read} prefetch={false}>
                       <span className={styles.coverWrap}>
                         <Cover title={c.title} issue={c.issue} motif={c.motif} cloth={c.cloth} label="compact" />
                         <span className={styles.mark} aria-hidden="true" />
@@ -190,7 +190,7 @@ export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props)
                 const read = hydrated && !!shelf.read[c.slug];
                 return (
                   <li key={c.slug}>
-                    <Link href={`/rasskaz/${c.slug}` as Route} className={styles.row} data-read={read}>
+                    <Link href={`/rasskaz/${c.slug}` as Route} className={styles.row} data-read={read} prefetch={false}>
                       <span className={`mono ${styles.rowDate}`}>
                         № {c.issue}
                         <br />

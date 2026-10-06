@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SITE_URL } from "@/lib/site";
 import styles from "./QuoteShare.module.css";
 
 /** Select a line in the story → «Поделиться цитатой» → a 1080×1350 card with that quote. */
 export function QuoteShare({ slug, title }: { slug: string; title: string }) {
+  const link = `${SITE_URL}/rasskaz/${slug}`;
   const [sel, setSel] = useState<{ text: string; x: number; y: number } | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -40,7 +42,7 @@ export function QuoteShare({ slug, title }: { slug: string; title: string }) {
       const blob = await res.blob();
       const file = new File([blob], `fantpub-${slug}.png`, { type: "image/png" });
       if (navigator.canShare?.({ files: [file] })) {
-        await navigator.share({ files: [file], title: `«${title}»`, text: `«${sel.text}» — FantPub` });
+        await navigator.share({ files: [file], title: `«${title}»`, text: `«${sel.text}» — «${title}», FantPub ${link}` });
       } else {
         window.open(url, "_blank", "noopener");
       }

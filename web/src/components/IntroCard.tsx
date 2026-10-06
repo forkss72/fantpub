@@ -9,7 +9,10 @@ export function IntroCard() {
   const shelf = useShelf();
   const hydrated = useHydrated();
   if (!hydrated || shelf.introSeen) return null;
-  const close = () => updateShelf((s) => ({ ...s, introSeen: true }));
+  const close = () => {
+    updateShelf((s) => ({ ...s, introSeen: true }));
+    window.setTimeout(() => document.getElementById("today-title")?.focus(), 30);
+  };
   return (
     <section className={styles.card} aria-labelledby="intro-title">
       <Pabchik pose="explaining" size={92} className={styles.figure} priority />
@@ -18,7 +21,7 @@ export function IntroCard() {
           Я Пабчик, домовой этого дома историй
         </h2>
         <p>
-          Каждый день я запечатываю одну книгу. Сломайте печать, прочитайте за 5–10 минут и угадайте автора — его имя спрятано до финала.
+          Каждый день я запечатываю одну книгу. Сломайте печать, прочитайте — по будням рассказы на 5–10 минут, по выходным длиннее — и угадайте автора: его имя спрятано до финала.
         </p>
         <button type="button" className={`pill pill--sage ${styles.btn}`} onClick={close}>
           Понятно, показывайте

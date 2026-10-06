@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/PageTransition";
 import Link from "next/link";
 import type { Route } from "next";
 import { Masthead } from "@/components/Masthead";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: "Авторы",
   description: "Все авторы FantPub от А до Я: классики фантастики, мистики и короткой прозы в новых переводах.",
   alternates: { canonical: "/avtory" },
+  openGraph: { title: "Авторы FantPub", description: "Классики короткой прозы от А до Я: фантастика, мистика, ирония.", url: "/avtory" },
 };
 
 export default function AuthorsPage() {
@@ -22,7 +24,8 @@ export default function AuthorsPage() {
     .filter((a) => a.n > 0)
     .sort((a, b) => a.name.split(" ").at(-1)!.localeCompare(b.name.split(" ").at(-1)!, "ru"));
   return (
-    <main className={`page ${styles.page}`}>
+    <PageTransition>
+      <main className={`page ${styles.page}`}>
       <Masthead />
       <h1 className={`display ${styles.title}`}>Авторы</h1>
       <ul className={styles.list}>
@@ -39,5 +42,6 @@ export default function AuthorsPage() {
       </ul>
       <SiteFooter />
     </main>
+      </PageTransition>
   );
 }

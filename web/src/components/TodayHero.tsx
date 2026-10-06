@@ -121,7 +121,7 @@ export function TodayHero({ story, dayIndex, alternatives }: Props) {
         <p className={`mono ${styles.kicker}`}>
           Выпуск № {story.issue} · {humanDate(story.date)}
         </p>
-        <h1 id="today-title" className={`display ${styles.title}`}>
+        <h1 id="today-title" tabIndex={-1} className={`display ${styles.title}`}>
           {story.title}
         </h1>
         <p className={styles.byline}>

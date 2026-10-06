@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { ViewTransition } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { fontVars } from "./fonts";
 import { SITE_DESCRIPTOR, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import { BottomNav } from "@/components/BottomNav";
-import { ServiceWorker } from "@/components/ServiceWorker";
+import { ClientEffects } from "@/components/ClientEffects";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -46,7 +45,7 @@ d.dataset.theme=t;d.dataset.font=p.font||'literata';d.dataset.size=String(p.size
 var m=document.querySelector('meta[name="theme-color"]');if(m){m.setAttribute('content',t==='paper'?'#f6f2e7':t==='dusk'?'#24201a':'#121211')}
 var q=new URLSearchParams(location.search);
 if(location.pathname.indexOf('/rasskaz/')===0){var slug=location.pathname.split('/')[2];
-if(q.get('z')==='1'||sessionStorage.getItem('fantpub:blind')===slug){var r=s.read||{};if(!r[slug]||q.get('z')==='1'){d.dataset.blind='1'}}}
+var bl=q.get('z')==='1'||(sessionStorage.getItem('fantpub:blind')===slug&&p.blind!==false&&!(s.read||{})[slug]);if(bl){d.dataset.blind='1'}}
 }catch(e){}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -56,12 +55,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body>
-        <div id="app-root">
-          <ViewTransition default="page">{children}</ViewTransition>
-        </div>
+        <div id="app-root">{children}</div>
         <BottomNav />
         <Analytics />
-        <ServiceWorker />
+        <ClientEffects />
       </body>
     </html>
   );

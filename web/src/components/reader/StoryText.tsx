@@ -20,8 +20,8 @@ function inline(text: string): React.ReactNode[] {
 
 /** The story itself: server-rendered, readable without JS, indexable. */
 export function StoryText({ blocks }: { blocks: Block[] }) {
-  let p = 0;
-  let firstDone = false;
+  const firstP = blocks.findIndex((b) => b.type === "p");
+  const pIndex = blocks.map((_, i) => blocks.slice(0, i).filter((b) => b.type === "p").length);
   return (
     <div className={styles.text} data-story-text>
       {blocks.map((b, i) => {
@@ -46,11 +46,9 @@ export function StoryText({ blocks }: { blocks: Block[] }) {
             </blockquote>
           );
         }
-        const idx = p++;
-        const isFirst = !firstDone;
-        firstDone = true;
+        const idx = pIndex[i];
         return (
-          <p key={i} id={`p${idx}`} data-i={idx} className={isFirst ? styles.first : undefined}>
+          <p key={i} id={`p${idx}`} data-i={idx} className={i === firstP ? styles.first : undefined}>
             {inline(b.text)}
           </p>
         );

@@ -22,7 +22,7 @@ export function Spine({
   const h = height ?? 150 + ((issue * 37) % 5) * 7;
   const w = 30 + Math.min(16, Math.round(minutes * 1.2));
   return (
-    <span className={styles.spine} style={{ ...(clothVars(cloth) as CSSProperties), height: h, width: w }} data-state={state}>
+    <span className={styles.spine} style={{ ...(clothVars(cloth) as CSSProperties), height: h, width: w }} data-state={state} aria-hidden="true">
       <span className={styles.band} />
       <span className={styles.title}>{title}</span>
       <span className={styles.foot}>

@@ -54,24 +54,12 @@
   transform: skewX(-16deg) rotate(-6deg) translateX(-4%);
   filter: blur(9px);
   mix-blend-mode: multiply;
-  animation: drift 26s ease-in-out infinite alternate;
-  will-change: transform;
-}
-@keyframes drift {
-  to {
-    transform: skewX(-13deg) rotate(-4deg) translateX(5%);
-  }
 }
 :global(:root[data-theme="dusk"]) .gobo,
 :global(:root[data-theme="night"]) .gobo {
   background:
     linear-gradient(90deg, transparent 0 36%, rgb(255 240 200 / 0.05) 36% 39.5%, transparent 39.5% 63%, rgb(255 240 200 / 0.05) 63% 66.5%, transparent 66.5%);
   mix-blend-mode: screen;
-}
-@media (prefers-reduced-motion: reduce) {
-  .gobo {
-    animation: none;
-  }
 }
 
 .bookButton {

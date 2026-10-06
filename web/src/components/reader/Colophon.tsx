@@ -16,7 +16,7 @@ export function Colophon({ story }: { story: Story }) {
         <div>
           <dt>Выпуск</dt>
           <dd>
-            № {story.issue}, {humanDate(story.date)} 2026
+            № {story.issue}, {humanDate(story.date)} {story.date.slice(0, 4)}
           </dd>
         </div>
         <div>
@@ -62,8 +62,10 @@ export function Colophon({ story }: { story: Story }) {
         <div>
           <dt>Права</dt>
           <dd>
-            Общественное достояние: автор умер в <span className="fp-author-real">{story.author.died}</span>
-            <span className="fp-author-sealed">●●●●</span> году, прошло больше 70 лет.
+            Общественное достояние: автор умер{" "}
+            <span className="fp-author-real">в {story.author.died} году</span>
+            <span className="fp-author-sealed">больше 70 лет назад</span>
+            <span className="fp-author-real">, прошло больше 70 лет</span>.
             {story.translation === "fantpub" && " Перевод можно цитировать со ссылкой на FantPub."}
           </dd>
         </div>

@@ -8,7 +8,8 @@ export const revalidate = 3600;
 export default function sitemap(): MetadataRoute.Sitemap {
   const stories = getPublishedStories();
   const latest = stories.at(-1);
-  const authors = Object.keys(getAuthors()).filter((a) => stories.some((s) => s.author.slug === a));
+  // only author hubs that are indexable (≥ 2 published stories)
+  const authors = Object.keys(getAuthors()).filter((a) => stories.filter((s) => s.author.slug === a).length >= 2);
   return [
     { url: `${SITE_URL}/`, lastModified: latest ? new Date(issueOpensAt(latest.issue)) : new Date(), changeFrequency: "daily", priority: 1 },
     { url: `${SITE_URL}/arhiv`, changeFrequency: "daily", priority: 0.8 },

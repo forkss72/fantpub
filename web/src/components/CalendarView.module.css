@@ -64,8 +64,7 @@
   line-height: 1.4;
 }
 .cell[data-today="true"] {
-  outline: 2.5px solid var(--fp-sage);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--fp-paper), 0 0 0 4.5px var(--fp-sage);
 }
 .cell[data-today="true"] .day {
   background: var(--fp-sage);
@@ -126,5 +125,4 @@
 .empty .day {
   background: transparent;
   color: var(--fp-ink-3);
-  opacity: 0.6;
 }

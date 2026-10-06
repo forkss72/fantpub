@@ -4,15 +4,6 @@ import { useEffect, useState } from "react";
 import { updateShelf, useShelf } from "@/lib/shelf";
 import styles from "./InstallHint.module.css";
 
-type BIPEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> };
-
-let deferred: BIPEvent | null = null;
-if (typeof window !== "undefined") {
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    deferred = e as BIPEvent;
-  });
-}
 
 /** Offered only after the reader is hooked (3+ stories). Dismiss once — never nag. */
 export function InstallHint() {
@@ -21,9 +12,10 @@ export function InstallHint() {
 
   useEffect(() => {
     const standalone = matchMedia("(display-mode: standalone)").matches || (navigator as Navigator & { standalone?: boolean }).standalone;
-    if (standalone) return setPlatform(null);
     const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    setPlatform(ios ? "ios" : deferred ? "prompt" : "other");
+    // browser-only facts (UA, display mode) — known only after mount
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPlatform(standalone ? null : ios ? "ios" : window.__fpInstall ? "prompt" : "other");
   }, []);
 
   if (!platform || platform === "other" || shelf.installHintDismissed) return null;
@@ -45,8 +37,8 @@ export function InstallHint() {
             type="button"
             className="pill pill--sage"
             onClick={async () => {
-              await deferred?.prompt();
-              deferred = null;
+              await window.__fpInstall?.prompt();
+              window.__fpInstall = null;
               dismiss();
             }}
           >

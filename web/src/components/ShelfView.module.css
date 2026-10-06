@@ -2,6 +2,11 @@
   display: grid;
   gap: 24px;
 }
+.wrap > *,
+.shelves > *,
+.shelf {
+  min-width: 0;
+}
 .skeleton {
   min-height: 60vh;
 }
@@ -155,7 +160,8 @@
 .import {
   padding: 16px 18px;
   border-radius: var(--fp-radius-lg);
-  background: color-mix(in oklab, var(--fp-sage) 35%, var(--fp-paper-raised));
+  background: var(--fp-paper-raised);
+  box-shadow: inset 0 0 0 1.5px var(--fp-sage-ink);
 }
 .importTitle {
   margin: 0;

@@ -80,7 +80,7 @@
   --fp-paper-sunken: #1b1813;
   --fp-ink: #ece3cf;
   --fp-ink-2: #c3b9a2;
-  --fp-ink-3: #968d79;
+  --fp-ink-3: #ada48f;
   --fp-line: rgb(236 227 207 / 0.12);
   --fp-line-strong: rgb(236 227 207 / 0.22);
   --fp-sage: #b5c785;
@@ -108,7 +108,7 @@
   --fp-paper-sunken: #0a0a09;
   --fp-ink: #e2ded4;
   --fp-ink-2: #aba697;
-  --fp-ink-3: #827d70;
+  --fp-ink-3: #a19b8e;
   --fp-line: rgb(226 222 212 / 0.11);
   --fp-line-strong: rgb(226 222 212 / 0.2);
   --fp-sage: #a7b97a;
@@ -137,7 +137,7 @@
     --fp-paper-sunken: #1b1813;
     --fp-ink: #ece3cf;
     --fp-ink-2: #c3b9a2;
-    --fp-ink-3: #968d79;
+    --fp-ink-3: #ada48f;
     --fp-line: rgb(236 227 207 / 0.12);
     --fp-sage-ink: #cbdd9b;
     --fp-vellum: rgb(45 40 32 / 0.74);
@@ -166,6 +166,9 @@
 html {
   background: var(--fp-paper);
   overflow-x: clip;
+  /* keyboard focus never hides under the floating bottom nav */
+  scroll-padding-bottom: calc(var(--fp-nav-h) + 48px);
+  scroll-padding-top: 80px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scrollbar-gutter: stable;
@@ -262,11 +265,14 @@ img {
   width: 100%;
   max-width: 640px;
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px));
   padding-bottom: calc(var(--fp-nav-h) + 40px + var(--fp-safe-bottom));
 }
 .page--wide {
   max-width: 1080px;
+}
+.page > * {
+  min-width: 0;
 }
 
 /* paper tag / label («бирка») */
@@ -348,11 +354,11 @@ img {
 ::view-transition-new(root) {
   animation-duration: 260ms;
 }
-::view-transition-old(.page) {
+::view-transition-old(.page-out) {
   animation: vt-out 180ms var(--fp-ease-out) both;
 }
-::view-transition-new(.page) {
-  animation: vt-in 340ms var(--fp-ease-out) both;
+::view-transition-new(.page-in) {
+  animation: vt-in 340ms var(--fp-ease-out) 60ms both;
 }
 @keyframes vt-out {
   to {
@@ -400,4 +406,13 @@ img {
 }
 :root[data-blind="1"] .fp-author-sealed {
   display: inline;
+}
+.fp-blind-only {
+  display: none !important;
+}
+:root[data-blind="1"] .fp-blind-only {
+  display: block !important;
+}
+:root[data-blind="1"] .fp-reveal-only {
+  display: none !important;
 }

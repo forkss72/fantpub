@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/PageTransition";
 import { Masthead } from "@/components/Masthead";
 import { ArchiveView } from "@/components/ArchiveView";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -13,14 +14,18 @@ export const metadata: Metadata = {
   title: "Архив: все рассказы дня",
   description: "Все выпуски FantPub: короткие рассказы классиков в новых переводах — фантастика, мистика, жуткое и ирония. Фильтр по жанру и длине, от 2 до 20 минут.",
   alternates: { canonical: "/arhiv" },
+  openGraph: { title: "Архив FantPub: все рассказы дня", description: "Короткие рассказы классиков в новых переводах — каждый день по одному. Все прошлые выпуски открыты.", url: "/arhiv" },
 };
 
 export default function ArchivePage() {
+  // server component re-rendered by ISR: "now" decides which issues are published
+  // eslint-disable-next-line react-hooks/purity
   const now = Date.now();
   const cards = getPublishedStories(now).map(toCard).reverse();
   const tomorrow = getTomorrowTeaser(now);
   return (
-    <main className={`page page--wide ${styles.page}`}>
+    <PageTransition>
+      <main className={`page page--wide ${styles.page}`}>
       <Masthead />
       <header className={styles.head}>
         <h1 className={`display ${styles.title}`}>Архив</h1>
@@ -36,5 +41,6 @@ export default function ArchivePage() {
       />
       <SiteFooter />
     </main>
+      </PageTransition>
   );
 }

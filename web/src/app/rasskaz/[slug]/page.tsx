@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/PageTransition";
 import Link from "next/link";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
-import { getAuthors, getPublishedStories, getStory } from "@/lib/content";
+import { getAuthors, getPublishedStories, getStory, getTomorrowTeaser } from "@/lib/content";
 import { toCard } from "@/lib/cards";
-import { humanDate, issueOpensAt } from "@/lib/date";
+import { currentIssue, humanDate, issueOpensAt, plural } from "@/lib/date";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { Cover } from "@/components/Cover";
 import { PabchikSays } from "@/components/Pabchik";
@@ -39,10 +40,12 @@ export async function generateMetadata({ params }: PageProps<"/rasskaz/[slug]">)
   const isTranslation = s.translation !== "original";
   return {
     title: `${s.title} — ${s.author.name}: ${isTranslation && s.translation === "fantpub" ? "новый перевод" : "читать рассказ"}, ${s.minutes} мин`,
-    description: `${s.hook} ${s.author.name}, ${s.year}. ${s.minutes} минут чтения и записка Пабчика после финала.`.slice(0, 200),
+    description: `${s.hook} ${s.author.name}, ${s.year}. ${s.minutes} ${plural(s.minutes, ["минута", "минуты", "минут"])} чтения и записка Пабчика после финала.`.slice(0, 200),
     alternates: { canonical: `/rasskaz/${s.slug}` },
     openGraph: {
       type: "article",
+      siteName: SITE_NAME,
+      locale: "ru_RU",
       // No author in the share title: every link doubles as a riddle.
       title: `«${s.title}» — рассказ на ${s.minutes} мин`,
       description: `${s.hook} Угадаете автора?`,
@@ -63,7 +66,12 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
   const idx = published.findIndex((s) => s.slug === slug);
   const prev = idx > 0 ? published[idx - 1] : null;
   const next = idx >= 0 && idx < published.length - 1 ? published[idx + 1] : null;
-  const isToday = idx === published.length - 1;
+  // server component re-rendered by ISR: "now" decides which issues are published
+  // eslint-disable-next-line react-hooks/purity
+  const now = Date.now();
+  const isToday = story.issue === currentIssue(now);
+  const tomorrow = getTomorrowTeaser(now);
+  const nextOpensAt = isToday && tomorrow && issueOpensAt(tomorrow.issue) > now ? issueOpensAt(tomorrow.issue) : null;
 
   // three-way riddle: the real author + two plausible decoys, stable per story
   const decoys = authors
@@ -108,7 +116,10 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
                 datePublished: String(story.year),
                 inLanguage: story.originalLang,
               },
-              translator: story.translation === "fantpub" ? { "@type": "Organization", name: SITE_NAME } : { "@type": "Person", name: story.translation },
+              translator:
+                story.translation === "fantpub"
+                  ? { "@type": "Organization", name: SITE_NAME }
+                  : { "@type": "Person", name: story.translation.replace(/\s*\(.*\)\s*$/, "") },
             }
           : { dateCreated: String(story.year) }),
         isAccessibleForFree: true,
@@ -127,8 +138,9 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
 
   return (
     <>
-      <BlindGate slug={story.slug} />
+      <BlindGate slug={story.slug} title={story.title} />
       <ReaderBar title={story.title} minutes={story.minutes} />
+      <PageTransition>
       <main className={styles.main}>
         <article className={styles.article} lang="ru">
           <header className={styles.head}>
@@ -154,7 +166,7 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
               </span>
             </p>
             <p className={`mono ${styles.meta}`}>
-              {story.minutes} мин · {story.words.toLocaleString("ru-RU")} слов · {story.age}
+              {story.minutes} мин · {story.words.toLocaleString("ru-RU")} {plural(story.words, ["слово", "слова", "слов"])} · {story.age}
             </p>
             {story.hook && (
               <div className={styles.hook}>
@@ -176,7 +188,7 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
             minutes={story.minutes}
             options={options}
             isToday={isToday}
-            nextOpensAt={isToday ? issueOpensAt(story.issue + 1) : null}
+            nextOpensAt={nextOpensAt}
             shortPicks={short.slice(-8)}
           />
 
@@ -184,7 +196,7 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
         </article>
 
         {suggestions.length > 0 && (
-          <section className={styles.more} aria-labelledby="more">
+          <section className={`fp-reveal-only ${styles.more}`} aria-labelledby="more">
             <h2 id="more" className={styles.moreTitle}>
               Похожее по настроению
             </h2>
@@ -218,6 +230,7 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
           )}
         </nav>
       </main>
+      </PageTransition>
       <ReadingTracker slug={story.slug} paragraphs={paragraphs} minutes={story.minutes} />
       <QuoteShare slug={story.slug} title={story.title} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />

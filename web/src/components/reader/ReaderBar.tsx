@@ -47,7 +47,12 @@ export function ReaderBar({ title, minutes }: { title: string; minutes: number }
   }, [minutes]);
 
   function back() {
-    if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) router.back();
+    let depth = 0;
+    try {
+      depth = Number(sessionStorage.getItem("fantpub:depth") ?? "0");
+    } catch {}
+    // came here from inside FantPub → go back; landed from search/VK → go to today's issue
+    if (depth > 1 && history.length > 1) router.back();
     else router.push("/");
   }
 

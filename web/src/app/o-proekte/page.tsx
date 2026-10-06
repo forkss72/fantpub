@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/PageTransition";
 import Link from "next/link";
 import { Masthead } from "@/components/Masthead";
 import { Pabchik } from "@/components/Pabchik";
@@ -10,11 +11,13 @@ export const metadata: Metadata = {
   title: "О проекте",
   description: "FantPub — один короткий рассказ в день. Классика из общественного достояния в новых переводах, слепое чтение и записки Пабчика. Как это устроено и почему всё бесплатно.",
   alternates: { canonical: "/o-proekte" },
+  openGraph: { title: "О проекте FantPub", description: "Один короткий рассказ в день, слепое чтение, записки Пабчика и честные права на тексты.", url: "/o-proekte" },
 };
 
 export default function AboutPage() {
   return (
-    <main className={`page ${styles.page}`}>
+    <PageTransition>
+      <main className={`page ${styles.page}`}>
       <Masthead />
       <header className={styles.hero}>
         <Pabchik pose="sealed-book" size={170} priority />
@@ -93,5 +96,6 @@ export default function AboutPage() {
       </div>
       <SiteFooter />
     </main>
+      </PageTransition>
   );
 }

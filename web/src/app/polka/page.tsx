@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/PageTransition";
 import { Masthead } from "@/components/Masthead";
 import { ShelfView } from "@/components/ShelfView";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
 export default function ShelfPage() {
   const cards = getPublishedStories().map(toCard);
   return (
-    <main className="page page--wide" style={{ display: "grid", gap: 28 }}>
+    <PageTransition>
+      <main className="page page--wide" style={{ display: "grid", gap: 28 }}>
       <Masthead />
       <ShelfView cards={cards} />
       <SiteFooter />
     </main>
+      </PageTransition>
   );
 }

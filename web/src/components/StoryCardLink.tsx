@@ -8,7 +8,7 @@ import styles from "./StoryCardLink.module.css";
 /** Horizontal card: small cover + issue, title, author, minutes. */
 export function StoryCardLink({ card, hideAuthor }: { card: StoryCard; hideAuthor?: boolean }) {
   return (
-    <Link href={`/rasskaz/${card.slug}` as Route} className={styles.card}>
+    <Link href={`/rasskaz/${card.slug}` as Route} className={styles.card} prefetch={false}>
       <span className={styles.cover}>
         <Cover title={card.title} issue={card.issue} motif={card.motif} cloth={card.cloth} label="none" />
       </span>

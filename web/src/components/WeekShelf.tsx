@@ -5,6 +5,7 @@ import type { Route } from "next";
 import { Spine } from "./Spine";
 import { useHydrated, useShelf } from "@/lib/shelf";
 import type { StoryCard } from "@/lib/types";
+import { plural } from "@/lib/date";
 import styles from "./WeekShelf.module.css";
 
 /** The last issues as spines on a ledge. Read = sage bookmark, unread = whole wax dot. */
@@ -19,14 +20,14 @@ export function WeekShelf({ cards, todaySlug }: { cards: StoryCard[]; todaySlug:
           Полка недели
         </h2>
         <span className={styles.count}>
-          {hydrated ? `прочитано ${readCount} из ${cards.length}` : `${cards.length} выпусков`}
+          {hydrated ? `прочитано ${readCount} из ${cards.length}` : `${cards.length} ${plural(cards.length, ["выпуск", "выпуска", "выпусков"])}`}
         </span>
       </div>
       <div className={styles.shelf}>
         <ul className={styles.row}>
           {cards.map((c) => (
             <li key={c.slug}>
-              <Link href={`/rasskaz/${c.slug}` as Route} className={styles.link} title={`№ ${c.issue} · ${c.title}`}>
+              <Link href={`/rasskaz/${c.slug}` as Route} className={styles.link} prefetch={false}>
                 <Spine
                   title={c.title}
                   issue={c.issue}
@@ -35,7 +36,7 @@ export function WeekShelf({ cards, todaySlug }: { cards: StoryCard[]; todaySlug:
                   state={hydrated && shelf.read[c.slug] ? "read" : c.slug === todaySlug ? "today" : "unread"}
                 />
                 <span className="sr-only">
-                  {c.title}, {c.minutes} мин
+                  {c.title}, {c.minutes} мин{hydrated && shelf.read[c.slug] ? ", прочитано" : c.slug === todaySlug ? ", выпуск дня" : ""}
                 </span>
               </Link>
             </li>

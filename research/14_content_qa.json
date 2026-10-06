@@ -1,0 +1,1247 @@
+[
+ {
+  "slug": "bolshoy-shlem",
+  "prepare": {
+   "slug": "bolshoy-shlem",
+   "file": "/Users/forkss/FantPub/web/content/stories/bolshoy-shlem.md",
+   "words": 2986,
+   "paragraphs": 57,
+   "complete": true,
+   "source_used": "https://ru.wikisource.org/wiki/Большой_шлем_%28Андреев%29 (wikitext через action=raw). Для сверки — академическое издание на az.lib.ru (http://az.lib.ru/a/andreew_l_n/text_0050.shtml). Сверка шла по словам. Из комментария к этому изданию взяты только факты, пересказанные своими словами.",
+   "issues": [
+    "Текст полный: начало «Они играли в винт три раза в неделю…», конец «— А вы, Яков Иванович, все на той же квартире?». Убраны вики-шаблон, <div>, три сноски <ref> и раздел «Примечания». Орфография как в источнике, без «ё», так же как в grobovshchik.md.",
+    "Абзацев 57, а на Wikisource 55. Там слиты две пары абзацев, которые в академическом издании (az.lib.ru) разделены. Первая: «…С корзинками.» / «Евпраксия Васильевна вежливо смотрела на небо…». Вторая: «— Четыре черви, — сухо отозвался Яков Иванович.» / «Николай Дмитриевич сразу повысил игру…». Я восстановил эти разрывы, слова не менял.",
+    "Исправлено одно слово: «с прихотливым правом карт» на «с прихотливым нравом карт», как в академическом издании. Других правок авторского текста нет. Прочие мелкие расхождения изданий (например, «медленно/мысленно, по слогам», «такое же/также большое горе») оставлены как на Wikisource.",
+    "Подсказки каталога я пересмотрел. Жанры: «реализм, притча», без «чёрного юмора», его нет в допустимом списке. Mood: «печальное». Ending: «punchline» (финальный вопрос о квартире). Motif: candle (свечу Масленников роняет за карточным столом). Cloth: slate (город, тоска).",
+    "Quote «Никогда нельзя знать, что может случиться.» дословно взята из 4-го абзаца, это первая треть текста.",
+    "Факты и note сверены с комментарием академического издания на az.lib.ru. Первая публикация: «Курьер», 14.12.1899, № 345, с подзаголовком «Идиллия». Письмо Горького из Ялты от 2–4 апреля 1900 года: «Лучший ваш рассказ — „Большой шлем“». Рассказ открывал сборник «Рассказы» («Знание», 1901). Оценку «4» Толстой поставил на полях книги, по описи «Библиотека Л. Н. Толстого». Упоминание в «Жизни Клима Самгина» тоже по этому комментарию.",
+    "Проверка gray-matter: 21 ключ frontmatter, 57 блоков текста. original_title пустое, в парсинге это null, как в grobovshchik.md. Длины: hook 89 знаков, note 258, quote 42. Другие файлы проекта не тронуты, временные файлы лежат только в scratchpad."
+   ]
+  },
+  "edit": {
+   "slug": "bolshoy-shlem",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал wikitext с ru.wikisource (action=raw) и сверил его с файлом по словам: в обоих по 2986 слов, расходится одно место — исправление «правом» на «нравом», которое сделал подготовитель. Начало «Они играли в винт три раза в неделю…» и конец «— А вы, Яков Иванович, все на той же квартире?» совпадают. Пять мест из середины тоже сходятся: «Так играли они лето и зиму, весну и осень» (оба раза), «Произошли и другие события вне карточной игры», «Но в четверг, 26 ноября…», реплики «— Два без козыря…» / «— Три пики…» / «— Четыре черви…», «— Ни-ко-гда, — медленно, по слогам…». В файле 57 абзацев, на Wikisource 55. Отдельно сверил абзацы с текстом академического ПСС (az.lib.ru): там после вычета мусорного фрагмента тоже 57 абзацев, и границы всех совпадают с файлом. Значит, два разрыва, которые подготовитель восстановил («…С корзинками.» / «Евпраксия Васильевна…» и «— Четыре черви…» / «Николай Дмитриевич сразу повысил…»), верны. На Wikisource это ошибки вёрстки: повествование там склеено с репликой.",
+   "changes": [
+    "В note неточность: «Горький вспомнил игрока» заменено на «Горький упоминает игрока». В «Жизни Клима Самгина» про игрока вспоминает герой романа Самгин, а не сам Горький. После правки note — 259 знаков."
+   ],
+   "facts_checked": [
+    "Первая публикация: «Курьер», 1899, 14 декабря, № 345, подзаголовок «Идиллия». Подтверждено комментарием ПСС Андреева (М.: Наука, 2007, т. 1) на az.lib.ru и статьёй ru.wikipedia «Большой шлем (рассказ)».",
+    "Андреев — судебный репортёр «Курьера». В en.wikipedia сказано, что он был police-court reporter в московской газете. По комментарию ПСС, 13 декабря 1899 года «Курьер» отправил его в Полтаву освещать громкий судебный процесс по делу братьев Скитских. Факт оставлен.",
+    "Письмо Горького из Ялты от 2–4 апреля 1900 года: «Лучший ваш рассказ — „Большой шлем“…» (ЛН, т. 72, с. 69). Подтверждено комментарием на az.lib.ru и ru.wikipedia. Формулировка «весной 1900 года» верна.",
+    "«Большим шлемом» открывался первый сборник «Рассказы» (1901). Комментарий ПСС 2007 говорит это прямо и указывает в т. 1 издания «Знания» с. 1–12. Сборник вышел в «Знании» в 1901 году, это подтверждают энциклопедия Кольера (dic.academic.ru) и другие биографии.",
+    "Оценка «4», которую Толстой поставил на полях книги «Рассказов» Андреева, подтверждена ссылкой на «Библиотеку Л. Н. Толстого» (с. 21) в комментарии ПСС и в ru.wikipedia.",
+    "Упоминание в «Жизни Клима Самгина» подтверждено: Самгин вспоминает игрока, который «от радости помер», «чем и предоставил Леониду Андрееву возможность написать хороший рассказ» (Горький, ПСС, т. 24, с. 116).",
+    "Права: Андреев умер 12 сентября 1919 года в Нейвале близ Мустамяки (en.wikipedia, энциклопедия Кольера). Текст в общественном достоянии в РФ (автор умер раньше 1955 года) и в США (опубликован раньше 1931 года). Год первой публикации 1899 указан верно.",
+    "quote «Никогда нельзя знать, что может случиться.» дословно есть в тексте, в 4-м абзаце (примерно 17% длины). hook — 89 знаков, без спойлера и без указаний на автора. teaser без спойлеров. Жанры (реализм, притча), mood (печальное), motif (candle), cloth (slate) и ending (punchline) входят в списки брифа. original_title пустое, в парсинге это null, как в grobovshchik.md. Слаг автора leonid-andreyev есть в authors.json.",
+    "gray-matter: 21 ключ frontmatter, 57 блоков текста, 2986 слов, ошибок парсинга нет."
+   ],
+   "remaining_risks": [
+    "Текст Wikisource по мелочам расходится с академическим текстом ПСС (az.lib.ru): «лет шесть тому назад / лет шесть назад», «любил / любит», «на молчаливого брата / на брата», «такое же / также большое горе», «медленно / мысленно, по слогам», «зло-насмешливы / злонасмешливы» и другие. По условию авторский текст не редактируется, поэтому оставлено как на Wikisource. Исправлена только явная опечатка распознавания «правом» на «нравом».",
+    "В тексте есть 10 неразрывных пробелов перед тире, они перешли из источника. Это нормальная типографика, но в остальных местах перед тире стоят обычные пробелы. Не трогал.",
+    "«Ё» в тексте нет, как и в источнике, а в метаданных «ё» есть. Так же сделано в grobovshchik.md.",
+    "motif candle совпадает с мотивом выпуска № 1 (grobovshchik). Бриф этого не запрещает."
+   ]
+  }
+ },
+ {
+  "slug": "cherez-dvadtsat-let",
+  "prepare": {
+   "slug": "cherez-dvadtsat-let",
+   "file": "/Users/forkss/FantPub/web/content/stories/cherez-dvadtsat-let.md",
+   "words": 994,
+   "paragraphs": 34,
+   "complete": true,
+   "source_used": "https://en.wikisource.org/wiki/The_Four_Million/After_Twenty_Years (Wikisource, The Four Million, 1906; transcluded scan pages Page:The_Four_Million_(1906).djvu/226–232 fetched raw). New FantPub translation from the English original; no existing Russian translations were consulted. Facts checked against the English Wikipedia articles on O. Henry and The Four Million, plus the book's preface on Wikisource (scan page 9).",
+   "issues": [
+    "The catalog genre hint 'неожиданный финал' is not on the allowed list. I set genres: [реализм] only and left out 'детектив' so the genre doesn't tip off the twist during blind reading.",
+    "The catalog mood hint 'ностальгическое' is not on the allowed list. I replaced it with 'задумчивое'.",
+    "Paragraph count matches the source: 34 in the original (the note to Bob is one paragraph and the 'JIMMY' signature is a separate one) and 34 in the translation. The text runs from the opening policeman paragraph to the signature '*Джимми*'.",
+    "I could not confirm a first newspaper appearance for this particular story. The book's acknowledgments credit The New York World and other periodicals, but not story by story, so year is the collection's 1906 date and no fact claims an earlier publication.",
+    "The frontmatter parses with gray-matter: 21 keys, 34 content blocks. The quote 'Я просто жду приятеля. Встреча назначена двадцать лет назад.' is verbatim from paragraph 4, at character 951 of about 6,350. Hook is 85 characters, note 251.",
+    "motif is clock: the diamond-lidded pocket watch and 'без трёх минут десять'. cloth is slate (city, night, police), and ending is twist."
+   ]
+  },
+  "edit": {
+   "slug": "cherez-dvadtsat-let",
+   "verdict": "fixed",
+   "completeness": "Complete. I re-fetched the original with curl: the Wikisource page transcludes scan pages Page:The_Four_Million_(1906).djvu/226–232, and I pulled those raw. Both texts have 34 paragraphs, counting the note to Bob as one paragraph and the \"JIMMY\" signature as another. The translation starts with the policeman on the avenue and ends with the signature *Джимми*. I compared five places in the middle: the Big Joe Brady paragraph, the diamond watch at three minutes to ten, the drizzle paragraph, \"Bully; it has given me everything\", and \"Roman to a pug\". Nothing is missing or added. The frontmatter parses with gray-matter: 21 keys and 34 content blocks. The quote is verbatim at character 953 of 6,402, inside the first third. The hook is 85 characters and the note 251.",
+   "changes": [
+    "Paragraph 2: replaced the clumsy 'вертя дубинкой с множеством замысловатых и искусных выкрутасов' with 'выделывая дубинкой замысловатые и искусные фигуры'. Also 'превосходный образ' became 'живописный образ' (made a fine picture), and 'ночной закусочной' became 'круглосуточной закусочной' (all-night lunch counter).",
+    "'вы о друге что-нибудь слышали?' became 'от друга были какие-нибудь вести?'. The original 'heard from your friend' means news from him, not about him.",
+    "'и всё окупится' became 'и дело того стоит' (it's worth it).",
+    "'Хорошо, если Джимми добился хоть половины' became 'Хорошо бы Джимми преуспел хоть вполовину' (I hope Jimmy has done half as well). This also avoids a repeated 'Надеюсь' in the policeman's next line.",
+    "'катится по колее' became 'идёт по накатанной' (gets in a groove).",
+    "The drizzle paragraph: the wind sentence now reads 'ветер, прежде налетавший неровными порывами, дул ровно и сильно' instead of the awkward 'перешёл в ровный, упорный напор'. 'ещё не покинувшие этот квартал' became 'какие ещё попадались в этом квартале' (astir in that quarter).",
+    "Two lines in a row both used 'воскликнул', so the second is now 'вскричал'. 'как тебя принял Запад' became 'как обошёлся с тобой Запад' (how has the West treated you).",
+    "Removed a stray comma before the dash in 'такой рослый — дюйма…'. 'подрос, когда мне было за двадцать' became 'немного подрос уже после двадцати' (I grew a bit after I was twenty).",
+    "'выдернул руку' became 'высвободил руку' (released his arm).",
+    "The note to Bob: 'я увидел лицо человека' became 'я увидел, что это лицо человека' (I saw it was the face), which keeps the moment of recognition. I also removed the doubled 'это' in the last sentence: 'Сам я этого почему-то сделать не смог, поэтому сходил и попросил агента в штатском взяться за дело.'",
+    "note: the clumsy 'финал по-о-генриевски' became 'Хрестоматийный финал в духе О. Генри'.",
+    "fact 1: reworded to follow the preface more closely. It now says O. Henry recalls the stock claim that only the 'Four Hundred' in New York are worth noticing and prefers the census taker's count.",
+    "fact 3: 'дипломированный фармацевт' became 'лицензию фармацевта получил в 19 лет', since he was licensed rather than holding a degree, plus 'night druggist in the prison hospital'. The tie-in to the story is softer and no longer hints at the twist: 'Ключевая сцена рассказа тоже разыгрывается у аптеки — в свете её витрины.'"
+   ],
+   "facts_checked": [
+    "The preface to The Four Million (Wikisource, scan page 9) matches word for word: 'only \"Four Hundred\" people in New York City who were really worth noticing… the census taker… stories of the \"Four Million.\"'",
+    "Wikipedia (O. Henry): bail after his arrest; he was due to stand trial on July 7, 1896 and fled the day before to New Orleans and then Honduras. He came back in February 1897 because his wife was dying (she died July 25, 1897). He was convicted February 17, 1898, got five years, and entered the Ohio Penitentiary March 25, 1898. He was released July 24, 1901 for good behavior after three years. Fact 2 is correct.",
+    "Wikipedia (O. Henry): licensed as a pharmacist August 30, 1881, at age 19, and worked as night druggist in the prison hospital. Fact 3 is correct.",
+    "Wikipedia (After Twenty Years): first published in The Four Million in 1906. year: 1906 and original_title: After Twenty Years are correct.",
+    "Rights: O. Henry died June 5, 1910 (Wikipedia), more than 70 years ago, so the work is in the public domain in Russia. It was published in the US in 1906, before 1931, so it is public domain there too. The translation is a new FantPub one from the English original, and no Russian translations were consulted.",
+    "Note: the restaurant was torn down five years earlier, the match lights Bob's face, and O. Henry fled before his trial. All of this matches the text and the biography.",
+    "Taxonomy matches the brief: genres [реализм], mood задумчивое, motif clock (the diamond-lidded watch), cloth slate, ending twist, age 12+. The hook and teaser contain no spoilers and give no sign of the author.",
+    "The quote 'Я просто жду приятеля. Встреча назначена двадцать лет назад.' is verbatim in paragraph 4."
+   ],
+   "remaining_risks": [
+    "One aggregated search result says the story first appeared in the New York Sunday World Magazine on February 14, 1904. I could not confirm this from any primary or reliable source: Wikipedia and LitCharts give 1906. I left year as 1906, the collection date. Either year is well before 1931, so the rights status does not change.",
+    "genres has only [реализм]. Adding 'детектив' would be defensible, but it was left out on purpose so the genre doesn't hint at the twist.",
+    "The teaser is 328 characters, three sentences. The brief sets no character limit for it, but it is long for a card."
+   ]
+  }
+ },
+ {
+  "slug": "grobovshchik",
+  "prepare": {
+   "slug": "grobovshchik",
+   "file": "/Users/forkss/FantPub/web/content/stories/grobovshchik.md",
+   "words": 2029,
+   "paragraphs": 16,
+   "complete": true,
+   "source_used": "Текст авторский, взят из ПСС Пушкина в 10 т. (Л.: Наука, 1977–1979, т. 6, с. 81–87) на feb-web.ru: http://feb-web.ru/feb/pushkin/texts/push10/v06/d06-081.htm. Сама страница Wikisource указывает это издание как свой источник, но в её копии есть опечатки, поэтому текст сверен пословно с feb-web. В source_url оставлена ссылка на Wikisource из задачи, source_label: Wikisource. Примечания и комментарии издания в файл не вошли. Пушкин умер в 1837 году, текст в общественном достоянии.",
+   "issues": [
+    "В /Users/forkss/FantPub/web/content/authors.json сейчас пусто ({}), записи alexander-pushkin там нет. src/lib/content.ts при загрузке выбросит ошибку «Unknown author \"alexander-pushkin\"», пока автора не добавят. Файл я не трогал, как велено в задаче.",
+    "Текст взят не из копии Wikisource, а из издания на feb-web, на которое Wikisource ссылается. В копии Wikisource есть ошибки: «к Никитским воротам к обратно» вместо «и обратно», «unserer Rundleute» вместо «Kundleute», «бутку» вместо «будку», «новоселие». Кроме того, там дореформенные написания: «не смотря», «И так», «в течении», «не в мочь», «маленькой скелет». В издании 1977–1979 годов всё это уже в современной орфографии.",
+    "Авторские формы оставлены как в издании: «осьмнадцати», «нашед», «приближился», «почталион», «сертуке», «кивот», «шкап», «постелю», «окликал».",
+    "Правки только типографские: пробел перед тире там, где его не было («сосед,— сказал» стало «сосед, — сказал»), и «...» заменено на «…». Пометка издания «<см. перевод>» и номера страниц удалены. Абзацы, разорванные переносом страницы, склеены обратно.",
+    "Абзацев 16, как в обоих источниках. В файле 17 блоков: эпиграф и 16 абзацев. Начало: «Последние пожитки гробовщика…», конец: «…да позови дочерей.» По подсчёту рендерера 2029 слов (в content_args указано 1975, разница из-за тире и эпиграфа).",
+    "Эпиграф Державина оформлен блоком «> »: строки стихов разделены « /», подпись «— Державин». Рендерер склеивает строки эпиграфа в одну, поэтому без слеша стих читался бы как проза.",
+    "Немецкое «unserer Kundleute» («наших клиентов») оставлено без перевода, как у Пушкина: сносок движок не поддерживает.",
+    "Подсказки каталога «чёрный юмор» и «неожиданный финал» не входят в разрешённый список жанров. Выбрано: genres [юмор, мистика], mood «ироничное», ending twist, cloth plum (сон и загадка), motif candle (свечи у гроба, факелы в лавке), age 12+.",
+    "Факт про прототип (лавка гробовщика Адриана на Никитской напротив дома Гончаровых) есть только в ru.wikipedia, поэтому он вынесен лишь в note, а не в facts. Что сцена «у Вознесения» происходит у той же церкви, где венчался Пушкин, прямо не утверждается: в facts только дата венчания и цитата из текста.",
+    "Проверка gray-matter прошла: 21 ключ во frontmatter, 17 блоков в тексте. Цитата для quote дословная, взята примерно с 27% текста. Она кончается без точки, потому что в тексте после «не живет» стоит закрывающая кавычка."
+   ]
+  },
+  "edit": {
+   "slug": "grobovshchik",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал через curl оба источника: ПСС Пушкина в 10 т. (т. 6, с. 81–87) на feb-web.ru, кадр ?cmd=2, и raw-версию ru.wikisource. Если не учитывать пробелы и считать «...» равным «…», текст файла посимвольно совпадает с ПСС: 2017 слов в обоих. Начало («Последние пожитки гробовщика Адриана Прохорова…») и конец («…давай скорее чаю, да позови дочерей.») совпадают. Абзацев 16, как в Wikisource и в ПСС: в ПСС один абзац разорван иллюстрацией на с. 83, в файле он склеен. Перед абзацами стоит эпиграф Державина, всего 17 блоков. Пять мест из середины сверены дословно: «тремя франмасонскими ударами в дверь», «как почталион Погорельского», «unserer Kundleute», «к Никитским воротам и обратно», «в 1799 году, ты продал первый свой гроб — и еще сосновый за дубовый». Копия Wikisource отличается от ПСС примерно в 35 местах: в ней дореформенные написания («не смотря», «в течении», «не в мочь»), а также опечатки («к обратно», «Rundleute», «бутку»). Поэтому брать текст из ПСС было правильно. Номеров страниц, пометки «<см. перевод>» и вики-разметки в файле нет. Орфография современная, авторские формы оставлены как в издании.",
+   "changes": [
+    "Текст: убран лишний пробел перед закрывающей кавычкой, который остался после удаления пометки «<см. перевод>»: «unserer Kundleute! »» → «unserer Kundleute!»». Авторский текст я больше нигде не менял.",
+    "note: в формулировке «напротив дома его невесты, Натальи Гончаровой» «его» читалось как «невеста гробовщика Адриана». Теперь так: «стояла на Большой Никитской, напротив дома Гончаровых, где жила невеста поэта». «Бал мертвецов» заменён на «пир мертвецов»: танцев в повести нет, мертвецы приходят на новоселье. Длина note 287 знаков, лимит 300."
+   ],
+   "facts_checked": [
+    "Повесть закончена 9 сентября 1830 года в Болдине и написана первой из пяти. В книге она третья: Выстрел, Метель, Гробовщик, Станционный смотритель, Барышня-крестьянка. Подтверждают ru.wikipedia и навигация ru.wikisource: перед ней «Метель», после неё «Станционный смотритель». Факт верен.",
+    "Цикл вышел в конце октября 1831 года под заглавием «Повести покойного Ивана Петровича Белкина, изданные А. П.». Подтверждают примечание на ru.wikisource и culture.ru. Факт верен.",
+    "Венчание Пушкина и Гончаровой 18 февраля 1831 года в церкви Большого Вознесения у Никитских ворот подтверждают mos.ru, ruwiki и tonkosti. Что «Вознесение» в тексте повести — это церковь у Никитских ворот, говорится в статье на cyberleninka («Текст и нетекстовая реальность…»). Цитата «У Вознесения окликал его знакомец наш Юрко» есть в тексте. Факт оставлен.",
+    "note о прототипе: лавка гробовщика Адрияна на Большой Никитской напротив дома Гончаровых упоминается в статье на cyberleninka со ссылкой на Хализева и Шешунову («Цикл А. С. Пушкина „Повести Белкина“», 1989) и в ru.wikipedia. Источник научный, поэтому формулировку в note оставил.",
+    "note: «за пять месяцев до свадьбы». От 9 сентября 1830 года до 18 февраля 1831 года около 5 месяцев 9 дней. Верно.",
+    "quote есть в тексте дословно и стоит на 27,9% тела, то есть в первой трети; длина 96 знаков. hook 79 знаков, teaser 299 знаков. В обоих нет спойлеров (что всё оказалось сном, не раскрыто) и нет признаков автора.",
+    "genres [юмор, мистика], mood «ироничное», motif candle, cloth plum, ending twist, age 12+: всё из списков брифа. year 1831 верен, original_title пустой (gray-matter даёт null), original_lang ru, translation original.",
+    "Права: Пушкин умер 29 января (10 февраля) 1837 года, повесть впервые опубликована в 1831 году. Текст в общественном достоянии.",
+    "Frontmatter разбирается через node + gray-matter: 21 ключ, в теле 17 блоков, первый блок — эпиграф («> »), около 2028 слов. В /Users/forkss/FantPub/web/content/authors.json запись alexander-pushkin теперь есть (died 1837), так что проблема из отчёта подготовителя «Unknown author» больше не актуальна."
+   ],
+   "remaining_risks": [
+    "source_url и source_label указывают на Wikisource, а текст фактически сверен с ПСС на feb-web.ru, на который ссылается сама Wikisource. Читатель, открывший ссылку, увидит почти тот же текст, но там около 35 орфографических и пунктуационных расхождений. Если нужна строгая атрибуция, лучше поставить source_url http://feb-web.ru/feb/pushkin/texts/push10/v06/d06-081.htm и source_label «ФЭБ (ПСС в 10 т., 1977–1979)». Это редакционное решение, я его не принимал.",
+    "Внутриабзацные реплики в «» и строчные буквы после «?» («Что же? пей, батюшка…», «Что ты, батюшка? не с ума ли спятил…») — авторская пунктуация по ПСС. Я сознательно их не трогал.",
+    "motif candle допустим (свечи у гроба, траурные товары). Более узнаваемый для этого рассказа skull относится к кульминации, поэтому я его не выбрал. Это вопрос вкуса.",
+    "Рендерер склеивает строки эпиграфа в одну. Без слеша « /» в конце первой строки стихи читались бы как проза, поэтому он сохранён. На сайте эпиграф выглядит так: «Не зрим ли каждый день гробов, / Седин дряхлеющей вселенной? — Державин»."
+   ]
+  }
+ },
+ {
+  "slug": "ideofon",
+  "prepare": {
+   "slug": "ideofon",
+   "file": "/Users/forkss/FantPub/web/content/stories/ideofon.md",
+   "words": 2221,
+   "complete": true,
+   "paragraphs": 84,
+   "source_used": "https://ru.wikisource.org/wiki/Идеофон_%28Беляев%29 (action=raw). Author is A. R. Belyaev (1884–1942), first published as by 'А. Ром' in «Всемирный следопыт», 1926, № 6, so the text is PD in both RU and US. Facts were checked against the ru.wikipedia article on Belyaev (pseudonyms А. Ром and Арбел, Demidov Lyceum 1909, prisyazhny poverenny in Smolensk) and the en.wikipedia article on Violet Gibson (7 April 1926, Rome, shot grazed Mussolini's nose).",
+   "issues": [
+    "The text is complete. It opens with 'Судебный следователь Паоло Минетти…' and closes with '…Только бы этот путь привел его в Рим!..', both checked against the source. The source has 81 text paragraphs plus 5 section headings (I–V). The output has 84 paragraphs plus 4 '* * *' breaks, so 88 blocks, which matches the gray-matter check: 21 frontmatter keys and 88 content blocks.",
+    "Paragraphs: +3 compared with the source. The four-line song inside Sella's thoughts is written as 4 separate paragraphs, because parseBody turns single newlines into spaces and the verse would otherwise run together as one line.",
+    "Section headings: 'I.' was removed, and II–V became '* * *', following the convention already used in zelenaya-lampa.md.",
+    "Spelling modernized: пенснэ→пенсне; пред’явить/об’ятий/об’явить→ъ; чорт→черт (3 times); маниаков→маньяков; блок-нотом (marked {{так в тексте}})→блокнотом; давным давно→давным-давно. The source's 471 non-breaking spaces were changed to plain spaces, since the site's typograph adds its own. Old-style punctuation such as 'Но, ведь,' was left as is.",
+    "Three obvious digitization typos fixed: 'скоро ли Минетти закончить следствие'→'закончит'; stray comma in 'электрического, тока'; stray period in 'присутствовал. при этом'.",
+    "Quotes nested inside «…» changed to „…“ in 2 places (the 'Я стрелял' and 'любимого' passages). The wiki italics were changed to *…*.",
+    "Genres changed from the catalog hint (фантастика/сатира) to [детектив, юмор]: the 'mind-reading' machine turns out to be a bluff, so the plot is an investigation with satire. Mood: ироничное; motif: flame (the proverb about the burning hat); cloth: terracotta (irony and Italian heat); ending: twist.",
+    "The quote 'Очень полезная штука для судебных следователей и ревнивых мужей…' appears verbatim at about 31% of the text, which is inside the first third but close to its edge. If a safer option is needed, 'Или все они продувные бестии и стреляли впятером из одного револьвера…' sits at about 16%.",
+    "Field lengths: hook 97 characters, note 267, teaser 270, quote 64. The hook and teaser do not name the author or his books. The note and facts name Belyaev.",
+    "ru.wikipedia has no article on the story itself ('Идеофон (рассказ)' returns 404). Only ideofon.md was written; no other project files were changed. alexander-belyaev is already in authors.json."
+   ]
+  },
+  "edit": {
+   "slug": "ideofon",
+   "verdict": "fixed",
+   "completeness": "Complete. I fetched the source again with curl (ru.wikisource, action=raw) and diffed it programmatically, paragraph by paragraph, against the file. After applying the preparer's documented changes the text matches in full. The source has 81 text paragraphs plus 5 headings (I–V). The file has 84 paragraphs, because the 4-line verse is split into separate paragraphs (parseBody would otherwise merge the lines), plus 4 '* * *' breaks, for 88 blocks. The opening ('Судебный следователь Паоло Минетти…') and the ending ('…Только бы этот путь привел его в Рим!..') match. I also checked five passages from the middle and they match: the 'граммофон' paragraph, 'стерилизованное молоко', 'глубоководным рыбам', 'не думать о леопарде', and 'Шапка оказалась способной гореть'. No wiki markup, footnotes or category leftovers remain; a regex check found no [[ ]], {{ }}, '' , <br>, '...' or Latin letters.",
+   "changes": [
+    "note: rewritten. The old version repeated fact 1 (the pseudonym А. Ром) and the 'юрист по образованию' line from fact 2. The new note keeps the point about the 'горящая шапка' and that it 'сработала не на том человеке', and adds a verified fact: in 1987 Daniel Wegner tested the 'не думать' effect with the white bear from Dostoevsky's notes, which mirrors Беричи's 'леопард' trick. Length is 278 characters.",
+    "facts[1]: corrected. 'несколько лет был присяжным поверенным в Смоленске' was inaccurate: he was an assistant attorney from 1909 and a full prisyazhny poverenny only from June 1914, and fell ill in 1915. The loose phrase 'следственную кухню знал изнутри' was also removed. New text: Демидовский лицей (1909), несколько лет адвокатом в Смоленске, а в начале 1920-х служил в уголовном розыске Ялты (ru.wikipedia, citing Бар-Селла; confirmed by other sources).",
+    "original_title: '' changed to an empty value (null), the convention used in most of the Russian originals (zelenaya-lampa, grobovshchik and others). The Colophon renders the same either way.",
+    "Punctuation: removed the period after the closing quote in Селла's first thought paragraph ('…обвинил себя?..».' became '…обвинил себя?..»'). Under modern rules, a quotation ending in ?.. takes no period, and the change also matches the other thought paragraphs. The author's wording is unchanged."
+   ],
+   "facts_checked": [
+    "Rights: А. Р. Беляев died on 6 January 1942 in Pushkin (Bar-Sella dates it 'не позднее 23 декабря 1941'). Either date is before 1955. He was not a WWII combatant and was not repressed, so the text is PD in the RF.",
+    "First publication: «Всемирный следопыт», 1926, № 6 (June), signed 'А. Ром'. Confirmed by the ru.wikipedia bibliography and by fantlab work12633. Published before 1931, so it is PD in the US. year: 1926 is correct.",
+    "The pseudonyms 'А. Ром' and 'Арбел' are confirmed by ru.wikipedia ('Писал… под псевдонимами «А. Ром» и «Арбел»').",
+    "Demidov Juridical Lyceum, graduated June 1909; then legal practice in Smolensk (assistant attorney 1909, prisyazhny poverenny 1914); in Yalta, inspector of the уголовный розыск. Confirmed by ru.wikipedia and a web search.",
+    "Violet Gibson, 7 April 1926, Rome: the first shot grazed Mussolini's nose. Confirmed by a web search (IrishCentral, HistoryNet). There were more attempts later in 1926 (Lucetti, Zamboni), so 'год покушений' is accurate.",
+    "Wegner (1987), the white-bear experiment on thought suppression, inspired by Dostoevsky's «Зимние заметки о летних впечатлениях». Confirmed by a web search (Ironic process theory article and others).",
+    "Genres: fantlab classifies the story as 'Реализм', not science fiction, so [детектив, юмор] is a better fit than the catalog hint 'фантастика'. mood, motif, cloth and ending are all from the brief's lists.",
+    "quote: appears verbatim in the text at 32.1% by characters, inside the first third, and gives nothing away. hook (97 characters) and teaser (270 characters) contain no spoilers and do not name or hint at the author.",
+    "gray-matter: parses cleanly. 21 keys, 88 content blocks, 4 breaks; the quote is found in the content."
+   ],
+   "remaining_risks": [
+    "The quote sits at 32% of the text, close to the edge of the first third. If a stricter margin is needed, the fallback is 'Или все они продувные бестии и стреляли впятером из одного револьвера…' at about 16%.",
+    "The verse is set as 4 separate paragraphs because parseBody cannot do line breaks within a paragraph, so on the site it will look like four short paragraphs, not a stanza.",
+    "Old-style punctuation was kept on purpose as the author's ('Но, ведь,', 'Однако, гость', 'Ведь, я'). It may look unusual to a modern reader.",
+    "Fact 3 only gives context: the premier in the story is not named, and the link to Mussolini is the editors' interpretation, which the wording makes explicit."
+   ]
+  }
+ },
+ {
+  "slug": "kak-eto-sluchilos",
+  "prepare": {
+   "slug": "kak-eto-sluchilos",
+   "file": "/Users/forkss/FantPub/web/content/stories/kak-eto-sluchilos.md",
+   "words": 1221,
+   "paragraphs": 33,
+   "complete": true,
+   "source_used": "Project Gutenberg #22357, Danger! and Other Stories (по изданию John Murray 1918 года): https://www.gutenberg.org/cache/epub/22357/pg22357.txt, глава VIII «How It Happened», строки 4449–4598. В оригинале 1404 слова и 33 блока (32 абзаца и один разделитель сцены). В переводе тоже 33 блока: всё от вводной строки о медиуме до финального «So are you» переведено. Существующие русские переводы не открывал.",
+   "issues": [
+    "В подсказке настроение «меланхоличное», но в списке брифа такого нет. Поставил «тревожное»: почти весь текст занимает погоня под откос, а развязка тихая.",
+    "«Неожиданный финал» из подсказок не жанр. В genres оставил только [мистика], а развязку отметил полем ending: twist.",
+    "Рассказ открывается рамкой «Она была пишущим медиумом», которая сама намекает на развязку. Её сохранил, как в оригинале, но в hook и teaser медиума не упоминал, чтобы не подсказывать финал. Автор, Холмс и спиритизм там тоже не названы.",
+    "Проверил факты. Первая публикация: The Strand Magazine, сентябрь 1913 (энциклопедия arthur-conan-doyle.com). В 1900 году Дойл работал в госпитале Лэнгмана в Блумфонтейне во время эпидемии брюшного тифа (History Today, arthur-conan-doyle.com). В 1916 году он публично объявил себя спиритуалистом в журнале Light (Psi Encyclopedia SPR). В 1911 году участвовал в пробеге принца Генриха, британская команда победила (Wikipedia, Prinz-Heinrich-Fahrt).",
+    "Права: Дойл умер в 1930 году, рассказ опубликован в 1913-м. Он в общественном достоянии и в РФ, и в США.",
+    "Финальную реплику перевёл двумя словами: «— Стэнли, ты ведь умер» / «— Ты тоже». С шофёром рассказчик на «вы», со Стэнли на «ты».",
+    "Проверка gray-matter: 21 поле во frontmatter, 33 блока в тексте. Длины: hook 83, note 230, quote 133 знака. Цитата взята из первой трети итогового текста. Другие файлы проекта не трогал."
+   ]
+  },
+  "edit": {
+   "slug": "kak-eto-sluchilos",
+   "verdict": "fixed",
+   "completeness": "Перевод полный. Оригинал заново скачан через curl (Project Gutenberg #22357, издание John Murray 1918 года, глава VIII «How It Happened», строки 4452–4598). В оригинале 33 блока (32 абзаца и разделитель сцены), около 1405 слов. В переводе тоже 33 блока, 1220 слов. Начало («She was a writing medium» / «Она была пишущим медиумом») и конец («So are you» / «Ты тоже») совпадают. Пять мест из середины на месте, ничего не пропущено: Claystall Hill, отказ обоих тормозов, «I'll stick it with you», «golden death», «Lift it easy». Восстанавливать ничего не пришлось.",
+   "changes": [
+    "Абз. 3: «как она на ходу» заменено на «как машина показала себя в дороге». Местоимение «она» не согласовывалось с «автомобиль» и «Робур» мужского рода. Также «Я так хорошо помню» заменено на «Я отлично помню», «в её конце» на «в дальнем её конце».",
+    "Абз. 2: порядок слов «Я понятия не имею теперь» заменён на «Теперь я понятия не имею».",
+    "Абз. 8: «notches on a bar» было переведено как «зубчатая рейка», что неверно. Теперь «рычаг переставлялся из выреза в вырез на планке». Вместо «как было принято всегда» теперь «как их всегда устраивали прежде». Неточное «браться за новую систему» заменено на «осваивать новую систему» (to begin to learn); quote исправлена синхронно.",
+    "Абз. 12: три фразы подряд начинались с «Он», второе «Он» заменено на «Перкинс». Тавтологию «выключателя… выключил» заменил на «заглушил мотор».",
+    "Абз. 13 и 15: порядок слов сделан естественнее: «Лучше прыгайте, сэр», «Я останусь с вами до конца, сэр».",
+    "Абз. 16: «будь это… будь что будет» повторяло «будь». Заменено ближе к оригиналу (seen what would happen): «и посмотрел бы, что выйдет».",
+    "Абз. 17: калька «изо всех сил, какие были в моих запястьях» заменена на «вложив в рывок всю силу запястий». Вместо «моих же собственных ворот» теперь «моих собственных ворот».",
+    "Абз. 18: неловкое «что и сам так же действую на него» заменено на «что и сам значу для него нечто подобное».",
+    "Абз. 19: «крушение» обычно говорят о поезде, а не об автомобиле. Теперь «Ну и авария!… Боже правый, какая страшная авария!»",
+    "Абз. 21: «освещённые движущимися фонарями» заменено на «в свете движущихся фонарей». Lodge-keeper переведён как «привратник» вместо «сторож»: он живёт в сторожке у ворот.",
+    "Абз. 22–24: «крикнул чей-то голос» заменено на «крикнул кто-то». «Это всего лишь нога! — сказал другой голос» заменено на «Да это просто нога! — отозвался другой голос». Убрал повтор «они… Все они».",
+    "teaser: «последние минуты — до мелочей» намекало на смерть героя. Теперь «зато дорогу от станции — до мелочей», «той ночи» заменено на «того вечера».",
+    "facts[1]: непроверенное «куда шли сотни больных брюшным тифом» убрано. Вместо него проверяемое: «около трёх с половиной месяцев… в разгар эпидемии брюшного тифа».",
+    "quote обновлена под новую редакцию абзаца 8. Текст совпадает дословно, цитата стоит на 22% текста, 132 знака."
+   ],
+   "facts_checked": [
+    "Первая публикация: The Strand Magazine, сентябрь 1913, иллюстрации Сайруса Кунео. Подтверждено: en.wikipedia.org/wiki/How_It_Happened.",
+    "Сборник «Danger! and Other Stories» вышел в 1918 году в издательстве John Murray. Подтверждено титулом в тексте Gutenberg #22357.",
+    "В 1900 году Дойл был врачом госпиталя Лэнгмана в Блумфонтейне: частный полевой госпиталь, Дойл вызвался добровольцем, пробыл около трёх с половиной месяцев во время эпидемии брюшного тифа (enteric). Подтверждено: History Today, arthur-conan-doyle.com («Sir Arthur Conan Doyle, called and examined»).",
+    "1916 год: Дойл публично заявил о своём спиритуализме в журнале Light, статья «A New Revelation» вышла 4 ноября 1916. Подтверждено: Psi Encyclopedia SPR, arthur-conan-doyle.com. Утверждение в note «за три года до» верно.",
+    "Пробег принца Генриха, июль 1911 (Хомбург–Лондон, 4–19 июля). Каждый участник вёл свою машину, Дойл ехал на своём Lorraine-Dietrich, британская команда победила. Подтверждено: arthur-conan-doyle.com/wiki/The_Prince_Henry_Tour.",
+    "Дойл умер 7 июля 1930 года в Кроуборо. Подтверждено: Wikipedia и arthur-conan-doyle.com.",
+    "year 1913 и original_title «How It Happened» верны. genres [мистика], mood «тревожное», motif lantern, cloth plum, ending twist есть в списках брифа. age 12+.",
+    "hook (83 знака) и teaser без спойлеров, автор, Холмс и спиритизм в них не названы. Длина note 230 знаков (не больше 300).",
+    "Права: автор умер в 1930 году, это раньше 1955-го, значит в РФ текст свободен. Рассказ опубликован в 1913 году, это раньше 1931-го, значит в США он в общественном достоянии. Перевод собственный (translation: fantpub).",
+    "gray-matter: файл парсится, во frontmatter 21 поле, в тексте 33 блока."
+   ],
+   "remaining_risks": [
+    "В note фраза «Блумфонтейн упомянут не случайно» — интерпретация Пабчика. Это не документированный факт, хотя связь с биографией Дойла очевидна.",
+    "Mood «тревожное» выбран вместо «меланхоличное» из content_args, потому что «меланхоличного» нет в списке брифа. Можно рассмотреть «печальное» или «задумчивое».",
+    "Motif lantern подходит (фары, фонари на месте аварии). Альтернатива — gear: переключение передач запускает сюжет.",
+    "Фраза «Perkins tried to climb across» оставлена как «перебраться на мою сторону». В оригинале направление не указано, это толкование."
+   ]
+  }
+ },
+ {
+  "slug": "koshki-ultara",
+  "prepare": {
+   "slug": "koshki-ultara",
+   "file": "/Users/forkss/FantPub/web/content/stories/koshki-ultara.md",
+   "words": 1095,
+   "paragraphs": 10,
+   "complete": true,
+   "source_used": "English Wikisource, Weird Tales vol. 7 no. 2 (Feb 1926), proofread pages Page:Weird_Tales_Volume_7_Number_2_(1926-02).djvu/110-112 (section \"Cats\"), fetched raw via action=raw; new FantPub translation from the English original, no existing Russian translations consulted",
+   "issues": [
+    "Source has 10 paragraphs (para 'There was subsequently much talk...' continues across the page break into 'Zath, the coroner...', no {{nop}}); translation keeps exactly 10. gray-matter check: 21 keys, content.split = 10.",
+    "Weird Tales layout has a drop-cap/spacing break before 'It was fully a week...'; treated as a magazine typographic device (canonical texts have no scene break), so no '* * *' added.",
+    "Catalog hints adjusted: genres [сказка, хоррор], mood 'жуткое', age 12+ (cruelty to cats and the skeletons are off-page, not graphic), motif cat, cloth plum (Dreamlands / dark fairy tale), ending quiet (ring composition returning to the law).",
+    "Translation choices: 'burgesses' rendered as 'старшины' (so it doesn't clash with Ulthar being called a village), 'dark wanderers' as 'смуглые скитальцы', 'yellow' cats as 'рыжие'. The Sphinx is masculine in Russian, so the 'she' pronoun was neutralised ('они говорят на одном языке').",
+    "Facts checked against the English Wikipedia article and its sources (Joshi, Burleson, Schweitzer): written 15 June 1920; The Tryout, Nov 1920; Weird Tales, Feb 1926; Lovecraft considered it the best of his Dunsanian tales; Schweitzer notes Dunsany preferred dogs; Atal returns in 'The Other Gods' (1921) and in 'Dream-Quest' as a priest; the cats of Ulthar help Carter. Menes and the Hathor/Isis headdress are general Egyptological facts.",
+    "quote is a verbatim sentence from paragraph 1 (offset 363 of 2319 chars); hook and teaser don't name the author, his famous books or his recognisable characters. hook 99 chars, note 268 chars."
+   ]
+  },
+  "edit": {
+   "slug": "koshki-ultara",
+   "verdict": "fixed",
+   "completeness": "Перевод полный. Оригинал заново скачан через curl (action=raw) с трёх вычитанных страниц Wikisource: Weird Tales vol. 7 no. 2, стр. 110–112, раздел «Cats». Для сверки взят и канонический текст Джоши с hplovecraft.com. В обоих источниках 10 абзацев, в переводе тоже 10. Начало («It is said that in Ulthar…» / «Говорят, что в Ультаре…») и конец («…no man may kill a cat» / «…никому не дозволено убивать кошек») совпадают. Пять мест из середины сверены, пропусков нет: смуглые скитальцы, молитва Менеса, обряд кошек, который видел Атал, возвращение кошек, находка в хижине. У канонического текста нет разбивки на сцены перед «It was fully a week…», в Weird Tales там только буквица. Поэтому «* * *» не нужен. gray-matter: 21 ключ, 10 абзацев, около 1090 слов.",
+   "changes": [
+    "Абзац 2: 'клеймить их как жестоких убийц' заменено на 'честить их жестокими убийцами'. В оригинале berating, то есть «бранить», а не «клеймить».",
+    "Абзац 2: 'балованный любимец' заменено на 'любимец семьи'. В оригинале cherished pet, слова «избалованный» там нет.",
+    "Абзац 2: устранена двусмысленность. Фраза 'благодаря Судьбу за то, что так исчез не один из его детей' читалась как «исчезло несколько детей». Теперь: 'что так исчезла кошка, а не кто-нибудь из его детей'.",
+    "Абзац 2: 'убивают их весьма необычным способом' заменено на 'кошек убивают…'. Местоимение «их» было неясно, к кому относится.",
+    "Абзац 4: 'пушистое создание' заменено на 'маленькое пушистое существо' (в оригинале small furry thing). Восстановлено потерянное 'playing': 'когда сидел на ступеньках… и играл со своим грациозным котёнком'.",
+    "Абзац 5: 'впечатлить людей с воображением' заменено на 'поразить людей с воображением'. Убран модернизм.",
+    "Абзац 6: 'пожаловаться зловещей чете' заменено на 'явиться с упрёками к зловещей чете'. В оригинале complain to: упрекать саму чету, а не жаловаться ей на кого-то.",
+    "Абзац 6: убрана тавтология 'шествовали по кругу вокруг хижины', теперь 'обходили хижину по кругу'. Неуклюжая фраза 'бранить старика они предпочли не раньше, чем повстречают…' заменена на 'предпочли не выговаривать старику, пока не повстречают его за пределами…'. Ирония оригинала сохранена.",
+    "Абзац 7: 'Весьма лоснящимися… выглядели кошки и звучно мурлыкали' заменено на 'Очень гладкими и упитанными казались кошки, и звучно мурлыкали они от довольства'. Сохранены инверсия и оттенок appear («казались»).",
+    "Абзац 8: 'Нит обратил внимание' заменено на 'Нит сказал'. В оригинале remarked, то есть «сказал», а не «заметил»; к тому же рядом уже стоит «заметили».",
+    "Абзац 9: 'было много разговоров' заменено на 'было немало толков'.",
+    "teaser: в старой версии селяне не расспрашивали стариков якобы из-за звуков, а в оригинале причина другая. Теперь: селяне по ночным звукам догадываются о необычном способе убийства, но связываться со стариками боятся.",
+    "note: размытое 'как замечали критики' заменено на конкретное 'как заметил критик Даррелл Швейцер'. Это его наблюдение о том, что Дансени предпочитал собак. Длина 281 знак.",
+    "facts[3]: '«Иные боги» (1921)' заменено на '(написан в 1921 году)', потому что опубликован рассказ в 1933-м. 'древним жрецом Ультара' заменено на 'престарелым патриархом ультарского храма', так в тексте «Кадата»: the patriarch Atal."
+   ],
+   "facts_checked": [
+    "Лавкрафт умер 15 марта 1937 года в Провиденсе (Wikipedia, WebSearch). В РФ это раньше 1955 года, значит текст в общественном достоянии. Срок 70 лет истёк в 2007 году.",
+    "Первая публикация: The Tryout, ноябрь 1920. В США всё, опубликованное до 1931 года, в общественном достоянии. Перепечатка в Weird Tales за февраль 1926 подтверждается шапкой Wikisource и пометкой PD-US.",
+    "Рассказ написан 15 июня 1920 года, сюжет был изложен Кляйнеру в мае 1920-го (Wikipedia со ссылкой на Burleson).",
+    "Лавкрафт сам считал рассказ лучшим из своих «дансенианских», это его любимец; Лавкрафт был страстным кошатником (Wikipedia со ссылкой на Burleson и Joshi).",
+    "Швейцер отмечал, что Дансени, в отличие от Лавкрафта, предпочитал собак (Wikipedia со ссылкой на «Discovering H. P. Lovecraft»).",
+    "Атал в «Иных богах» (написан в августе 1921, издан в 1933): 'the young priest Atal, who was his disciple… only the son of an innkeeper'. Проверено по тексту на hplovecraft.com.",
+    "Атал в «Сомнамбулическом поиске неведомого Кадата»: 'the patriarch Atal'. В этой же повести Картер призывает на помощь кошек Ультара. Проверено по тексту и по Wikipedia.",
+    "Менес: полулегендарный первый фараон, объединитель Египта. Убор из рогов с диском носят Хатхор и Исида. Это общеизвестные египтологические факты.",
+    "year: 1920 и original_title: «The Cats of Ulthar» верны.",
+    "quote есть в тексте дословно, смещение 363 из 6965 символов, то есть первая треть; длина 100 знаков. hook 99 знаков, без спойлеров и без примет автора. В teaser автор не назван.",
+    "genres [сказка, хоррор], mood «жуткое», motif cat, cloth plum, ending quiet: все значения есть в списках брифа.",
+    "gray-matter парсит frontmatter без ошибок: 21 ключ, 10 абзацев."
+   ],
+   "remaining_risks": [
+    "Названия «Иные боги» и «Сомнамбулический поиск неведомого Кадата» совпадают с устоявшимися русскими названиями из существующих переводов. Названия не охраняются, но при желании их можно заменить собственными вариантами FantPub.",
+    "Слово «Dark» в «dark wanderers / dark folk» переведено как «смуглые». Это интерпретация: в оригинале возможно и прочтение «тёмные, зловещие».",
+    "В оригинале Сфинкс женского рода («he speaks her language… she hath forgotten»), в русском — мужского. Местоимения нейтрализованы оборотом «они говорят на одном языке». Это осознанное решение, но оттенок «её языка» потерян.",
+    "Бэкап исходной версии: /private/tmp/claude-501/-Users-forkss-FantPub/c45b40ca-9f56-4e1a-a0be-c4513e876524/scratchpad/koshki-ultara.bak.md"
+   ]
+  }
+ },
+ {
+  "slug": "krasnaya-korona",
+  "prepare": {
+   "slug": "krasnaya-korona",
+   "file": "/Users/forkss/FantPub/web/content/stories/krasnaya-korona.md",
+   "words": 1640,
+   "complete": true,
+   "paragraphs": 68,
+   "source_used": "https://ru.wikisource.org/wiki/Красная_корона_%28Булгаков%29 (основной текст; action=raw). Пунктуация сверена по копии того же издания (Собрание сочинений в 5 т., т. 1, 1989, видно по маркерам страниц *444–448): http://www.bulgakov.ru/library/getfile.php?fb2=Bulgakov_ru_krasnaya_korona.fb2",
+   "issues": [
+    "В тексте Wikisource потеряны все тире и дефисы: нет тире перед репликами, «что то» и «почему то» без дефиса, «№ 27 м». Ещё там остались маркеры страниц (*447), (*448). Тире и дефисы я восстановил по копии того же издания с bulgakov.ru: «— Господин генерал, вы — зверь», «преступник-большевик», «зубьями-клочьями», «С-с…», «№ 27-м». Пословная сверка двух источников дала полное совпадение, отличаются только маркеры страниц. В source_url оставлен Wikisource.",
+    "Объём такой же, как в источнике: 59 абзацев текста и 8 разделителей «* * *», всего 67 блоков в обоих источниках. Проверка через node: 21 поле frontmatter и 68 блоков тела. Лишний блок — подзаголовок автора, оформлен эпиграфом «> *Historia morbi*», как в odoevsky-bal.md. Начало: «Больше всего я ненавижу солнце…». Конец: «Да, я безнадежен. Он замучит меня.»",
+    "Сноску «История болезни (лат.)» и колонтитулы из текста убрал. Перевод подзаголовка теперь стоит во втором факте.",
+    "Орфография такая же, как в источнике: «е» вместо «ё» (еще, черной), так же сделано в других русских текстах проекта. Кавычки заменены на «ёлочки», три точки на «…».",
+    "Подсказки каталога поправлены. Жанры [реализм, хоррор]: призрак здесь — галлюцинация, рассказчик сам говорит, что сошёл с ума. Mood «жуткое», age 16+ (повешение, гибель брата, попытка самоубийства), ending tragic, motif crown (есть в названии, не спойлер), cloth oxblood.",
+    "В note вместо подсказки про Пилата взял более прямую параллель — пьесу «Бег». Там генерал Хлудов вешает людей на фонарях, и его преследует призрак повешенного вестового Крапилина.",
+    "Цитата «Сумерки — страшное и значительное время суток.» взята дословно, она стоит примерно на 25% длины текста. Hook и teaser не называют автора, его книги и персонажей.",
+    "Другие файлы проекта не изменял. Временные файлы лежат только в scratchpad."
+   ]
+  },
+  "edit": {
+   "slug": "krasnaya-korona",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал источник с Wikisource (action=raw) и копию fb2 с bulgakov.ru, это то же издание: Собрание сочинений в 5 томах, т. 1, 1989. Пословная сверка тела файла с Wikisource дала 1635 слов против 1635, расхождений нет. С fb2 расходятся только 5 маркеров страниц (*444)–(*448), в файле их нет. Число блоков тоже совпадает: в обоих источниках 59 абзацев и 8 разделителей «* * *», всего 67. В файле 68 блоков, лишний — подзаголовок «> *Historia morbi*», оформленный эпиграфом, как в odoevsky-bal.md. Начало «Больше всего я ненавижу солнце…» и конец «…Он замучит меня.» совпадают с источником. Середину сверил сплошь, а не в 5 точках, все места на месте: разговор с матерью и клятва, встреча с Колей у эскадрона, возвращение «в красной короне», сон о гостиной с «Фаустом», эпизод с № 27-м. Тире и дефисы, потерянные на Wikisource, расставлены по fb2 позиция в позицию. Сносок, номеров страниц и вики-разметки в тексте нет. Кавычки «ёлочки», многоточия «…», прямых кавычек и « - » вместо тире нет. Правок в авторском тексте не потребовалось.",
+   "changes": [
+    "Во втором предложении teaser «юг России» заменил на «Бердянск». Это конкретная деталь из текста, а политически двусмысленное для современного читателя обозначение места ушло. Длина teaser — 286 знаков.",
+    "В тексте рассказа ничего не менял: он слово в слово совпадает с источником, тире и дефисы стоят как в издании 1989 года."
+   ],
+   "facts_checked": [
+    "Первая публикация — «Накануне» (Берлин — Москва), литературное приложение, 22 октября 1922 года. Подтверждают сноска на Wikisource и fantlab.ru/work9162. Факт 1 верен.",
+    "Булгаков окончил медицинский факультет Киевского университета в 1916 году, диплом лекаря с отличием получил 31.10.1916. В 1919 году его мобилизовали военным врачом. Источники: bigenc.ru, zn.ua. Факт 2 верен. Historia morbi — «история болезни» по-латыни, так и в сноске Wikisource.",
+    "Младший брат Николай Афанасьевич Булгаков (1898–1966) был юнкером, воевал против петлюровцев и у белых, потом эмигрировал и жил под Парижем. Его считают основным прототипом Николки Турбина. Факт 3 верен.",
+    "В note параллель с «Бегом»: Хлудов приговаривает к смерти Крапилина, вестового Чарноты, и потом ему является призрак Крапилина. Подтверждают ru.wikipedia («Бег (пьеса)») и en.wikipedia (Flight). Прямую статью исследователей именно о связи с «Красной короной» я не нашёл. Но формулировка в note интерпретационная, а все факты о пьесе в ней верны, поэтому оставил.",
+    "Длины полей: hook — 87 знаков (лимит 100), note — 249 (лимит 300), quote — 46 (лимит 160). Цитата дословно есть в тексте и стоит на 24,9% его длины, то есть в первой трети.",
+    "Значения genres [реализм, хоррор], mood жуткое, age 16+, motif crown, cloth oxblood, ending tragic — все из списков брифа. year 1922. translation: original, original_title пустое (null, как ещё в 12 файлах проекта), original_lang: ru.",
+    "Права. Булгаков умер 10.03.1940, в РФ его тексты в общественном достоянии с 01.01.2011. Участником ВОВ и репрессированным он не был, продлений срока нет. Рассказ опубликован в 1922 году, раньше 1931-го, поэтому в общественном достоянии и в США.",
+    "Hook и teaser не называют автора и не раскрывают финал. Автор назван только в note и facts, которые показываются после чтения.",
+    "Frontmatter парсится через node + gray-matter: 21 поле, 68 блоков тела."
+   ],
+   "remaining_risks": [
+    "Во фразе «один из них — правый то и дело склонялся к брату» нет закрывающего тире после «правый». Так в издании 1989 года и во всех копиях текста, поэтому как авторский текст оставил как есть. При желании редакция может поставить парное тире.",
+    "Солдатское «вольноопределяющего» (вместо «вольноопределяющегося») и «дымогари» — авторские слова, оставлены намеренно.",
+    "Подзаголовок оформлен эпиграфом «> *Historia morbi*», в fb2 он стоит в скобках. Это принятая в проекте условность, как в odoevsky-bal.md.",
+    "В тексте «е» вместо «ё», в метаданных «ё» есть. В проекте это принято для русских оригиналов."
+   ]
+  }
+ },
+ {
+  "slug": "krasnogubaya-gostya",
+  "prepare": {
+   "slug": "krasnogubaya-gostya",
+   "file": "/Users/forkss/FantPub/web/content/stories/krasnogubaya-gostya.md",
+   "words": 3206,
+   "complete": true,
+   "paragraphs": 133,
+   "source_used": "https://ru.wikisource.org/wiki/Красногубая_гостья_%28Сологуб%29 (сырой текст через action=raw). Сверил с az.lib.ru/s/sologub_f/text_0218.shtml: там тот же скан DRY_GIN (1998) по антологии «Серебряный век» (1992), поэтому независимой сверки он не даёт. Рассказ в общественном достоянии: Сологуб умер в 1927 году, рассказ напечатан в 1909-м.",
+   "issues": [
+    "Абзацы: в источнике 127 текстовых абзацев. В моём тексте 133 абзаца и 15 разделителей «* * *». Разница складывается так: склеен один абзац, разорванный при сканировании («друзей, / родственников»), минус 1. Ещё в 7 местах сканер приклеил строку от автора к концу чужой реплики, и такой текст читался бы как часть прямой речи. Эти места разделены, плюс 7. Вот они: «Уже весело улыбаясь…», «Виктор принялся рассказывать:», «Ему хотелось быть слегка насмешливым…», «Подчиняясь золотым звонам…», «Варгольский тихо ответил ей:», «Чувствуя, как в душе его…», «Лилит смеялась…».",
+    "Исправлены однозначные опечатки скана: «сношениях людьми» → «сношения с людьми», «безумно дик были» → «безумно дики были», «.он» → «он», «простые в мудрые» → «простые и мудрые», «и1 детстве» → «и детстве», «холодная,, лунная» → «холодная, лунная», «очаровании жизни» → «очарований жизни», «слова свой» → «слова своей». Других правок в авторском тексте нет.",
+    "Спорные места оставлены как в источнике: «выду» (старая разговорная форма), «Взором, неотразимо берущих душу», «взысканного вкуса» (возможно, имелось в виду «изысканного»), «что Она не человек» (заглавная буква посреди фразы). Если найдётся печатное издание, их стоит сверить.",
+    "В рассказе 16 пронумерованных главок (I–XVI). Римские номера заменены на «* * *»: так требует формат брифа, авторское деление сохранено. Подзаголовок «Рассказ», вики-разметка и выходные данные скана убраны. Неразрывные и тонкие пробелы Викитеки заменены обычными. Буква «е» вместо «ё» оставлена как в источнике.",
+    "Год: Викитека и статья Осьмухиной и Миронова (2025) дают первую публикацию в «Утре России» 25.12.1909. На Фантлабе стоит 1912 год. Я оставил 1909.",
+    "Подсказки каталога пересмотрены. Жанры: «мистика» и «хоррор», метки «вампиры» в списке жанров брифа нет. Настроение: «жуткое», варианта «томное» в списке нет. Возраст 16+ из-за эротического подтекста и крови. Мотив moon: «лунная Лилит» повторяется на протяжении всего текста. Ткань oxblood. Финал quiet: рождественское спасение, о котором автор предупреждает уже в зачине.",
+    "Цитата для карточки взята из главки IV, это примерно 19% текста. Фраза «Самые страшные призраки… приходят днем» не подошла: она стоит на 36% текста, то есть за пределами первой трети.",
+    "Проверки: frontmatter парсится через gray-matter, в нём 21 ключ, в теле 148 блоков (133 абзаца и 15 разделителей). Цитата буквально есть в тексте. Начало «Хочу ныне рассказать…» и конец «…жаждущих губ. Никогда!» совпадают с источником. Другие файлы проекта не изменялись."
+   ]
+  },
+  "edit": {
+   "slug": "krasnogubaya-gostya",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Заново скачал источник с ru.wikisource через action=raw и сравнил с файлом пословно, а не только в 5 местах из середины. Расхождения есть только там, где подготовитель их сам описал. Первое: склеен абзац «друзей, / родственников», разорванный при сканировании. Второе: в 7 местах слова автора, которые скан приклеил к чужой реплике, вынесены в отдельный абзац. Третье: исправлены 8 опечаток скана. Пропусков и вставок нет. В источнике 127 текстовых абзацев и 16 главок (I–XVI). В файле 133 абзаца и 15 разделителей «* * *», всего 148 блоков: 127 − 1 + 7 = 133. Начало «Хочу ныне рассказать…» и конец «…жаждущих губ. Никогда!» совпадают с источником. Вики-разметки, подзаголовка «Рассказ», выходных данных скана, номеров страниц и сносок в тексте нет. Прямых кавычек, «...», дефисов вместо тире и латиницы тоже нет. Буква «ё» не используется, как и в источнике.",
+   "changes": [
+    "Текст: «слегка развращенного, взысканного вкуса» исправлено на «изысканного вкуса». Это та же ошибка распознавания (и→в), что и исправленное подготовителем «простые в мудрые». «Взысканного вкуса» в этом контексте бессмысленно, а выше автор сам пишет «в изысканно черном».",
+    "Текст: «Лицо ее бледно как всегда» исправлено на «бледно, как всегда». В другом месте текста автор выделяет этот оборот запятыми («все было, как всегда, обыкновенно»), так что здесь запятая, скорее всего, потеряна при сканировании.",
+    "teaser: «ещё недавно душа общества» заменено на «ещё недавно завсегдатай светских развлечений». В тексте нет ничего про «душу общества», там сказано «любил… светское общество… в меру окружен». Длина 317 знаков, спойлеров нет.",
+    "note: «Вампиршу он назвал Лилит» заменено на «Гостья называет себя Лилит», так точнее: в рассказе героиня называет себя так сама. Утверждение о причинной связи «Поэтому спасение и начинается…» смягчено до «Неслучайно спасение начинается…». Длина 285 знаков.",
+    "facts[0]: «исследователи относят его к жанру рождественского рассказа» заменено на «в рождественском номере; исследователи сближают его с жанром рождественского рассказа». Так формулирует статья Осьмухиной и Миронова: рассказ «тяготеет к рождественскому рассказу» и напечатан в рождественском номере.",
+    "facts[2]: «копировали так усердно, что ещё в 1941 году…» заменено на «оставался в моде десятилетиями: ещё в 1941 году американские газеты называли такую укладку…». Так ближе к Википедии и Гарвалу (2012), на которого она ссылается.",
+    "Остальное не трогал: hook (97 знаков), quote, genres [мистика, хоррор], mood «жуткое», age 16+, motif moon, cloth oxblood, ending quiet, year 1909, пустой original_title (как в остальных русских файлах), translation original, original_lang ru. Всё в пределах списков брифа. Фрагмент для quote есть в тексте дословно и стоит на 19% текста."
+   ],
+   "facts_checked": [
+    "Год смерти Сологуба: 5 декабря 1927 года, Ленинград. Так в ru.wikipedia (статья «Сологуб, Фёдор Кузьмич»). В РФ он в общественном достоянии (умер не позже 1955 года, не репрессирован, в войне не участвовал). В США тоже: рассказ напечатан в 1909 году, до 1931-го.",
+    "Первая публикация: «Утро России», 25.12.1909. Это указано в выходных данных Викитеки и az.lib.ru (по антологии «Серебряный век», 1992). Статья Осьмухиной и Миронова (2025, «Филологические науки. Вопросы теории и практики», т. 18, вып. 6) подтверждает: впервые опубликован в «Утре России», в рождественском номере, датирован 1909 годом.",
+    "«Утро России» — московская ежедневная газета П. П. Рябушинского, выходила с 1907 по 1918 год (ru.wikipedia).",
+    "На Фантлабе (work119822) стоит 1912 год и первый сборник «Коралловые чётки» (1913). Это расходится с первоисточником: в газете рассказ вышел в 1909-м. Оставлен 1909.",
+    "Псевдоним: в редакции «Северного вестника» по настоянию Минского, Волынский предложил «Соллогуб», одно «л» убрали. Впервые псевдоним появился в «Северном вестнике», 1893, № 4, под стихотворением «Творчество» (ru.wikipedia со ссылкой на источник). Факт верен.",
+    "Клео де Мерод родилась в Париже в 1875 году. Её шиньон закрывал уши и десятилетиями оставался популярным: ещё в 1941 году американские газеты писали «Cléo de Mérode hairdo» (en.wikipedia со ссылкой на Garval, 2012). Факт верен.",
+    "Лилит в еврейских преданиях — первая жена Адама, ставшая демоницей и угрожавшая новорождённым. В рассказе она так себя и называет: «первой жены Адама». Крестины младенца приходятся на сочельник. Всё верно."
+   ],
+   "remaining_risks": [
+    "Независимой сверки нет. Викитека и az.lib.ru повторяют один и тот же скан DRY_GIN 1998 года (по антологии 1992-го). Печатного издания 1909 или 1913 года (газета или «Коралловые чётки») в сети найти не удалось.",
+    "Правка «изысканного» сделана по аналогии с ошибкой того же скана. Теоретически там мог стоять «взыскательного». Если найдётся печатное издание, стоит сверить.",
+    "Оставлены как в источнике, сверить с печатным изданием: «выду», «Взором, неотразимо берущих душу» (возможно, «берущим»), «Она не человек» с заглавной, «Если ад сладок». Последнее, возможно, «Если яд сладок» как ответ на «слаще яда», но оба прочтения осмысленны, поэтому не трогал.",
+    "Подготовитель в 7 местах вынес слова автора в отдельные абзацы. Это редакторское решение: в скане эти строки приклеены к прямой речи. Структура в печатном оригинале не проверена.",
+    "Точная дата 25.12.1909 известна только из выходных данных скана. Статья 2025 года подтверждает рождественский номер, но число в ней не названо.",
+    "Дефисные написания вроде «жутко-громадными» и «чрезмерно-яркими» и запятые перед «и» в однородных сказуемых оставлены как авторские, хотя по современным нормам это пишется иначе."
+   ]
+  }
+ },
+ {
+  "slug": "kuprin-tost",
+  "prepare": {
+   "slug": "kuprin-tost",
+   "file": "/Users/forkss/FantPub/web/content/stories/kuprin-tost.md",
+   "words": 1175,
+   "complete": true,
+   "paragraphs": 22,
+   "source_used": "https://ru.wikisource.org/wiki/Тост_(Куприн). На Wikisource выпали все тире, поэтому пунктуацию я сверил по az.lib.ru/k/kuprin_a_i/text_1780.shtml. Это источник самой Wikisource, сверенный с изданием: Куприн, Собрание сочинений в 9 томах, том 4, 1971. Сравнение по словам с Wikisource: 1162 из 1162 слов совпадают, отличается одно (см. issues). Абзацев 22 в обоих источниках, включая разделитель «* * *».",
+   "issues": [
+    "В обоих источниках стоит «самой героической идеи 11-го века», хотя действие идёт в 2906 году. Я исправил на «II-го века»: последние тридцать лет перед двухсотым годом новой эры — это её II век, а римское II часто распознаётся при сканировании как «11». Это моя правка, подтвердить её по первопечатному тексту я не смог.",
+    "Убрал два явных следа сканирования, одинаковых в обоих источниках: лишнюю точку в «свет .весело» и лишние знаки в «радостям., его тела».",
+    "Оставил как в источниках «Труд наш то наслаждение», хотя фраза выглядит странно; возможно, на этом месте было тире, но проверить это нечем.",
+    "Текст переведён на «ё» (32 слова плюс 4 случая «всё» по смыслу), заменены типографские знаки: тире «—», «ёлочки», многоточие «…». Посвящение из первой публикации («Скитальцу (С. Г. Петрову)») в текст не включил, его нет в издании 1971 года; оно упомянуто в facts.",
+    "Год в frontmatter 1906 — год первой публикации (журнал «Сигналы», № 2); написан рассказ в 1905-м. original_title оставлен пустым (YAML null), загрузчик content.ts такое значение принимает.",
+    "Подсказки каталога пересмотрены: genres [фантастика, притча], потому что «утопии» нет в разрешённом списке; mood «задумчивое»; ending «twist», так как последняя реплика переворачивает смысл тоста; motif «planet»; cloth «ink».",
+    "Факты в facts и note сверены с ru.wikipedia: статьи «Сигнал (журнал, 1905)» и «Куприн, Александр Иванович»; данные о публикации — по примечанию Wikisource и fantlab.",
+    "Проверка gray-matter: 21 ключ frontmatter, 22 блока текста. Цитата для quote стоит примерно на 24% длины текста. hook — 87 знаков, note — 267, teaser — 303 знака (3 предложения). Другие файлы проекта не трогал."
+   ]
+  },
+  "edit": {
+   "slug": "kuprin-tost",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Заново скачал через curl исходник ru.wikisource (action=raw) и az.lib.ru/k/kuprin_a_i/text_1780.shtml; это текст по изданию: Куприн, Собрание сочинений в 9 томах, том 4, 1971, с. 219–222. Совпадает начало («Истекал двухсотый год новой эры…»), конец («— А всё-таки… как бы я хотела жить в то время… с ними… с ними…») и число абзацев: 21 абзац текста плюс разделитель «* * *», в файле 22 блока. Сравнил с az.lib.ru все абзацы, слово в слово и по пунктуации, а не только 5 мест из середины. Расхождений всего три, и все они — исправленные ошибки сканирования: «11-го» → «II-го», «свет .весело» → «свет весело», «радостям., его» → «радостям его». Все три подтвердил по первой публикации: скан «Сигналов» 1906, № 2, страницы 2–4, на Wikimedia Commons, файл «Сигналы. 1906. №2.pdf». Там напечатано «идеи II века», «солнечный свет весело», «радостям Его тела». В тексте нет вики-разметки, ссылок на иллюстрации, пометки «<1905>» и категорий. Посвящение в текст не включено, потому что в издании 1971 года его нет. Gray-matter читает 21 ключ, текст состоит из 22 блоков, в нём 1156 слов.",
+   "changes": [
+    "Текст: пропущенная «ё» — «не был надежным убежищем» → «не был надёжным убежищем». Остальные слова, где нужна «ё», проверил по полному списку слов текста: всё на месте.",
+    "teaser: «власти и войн давно нет» → «государств и власти давно нет». О войнах в тексте не говорится; зато сказано, что последняя страна с государственным устройством давно вошла в «анархический союз», и есть реплика «не знаем мы ни подчинения, ни власти».",
+    "Правку подготовителя «II-го века» оставил: теперь она подтверждена первопечатным текстом («идеи II века» в «Сигналах», 1906, № 2), а не только расчётом.",
+    "Остальные поля frontmatter не менял: hook 87 знаков, note 267 знаков, teaser 309 знаков в 3 предложениях, quote 70 знаков на 23,8% длины текста и дословно есть в тексте; genres, mood, motif, cloth и ending взяты из списков брифа."
+   ],
+   "facts_checked": [
+    "Год смерти автора: Куприн умер в Ленинграде в ночь с 24 на 25 августа 1938 года (ru.wikipedia). В РФ текст в общественном достоянии с 1 января 2009 года. Участником ВОВ Куприн не был, репрессирован не был. В США текст опубликован до 1931 года. Права в порядке.",
+    "Год первой публикации 1906: по скану на Commons рассказ напечатан в «Сигналах», 1906, № 2, с. 2–4. Это совпадает с примечанием Wikisource. Написан в 1905 году (датировка <1905> на Wikisource и в издании 1971 года). Значит, year: 1906 указан верно. original_title пустой (null), content.ts обрабатывает это значение (`data.original_title ?? null`).",
+    "Факт 1, о посвящении Скитальцу (С. Г. Петрову) в первой публикации, подтверждён сканом: над текстом напечатано «Посвящаю Скитальцу (С. Г. Петрову)».",
+    "Факт 2 подтверждён по ru.wikipedia, статья «Сигнал (журнал, 1905)». Чуковского взяли под стражу 2 декабря 1905 года; 11 декабря залог внесла Мария, жена Куприна; в середине декабря журнал закрыли; 8 января 1906 года редакция объявила, что журнал теперь называется «Сигналы».",
+    "Факт 3 подтверждён по ru.wikipedia, статья «Куприн, Александр Иванович»: после очерка «События в Севастополе» адмирал Чухнин приказал выселить Куприна из Севастопольского градоначальства в течение суток.",
+    "note подтверждена по той же статье: Куприн «помог скрыться от расправы матросам крейсера „Очаков“», а рассказ датирован 1905 годом.",
+    "Списки брифа: genres [фантастика, притча], mood «задумчивое», motif «planet», cloth «ink», ending «twist», age 12+ — все значения допустимы. В hook и teaser нет спойлеров и нет примет автора."
+   ],
+   "remaining_risks": [
+    "Фраза «Труд наш то наслаждение» оставлена как в az.lib.ru и Wikisource. Выглядит она как опечатка. В первой публикации 1906 года на этом месте стоит «Труд наш — это наше наслаждение», но точное чтение издания 1971 года подтвердить нечем. Если редакция предпочтёт чтение 1906 года, это будет правка по другой редакции авторского текста.",
+    "Основа нашего текста — поздняя авторская редакция, по изданию 1971 года. Первая публикация заметно отличается, и это авторская правка, а не ошибки. Например: «десятью веками» вместо «девятью», «тонкого сплава» вместо «стекла», «Богу» и «Его» с прописной, «был бы канун». В журнале рассказ вышел под рубрикой «Рассказ А. И. Куприна», заглавия «Тост» там нет. На текст это не влияет, но об этом стоит знать, если кто-то станет сверять с журналом.",
+    "Сохранены авторские особенности пунктуации издания 1971 года: «вам, неведомые! вам, безмолвные…» со строчной буквы после «!», нет запятой после «эту истинную радость земли», запятая в «И на вопрос его о причине слёз, она ответила»."
+   ]
+  }
+ },
+ {
+  "slug": "ledi-ili-tigr",
+  "prepare": {
+   "slug": "ledi-ili-tigr",
+   "file": "/Users/forkss/FantPub/web/content/stories/ledi-ili-tigr.md",
+   "words": 2109,
+   "complete": true,
+   "paragraphs": 26,
+   "source_used": "English Wikisource, издание Scribner 1897 (https://en.wikisource.org/wiki/The_lady,_or_the_tiger%3F_and_other_stories/The_Lady,_or_the_Tiger%3F). Сверено с Project Gutenberg #396. В отрендеренной странице Wikisource потерялся 3-й абзац («But even here the exuberant and barbaric fancy…»). Я восстановил его по исходной странице Page:…djvu/12 и по Gutenberg. Итог: в источнике 26 абзацев, в переводе тоже 26. Начало («In the very olden time…») и конец («…the lady, or the tiger?») совпадают с оригиналом. Перевод новый, FantPub, по английскому оригиналу; существующие русские переводы не использовались.",
+   "issues": [
+    "Подсказки каталога исправлены: «открытый финал» — это не жанр, его роль выполняет ending: open; жанры выбраны [притча, юмор]. Настроения «интригующее» нет в допустимом списке, поэтому mood: загадочное. Обложка: motif doors, cloth plum.",
+    "Из note_hint убрана непроверяемая превосходная степень «самый знаменитый открытый финал». Название продолжения дано в оригинале — «The Discourager of Hesitancy» — без чужого русского перевода названия.",
+    "Факты взяты из английской Википедии: Century Magazine, ноябрь 1882 года, и сборник 1884 года; продолжение в июле 1885 года; книга головоломок Смаллиана. Пьеса 1888 года в театре Уоллака с выходящей из двери старухой упомянута в note.",
+    "Решения по переводу: «lady» везде передано как «леди», чтобы перекликаться с названием. Игра «every barleycorn a king» передана как «король до кончиков ногтей», шутка про ячменное зерно потерялась. Последний вопрос «Which came out» переведён как «кто же вышел», а не «что вышло».",
+    "Проверки пройдены: gray-matter разбирает файл — 21 ключ в frontmatter, 26 абзацев в тексте. hook — 92 знака, note — 231, quote — 114 знаков, стоит на позиции 2,8% текста (первый абзац) и дословно совпадает с текстом. В hook и teaser автор и его книги не названы. Другие файлы проекта не изменены."
+   ]
+  },
+  "edit": {
+   "slug": "ledi-ili-tigr",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал оригинал (Project Gutenberg #396, curl) и проверил его по исходнику Wikisource (action=raw, издание Scribner 1897, стр. 11–20 djvu). В оригинале 26 абзацев без строки с автором, в переводе тоже 26. Начало «In the very olden time…» соответствует «В стародавние времена…», конец «…the lady, or the tiger?» соответствует «…леди или тигр?». Я сверил с оригиналом все 26 абзацев, а не только 5 мест из середины, включая абзац 3 «But even here…», который подготовитель восстановил: пропусков и вставок нет. Файл: /Users/forkss/FantPub/web/content/stories/ledi-ili-tigr.md, 2117 слов. Frontmatter разбирается через gray-matter, в нём 21 ключ.",
+   "changes": [
+    "Абзац 1: «заострённые прогрессивностью» → «отточенные прогрессивностью». Для идей «polished and sharpened» естественнее звучит «отточенные».",
+    "Абзац 2: убран повтор «понятий… было понятие публичной арены». Теперь: «…была и публичная арена, где…».",
+    "Абзац 3: «crime was punished, or virtue rewarded» было переведено как «преступление каралось, а добродетель вознаграждалась». Восстановлена разделительная конструкция: «либо каралось преступление, либо вознаграждалась добродетель».",
+    "Абзац 5: исправлена грамматика в предложении про тигра, где сказуемое висело без подлежащего. Теперь: «вышел голодный тигр — самый свирепый…, — который тотчас бросался на него».",
+    "Абзац 6: «retribution and reward» было переведено как «воздаяния и награды», хотя воздаяние включает и награду. Исправлено на «кары и награды». «Выдували радостные напевы из золотых рогов» → «играли на золотых рогах радостные напевы». «Glad hurrahs» → «радостно кричал «ура»».",
+    "Абзац 9: «happened to discover» было переведено громоздко: «не обнаружил его существования». Теперь: «случайно не узнал о его существовании».",
+    "Абзац 10: «competent judges» было переведено как «знающие судьи», и это путалось с судом на арене. Исправлено на «сведущие знатоки».",
+    "Абзац 13: согласование «ни звук, ни намёк не мог» → «не могли». Фраза «Но золото и сила женской воли…» вынесена в отдельное предложение, как в оригинале.",
+    "Абзац 15: двойное «что… что» заменено на «которая даётся душам».",
+    "Абзац 16: убран повтор «это… это». Теперь: «Она поняла его так же ясно, как если бы он выкрикнул это со своего места».",
+    "Абзац 23: «go to wait for her» не было передано. Теперь: «умереть сразу и уйти ждать её в блаженные пределы полуварварской вечности».",
+    "Факт 2: условие продолжения уточнено по тексту «The Discourager of Hesitancy». Путники должны решить, какую даму выбрал принц: ту, что улыбнулась, или ту, что нахмурилась. Финал передан близко к источнику: «По последним сведениям, они всё ещё не решили».",
+    "Note: непроверяемое «Нью-йоркская сцена сдалась первой» (утверждение о первенстве) заменено на «А нью-йоркская сцена не выдержала». Длина note — 231 знак."
+   ],
+   "facts_checked": [
+    "Первая публикация: The Century Magazine, ноябрь 1882 года, т. 25, вып. 1, с. 83–86 (английская Википедия, раздел Further reading со ссылкой на archive.org). year: 1882 указан верно.",
+    "Сборник 1884 года «The Lady, or the Tiger? and Other Stories» (Scribner), двенадцать рассказов. Подтверждено подписью к иллюстрации в английской Википедии.",
+    "Продолжение «The Discourager of Hesitancy» вышло в The Century Magazine в июле 1885 года (т. 30, вып. 3). Сюжет про 40 дам и вопрос «the one who smiled or the one who frowned» сверены с текстом на Wikisource. Финал: «At the latest accounts the five strangers had not yet decided».",
+    "Пьесу Сидни Розенфельда поставили в Wallack's Theatre в 1888 году. В финале выходила «an old hag» (английская Википедия со ссылкой на Smith & Litton, Musical Comedy in America, с. 44).",
+    "Стоктон так и не намекнул на ответ. Английская Википедия о Стоктоне: «careful never to hint at what he thought the ending would be».",
+    "Книга головоломок Рэймонда Смаллиана «The Lady or the Tiger?» основана на рассказе: двери с табличками, где написана правда или ложь (английская Википедия).",
+    "Фрэнк Р. Стоктон: родился 5 апреля 1834 года, умер 20 апреля 1902 года (английская Википедия). Текст в общественном достоянии в РФ (автор умер больше 70 лет назад) и в США (опубликован до 1931 года).",
+    "original_title «The Lady, or the Tiger?» и original_lang en указаны верно. translation: fantpub.",
+    "hook — 92 знака, без спойлера финала, автор не назван. teaser — 3 предложения, без спойлеров, автор и его книги не названы.",
+    "quote есть в тексте дословно, стоит на позиции 2,8% (первый абзац), 114 знаков.",
+    "genres [притча, юмор], mood загадочное, motif doors, cloth plum, ending open, age 12+. Все значения взяты из списков брифа."
+   ],
+   "remaining_risks": [
+    "hook «И принцесса, которая знает, где что» раскрывает поворот из середины рассказа, но не финал. Я оставил его как допустимую интригу.",
+    "Факт 2 упрощён: принц сузил выбор с сорока дам до двух и только потом выбрал. Формулировка «какую из сорока дам выбрал принц — ту, что улыбнулась, или ту, что нахмурилась» по смыслу верна.",
+    "Каламбур «every barleycorn a king» передан как «король до кончиков ногтей». Игра с ячменным зерном потеряна, это осознанное решение переводчика."
+   ]
+  }
+ },
+ {
+  "slug": "maska-krasnoy-smerti",
+  "prepare": {
+   "slug": "maska-krasnoy-smerti",
+   "file": "/Users/forkss/FantPub/web/content/stories/maska-krasnoy-smerti.md",
+   "words": 1931,
+   "paragraphs": 14,
+   "complete": true,
+   "source_used": "https://ru.wikisource.org/wiki/Маска_Красной_Смерти_%28По;_Бальмонт%29 (перевод К. Д. Бальмонта, Скорпион, 1901, в современной орфографии; взят через action=raw). Сверено пословно с OCR издания 1901 года в дореформенной орфографии на az.lib.ru (text_1842_maska_krasnoy_smerti-balmont): расхождения только орфографические и опечатки OCR, пропусков нет. Число абзацев сверено с английским оригиналом (Project Gutenberg #2148, редакция 1845 года): по 14 абзацев в обоих текстах.",
+   "issues": [
+    "Название: поставил «Маска Красной Смерти», как у Бальмонта, а не «Маска Красной смерти», как в записи каталога. В тексте перевода Смерть везде пишется с заглавной, так обложка не расходится с текстом. Если каталогу нужно точное совпадение со своей записью, поменяйте одно поле title.",
+    "Единственная правка пунктуации: реплику принца перевёл из формы «Кто посмел?» спросил он… — «кто посмел…» в современный диалог с тире: «— Кто посмел? — спросил он… — Кто посмел…». Больше в тексте перевода ничего не менял.",
+    "Оставил как в источнике: «Принц Просперо» с заглавной, «е» вместо «ё», неразрывные пробелы перед тире, знак ударения в «бо́льшим». Также оставлена странная расстановка «что это не — так» в 6-м абзаце: она есть и в издании 1901 года (сверено с az.lib.ru), значит это вариант Бальмонта, а не ошибка оцифровки.",
+    "Курсив из вики-разметки ('') переведён в *…* в пяти местах: причудливому, благопристойность, уверенным, тех, кровью.",
+    "Подсказки каталога исправлены: «готика» в список жанров не входит, поэтому genres: [хоррор, притча]. Настроения «мрачное, роскошное» нет в списке, выбрано «жуткое». Непроверяемую подсказку «в 2020 году рассказ перечитывал весь мир» не использовал.",
+    "Факты в note и facts проверены по статьям английской Википедии о рассказе и о Вирджинии По (там ссылки на Silverman и Ostram) и по выходным данным издания 1901 года на Wikisource. Факты: публикация в Graham’s Magazine в мае 1842 года под заглавием «The Mask of the Red Death. A Fantasy», гонорар 12 долларов; редакция в Broadway Journal 19 июля 1845 года; кровотечение у Вирджинии в январе 1842 года; издательство «Скорпион», 1901.",
+    "hook — 85 знаков, note — 273, quote — 45; цитата взята из 2-го абзаца, примерно на 10% текста. В hook и teaser нет ни автора, ни имени Просперо. Проверка gray-matter: 21 ключ, 14 абзацев."
+   ]
+  },
+  "edit": {
+   "slug": "maska-krasnoy-smerti",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Заново скачал источник через curl (ru.wikisource, action=raw) и сравнил с файлом по абзацам: 14 из 14 совпадают, а единственное отличие — реплика принца, переоформленная как диалог с тире. Сверил с английским оригиналом (Project Gutenberg #2148): в нём тоже 14 абзацев, первые и последние абзацы соответствуют друг другу («The “Red Death” had long devastated…» ↔ «„Красная Смерть“ давно уже опустошала…», «…illimitable dominion over all» ↔ «…безбрежное владычество»). Сверил пять мест из середины: «three thousand and six hundred seconds» ↔ «три тысячи шестьсот секунд»; «Hernani» ↔ «Эрнани»; «tall and gaunt, shrouded» ↔ «высок и костляв… в саван»; «with more of time» ↔ «с бо́льшим временем»; «within the shadow of the ebony clock» ↔ «в тени эбеновых часов». Сверил с изданием 1901 года в дореформенной орфографии (az.lib.ru/p/po_e_a/text_1842_maska_krasnoy_smerti-balmont.shtml): «что это не — так», «Принцъ Просперо» и «непрошенному» есть и там. В тексте нет вики-разметки, номеров страниц и сносок. Теперь 14 абзацев, около 1957 слов.",
+   "changes": [
+    "Орфография: «непрошенному гостю» исправлено на «непрошеному гостю». По современной норме «непрошеный» пишется с одним «н».",
+    "Орфография и единообразие: «Принц Просперо» и «Принца Просперо» исправлены на «принц Просперо» и «принца Просперо» (6 мест). Бальмонт перенёс заглавную букву из английского «Prince Prospero», но по современной норме титулы пишутся со строчной, а в самом тексте отдельное «принц» везде со строчной. Ни одно из этих мест не стоит в начале предложения. Заглавную в «Красная Смерть» оставил: это олицетворение.",
+    "teaser: убрал неточность «велит заварить засовы». В тексте засовы заваривают придворные, а не по приказу принца. Новый вариант: «Принц укрывается с тысячей весёлых придворных в укреплённом аббатстве, засовы на воротах наглухо заваривают, а через несколько месяцев он устраивает маскарад…». Ещё «на минуту замирает» заменил на «на миг замирает», так ближе к тексту («на мгновенье»).",
+    "Не менял: реплику принца, которую подготовитель уже правильно оформил с тире; принятую у Бальмонта пунктуацию 1901 года («и обивка и украшения», «с звуками шепота», «что это не — так», запятые вроде «В значительной части, он…»), потому что это текст переводчика, а не ошибки оцифровки; «е» вместо «ё», как в источнике; знак ударения в «бо́льшим»."
+   ],
+   "facts_checked": [
+    "Graham’s Magazine (Филадельфия), май 1842 года, заглавие «The Mask of the Red Death. A Fantasy»: подтверждено английской Википедией (сноска на выпуск журнала на archive.org, т. 20, № 5, с. 257–258) и веб-поиском (LOA Story of the Week).",
+    "Гонорар 12 долларов за первую публикацию: английская Википедия, ссылка на Ostram, «Poe’s Literary Labors and Rewards», 1987, с. 39.",
+    "Переработанная редакция под заглавием «The Masque of the Red Death» в Broadway Journal 19 июля 1845 года: подтверждено английской Википедией (ссылка на eapoe.org). Толкование: старое заглавие делает акцент на фигуре в финале, новое — на маскараде (Sova).",
+    "Кровотечение у Вирджинии в середине января 1842 года, когда она пела и играла на фортепиано, — начало туберкулёза: английская Википедия о Вирджинии По (Silverman, с. 179).",
+    "Связь Красной Смерти с туберкулёзом и то, что По, как и Просперо, пытался не замечать, что болезнь смертельна: английская Википедия (Silverman, с. 180–181).",
+    "Перевод Бальмонта: «Собрание сочинений Эдгара По в переводе с английского К. Д. Бальмонта. Том первый», Москва, «Скорпион», 1901, с. 235–242 (выходные данные на Wikisource). В факте не утверждается, что это первая публикация перевода, поэтому формулировка корректна.",
+    "Права: Эдгар По (19.01.1809 – 7.10.1849); рассказ впервые опубликован в 1842 году, то есть до 1931-го. Константин Бальмонт (15.06.1867 – 23.12.1942, Нуази-ле-Гран), по русской Википедии. В войне не участвовал: был в эмиграции во Франции. Умер раньше 1955 года, так что перевод в общественном достоянии. Строка translation «Константин Бальмонт (1867–1942)» верна.",
+    "year: 1842 и original_title: «The Masque of the Red Death» (каноническое заглавие 1845 года) верны.",
+    "quote «Внешний мир должен был заботиться о себе сам.» дословно есть во 2-м абзаце, это примерно 10% текста, 45 знаков. hook — 85 знаков, note — 273, без автора и спойлеров. Жанры хоррор и притча, mood «жуткое», motif mask, cloth oxblood, ending tragic — всё из списков брифа.",
+    "source_url отвечает HTTP 200. gray-matter (node, /Users/forkss/FantPub/web) разбирает frontmatter: 21 ключ, 14 абзацев."
+   ],
+   "remaining_risks": [
+    "Заголовок «Маска Красной Смерти» не совпадает с записью каталога «Маска Красной смерти». Он совпадает с Wikisource и с тем, как Смерть пишется в тексте, но если каталогу нужна точная сверка по названию, поле title придётся согласовать.",
+    "Пунктуация в переводе осталась как у Бальмонта в 1901 году: повторы «и… и…» без запятых, обособленные «однако,», «а потом, страх» и т. п. Это сознательное решение — не переписывать текст переводчика. Если редакция хочет полностью осовременить пунктуацию, нужен отдельный проход.",
+    "Строчное «принц Просперо» — нормализация орфографии, которой нет в источнике на Wikisource. Если хотим совпадения с источником знак в знак, правку можно откатить. Копия файла до правок: /private/tmp/claude-501/-Users-forkss-FantPub/c45b40ca-9f56-4e1a-a0be-c4513e876524/scratchpad/maska/backup.md."
+   ]
+  }
+ },
+ {
+  "slug": "maupassant-ruka",
+  "prepare": {
+   "slug": "maupassant-ruka",
+   "file": "/Users/forkss/FantPub/web/content/stories/maupassant-ruka.md",
+   "words": 1687,
+   "paragraphs": 84,
+   "complete": true,
+   "source_used": "https://fr.wikisource.org/wiki/Contes_du_jour_et_de_la_nuit_(éd._Flammarion,_1885)/La_Main. Это французский оригинал, выверенный текст (Textes validés) издания Flammarion 1885 года. Получен через MediaWiki API (action=parse), потому что страница собирается из страниц djvu 201–215. В оригинале 84 абзаца, в переводе тоже 84. Начало «On faisait cercle autour de M. Bermutier…», конец «…mon explication ne vous irait pas.» — в переводе на месте и то и другое. Существующие русские переводы я не открывал.",
+   "issues": [
+    "В content_args поле source_url указывает на ru.wikisource, то есть на существующий русский перевод. Перевод сделан с французского оригинала, поэтому во frontmatter source_url — французский Wikisource (original_url).",
+    "Подсказку каталога пришлось уточнить. Рука хранилась не у одного Суинбёрна: она была в Этрета, в доме Джорджа Пауэлла (Chaumière de Dolmancé), где Мопассан бывал у Пауэлла и Суинбёрна. Позже Мопассан эту руку купил. Источники: очерк «L'Anglais d'Étretat» (Le Gaulois, 29.11.1882), статьи французской и английской Википедии. В note написано именно так.",
+    "Факты сверены по французской Википедии со ссылками на Плеяду. «La Main» вышла в Le Gaulois 23.12.1883 и вошла в «Contes du jour et de la nuit» (1885). «La Main d'écorché» вышла в 1875 году в L'Almanach lorrain de Pont-à-Mousson под псевдонимом Joseph Prunier. «Une vendetta» вышла в Le Gaulois 14.10.1883 и стоит в том же сборнике через один рассказ от «Руки».",
+    "Подсказки каталога подтвердились: жанры [хоррор, мистика], настроение «жуткое». Поставлено ending: open — следователь даёт рациональное объяснение, но признаёт, что не знает, «как». Мотив hand, ткань oxblood.",
+    "Возрастную метку 12+ выбирал сам. В тексте есть натуралистичные детали: ободранная рука, удушение, палец, перепиленный зубами. Но так же помечены все остальные рассказы каталога, а «La Main» во Франции проходят в школе. Если нужна более строгая метка, стоит поменять на 16+.",
+    "Англичанин во французском оригинале говорит на ломаном французском: путает род, коверкает глагольные формы. В переводе это передано ломаным русским в той же мере: ошибки в роде и падеже, «ошень», мягкий знак в прошедшем времени («имель», «быль»), «это есть», «о! yes», «Аоу».",
+    "Quote — дословная фраза из второго абзаца, позиция примерно 4% текста, 140 знаков. Длина полей: hook 88 знаков, note 289 знаков.",
+    "Проверка gray-matter прошла: 21 ключ frontmatter, 84 блока текста. Другие файлы проекта не изменены."
+   ]
+  },
+  "edit": {
+   "slug": "maupassant-ruka",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Оригинал заново получен через MediaWiki API с fr.wikisource (Contes du jour et de la nuit, Flammarion 1885 / La Main): 84 абзаца, в переводе тоже 84, все сопоставлены один к одному. Начало «On faisait cercle autour de M. Bermutier…» и конец «…mon explication ne vous irait pas.» на месте. Сверены абзацы из середины: 13 (вендетта), 37–38 (рука и цепь), 42 (ломаная речь англичанина), 62–67 (убийство, палец, собаки), 74–75 (кошмар, могила). Пропусков и добавлений нет. Объём около 1695 слов.",
+   "changes": [
+    "Абз. 3 и quote: «которая терзает их душу, как голод» заменено на «тяги к ужасу, что неотступно живёт в их душе и терзает их, как голод». Глагол hante («неотступно живёт») был потерян, а les torture относится к женщинам, а не к душе. Quote обновлён, совпадает с текстом дословно, 153 знака, позиция 4%.",
+    "Абз. 4: «когда все смолкли» заменено на «в наступившей тишине» (pendant un silence).",
+    "Абз. 5: «Тут не обошлось без „сверхъестественного“» заменено на «Какой ужас. Это граничит со „сверхъестественным“» (Cela touche au surnaturel).",
+    "Абз. 15: преувеличение «все только и занимались» заменено на «всех уже занимала эта странная личность».",
+    "Абз. 19: убрана неуклюжая конструкция «— для чего стал», теперь «решил попытаться сам повидать этого иностранца, а для этого стал…».",
+    "Абз. 21: «Не прошло и месяца» искажало смысл Au bout d'un mois. Исправлено на «Через месяц мы успели побеседовать уже раз пять или шесть».",
+    "Абз. 22: восстановлено пропущенное enfin («И вот наконец однажды вечером»).",
+    "Абз. 23: «похвально отзывался» заменено на «с похвалой отозвался».",
+    "Абз. 37: «перерубленных начисто» (по-русски это «полностью») заменено на «ровно перерубленных» (coupés net).",
+    "Абз. 43: «ободранная таким образом» заменено на «ободранная вот так».",
+    "Абз. 46: «кротко» заменено на «мягко» (avec douceur).",
+    "Абз. 57: «слуга … что сэр Джон Роуэлл ночью убит» заменено на «мой слуга … что ночью убили сэра Джона Роуэлла» (mon domestique, чтобы не путать со слугой англичанина).",
+    "Абз. 62: «в стиснутых зубах он что-то зажал» (тавтология) заменено на «у него что-то было зажато»; «пробитая пятью дырами, точно от железных остриёв» заменено на «пробитая в пяти местах, словно железными остриями».",
+    "Абз. 65: «Цепь висела, разорванная» заменено на «Висела разорванная цепь».",
+    "Абз. 66: «отрезанный, или, вернее, перепиленный зубами точно по…» заменено на «перекушенный, а вернее, перепиленный зубами как раз по…» (coupé par les dents).",
+    "Абз. 67: «собаки так и не проснулись» можно было понять как «умерли». Заменено на «даже не проснулись».",
+    "Абз. 70: «похищенную» заменено на нейтральное «неведомо как унесённую» (enlevée).",
+    "Абз. 74: убран повтор «снова … снова» и лишняя запятая; «скачет» заменено на «носится» (galoper autour de ma chambre).",
+    "Абз. 77: смесь видов «побледнели и дрожали» заменена на «Потрясённые женщины были бледны и дрожали».",
+    "Абз. 80: убрано добавленное переводчиком «все ваши».",
+    "Абз. 82: «Нет, не может быть, чтобы так» заменено на «Нет, не может быть, чтобы всё было так».",
+    "note переписан. По собственному очерку Мопассана «L'Anglais d'Étretat» (Le Gaulois, 29.11.1882) он «accouru après le sauvetage», то есть прибежал уже после спасения. Поэтому «помог спасти» заменено на «бросился на помощь». Дом принадлежал Пауэллу, теперь написано «приглашён в дом его друга Пауэлла». Руку Мопассан купил позже, на распродаже обстановки. Длина 292 знака.",
+    "facts[1]: «отрубленная кисть … на шее жертвы» заменено на «ободранная кисть казнённого преступника … на шее героя». Пьер в «La Main d'écorché» после нападения выживает, а рука принадлежала казнённому (supplicié).",
+    "teaser: «загадочным убийством» заменено на «загадочным преступлением». В оригинале просто crime, об убийстве не сказано.",
+    "age: 12+ заменено на 16+. Довод подготовителя «все остальные рассказы помечены 12+» неверен: zakolochennoe-okno (Бирс, похожая деталь — что-то зажато в зубах мёртвой), krasnaya-korona и krasnogubaya-gostya в каталоге стоят 16+. Натурализм «Руки» (ободранная рука, кровь на костях, почерневшее лицо задушенного, палец, перепиленный зубами) по уровню соответствует 16+."
+   ],
+   "facts_checked": [
+    "Le Gaulois, 23.12.1883; сборник «Contes du jour et de la nuit», 1885. Подтверждено: fr.wikipedia «La Main (Maupassant)» со ссылкой на Плеяду, т. I, с. 1611.",
+    "«La Main d'écorché», 1875, L'Almanach lorrain de Pont-à-Mousson, псевдоним Joseph Prunier, считается первым рассказом Мопассана. Следы пяти пальцев на шее героя, рука казнённого преступника. Подтверждено: fr.wikipedia со ссылкой на Плеяду, с. 1625.",
+    "«Une vendetta» вышла в Le Gaulois 14.10.1883. В сборнике порядок Une vendetta, Coco, La Main, то есть между ними один рассказ. Подтверждено: fr.wikipedia, статьи «Une vendetta» и «Contes du jour et de la nuit».",
+    "Swinburne и Powell в Этрета, 1868 год. Мопассан хотел помочь тонувшему, но прибежал после спасения («Bien qu'accouru après le sauvetage»). Позже купил руку на распродаже мебели («J'achetai, en souvenir d'eux, la hideuse main d'écorché»). Источник: текст «L'Anglais d'Étretat» на fr.wikisource; в fr.wikipedia о Суинбёрне год 1868.",
+    "Мопассан умер 6 июля 1893 года (fr.wikipedia). Первая публикация «Руки» — 1883 год. Рассказ в общественном достоянии и в РФ, и в США.",
+    "year 1883 и original_title «La Main» верны. Жанры, mood, motif hand, cloth oxblood и ending open взяты из списков брифа.",
+    "Frontmatter парсится через node + gray-matter: 21 ключ, 84 блока текста, quote найден в тексте дословно; hook 88 знаков, note 292, quote 153."
+   ],
+   "remaining_risks": [
+    "В английской Википедии о Суинбёрне написано, что Мопассан его «спас». Note теперь следует собственному свидетельству Мопассана («прибежал после спасения»), а формулировка «бросился на помощь» верна при любой версии событий.",
+    "Год встречи в Этрета сам Мопассан называет неточно («1867 или 1868, кажется»). В энциклопедиях принят 1868 год, в note оставлен он.",
+    "Возрастная метка повышена до 16+ из соображений единообразия каталога. Если редакция хочет 12+ для школьной классики, это решение политики, а не фактическая ошибка.",
+    "Ломаная речь англичанина передана русскими ошибками («имель», «ошень», «это есть»), а английские вставки yes и no оставлены латиницей, как в оригинале. Это стилистический выбор, его стоит проверить на чтении с телефона."
+   ]
+  }
+ },
+ {
+  "slug": "odoevsky-bal",
+  "prepare": {
+   "slug": "odoevsky-bal",
+   "file": "/Users/forkss/FantPub/web/content/stories/odoevsky-bal.md",
+   "words": 806,
+   "paragraphs": 11,
+   "complete": true,
+   "source_used": "https://ru.wikisource.org/wiki/Бал_(В.Ф._Одоевский) (action=raw, текст по изд. «Русские ночи», Литпамятники, 1975). Сверено пословно с az.lib.ru/o/odoewskij_w_f/text_0020.shtml (тот же текст 1975 г.): по 806 слов с каждой стороны, расхождений нет. Начало («Победа! победа! читали вы бюллетень?..») и конец («…и никто не слыхал слов священника…») совпадают с источником. Абзацев 11 (7 в первой части и 4 во второй), как в источнике. Кроме них в файле эпиграф и разделитель «* * *», всего 13 блоков. Проверка gray-matter: 21 поле, 13 блоков.",
+   "issues": [
+    "Год: в content_args указан 1835 (дата создания по Викитеке). По комментарию к изданию 1975 г. рассказ впервые напечатан в альманахе «Новоселье» (СПб., 1833, ч. I, вместе с «Бригадиром»), поэтому в frontmatter стоит year: 1833.",
+    "Квадратные скобки в источнике — пометки издателей 1975 г.: так отмечены поздние добавления самого Одоевского, сделанные при переработке рассказа для второго издания «Русских ночей» (1862), которое так и не вышло. Это эпиграф, абзац о победном бюллетене, абзац о пляске скелетов, «капли и» и «он молился об убиенных и убийцах». Текст оставлен по последней авторской воле, сами скобки убраны.",
+    "Помету «1835» в конце текста убрал: её добавила Викитека, в az.lib.ru её нет. Номера частей «1» и «2» заменил одним разделителем «* * *».",
+    "Авторскую сноску с переводом эпиграфа в текст не включил, по правилу «без сносок». Её содержание перенёс в facts. Эпиграф оформлен как «> *Gaudium magnum nuntio vobis*», и рендер покажет его блоком epigraph.",
+    "Типографика: « - » заменил на « — », «...» на «…», убрал пробел перед многоточием («поднимала… не»). Авторские формы оставлены без изменений: шопот, волторн, Доны-Анны, взрыд, ё нигде не проставлена.",
+    "Подсказки каталога пересмотрел. Жанра «готика» нет в списке, поэтому genres: [притча, мистика]. Настроение — «тревожное». Остальное: motif candle (бесчисленные свечи на балу и одна свеча перед иконой), cloth oxblood, ending quiet, age 12+.",
+    "Цитата для карточки взята из первого абзаца (около 9% текста) и дословно совпадает с текстом файла. hook — 82 знака, note — 256. В hook и teaser автор и его произведения не названы.",
+    "Счётчик слов: в args указано 876, на деле 806. Расхождение не в полноте текста: пословная сверка с az.lib.ru совпала целиком.",
+    "ВНИМАНИЕ: /Users/forkss/FantPub/web/content/authors.json сейчас пустой ({}). content.ts бросит ошибку «Unknown author», пока туда не добавят vladimir-odoevsky. Файл не трогал: правка других файлов запрещена задачей."
+   ]
+  },
+  "edit": {
+   "slug": "odoevsky-bal",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Заново скачал источник: curl, ru.wikisource, action=raw, текст по изданию «Русские ночи» (Литпамятники, 1975). Вычистил вики-разметку, сноски, скобки и помету «1835», после чего сравнил все 12 блоков файла с источником пословно (эпиграф и 11 абзацев: 7 в первой части и 4 во второй). Совпадение полное. Расходятся только два слова, которые я сам привёл к современной орфографии. Начало («Победа! победа! читали вы бюллетень?..») и конец («…и никто не слыхал слов священника…») совпадают с источником. Отдельно проверил места из середины: «тонкий чад волновался над бесчисленными тускнеющими свечами», речь капельмейстера («…вот последняя молитва Дездемоны»), «бесконечной гаммы… умирающего Байрона», «кровавые капли и слезы» и пляску скелетов («…как ни в чем не бывало»). Всё на месте. Сверил и с az.lib.ru (text_0020, то же издание 1975 года): эпиграф и вступление о бюллетене там тоже даны в квадратных скобках. Издатели поясняют: «Добавления Одоевского выделены квадратными скобками». Значит, текст по последней авторской воле, без скобок, собран верно. В файле 13 блоков (эпиграф, 11 абзацев, разделитель «* * *»), около 810–823 слов в зависимости от метода подсчёта. Цифра 876 в args завышена.",
+   "changes": [
+    "Орфография: «шопот» исправлено на «шепот». Это дореформенное написание, до правил 1956 года; в проекте уже принято «шепоты» (premudry-piskar). Буква ё в этом тексте нигде не ставится, поэтому «шепот» тоже без ё.",
+    "Орфография: «волторн» исправлено на «валторн». Произносится одинаково, современное написание только «валторна». Авторские словоформы «Доны-Анны», «Дон-Жуан», «взрыд», «колена», «промелькали», «пред/предо» не трогал.",
+    "facts[0]: убрал «в одной подборке с „Бригадиром“». По комментарию 1975 года «Бал» напечатан на с. 443–448, а «Бригадир» на с. 501–517 той же части, то есть это не одна подборка. Новая формулировка: оба рассказа вышли в первой части «Новоселья» (1833). Добавил проверенный факт: Смирдин выпустил альманах в память о новоселье своей лавки на Невском, гостями были Пушкин, Жуковский и Крылов (ru.wikipedia, статья о Смирдине).",
+    "facts[1]: убрал хвост про бумаги «экономиста», он дословно повторял note. Остался проверенный факт: Ночь четвёртая, между «Бригадиром» и «Мстителем». Проверил по полному тексту «Русских ночей» на az.lib.ru.",
+    "facts[2]: вторую фразу, которая повторяла note, заменил на «Эпиграф появился при поздней переработке рассказа в начале 1860-х». Датировку 1860–1862 даёт текстологическое введение к изданию 1975 года. Сноска действительно авторская: в издании 1975 года она стоит в авторских квадратных скобках и без пометы «лат.», которой издатели отмечают свои переводы."
+   ],
+   "facts_checked": [
+    "Одоевский умер 27 февраля (11 марта) 1869 года в Москве (ru.wikipedia). Общественное достояние безусловно.",
+    "Первая публикация: альманах «Новоселье», СПб., 1833, ч. I, с. 443–448 (комментарий к изданию «Русские ночи», Литпамятники, 1975; есть на ru.wikisource и az.lib.ru). Поэтому year: 1833 верно, а 1835 в args — это дата создания по Викитеке без подтверждения.",
+    "«Новоселье» вышло в 1833 году у Смирдина в память о новоселье его лавки, где бывали Пушкин, Жуковский и Крылов (ru.wikipedia, статья о Смирдине).",
+    "«Бригадир» напечатан там же, в «Новоселье» 1833 года, ч. I, с. 501–517 (тот же комментарий).",
+    "«Русские ночи» вышли в 1844 году (ru.wikipedia). «Бал» стоит в Ночи четвёртой, в связке «Экономист», между «Бригадиром» и «Мстителем» (az.lib.ru, text_0020).",
+    "Квадратными скобками в издании 1975 года отмечены добавления Одоевского 1860–1862 годов для второго издания (1862), которое не вышло. В скобках стоят эпиграф, бюллетень, пляска скелетов, «капли и» и «он молился об убиенных и убийцах». Note по этому пункту верна.",
+    "Прозвище «русский Гофман» подтверждено поиском (Одоевского так называли за фантастические рассказы и музыкальные интересы). Ростопчина в письме 1858 года называла его «Hoffmann II». В ru.wikipedia записано другое прозвище, «русский Фауст».",
+    "Сноска к эпиграфу авторская: «Великую радость возвещаю вам» — формула, которой в Риме объявляют об избрании папы.",
+    "Quote дословно есть в первом абзаце, это около 9% текста, 68 знаков. Hook 82 знака, note 256, teaser 246. Ни в hook, ни в teaser нет спойлеров и указаний на автора.",
+    "Значения genres [притча, мистика], mood тревожное, motif candle, cloth oxblood, ending quiet, age 12+ взяты из списков брифа.",
+    "В frontmatter translation: original, original_lang: ru, original_title пустой (gray-matter даёт null, content.ts это обрабатывает, как в grobovshchik и kuprin-tost).",
+    "gray-matter парсит файл: 21 поле, 13 блоков.",
+    "Предупреждение подготовителя снято: в authors.json теперь 24 записи, есть vladimir-odoevsky (1803–1869)."
+   ],
+   "remaining_risks": [
+    "Замены «шопот» на «шепот» и «волторн» на «валторн» — редакторское решение: перевёл на современную орфографию, как требует бриф. В издании 1975 года оставлены старые написания. Если проект хочет сохранять их как авторский колорит, обе замены можно откатить.",
+    "Текст собран по последней авторской воле, со вставками 1860-х годов, а не по прижизненной редакции 1833/1844 годов. Это выбор издания 1975 года, и note на нём построена. Если нужна редакция 1844 года, придётся убрать эпиграф, бюллетень, пляску скелетов и две короткие вставки, а note переписать.",
+    "Age 12+ спорен: в тексте «знамена, обрызганные кровью и мозгом», «рук и ног груды», «обнаженной груди красавиц». Для классики XIX века 12+ допустимо, но можно поставить 16+."
+   ]
+  }
+ },
+ {
+  "slug": "otkrytoe-okno",
+  "prepare": {
+   "slug": "otkrytoe-okno",
+   "file": "/Users/forkss/FantPub/web/content/stories/otkrytoe-okno.md",
+   "words": 1009,
+   "complete": true,
+   "paragraphs": 29,
+   "source_used": "https://en.wikisource.org/wiki/Beasts_and_Super-Beasts/The_Open_Window (raw text, checked line by line against Project Gutenberg #269 \"Beasts and Super-Beasts\": both have 29 paragraphs and the same opening and closing lines)",
+   "issues": [
+    "Genre: I chose only [юмор], not the catalog's 'мистика'. Nothing in the story is supernatural; the ghost is the girl's invention. Labelling it 'мистика' would mislead the reader and quietly hint at the twist. Mood stays 'ироничное', ending is 'twist', motif is window, cloth is terracotta (the catalog already has many plum covers).",
+    "I could not confirm the exact first-publication date in content_args (Westminster Gazette, 18.11.1911). Wikipedia only confirms the year: there is no separate English Wikipedia article on the story, and the year comes from the listing for the anthology 'Children of Wonder'. The facts therefore say only '1911'.",
+    "The facts were checked against English Wikipedia: the 'Saki' article (pseudonym = cupbearer in FitzGerald's Rubaiyat, confirmed by his sister Ethel and Rothay Reynolds; enlisted as a private at 43; killed by a sniper near Beaumont-Hamel in November 1916) and the list of Malcolm Arnold's works (one-act opera 'The Open Window', Op. 56, 1956, libretto by Sidney Gilliat).",
+    "I left the catalog's claim about British and American school anthologies out of the note and facts because I could not verify it.",
+    "The hook and teaser name neither the author nor the characters (no Framton Nuttel, no Vera). The note names Saki/Munro and plays on the name Vera after the finale.",
+    "The quote is verbatim from paragraph 12, at 27% of the text (first third): 'Вы, верно, удивляетесь, отчего мы октябрьским днём держим это окно нараспашку'. Hook is 93 characters, note 282.",
+    "The gray-matter check passes: 21 frontmatter keys, 29 content blocks, matching the source paragraph count. No other project files were touched."
+   ]
+  },
+  "edit": {
+   "slug": "otkrytoe-okno",
+   "verdict": "fixed",
+   "completeness": "The translation is complete. I pulled the original again with curl from Wikisource (raw) and from Project Gutenberg #269. Both have 29 paragraphs, and the translation has 29 content blocks. The opening (\"My aunt will be down presently…\") and the ending (\"Romance at short notice was her speciality.\") match. I checked 5 places in the middle and nothing is missing: paragraph 9 (married or widowed), the end of 14 (the open window), 19 (snipe and ducks), 21 (the yawn) and 25 (the cyclist in the hedge). For accuracy I compared 8 passages with the original: paragraphs 1, 2, 3, 14, 15, 20, 23–24 and 29. No meaning errors. I fixed loose wording, calques and lost intonation, listed under changes. Word count is 1009. File: /Users/forkss/FantPub/web/content/stories/otkrytoe-okno.md",
+   "changes": [
+    "P1: «А пока вам придётся как-нибудь потерпеть меня» → «А пока постарайтесь как-нибудь меня потерпеть» (the original is 'you must try and put up with me')",
+    "P2: kept the duly/unduly play: «нечто подобающее, что должным образом польстило бы племяннице… и не умалило бы сверх должного тётю». «эти церемонные визиты… одному за другим, сильно помогут» → «череда визитов вежливости к совершенно незнакомым людям так уж поможет» ('a succession of'; the doubtful tone is kept)",
+    "P3: «сказала ему сестра» → «говорила ему сестра» (the original uses the pluperfect 'had said')",
+    "P5: «молчаливого общения уже достаточно» → «безмолвного общения уже довольно» ('silent communion')",
+    "P6: word order «года четыре тому назад гостила здесь у приходского священника» (removed the awkward run of comma-separated asides)",
+    "P14: «Ровно три года назад, день в день… вышли через это окно» → «Вот через это окно три года назад, день в день… ушли на охоту». The original puts 'Out through that window' first, and 'ровно…день в день' said the same thing twice",
+    "P15: «Фрэмтон испытал облегчение» → «У Фрэмтона отлегло от сердца», with the clauses reordered",
+    "P18: «а они всегда входят здесь» → «а входят они всегда здесь»",
+    "P20: «бурные физические упражнения» (odd collocation) → «усиленные физические упражнения»",
+    "P23: 'shivered' «вздрогнул» → «поёжился»; 'swung round in his seat' «крутанулся» (too colloquial) → «резко развернулся на стуле»",
+    "teaser: «В первом же доме» was wrong. The original says this is one of a 'succession' of visits ('more than ever'), so it is now «В одном из домов». Also «к здешним жителям» → «к местным жителям», and 'окно в сад' → 'окно на лужайку' (lawn)",
+    "hook: 'окно в сад' → 'окно на лужайку' (98 characters)",
+    "note: replaced the unverifiable «хрестоматийным примером финала в одну строку» with a verifiable «один из самых перепечатываемых его рассказов» (Wikipedia: reprinted frequently in anthologies; Britannica: frequently anthologized). «Вере поверили все» was inaccurate, since the aunt never heard the story → «Вере поверил не только Фрэмтон — вероятно, и вы» (287 characters)"
+   ],
+   "facts_checked": [
+    "Saki died 14.11.1916 near Beaumont-Hamel, killed by a German sniper (en.wikipedia Saki, infobox and Military service section). Rights: 1916 + 70 = in the public domain in Russia since 1987. He died in the First World War, so the WWII extension does not apply.",
+    "First publication: the author's note in the 1914 edition (Gutenberg #269, from the John Lane text) says 'The Open Window… originally appeared in the Westminster Gazette'. The year 1911 is from en.wikipedia 'Children of Wonder' ('Westminster Gazette 1911'). The exact date 18.11.1911 appears only in secondary sources (supersummary, apersonalanthology), so the fact gives only the year. Published before 1931, so also public domain in the US.",
+    "Collection Beasts and Super-Beasts: John Lane, 1914 (Gutenberg #269 title page, MCMXIV).",
+    "Malcolm Arnold, 'The Open Window', Op. 56, 1956, one act, libretto by Sidney Gilliat after Saki (en.wikipedia List of compositions by Malcolm Arnold).",
+    "Pseudonym: Persian sāqī = cupbearer, from FitzGerald's translation of the Rubáiyát, confirmed by Rothay Reynolds and Ethel Munro (en.wikipedia Saki, Pen name).",
+    "At 43 he refused a commission and enlisted as an ordinary trooper in the 2nd King Edward's Horse (en.wikipedia Saki).",
+    "original_title 'The Open Window' and year 1911 are correct. The quote appears word for word in paragraph 12, at 26.7% of the text (first third), 77 characters.",
+    "genres [юмор], mood ироничное, motif window, cloth terracotta and ending twist are all from the brief's lists. The hook and teaser name neither the author nor the twist.",
+    "gray-matter: the frontmatter parses (21 keys, year is a number, 3 facts), and the body has 29 blocks."
+   ],
+   "remaining_risks": [
+    "Britannica says the story was 'first published in the collection Beasts and Super-Beasts in 1914'. It contradicts the author's note only on wording, since it means book publication: the newspaper printing in the Westminster Gazette is confirmed by Saki himself. The year 1911 rests on Wikipedia and secondary sources, and I found no scan of the newspaper.",
+    "Genre is only [юмор], without the catalogue's 'мистика'. This is deliberate: it avoids misleading the reader. Even so, the 'юмор' label slightly prepares the reader for a non-mystical resolution.",
+    "The song title is translated as «Берти, что ты скачешь?». 'Bertie, why do you bound?' is a real music-hall song with no established Russian title."
+   ]
+  }
+ },
+ {
+  "slug": "pered-zakonom",
+  "prepare": {
+   "slug": "pered-zakonom",
+   "file": "/Users/forkss/FantPub/web/content/stories/pered-zakonom.md",
+   "words": 475,
+   "complete": true,
+   "paragraphs": 1,
+   "source_used": "https://de.wikisource.org/wiki/Vor_dem_Gesetz. Это первая публикация в Selbstwehr от 7.09.1915. Текст собран из трёх страниц-включений Seite:De_Kafka_Vor_dem_Gesetz_2a/2b/3.jpg, у всех статус вычитки 4 («fertig»). Перевод новый, сделан FantPub с немецкого, по одному предложению; существующие русские переводы не использовались.",
+   "issues": [
+    "Абзацы: в оригинале (Selbstwehr 1915, как и в «Сельском враче») весь текст — один сплошной абзац, прямая речь идёт внутри него. Я сохранил эту форму: она часть замысла притчи. Реплики оформлены «ёлочками» с тире внутри абзаца, а не с новой строки. Абзацев 1, как в источнике. Проверка gray-matter: 21 ключ, 1 абзац.",
+    "Полнота: начало («Перед законом стоит привратник») и конец («Сейчас я пойду и закрою его») совпадают с источником. Переведены все 28 предложений. В немецком около 586 слов (с небольшим шумом от разметки), в русском 475. Около 570 слов в каталоге — это немецкий текст.",
+    "Подсказки каталога уточнены: жанр только «притча» («неожиданный финал» указан в ending: twist), настроение — «тревожное» (в каталоге было «тревожное, задумчивое»). Мотив door, ткань olive.",
+    "Цитата для quote дословно взята из речи привратника. Она начинается с 543-го знака из 3040, то есть примерно на 18% текста. Автор, «Процесс» и Йозеф К. не упоминаются ни в hook, ни в teaser. Длины: hook 74 знака, note 229.",
+    "Факты: дата и издание (Selbstwehr, номер к еврейскому Новому году, Прага) взяты из метаданных Wikisource. Год «Сельского врача» 1919 соответствует content_args и титулу книги, хотя фактически сборник вышел весной 1920-го. Эссе Деррида «Préjugés: devant la loi» опубликовано в 1985 году. Другие файлы проекта не изменялись."
+   ]
+  },
+  "edit": {
+   "slug": "pered-zakonom",
+   "verdict": "fixed",
+   "completeness": "Перевод полный. Я заново скачал оригинал через curl: страницу de.wikisource Vor_dem_Gesetz и три включённые страницы Seite:De_Kafka_Vor_dem_Gesetz_2a, 2b и 3, у всех статус вычитки 4. Начало («Vor dem Gesetz steht ein Türhüter» / «Перед законом стоит привратник») и конец («Ich gehe jetzt und schließe ihn» / «Сейчас я пойду и закрою его») совпадают. Абзац один и в оригинале, и в переводе. Пять мест из середины на месте: табурет и «дни и годы», подкуп со словами «чтобы ты не думал, будто что-то упустил», блохи в меховом воротнике, сияние из двери закона, разница в росте. Пропусков и добавлений нет. В переводе 483 слова, 3058 знаков. Gray-matter читает frontmatter без ошибок: 21 ключ, 1 абзац.",
+   "changes": [
+    "Перевод: «И я всего лишь самый низший из привратников» исправлено на «И я всего лишь низший из привратников». «Самый низший» — плеоназм. Исправлено и в тексте, и в quote.",
+    "Перевод: «А дальше, от зала к залу, стоят привратники» исправлено на «А дальше, зал за залом, стоят привратники». «От зала к залу» — калька с Von Saal zu Saal.",
+    "Перевод: «Уже вида третьего не выношу даже я» исправлено на «Один только вид третьего не могу вынести даже я». Так точнее передано Schon den Anblick … kann nicht einmal ich mehr ertragen, и фраза звучит естественно.",
+    "Стиль: «но вопросы эти равнодушные, такие задают важные господа» исправлено на «но это равнодушные вопросы, какие задают важные господа».",
+    "Перевод: «Человек, который многим запасся в дорогу» исправлено на «Человек, который основательно снарядился в дорогу». Это ближе к sich … mit vielem ausgerüstet hat.",
+    "Перевод: «кричит во всё горло» исправлено на «кричит ему во всё горло». Сохранено обращение к человеку из brüllt er ihn an.",
+    "note переписан. Прежний вариант («напечатал в 1915 году, а потом вставил в роман „Процесс“») переворачивал хронологию: притча написана в конце 1914 года как часть рукописи «Процесса» и уже потом напечатана отдельно. Новая версия: это единственный фрагмент «Процесса», который Кафка опубликовал при жизни; притчу рассказывает тюремный капеллан, они спорят, обманул ли привратник человека. Длина 236 знаков.",
+    "facts[1] переписан. Год сборника «Сельский врач» (1919) убран: источники расходятся. В англоязычной Википедии стоит 1919. В немецкой сказано, что книга вышла в конце 1919 года, а на титуле стоит 1920. Отчёт подготовителя утверждает обратное. Новый текст: притча написана в конце 1914 года для «Процесса», при жизни Кафки вышла ещё раз в «Сельском враче», а роман вышел только в 1925 году, после смерти автора."
+   ],
+   "facts_checked": [
+    "Первая публикация: Selbstwehr, Jg. 9, Nr. 34, Neujahrs-Festnummer, Прага, 7 сентября 1915. Источники: метаданные de.wikisource и статья, найденная поиском. В библиографии немецкой Википедии стоит «7. November», но это противоречит пометке о номере к Новому году: Рош ха-Шана в 1915 году приходился на 9 сентября. Факт 1 оставлен.",
+    "Притча написана осенью или в декабре 1914 года как часть главы «В соборе» романа «Процесс». Источники: ENTSTEHUNGSJAHR «Herbst 1914» в de.wikisource, англоязычная Википедия (13 декабря 1914 года), немецкая Википедия («единственный текст из „Процесса“, опубликованный самим Кафкой»).",
+    "В романе притчу рассказывает Йозефу К. священник, который сам называет себя тюремным капелланом (Gefängniskaplan). Они спорят, обманул ли привратник человека. Подтверждено немецкой Википедией.",
+    "«Процесс» вышел в 1925 году, после смерти Кафки (3 июня 1924 года). Подтверждено.",
+    "Эссе Деррида «Préjugés. Devant la loi» опубликовано в сборнике La faculté de juger (Minuit, 1985) по материалам коллоквиума в Серизи. Подтверждено.",
+    "Год выхода сборника «Ein Landarzt» по источникам расходится (1919 или 1920), поэтому из facts он убран.",
+    "hook (74 знака) и teaser (229 знаков): спойлеров нет, автора, «Процесс» и Йозефа К. не упоминают.",
+    "quote дословно есть в тексте и начинается с 543-го знака, это 17,8% текста, то есть первая треть. Длина 65 знаков.",
+    "genres [притча], mood тревожное, motif door, cloth olive, ending twist, age 12+ — все значения из списков брифа. original_title Vor dem Gesetz, year 1915, translation fantpub — верно.",
+    "Права: Кафка умер 3 июня 1924 года, это больше 70 лет назад. Впервые опубликовано в 1915 году, раньше 1931-го. Перевод новый, сделан FantPub. Проблем с правами нет."
+   ],
+   "remaining_risks": [
+    "По брифу реплики идут с новой строки через тире. Здесь, как и в оригинале, весь текст — один сплошной абзац, а прямая речь оформлена «ёлочками» внутри него. Я оставил так: правило «абзацы как в оригинале» и сама форма притчи важнее. Если сайт требует единого оформления диалогов, решение за оркестратором.",
+    "Один абзац в 3000 знаков тяжело читать на телефоне. Это особенность оригинала, а не ошибка.",
+    "Подготовитель не открывал существующие русские переводы, но проверить это я не могу. Сверка с немецким текстом показала самостоятельные формулировки, при этом начальная и финальная фразы совпадают с устоявшимися вариантами — такую короткую фразу иначе почти не перевести."
+   ]
+  }
+ },
+ {
+  "slug": "peschanaya-uchitelnitsa",
+  "prepare": {
+   "slug": "peschanaya-uchitelnitsa",
+   "file": "/Users/forkss/FantPub/web/content/stories/peschanaya-uchitelnitsa.md",
+   "words": 1800,
+   "paragraphs": 73,
+   "complete": true,
+   "source_used": "https://ilibrary.ru/text/1195/p.1/index.html (pages p.1–p.5 of 5; the text follows the edition А. П. Платонов. Избранные произведения, М.: Мысль, 1983). The story is not on ru.wikisource: an opensearch query returned nothing.",
+   "issues": [
+    "The text is complete. The source has 5 numbered parts with 9+10+15+9+30 = 73 paragraphs, and the file has the same 73 paragraphs. The parts are separated by 4 '* * *' lines instead of the numbers 1–5, so gray-matter counts 77 blocks and 21 frontmatter keys. The opening ('Двадцатилетняя Мария Нарышкина…') and the ending ('…Желаю вам всякого благополучия.') match the source.",
+    "The only typographic changes follow the project's other files: '...' became '…', while '?..' and '!..' were kept. The letter е was left as in the source (no ё added), and the stress mark in 'Кочуи́' was kept. The author's text was not edited.",
+    "Rights: Platonov died 5 January 1951 and took part in the Great Patriotic War, which adds 4 years to the term. That makes the story public domain in Russia from 1 January 2026. It was published in 1927, so it is also public domain in the US.",
+    "source_label is 'Интернет-библиотека Алексея Комарова', because the source is not Wikisource.",
+    "I checked the catalogue hints and kept genres [реализм, притча]. For mood I chose 'светлое' (the hint was 'суровое, светлое'). Other fields: motif tree, cloth olive, ending quiet, age 12+.",
+    "The facts were checked against ru.wikipedia (the articles on Platonov and on the story, including the contents of the 1927 collection and the figures 763 ponds / 315 wells) and against Искусство кино (kinoart.ru, 2022), which describes «Айна» (Тихонов, 1931) as the only adaptation made in Platonov's lifetime and says it is partly lost. Wikipedia's infobox gives the film as 1930, which disagrees with the text; I used 1931. Kinoart dates the writing of the story to 1926; the year field is 1927, the first publication.",
+    "The note uses the prototype story (Мария Кашинцева, 1921, 'бежать от любви', the 60 km on foot), which Wikipedia attributes to Варламов, Новый мир 2010 №7. The melioration angle from the catalogue hint is not in the note, because the authors.json bio already covers it; it went into a fact with figures instead.",
+    "The quote 'Пустыня была ее родиной, а география — поэзией.' is verbatim and sits at about 7% of the text.",
+    "Infrastructure warning: other agents in this workflow share the scratchpad and overwrote my files with the same names (body.md, raw.json, p*.html; a text by Poe ended up in them). I re-downloaded everything into a separate folder, scratchpad/issue23-platonov/, and built the final file from there. Other agents should use unique subfolders too.",
+    "I wrote only peschanaya-uchitelnitsa.md and changed no other project files."
+   ]
+  },
+  "edit": {
+   "slug": "peschanaya-uchitelnitsa",
+   "verdict": "fixed",
+   "completeness": "The text is complete. I downloaded pages p.1–p.5 of the source again (https://ilibrary.ru/text/1195/…, the 1983 Мысль edition, cp1251) and extracted 73 paragraphs plus 5 section headings. I compared all 73 against the file one by one, not just 5 sample passages. After treating '...' as '…', every paragraph matches exactly, 0 differences. The 4 '* * *' lines sit exactly where the source has headings 2–5 (before paragraphs 10, 20, 35 and 44). The opening ('Двадцатилетняя Мария Нарышкина…') and the ending ('…Желаю вам всякого благополучия.') match the source. The body has no junk: no page numbers, footnotes or markup. It has 1799 words, and the spelling is modern (е as in the source; 'лёссовой' and the stress mark in 'Кочуи́' are both in the source too). I did not touch the author's text.",
+   "changes": [
+    "note: removed the unverifiable quote 'бежать от любви'. Варламов (Новый мир 2010 №7) does not have it; it appears only in a Wikipedia paraphrase. I replaced it with Варламов's actual wording: Кашинцева 'сама напросилась' to go to the village, «испугавшись своего чувства к Платонову».",
+    "note: '60 километров' became '60 вёрст'. Варламов says Верхнее Волошино 'отстоявшее от Воронежа на 60 верст'; the walk is confirmed by his phrase 'пеших переходов из Воронежа в Волошино'. I also added 'летом 1921 года' (his dating). The new note is 278 characters, within the 300 limit.",
+    "teaser: fixed the grammar of 'а он наметает снова' (it reads as if the sand did the sweeping) to the idiomatic impersonal 'а его наметает снова'."
+   ],
+   "facts_checked": [
+    "Платонов died 5 January 1951 (ru.wikipedia). He was a war correspondent for «Красная звезда» with the rank of captain, so he counts as a participant in the Great Patriotic War: 1951+70+4 means public domain in Russia from 1 January 2026, and today is 2026-10-07. First publication was 1927, before 1931, so the story is public domain in the US too. Rights are fine.",
+    "year 1927 / first publication in «Епифанские шлюзы» (М.: Молодая гвардия, 1927): the Wikipedia infobox gives 'Публикация = 1927'. The 1927 collection's contents in Wikipedia's bibliography include «Епифанские шлюзы», «Город Градов» and «Песчаная учительница». This matches the first_publication_note and the IMLI edition (vol. 1, 'Рассказы 1918–1927'). Kinoart dates the writing to 1926, which is fine because year means first publication. Fact 1 is kept.",
+    "Fact 2 (1922, the губернское земельное управление; 763 ponds, 315 shaft wells, 16 tube wells, 3 rural power stations 'по его инициативе') matches ru.wikipedia word for word ('три сельские электрические силовые установки'). Kept.",
+    "Fact 3 («Айна», Николай Тихонов, 1931; the only adaptation made in Platonov's lifetime; action moved to Туркмения; not preserved in full) is confirmed by Искусство кино (Апостолов, 30.12.2022). Wikipedia's 1930 date contradicts this source, so 1931 stays. Kept.",
+    "The note's prototype claim (Кашинцева, 1921, Верхнее Волошино, campaign against illiteracy, Platonov's walks there, impressions that went into «Песчаная учительница») is confirmed by Варламов, Новый мир 2010 №7 (read in the web.archive copy). The quote «бежать от любви» is not in the source, so I replaced it.",
+    "quote 'Пустыня была ее родиной, а география — поэзией.' appears verbatim at 6.9% of the text and is 47 characters long.",
+    "hook is 75 characters with no spoiler and no clue to the author. teaser has 3 sentences with no clue to the author. genres [реализм, притча], mood 'светлое', motif tree, cloth olive and ending quiet are all from the brief's lists. original_title is empty (null), which matches the 13 other Russian files. translation is original and original_lang is ru.",
+    "gray-matter parses the file: 21 keys, issue=23, year=1927, 77 body blocks = 73 paragraphs + 4 '* * *' lines."
+   ],
+   "remaining_risks": [
+    "The source is the 1983 edition (Мысль), not the 1927 first edition. In paragraph 34 the line '— Агроном жил где-то за полтораста верст…' is set as dialogue after 'Мария Никифоровна рассмеялась:'. That matches the source, but other editions may print it as plain narration. I left it as the source has it.",
+    "I found no online commentary with an explicit 'Впервые: …' for the story. The 1927 first publication in «Епифанские шлюзы» rests on Wikipedia (the infobox and the collection's contents) and the IMLI arrangement, which agree with each other.",
+    "The source is ilibrary.ru, not Wikisource; the story is not on ru.wikisource. source_label is 'Интернет-библиотека Алексея Комарова'."
+   ]
+  }
+ },
+ {
+  "slug": "peshchera",
+  "prepare": {
+   "slug": "peshchera",
+   "file": "/Users/forkss/FantPub/web/content/stories/peshchera.md",
+   "words": 2666,
+   "complete": true,
+   "paragraphs": 94,
+   "source_used": "https://ru.wikisource.org/wiki/Пещера_%28Замятин%29 (raw wikitext). Cross-checked against az.lib.ru/z/zamjatin_e_i/text_0110.shtml, which is the same digitization the Wikisource page was imported from. Public domain: Zamyatin died in 1937, and the story was first published in 1922.",
+   "issues": [
+    "Full text: 94 paragraphs in the source, 94 in the file, start and end match. I dropped the trailing date line «1921». Wikisource dates the story 1921, but year is set to 1922, the first publication («Записки мечтателей», 1922, № 5); it was written in 1920.",
+    "Typography only, no words changed: replaced nbsp, thin and figure spaces with ordinary spaces. Changed two stray hyphens used as dashes to em dashes: «дай мне -…» → «дай мне —…» and «огня -на корточках» → «огня — на корточках».",
+    "Left as in the source because there was no second independent edition to check against, but these look like digitization typos: «в центре всей это вселенной» (probably «этой») and «причесалась постарому» (probably «по-старому»). Both also appear in az.lib.ru, which is the same chain. Worth checking against a printed edition.",
+    "The catalog's genre hint «антиутопия» is not in the allowed list and does not fit: this is realism about Petrograd framed as an ice-age allegory. I set genres to [реализм, притча]. For mood I chose «печальное» instead of «холодное, мрачное», plus age 16+ (suicide theme), ending tragic, motif flame (the stove as «чугунный бог»), cloth slate.",
+    "Fact sources: first publication from fantlab (search result); the film «Дом в сугробах» (1928, Ermler, screenplay reworked by B. Leonidov, made for Sovkino) from en.wikipedia and the commentary on az.lib.ru; the icebreakers in England, 1916–1917 («Святой Александр Невский», later «Ленин») from several search sources. I could not confirm the English translation in The Slavonic Review (1923), so it is not included.",
+    "gray-matter check: 21 frontmatter keys, the content splits into 94 blocks. original_title is empty and parses as null, the same as other Russian-original files. The word count of 2666 is higher than the 2473 in args, probably because of a different counting method; the text is not padded."
+   ]
+  },
+  "edit": {
+   "slug": "peshchera",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал raw-вики-текст с ru.wikisource (`Пещера_(Замятин)`) через curl и сравнил с файлом по всем абзацам, а не только по пяти местам из середины: в источнике 94 абзаца, в файле 94. Начало («Ледники, мамонты, пустыни…») и конец («…поступь какого-то мамонтейшего мамонта.») совпадают. После нормализации пробелов (nbsp, тонкие и цифровые пробелы) все абзацы совпадают дословно, кроме двух исправленных подготовителем тире и моих точечных правок ниже. В тексте нет вики-разметки, категорий, номеров страниц и сносок; строку даты «1921» подготовитель убрал. Для сверки я нашёл два независимых печатных издания (OCR на archive.org): Собрание сочинений в 5 томах (М.: Русская книга / Республика / Дмитрий Сечин), т. 1 «Уездное», текст по изданию «Федерации» 1929 года, и Сочинения, т. 1 (Мюнхен: Neimanis, 1970). Пословный дифф с обоими. После правок в файле 2470 слов (в args 2473), gray-matter разбирает 21 ключ и 94 блока.",
+   "changes": [
+    "Опечатка оцифровки, подтверждена обоими печатными изданиями: «тукался в погодок, в стекла, в стены» → «тукался в потолок, в стекла, в стены».",
+    "«в центре всей это вселенной» → «всей этой вселенной», подтверждено обоими изданиями.",
+    "«на какой-то обледенелей ступеньке» → «обледенелой», подтверждено обоими изданиями.",
+    "«причесалась постарому» → «причесалась по-старому»: подтверждено обоими изданиями, так же и по современной орфографии.",
+    "«схватились насмерть два Мартин Мартиныча» → «два Мартина Мартиныча» (так в обоих изданиях и в цитате из издания 1989 года).",
+    "«Но ведь ты же знаешь. Маша: там…» → «знаешь, Маша: там…»: пунктуация при обращении, подтверждено обоими изданиями.",
+    "Названия церковных праздников написаны с прописной по современной орфографии: «На покров… на казанскую» → «На Покров… на Казанскую» (так и в обоих печатных изданиях).",
+    "note: «в те же месяцы, что и роман «Мы»» → «в тот же год, когда закончил роман «Мы»». Источники подтверждают только, что оба текста написаны в 1920 году; месяцы не подтверждаются.",
+    "facts[0]: «в альманахе» → «в петроградском журнале «Записки мечтателей»». Так издание называют комментарий Собрания сочинений 2003 года и Энциклопедия Санкт-Петербурга (encspb.ru).",
+    "facts[1]: убрал непроверенное «В 1927 году… сценарий для «Совкино»». Новая формулировка: Замятин сам написал по «Пещере» киносценарий, Борис Леонидов полностью его переписал, в 1928 году на «Совкино» вышел фильм Эрмлера «Дом в сугробах».",
+    "facts[2]: убрал ошибочное «До того как стать писателем» (Замятин печатался с 1908 года, «Уездное» вышло в 1913-м, то есть до Англии). «Наблюдал за постройкой» заменил на «участвовал в постройке», как в источнике."
+   ],
+   "facts_checked": [
+    "Год смерти автора: Замятин умер 10 марта 1937 года в Париже (статья в БСЭ на booksite.ru, ru.wikipedia). Репрессирован не был, в 1931 году выехал за границу легально, поэтому особое правило о сроке от реабилитации не применяется. Автор умер больше 70 лет назад, рассказ в общественном достоянии в РФ.",
+    "Первая публикация: «Записки Мечтателей». 1922. № 5. С. 82–89. Источники: комментарий к Собранию сочинений в 5 томах (2003), т. 1, с. 602, и fantlab (api, work 20083). Значит, year: 1922 верен, и для США публикация раньше 1931 года, как требует бриф. Вступительная статья того же тома уточняет: январь 1922 года.",
+    "Год написания 1920: дата под текстом в обоих печатных изданиях, а также ru.wikipedia. Wikisource и fantlab ставят 1921, но это не год первой публикации.",
+    "Фильм «Дом в сугробах»: реж. Фридрих Эрмлер, сценарий Бориса Леонидова по рассказу Замятина «Пещера», студия «Совкино» (Ленинград), премьера 23 марта 1928 года. Финал — герой играет на клубном концерте для красноармейцев (en/ru.wikipedia). Сценарий Замятина, который Леонидов полностью переписал, подтверждает статья в philology-journal.ru (phil20172202).",
+    "Ледоколы: в 1916–1917 годах Замятин полтора года работал в Англии (Глазго, Ньюкасл, Сандерленд) на постройке ледоколов, среди них «Святой Александр Невский», после революции «Ленин». Источник: Собрание сочинений, т. 1, вступительная статья; ru.wikipedia.",
+    "«Мы» написан в 1920 году (ru.wikipedia: «Мы (роман)», «Замятин»).",
+    "Цитата «Между скал, где века назад был Петербург, ночами бродил серохоботый мамонт.» есть в тексте дословно, на 3% длины текста, 75 знаков.",
+    "hook — 82 знака, note — 294, teaser — 295; спойлеров и упоминаний автора в hook/teaser нет. genres [реализм, притча], mood «печальное», motif flame, cloth slate, ending tragic, age 16+ — всё из списков брифа.",
+    "original_title пусто и разбирается как null, original_lang: ru, translation: original. Фронтматтер разбирается через node + gray-matter: 21 ключ."
+   ],
+   "remaining_risks": [
+    "Текст Wikisource (цепочка az.lib.ru / lib.ru) — другая редакция, чем у изданий 1929 года (воспроизведено в Собрании сочинений 2003 года) и мюнхенского 1970-го. Там десятки авторских разночтений: «может быть, серохоботый», «чтоб», «каменно-вековые», «мимо плывет последняя синяя льдина», «Тихо. Равнодушно пожирая…», «Теперь только прихлопнуть», «стукнулся», «громадная пещера», «пронесся» и т. п. По заданию я не переносил их в текст и не сводил редакции, исправил только явные опечатки оцифровки. Какое печатное издание лежит в основе текста Wikisource, неизвестно.",
+    "Оставил «взял Мартин Мартиныча под руку»: так в мюнхенском издании 1970 года, то есть это разговорная форма самого автора. В издании 2003 года нормализовано до «Мартина».",
+    "Подготовитель ссылался на «комментарий на az.lib.ru» как на источник о фильме. Это неверно: на странице az.lib.ru комментария нет. Факт о фильме я заново проверил по Википедии и научной статье.",
+    "«ч.и.к.» оставлено без пробелов, как в источнике; в печатных изданиях «ч. и. к.». Это вопрос типографики."
+   ]
+  }
+ },
+ {
+  "slug": "premudry-piskar",
+  "prepare": {
+   "slug": "premudry-piskar",
+   "file": "/Users/forkss/FantPub/web/content/stories/premudry-piskar.md",
+   "words": 1909,
+   "complete": true,
+   "paragraphs": 29,
+   "source_used": "ru.wikisource.org, «Премудрый пискарь (Салтыков-Щедрин)», текст получен через action=raw. Источник там: собрание сочинений 1965–1977, т. 16, кн. 1, с. 30–34, лицензия PD-old-70 (автор умер в 1889 г.). Для сверки текст пословно сравнён с rvb.ru (то же собрание сочинений). В обоих источниках по 1909 слов, слова совпадают полностью, различаются только «…» и «...». У rvb.ru 32 абзаца, у Wikisource 29: на rvb.ru три абзаца разрезаны переносами страниц. В итоговом файле 29 абзацев, gray-matter даёт 21 ключ и 29 абзацев.",
+   "issues": [
+    "Знаки ударения в «невода́», «ве́рши», «норота́», «что́» оставлены, как в Wikisource. В rvb.ru есть ещё грависы («что̀», «хайло̀», «таково̀»), но в Wikisource их нет, поэтому я их не добавлял. Авторские написания «пискарь» и «аридовы веки» не тронуты. Вики-курсив ''премудрого'' переведён в *премудрого*.",
+    "Подсказки каталога пересмотрены. Жанры выбраны [притча, юмор]: сатиру отнёс к юмору, «сказку» не ставил, потому что это не детская сказка. Настроение — «ироничное» вместо «горько-ироничного», которого нет в списке. Финал — punchline: последняя фраза язвительная, на курсивном «премудрого». motif: waves, cloth: olive.",
+    "Заметку о правах «в России не пропускала цензура» в факты не перенёс: в России сказка вышла уже в январе 1884 года, в «Отечественных записках». В фактах указаны только проверяемые даты и места публикации, закрытие журнала в апреле 1884 года и разница «пискарь»/«пескарь» (мультфильм «Союзмультфильма» 1979 года). Мысль о реакции после убийства Александра II в note — это трактовка комментаторов, а не проверяемый факт.",
+    "Цитата — слова отца о «уде» из 4-го абзаца, дословно, примерно на 12% текста. Фраза «Был он пискарь просвещенный…» лежит на 32,8%, почти на границе первой трети, поэтому её не взял. В note дословно приведён девиз героя «Надо так прожить, чтоб никто не заметил». Длины: hook 94, teaser 277, note 296, quote 130 знаков. В hook и teaser нет ни автора, ни его книг и персонажей."
+   ]
+  },
+  "edit": {
+   "slug": "premudry-piskar",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал ru.wikisource через curl (action=raw) и сравнил с файлом посимвольно по всем 29 абзацам: начало, конец и середина совпадают полностью. Единственное расхождение: в источнике перед тире стоит неразрывный пробел, в файле обычный; так же сделано в остальных рассказах. Затем пословно сверил с rvb.ru (СС в 20 т., т. 16, кн. 1). Там лишние только номера страниц 30–33 и знаки ударения, а 1909 слов текста совпадают. Вики-разметки, сносок, колонтитулов и прямых кавычек в тексте нет. Авторский текст не менял: орфография современная, кавычки «», многоточие «…». Прямой речи с новой строки в сказке нет, все реплики внутри абзацев. Абзацев 29, слов 1909. Gray-matter парсит frontmatter: 21 ключ.",
+   "changes": [
+    "Teaser: убрал последнюю фразу «Сказка для взрослых о том, как прожить больше ста лет и ни разу не попасться». Она частично спойлерит: финал оставляет открытым, не съела ли пискаря щука. Кроме того, формула «сказка для взрослых» перекликается со щедринской рубрикой «для детей изрядного возраста». Вместо неё: «Притча о самой осторожной жизни на свете.» Длина teaser — 241 знак.",
+    "Note: фразу «после убийства Александра II многие „умеренно-либеральные“ люди предпочли нору» заменил на формулировку из академического комментария (Баскаков, СС в 20 т., т. 16, кн. 1, с. 450–452): «сказка метила в интеллигентов, что после разгрома „Народной воли“ предпочли нору». Длина note теперь 298 знаков, раньше было 307 — больше лимита в 300.",
+    "Факт 1 переписан по академическому комментарию. Сказку набрали для февральской книжки «Отечественных записок» 1883 года, но Салтыков сам снял её из опасения перед цензурой; впервые она вышла в сентябре 1883 года в женевском «Общем деле», без подписи, вместе с «Самоотверженным зайцем» и «Бедным волком». Так что заметка из args о цензуре в основе верна. Подготовитель отбросил её зря."
+   ],
+   "facts_checked": [
+    "Время написания — декабрь 1882 — первая половина января 1883 года: подтверждено комментарием на rvb.ru, примечанием Wikisource и ru.wikipedia.",
+    "Сказку набрали для февральской книжки ОЗ 1883 года, но Салтыков её снял из-за цензурных опасений: подтверждено комментарием на rvb.ru (02comm/0486.htm).",
+    "Первая публикация — «Общее дело», Женева, сентябрь 1883, № 55, с. 2–4, без подписи, вместе с «Самоотверженным зайцем» и «Бедным волком»: подтверждено rvb.ru, Wikisource и ru.wikipedia.",
+    "В России впервые — «Отечественные записки», 1884, № 1 (вышел 16 января), с. 275–280, подпись «Н. Щедрин»: подтверждено rvb.ru.",
+    "«Отечественные записки» закрыты в апреле 1884 года, Салтыков был редактором журнала: подтверждено ru.wikipedia и поиском.",
+    "Написание «пискарь» через «и» сохраняется в академических изданиях: подтверждено ru.wikipedia (статья «Премудрый пискарь»).",
+    "Мультфильм «Премудрый пескарь» — «Союзмультфильм», 1979, режиссёр Валентин Караваев: подтверждено ru.wikipedia.",
+    "Выражение «премудрый пескарь» стало нарицательным для трусливого конформиста: подтверждено ru.wikipedia со ссылкой на словарь крылатых слов Серова (2003).",
+    "Салтыков-Щедрин умер 28 апреля (10 мая) 1889 года: подтверждено ru.wikipedia и поиском.",
+    "Quote — дословно из 4-го абзаца, позиция 11,8% текста, 130 знаков. Hook — 94 знака, без спойлеров и без указаний на автора.",
+    "Метаданные: genres [притча, юмор], mood «ироничное», motif waves, cloth olive, ending punchline — всё из списков брифа. year 1883 верен. original_title пустой, как в других русских рассказах. original_lang ru, translation original."
+   ],
+   "remaining_risks": [
+    "Знаки ударения (невода́, ве́рши, норота́, что́) оставлены, как в Wikisource и академическом издании. Убедитесь, что шрифт приложения корректно показывает комбинирующий акут U+0301.",
+    "Неразрывные пробелы перед тире из источника заменены обычными, как в большинстве рассказов. Если вёрстка требует NBSP, расставьте их глобально.",
+    "Слова в note о «разгроме „Народной воли“» — трактовка академических комментаторов, а не факт о тексте. Для note это допустимо.",
+    "Жанры: можно было поставить и «сказка» — это цикл «Сказки» Щедрина. Выбор «притча, юмор» соответствует подсказкам в args и брифу."
+   ]
+  }
+ },
+ {
+  "slug": "robinzony",
+  "prepare": {
+   "slug": "robinzony",
+   "file": "/Users/forkss/FantPub/web/content/stories/robinzony.md",
+   "words": 754,
+   "complete": true,
+   "paragraphs": 66,
+   "source_used": "Основа: ru.wikisource (https://ru.wikisource.org/wiki/Робинзоны_%28Аверченко%29, action=raw). Текст сверен построчно со сканом первого издания «Весёлые устрицы» (СПб., М. Г. Корнфельд, 1910, с. 45–49; PDF на Wikimedia Commons) и с az.lib.ru. Где Wikisource расходится с первым изданием, оставлено чтение 1910 года в современной орфографии. Вики-разметка, сноски и колонтитулы убраны, сцены разделены тремя «* * *».",
+   "issues": [
+    "Текст расходится с Wikisource примерно в 15 мелочах: в каждой оставлено чтение первого издания 1910 года, проверенное по скану. (1) Вступление набрано тремя строками («спаслись только двое:» / «Павел Нарымский — интеллигент.» / «Пров Иванов Акациев — бывший шпик.»), а Wikisource сливает их в один абзац. (2) «Так я вам отдал!»: в 1910 без «и», az.lib.ru читает так же. (3) «Это вы дом строите!», а не «?!». (4) «тяжело застонал» (во второй сцене «тяжко вздохнул», как в источнике). (5) «чтобы утолить». (6) Надписи «Езда по мосту шагом» и «Не пейте сырой воды!…» идут репликами через тире, а не в «ёлочках». (7) «но, почувствовав…», «В таком случае, я…», «Дай вам Бог». (8) «— Вы ещё не имеете права охотиться!» вынесено в отдельный абзац. Ссылку source_url оставил на Wikisource, как в задаче. Если нужен дословный Wikisource, это откат примерно 15 правок.",
+    "Абзацев 66 и 3 разбивки сцены, итого 69 блоков (gray-matter: 21 ключ, 69 блоков). В отрисованном Wikisource 59 абзацев: несколько абзацев там склеены одиночным переводом строки, а вступление и реплика «Вы ещё…» объединены. В az.lib.ru 67 строк, на одну больше из-за ошибочного разрыва «Чего вы пристаете? / Занимались…». Начало («Когда корабль тонул…») и конец («Дай вам Бог здоровья, долголетия и богатства.») совпадают со сканом.",
+    "Орфография приведена к современной: ё проставлено последовательно (утёсом, прочёл, обвёл, придётся, всё-таки, пристаёте), «вглубь острова» слитно, «догола», «они» вместо «оне», «...» заменено на «…». Убраны два мусорных апострофа из вики-текста. Слова автора не менялись.",
+    "Подсказки каталога исправлены. «Чёрный юмор» и «сатира» не входят в список жанров, а по сути это сатира, а не чёрный юмор, поэтому genres: [юмор, притча]. mood: ироничное вместо «смешного»: смех тут построен на сатирической иронии. cloth: terracotta (ирония, зной), motif: footprints (робинзонада и фигура, которая неотступно следует за героем), ending: punchline.",
+    "Факты проверены. Раздел «I. В свободной России» и страница 45 есть в оглавлении скана 1910 года. «Сатирикон»: в рекламе в конце той же книги стоит «Редактор А. Т. Аверченко, издатель М. Г. Корнфельд». Более двадцати переизданий указаны в ru.wikipedia со ссылкой на БРЭ. Открытие ДПЗ на Шпалерной 1 августа 1875 года как первой специальной следственной тюрьмы России взято из ru.wikipedia. Год 1910 означает первое книжное издание; была ли более ранняя журнальная публикация (например, в «Сатириконе»), я не проверял.",
+    "quote стоит примерно на 23% текста, в первой трети, и дословно совпадает с фрагментом. Длины: hook 67, teaser 233, note 257, quote 70 знаков. В hook и teaser нет автора, «Сатирикона» и книг.",
+    "Побочное: при первой загрузке я сохранил файл az.html прямо в корень общего scratchpad. Возможно, он перезаписал одноимённый временный файл другого агента. Остальные мои временные файлы лежат в scratchpad/robinzony/. Других файлов проекта не трогал."
+   ]
+  },
+  "edit": {
+   "slug": "robinzony",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал через curl Wikisource (action=raw) и вычитанные страницы скана первого издания (ru.wikisource, «Страница:Аверченко - Веселые устрицы (1910).djvu/51–55», уровень 4 — «выверено»; на странице индекса «Издание=1», СПб., М. Г. Корнфельд). Затем сверил файл со сканом скриптом, абзац за абзацем, после перевода дореформенной орфографии в современную. В файле 66 абзацев и 3 разбивки «* * *», всего 69 блоков, в скане ровно столько же. Начало («Когда корабль тонул, спаслись только двое:») и конец («— Дай вам Бог здоровья, долголетия и богатства.») совпадают со сканом. Сверил и середину: «Предварилку строю», «Так я вам отдал!», «Езда по мосту шагом», «тяжело застонал», «— Жив. — Тёплое чувство…» — везде дословно как в первом издании. Ничего не пропущено. По словам расхождения только орфографические (-аго → -ого, ыя → ые, оне → они, безсилия → бессилия, росписку → расписку, что-ли → что ли, ?… → ?..). Из пунктуационных расхождений одно было ошибкой файла: пропала запятая в «молчаливую, бесшумно перебегавшую», её я вернул. Ещё одно — нормальная модернизация («как вечно торчавшая… фигура» без запятых), его оставил. Вики-разметки, сносок, номеров страниц и мусорных апострофов нет. Все правки подготовителя по первому изданию подтверждены сканом.",
+   "changes": [
+    "Текст: вернул запятую, которая есть в источнике: «он чувствовал молчаливую, бесшумно перебегавшую от дерева к дереву фигуру» (в первом издании и на Wikisource она есть, в файле пропала).",
+    "Пунктуация по современной норме: «некоторые вещи с корабля и стал устраивать из обломков — дом». Убрал дореформенную запятую перед одиночным «и» между однородными сказуемыми, авторское тире перед «дом» оставил.",
+    "Пунктуация по современной норме: «устраиваться в нём как можно удобнее». Сочетание «как можно + сравнительная степень» не обособляется. Допустимое авторское обособление обстоятельств («руками, по направлению…», «лес, с целью…», «В таком случае, я…», «на хранение, впредь до…») оставил.",
+    "teaser: «Кораблекрушение выносит на необитаемый остров двоих» заменил на «После кораблекрушения на необитаемом острове оказываются двое: интеллигент и бывший шпик». Герои добираются до берега вплавь, их туда не выносит. Остальное без изменений, спойлеров нет, длина 240.",
+    "facts[0]: прежний факт про раздел «В свободной России» дословно повторял первую фразу note. Заменил на проверенный: «Первое издание „Весёлых устриц“ (СПб., 1910) отпечатано в типографии журнала „Сатирикон“, а обложку к нему нарисовал сатириконовский художник Ре-Ми (Николай Ремизов)». Источники: страница 8 скана («Портретъ и обложка работы художника Ре-Ми», «Типографія журнала „Сатириконъ“») и ru.wikipedia (Ре-Ми — псевдоним Николая Ремизова, в категории «Сатириконовцы»)."
+   ],
+   "facts_checked": [
+    "Аверченко умер 12 марта 1925 года в Праге (ru.wikipedia, ссылка на БРЭ). В РФ это не позже 1955 года, в США публикация 1910 года раньше 1931-го. Произведение в общественном достоянии.",
+    "Первая книжная публикация — «Весёлые устрицы», СПб., изд. М. Г. Корнфельда, 1910, первое издание (индекс ru.wikisource, титул на скане). В оглавлении: раздел «I. Въ свободной Россіи», «Робинзоны» на с. 45. year: 1910 верен.",
+    "Note: «раздел под названием «В свободной России»» подтверждено оглавлением скана (djvu/213).",
+    "Fact: Корнфельд — издатель «Сатирикона», Аверченко — редактор «Сатирикона» в 1908–1913 годах (ru.wikipedia, БРЭ). «Весёлые устрицы» имели «более двадцати переизданий» (ru.wikipedia), по «Кругосвету» — 24 издания за 7 лет.",
+    "Fact: ДПЗ на Шпалерной открылся 1 августа 1875 года как «первая в России специальная следственная тюрьма» (ru.wikipedia). «Предварилка» как разговорное название ДПЗ есть в словаре Ушакова.",
+    "Новый fact: типография «Сатирикона» и обложка Ре-Ми указаны на странице 8 скана первого издания. Ре-Ми — Николай Ремизов, художник-сатириконовец (ru.wikipedia).",
+    "Quote «А разрешение строительной комиссии в рассуждении пожара у вас имеется?» дословно есть в тексте, стоит на 23% текста (первая треть), 70 знаков.",
+    "Hook: 67 знаков, без автора и спойлера. Teaser: 240 знаков. Note: 257 знаков (не больше 300).",
+    "genres [юмор, притча], mood ироничное, motif footprints, cloth terracotta, ending punchline — всё из списков брифа. original_title пустой, original_lang ru, translation original.",
+    "gray-matter: frontmatter разбирается, 21 ключ, 69 блоков (66 абзацев и 3 разбивки), 754 слова."
+   ],
+   "remaining_risks": [
+    "Печаталась ли «Робинзоны» раньше в журнале «Сатирикон» (1908–1909), подтвердить или опровергнуть не удалось: fantlab не открылся, полнотекстовый поиск по Commons и Wikisource ничего не нашёл. year=1910 означает первую книжную публикацию, на права это не влияет.",
+    "«Так я вам отдал!» (без «и») — чтение выверенного скана первого издания, оставлено по правилу «авторский текст не редактируй». В поздних изданиях и на Wikisource стоит «Так я вам и отдал!». Возможно, это опечатка 1910 года, но решать здесь редактору.",
+    "Надписи «Езда по мосту шагом» и «Не пейте сырой воды!…» оформлены репликами через тире, как в первом издании, а не «ёлочками». «Дай вам Бог» с прописной тоже как в 1910 году; по правилам 2006 года допустимо и «бог».",
+    "Жанр «притча» выбран с натяжкой: по сути это сатира, а «юмор» её покрывает. Это допустимо, но можно оставить один жанр — юмор.",
+    "По словам подготовителя, он мог перезаписать файл az.html в корне общего scratchpad. Этот файл я не трогал."
+   ]
+  }
+ },
+ {
+  "slug": "strashnaya-noch",
+  "prepare": {
+   "slug": "strashnaya-noch",
+   "file": "/Users/forkss/FantPub/web/content/stories/strashnaya-noch.md",
+   "words": 1886,
+   "paragraphs": 50,
+   "complete": true,
+   "source_used": "https://ru.wikisource.org/wiki/Страшная_ночь_%28Чехов%29 (action=raw; текст по ПСС Чехова, т. 3, с. 139–145). Сверен абзац за абзацем с ФЭБ (feb-web.ru, sp3-139): совпадение 50/50, различаются только «...» и «…» и два абзаца, которые в ФЭБ разорваны переносом страницы. Автор умер в 1904 году, текст в общественном достоянии.",
+   "issues": [
+    "Текст оставлен как в источнике: орфография современная, но без «ё» («Темная», «четвертый»), как в академическом ПСС. Курсив сохранён: *она*. Шаблон {{right|…}} у подписи письма превращён в обычный абзац «Любящий тебя Иван Челюстин».»",
+    "Подсказки каталога пересмотрены. Жанры поставлены [юмор, хоррор] вместо «чёрного юмора», которого нет в списке: это пародия на святочную страшилку, сверхъестественного в рассказе нет. mood выбран «смешное» (каталог предлагал «смешное, жутковатое»), ending — punchline, motif — flame (синий огонёк спички, при котором виден первый гроб), cloth — ink (ночь и ливень).",
+    "hook (84 знака) и teaser (267 знаков) не называют автора, его псевдоним и известные вещи. Гроб в них тоже не упомянут, чтобы не раскрывать первую неожиданность.",
+    "Факты в note и facts взяты из примечания Wikisource о первой публикации: «Развлечение», 1884, № 50, 27 декабря, подзаголовок, посвящение, подпись, затем «Невинные речи» 1887 года и т. I издания Маркса 1899 года. Топография сверена с ru.wikipedia: Мёртвый переулок — ныне Пречистенский (в 1937–1993 годах — переулок Островского); храм Успения на Могильцах стоит у Большого Власьевского. Возраст Чехова в note — 24 года — посчитан по дате рождения 29.01.1860.",
+    "quote — дословная фраза из 4-го абзаца, примерно 11% текста от начала, 88 знаков.",
+    "gray-matter: 21 ключ frontmatter, 50 блоков текста; original_title парсится как null, так же как в grobovshchik.md. Другие файлы проекта не изменены."
+   ]
+  },
+  "edit": {
+   "slug": "strashnaya-noch",
+   "verdict": "fixed",
+   "completeness": "Текст полный и совпадает с источником. Я заново скачал ru.wikisource через curl (action=raw), убрал разметку (&nbsp;, ''она'' → *она*, {{right|…}} → абзац) и сравнил с файлом по абзацам: 50 из 50 совпадают символ в символ. Начало («Иван Петрович Панихидин побледнел…») и конец («…белый мраморный памятник или катафалк.») на месте. Отдельно сверил все 50 абзацев с ФЭБ (feb-web.ru, sp3-139, ПСС т. 3, с. 139–145). Расхождения только типографские: «...» вместо «…» и номера страниц 142/144/145 внутри абзацев. Слов 1886. Вики-разметки, сносок, колонтитулов и латиницы в тексте нет, неразрывных пробелов тоже нет. Орфография современная, без «ё», как в академическом ПСС; в проекте встречаются оба варианта, поэтому оставил так. Прочитал текст целиком: тире в диалогах «— », кавычки «», многоточия «…», имена единообразны. Авторскую пунктуацию («была заперта и место…», «тем более, что…», «не мудрено») не трогал. Правки только во frontmatter, текст рассказа не менялся. gray-matter: 21 ключ, original_title = null (как в grobovshchik.md), 50 блоков текста. Длины: hook 84 знака, teaser 267, note 268, quote 88; quote дословно есть в тексте, на отметке около 11% от начала.",
+   "changes": [
+    "Факт 1: «подпись — А. Чехонте» было неточно. По примечанию ПСС (Wikisource, fantlab) подписей две: «Ч. Хонте» перед P. S. и «А. Чехонте» после него. Переписал так: «Подписей было две: «Ч. Хонте» перед постскриптумом и «А. Чехонте» после него». Многоточие в «М. П. Ф...у» заменил на «Ф…у», как требует бриф.",
+    "Факт 2: добавил проверяемую деталь из комментария ПСС (через fantlab): готовя текст для издания Маркса 1899 года, Чехов «сильно сократил» концовку. Теперь так: «а в 1899-м, сильно сократив концовку, — в первый том…».",
+    "Факт 3: «у которой живёт рассказчик» заменил на «у которой жил рассказчик». В рассказе прошедшее время: «Жил я в Москве, у Успения-на-Могильцах».",
+    "Резервная копия исходного файла: /private/tmp/claude-501/-Users-forkss-FantPub/c45b40ca-9f56-4e1a-a0be-c4513e876524/scratchpad/strashnaya-noch.bak.md"
+   ],
+   "facts_checked": [
+    "Первая публикация: «Развлечение», 1884, № 50, 27 декабря (ценз. разр. 23 декабря), с. 1065–1068, подзаголовок «Святочный рассказ», посвящение «гробокопателю М. П. Ф...у». Подтверждено примечанием ru.wikisource и fantlab.ru/work166822.",
+    "Подписи: перед P. S. — «Ч. Хонте», после P. S. — «А. Чехонте». Подтверждено ru.wikisource и fantlab; в файле исправлено.",
+    "Сборник «Невинные речи» (М., изд. журнала «Сверчок», 1887) вышел без подзаголовка и посвящения. Подтверждено ru.wikisource и fantlab.",
+    "Издание Маркса: «Рассказы», СПб., 1899, т. I, с. 36–43; концовка там сильно сокращена. Подтверждено ru.wikisource и fantlab.",
+    "Мёртвый переулок (XVIII век — 1937) — нынешний Пречистенский; в 1937–1993 годах он назывался переулком Н. А. Островского. Район Хамовники, идёт от Пречистенки до Большого Власьевского. Подтверждено ru.wikipedia (raw).",
+    "Храм Успения на Могильцах: Большой Власьевский пер., 2/2, ограничен Большим Власьевским, Большим Могильцевским, Большим Лёвшинским и Пречистенским переулками. Формулировка «в его конце, у Большого Власьевского» верна (ruwiki, sobory.ru).",
+    "Чехов родился 29.01.1860 и умер 2 (15) июля 1904 года в Баденвейлере. В декабре 1884 года ему было 24, так что «двадцать четыре» в note верно.",
+    "Права: автор умер в 1904 году, первая публикация — 1884 год. Текст в общественном достоянии и в РФ, и в США; на Wikisource лицензия PD-old-70.",
+    "year: 1884 верно; original_title пусто (null); translation: original; original_lang: ru.",
+    "genres [юмор, хоррор], mood «смешное», motif flame, cloth ink, ending punchline, age 12+ — всё есть в списках брифа.",
+    "hook и teaser не называют автора, его псевдоним и известные вещи. Гроб и разгадка в них не раскрыты; Спиноза и «сегодня ночью» взяты из 3-го абзаца, это не спойлер. Финал раскрыт только в note, как допускает бриф."
+   ],
+   "remaining_risks": [
+    "Примечание о двух подписях и о сокращённой концовке (P. S. в журнальной версии) я проверил только по вторичным пересказам комментария ПСС: Wikisource и fantlab. Сам том комментариев на ФЭБ найти не удалось.",
+    "Ткань ink выбрана по ночи и ливню. Вариант ochre (юмор) тоже допустим по брифу; это вопрос вкуса редакции.",
+    "В тексте нет «ё» (Темная, четвертый, шел), как в академическом ПСС. В проекте единого правила нет: grobovshchik.md тоже почти без «ё», kuprin-tost.md и to-chego-ne-bylo.md с «ё»."
+   ]
+  }
+ },
+ {
+  "slug": "to-chego-ne-bylo",
+  "prepare": {
+   "slug": "to-chego-ne-bylo",
+   "file": "/Users/forkss/FantPub/web/content/stories/to-chego-ne-bylo.md",
+   "words": 1285,
+   "paragraphs": 22,
+   "complete": true,
+   "source_used": "https://ru.wikisource.org/wiki/То,_чего_не_было_%28Гаршин%29 (raw wikitext, PD-old-70; checked word for word against az.lib.ru/g/garshin_w_m/text_0030.shtml: 1310 normalized tokens on each side, 0 differences, 22 paragraphs on each side)",
+   "issues": [
+    "Шапка Викитеки и вики-разметка удалены, вместе с ними — одна редакторская сноска (о пересчёте градусов Реомюра). Авторский текст не изменялся, в теле нет цифр и скобок. Начало («В один прекрасный июньский день…») и конец («И она была совершенно права.») совпадают с источником.",
+    "Проверка через gray-matter: в frontmatter 21 ключ, в теле 22 абзаца. original_title пустой, парсится как null, как в других русских рассказах (odoevsky-bal, grobovshchik).",
+    "quote — дословное начало фразы из 3-го абзаца (позиция 2010 из ~2660 символов первой трети): «Компания вежливо, но довольно одушевлённо спорила, причём, как и следует быть, никто ни с кем не соглашался». Целиком фраза длиннее лимита (173 > 160), поэтому взято только начало.",
+    "Подсказки каталога пересмотрены. Жанры — [притча, юмор]: «чёрный юмор» не входит в допустимый список, а «сказка» намекнула бы на детское чтение, хотя сам Гаршин считал вещь не детской. Настроение — «ироничное». Сравнение с Кафкой из note_hint не использовано: его нельзя проверить. motif: sun (жара в начале рассказа; footprints отклонён как спойлер), cloth: ochre (юмор, юг, солнце), ending: punchline, age: 12+.",
+    "Источники для note и facts: статья о Гаршине в «Русском биографическом словаре» (т. 4, 1914) на ru.wikisource и ru.wikipedia (Лупарево, Богоявленский). Подтверждено: сказка написана в Ефимовке Херсонской губернии у дяди В. С. Акимова (конец 1880 — весна 1882); задумана для рукописного детского журнала детей А. Я. Герда; сам автор назвал её «скалдырнической»; Гаршин отвергал аллегорические толкования; напечатана в «Устоях» 1882, № 3–4; «Лягушка-путешественница» вышла в «Родник» в 1887 году.",
+    "В hook и teaser автор, его известные книги и персонажи не названы.",
+    "Происшествие по ходу работы: общий scratchpad перезаписали параллельные агенты, и первая запись подхватила чужой текст (рассказ Чехова). Я пересобрал файл из свежей загрузки в отдельной папке scratchpad/issue8_garshin и проверил заново, финальный файл верный. Другие файлы проекта не трогал."
+   ]
+  },
+  "edit": {
+   "slug": "to-chego-ne-bylo",
+   "verdict": "fixed",
+   "completeness": "Текст полный. Я заново скачал сырой wikitext с ru.wikisource через curl (action=raw) и убрал из него шапку, теги ref и div. Тело файла совпадает с источником абзац в абзац: 22 абзаца на каждой стороне, расхождений нет. Затем сверил текст с az.lib.ru/g/garshin_w_m/text_0030.shtml, это исходник Викитеки: 1285 нормализованных слов на каждой стороне, 0 расхождений; знаки препинания тоже совпадают, если приравнять ё к е, дефисы к тире, а ASCII-кавычки к ёлочкам. Начало («В один прекрасный июньский день…») и конец («И она была совершенно права.») совпадают. Пять мест из середины тоже совпадают: «Поди ты, братец, с своим трудом!», «деревня Лупаревка», «семнадцатый год… семьдесят седьмой», «расставила в мисках наваренное варенье», «ну, иди ты, хвостяка!». Мусора нет: сноски о Реомюре, вики-разметки и номеров страниц нет, кавычки «», тире и многоточия «…» оформлены правильно. Ё расставлено последовательно, все 13 случаев «всё» и 4 случая «все» проверил по контексту. Старая пунктуация автора («воскликнула гусеница: — я…», тире внутри реплики муравья) есть и в источнике, её я не трогал. Авторский текст я не менял.",
+   "changes": [
+    "teaser: «Июньский полдень… вся усадьба спит» заменил на «Июньский день… после обеда вся усадьба спит». В тексте нет полудня, там «послеобеденные боковые занятия».",
+    "note: «Публика 1882 года вычитывала в ней аллегорию, а Гаршин, не любивший таких толкований…» заменил на «Публика искала в ней аллегорию, а Гаршин, вообще отвергавший аллегорические толкования своих вещей, горячо против этого протестовал». Год 1882 источник не называет, а новая формулировка ближе к РБС. Длина 287 знаков.",
+    "facts[1]: название из текста расходилось с современным, поэтому теперь: «село Лупарево (у Гаршина — Лупаревка) и сейчас стоит под Николаевом, а Богоявленск стал историческим районом самого Николаева»."
+   ],
+   "facts_checked": [
+    "РБС, т. 4 (1914), статья «Гаршин, Всеволод Михайлович» на ru.wikisource. Подтверждено: с конца 1880 до весны 1882 года Гаршин жил в Ефимовке Херсонской губернии, на берегу Днепровско-Бугского лимана, куда его увёз дядя В. С. Акимов. Сказка предназначалась сперва для рукописного детского журнала, который задумали издавать дети А. Я. Герда. Сам Гаршин назвал её «скалдырнической», то есть слишком пессимистической. Напечатана в «Устоях» 1882 года, №№ 3–4. Сказка вызвала в публике толки, против которых Гаршин горячо протестовал, «всегда отвергавший какое-либо аллегорическое толкование». «Лягушка-путешественница» вышла в «Роднике» в 1887 году.",
+    "Годы жизни Гаршина: 2 (14) февраля 1855 — 24 марта (5 апреля) 1888, по РБС и ru.wikipedia. Первая публикация в 1882 году подтверждена шапкой Викитеки («Устои», 1882, № 3—4), РБС и WebSearch (fantlab).",
+    "Лупарево: по ru.wikipedia и uk.wikipedia это село в Николаевском районе Николаевской области. Украинская статья называет Кисляковку и Свято-Троицкое соседними с ним сёлами, а гнедой перечисляет их рядом с Лупаревкой. Отсюда отождествление Лупаревки с Лупаревом.",
+    "Богоявленск: по ru.wikipedia бывшая Витовка, переименована в 1789 году, с 1973 года входит в Николаев, сейчас это исторический район в Корабельном районе.",
+    "Ефимовка действительно есть в речи гнедого («А с другой стороны Ефимовка, Кисляковка»).",
+    "quote дословно есть в тексте (проверено через includes), стоит на позиции 2010 из 7979 знаков, то есть в первой трети; длина 107 знаков.",
+    "hook (89 знаков) и teaser: автор, его книги и финал не упоминаются. genres [притча, юмор], mood ироничное, motif sun, cloth ochre и ending punchline входят в списки брифа. year 1882, original_title пустой, original_lang ru, translation original.",
+    "Права: Гаршин умер в 1888 году, это больше 70 лет назад; текст опубликован в 1882 году, раньше 1931-го. Произведение в общественном достоянии и в РФ, и в США.",
+    "gray-matter (web/node_modules): 21 ключ, original_title = null (как в grobovshchik и premudry-piskar), year = 1882, в теле 22 абзаца. source_url отвечает HTTP 200."
+   ],
+   "remaining_risks": [
+    "Что Лупаревка в рассказе и есть нынешнее Лупарево, следует из того, что у гнедого и в справочниках рядом стоят одни и те же соседние сёла (Кисляковка, Свято-Троицкое). Прямого источника, где эти два названия связаны с Гаршиным, я не нашёл.",
+    "В факте 1 Ефимовка названа «имением» дяди, а в РБС сказано «деревня Ефимовка»; ниже там же упоминается «Акимовка». Пересказ допустимый, но не дословный.",
+    "Teaser занимает 306 знаков. Жёсткого лимента на длину в брифе нет (нужно 2–3 предложения), а другие тизеры примерно такой же длины."
+   ]
+  }
+ },
+ {
+  "slug": "volshebnaya-lavka",
+  "prepare": {
+   "slug": "volshebnaya-lavka",
+   "file": "/Users/forkss/FantPub/web/content/stories/volshebnaya-lavka.md",
+   "words": 3643,
+   "complete": true,
+   "paragraphs": 115,
+   "source_used": "Project Gutenberg #1743, Twelve Stories and a Dream (1903), раздел «2. The Magic Shop» (https://www.gutenberg.org/cache/epub/1743/pg1743.txt). Новый перевод FantPub с английского; в оригинале 115 абзацев, в переводе тоже 115. Начало («I had seen the Magic Shop from afar…») и конец («…send in their bill in their own time») сверены. Страница en.wikisource The_Magic_Shop — только список версий, текст из Atlantic Edition там — сканы-транклюзии, поэтому взят Gutenberg.",
+   "issues": [
+    "В content_args source_url ведёт на русский перевод Волкова на ru.wikisource. Я его не открывал и не использовал: в frontmatter source_url указывает на Gutenberg 1743, translation: fantpub. Флаг «сверить перевод со сканом 1909 г.» к новому переводу неприменим.",
+    "Подсказки каталога пересмотрены. genres: [сказка, юмор] вместо [фантастика, сказка], потому что ироничный голос рассказчика держит весь текст. mood: загадочное, так как «светлое с холодком» не одно слово из списка. cloth: sage (светлая сказка; plum и так уже у 5 из 10 рассказов). motif: hand (палец, за который держится Джип, — сквозной образ). ending: open.",
+    "«nearer the Circus» переведено как «ближе к Пикадилли». Это толкование: «down» по Риджент-стрит — значит к Пикадилли-серкус.",
+    "Lead soldiers переведены по традиции как «оловянные солдатики». Меры и деньги оставлены как в оригинале: ярд, полкроны, семь шиллингов шесть пенсов.",
+    "Факты проверены: Strand Magazine т. 25, № 150 (июнь 1903), указано на en.wikisource. G. P. Wells «Gip» (1901–1985), FRS, соавтор «The Science of Life», в 1920 году был переводчиком отца в Советской России, учился в первом в Британии школьном классе русского языка (Oundle) — всё это есть в en.wikipedia. Утверждение в note «настоящему Джипу не было и двух лет»: он родился 17.07.1901, рассказ напечатан в июне 1903.",
+    "Проверки пройдены. gray-matter: 21 ключ, 115 абзацев. hook — 68 знаков, note — 255, quote — 60. Quote стоит примерно на 28% текста, то есть в первой трети. Автор в hook и teaser не назван.",
+    "args.words=3389 расходится с моим подсчётом: в английском оригинале около 3950 слов, в переводе 3643."
+   ]
+  },
+  "edit": {
+   "slug": "volshebnaya-lavka",
+   "verdict": "fixed",
+   "completeness": "The text is complete. I downloaded the original again with curl (Project Gutenberg #1743, section \"2. THE MAGIC SHOP\", lines 745–1224). The original has 115 paragraphs and about 3,950 words; the translation also has 115 paragraphs, and they line up one to one. The opening (\"I had seen the Magic Shop from afar…\" / «Я не раз видел Волшебную лавку издали…») and the ending (\"…send in their bill in their own time\" / «…прислать свой счёт, когда им будет угодно») match. I checked the middle against the original paragraph by paragraph, including the glass balls from the elbow (25), the boy Edward at the door (35–37), the pile of paper and the gramophone (46–47), the red imp (61), the assistant with the nose (79), the drum and the darkness (82–88), and the soldiers that come alive (109–112). Nothing is missing and nothing has been added. Gray-matter parses the file: 21 keys, 115 paragraphs, hook 68 characters, note 255, quote 59, teaser 299. The quote sits at about 27.7% of the text, so it is in the first third.",
+   "changes": [
+    "Teaser was wrong on two points. It said the father leads the son and that he had walked past the shop many times. In the original Gip drags his father by the finger, and the father had only seen the shop from afar and passed it once or twice. Rewritten as: «Маленький сын затаскивает отца в лавку фокусов на Риджент-стрит, которую тот прежде видел только издали, — купить пару простых трюков…»",
+    "Fact 3: the school name «Ондл» changed to «Аундл» (Oundle, pronounced /ˈaʊndəl/).",
+    "Quote and the matching line in the text: «Сквозь эту дверь проходят…» changed to «Через эту дверь проходят только Мальчики Правильного Сорта.», which reads more naturally for \"through that doorway\".",
+    "Meaning (59): \"a door I had certainly not remarked a moment before\" had been translated as a door that was not there a minute ago. Corrected to «в дверь, которой я — это уж точно — минуту назад не замечал».",
+    "Grammar (61): in the sentence about the imp, the subject slipped so that it read as if the narrator threw it. Fixed to «— а в следующий миг он небрежно швырнул его за прилавок». \"handles some petty biting bit of vermin\": «отмахивается от» changed to «возится с какой-нибудь мелкой кусачей тварью».",
+    "Calques and clumsy phrasing fixed: «пониже, ближе к Пикадилли» → «ниже по улице, ближе к площади Пикадилли»; «пока что хорошо» (so far, good) → «уже хорошо»; «Тут я вернулся к вопросу» (came round to the problem) → «Тут я задумался над тем, каким же всё это показалось ему»; «Вы закончили с моей шляпой?» → «Вы уже управились с моей шляпой?»; «я хочу получить счёт; и…» → «мне нужен счёт. И…»; «улыбкой поразительной любезности» → «на редкость приветливой улыбкой»; «дзинькнул жалобной нотой» → «жалобно дзинькнул»; «вытягивало вас в длину и истончало» → «делало вас длинным и тощим».",
+    "Wording: \"playground of unspeakable emotions\" changed from «ристалищем» to «игралищем невыразимых чувств», after the set phrase «игралище страстей»; \"prancing precedence\" changed from «бойкая напористость…» to «та прыть, с какой Джип вырвался бы вперёд»; \"natural helpfulness\" changed from «услужливости» to «врождённой отзывчивости»; \"careless bird, and — as I live — nesting!\" is now «Беспечная птица, да ещё — честное слово — гнездо свила!»; \"Dear heart! NO!\" changed from «Боже мой!» to «Помилуйте!».",
+    "Rabbit (55): «вразвалку отскочил» contradicted itself and is now «кролик неуклюже скакнул раз-другой, уступая мне дорогу»; \"I resumed my hat\" is now «Я снова надел шляпу». \"It might have been a sniff\" now keeps the uncertainty: «Из-за бумажной горы как будто донеслось фырканье…».",
+    "Smaller fixes: (13) the shopkeeper's portrait now reads «странный человек, желтолицый и темноволосый, с одним ухом больше другого и подбородком, похожим на носок башмака»; (12) «хозяин лавки» changed to «продавец», since the original says shopman throughout; (18) «с минуту чесал в затылке» changed to «почесал голову, словно в раздумье», because \"for a moment\" does not mean about a minute; (46) «вычищенная оболочка» changed to «вычищенные снаружи оболочки»; (70) \"just as you set the signals\" is now «ровно так, как выставишь сигналы»; (96) «Кебы!» changed to «Кеб!»; (97) «В кармане фрака» changed to «В кармане на фалде», because a daytime tail-coat is not an evening фрак.",
+    "I also checked the typography: no straight quotes, no «--» or «...», no hyphen used as a dash, no Latin characters in the body. Dialogue uses «— ». The name Джип/Джиблс is spelled the same way throughout, and «чудной/чудность» is used consistently for \"rum\"."
+   ],
+   "facts_checked": [
+    "First publication: The Strand Magazine, vol. 25, issue 150 (en.wikisource versions page). This is June 1903: issue 1 was January 1891, and vol. 25 covers January–June 1903. A web search agrees: \"first published in The Strand Magazine in June 1903 then collected in Twelve Stories and a Dream\". year: 1903 is correct.",
+    "The collection Twelve Stories and a Dream came out in 1903; the story is the second item in Gutenberg #1743. original_title: The Magic Shop is correct.",
+    "G. P. Wells: born 17.07.1901, died 27.09.1985. He was a zoologist, elected FRS in 1955, and co-wrote The Science of Life with H. G. Wells and Julian Huxley. He was in the first class at a British school (Oundle) to learn Russian as a modern language, and in 1920 he went with his father to Soviet Russia as his Russian interpreter. He was known as Gip and appears under that name in \"The Magic Shop\" (en.wikipedia, raw page source). Facts 2 and 3 are confirmed.",
+    "The note's claim that the real Gip was not yet two: born 17.07.1901, story published June 1903, so he was about 1 year 11 months. Confirmed. The «неизлечимой привычкой платить по счетам» quoted in the note is in the text (paragraph 115).",
+    "Hook and teaser have no spoilers and do not name the author. Genres [сказка, юмор], mood загадочное, motif hand, cloth sage and ending open are all from the brief's lists.",
+    "Rights: H. G. Wells died on 13.08.1946 (en.wikipedia), more than 70 years ago, so the work is in the public domain in Russia. He was born in 1866, so the extra term for WWII participants does not apply. The story was published in 1903, before 1931, so it is in the public domain in the USA. The translation is FantPub's own, from the Gutenberg English text; the Volkov Russian translation was not used."
+   ],
+   "remaining_risks": [
+    "cloth: sage is the brief's \"rare\" cloth. It is used once in the catalogue so far, and this would make two. plum fits too, but it is already used four times.",
+    "There are deliberate translation choices that someone could challenge. \"lead soldiers\" is rendered as «оловянные солдатики», following tradition. \"the Circus\" is taken to mean Piccadilly Circus; this is the likely reading of \"down … nearer the Circus\", but Oxford Circus is also on Regent Street. \"coram publico\" is rendered as «при всём честном народе» rather than left in Latin. \"'Ansoms\", with its dropped h, is rendered as «Кеб!», which loses the speech colouring.",
+    "The Russian Wikipedia spelling of Oundle (Аундл) was not checked separately. The choice rests on the English pronunciation."
+   ]
+  }
+ },
+ {
+  "slug": "zakolochennoe-okno",
+  "prepare": {
+   "slug": "zakolochennoe-okno",
+   "file": "/Users/forkss/FantPub/web/content/stories/zakolochennoe-okno.md",
+   "words": 1568,
+   "complete": true,
+   "paragraphs": 13,
+   "source_used": "Новый перевод FantPub с английского оригинала: en.wikisource (The Collected Works of Ambrose Bierce, Vol. 2, 1909), сверено с Project Gutenberg #13334 (тот же том). Оригинал — 13 абзацев и 1811 слов, в переводе тоже 13 абзацев. Начало («In 1830, only a few miles…») и последняя фраза («…a fragment of the animal's ear.») переведены. Расхождения изданий: в тексте Wikisource пропущены тире («boarded up nobody», «story excepting»), курсивы _must_ и _that_ взяты из Gutenberg. Русские переводы, в том числе Азова, не открывались.",
+   "issues": [
+    "В content_args поле source_url ведёт на русский перевод Азова (ru.wikisource). Поскольку перевод наш, в frontmatter source_url указывает на английский оригинал (original_url), source_label: Wikisource.",
+    "Монолог Мёрлока («Завтра, — сказал он вслух…») оставлен внутри абзаца в «ёлочках», а не вынесен в отдельную строку через тире. Так в переводе сохраняется 13 абзацев, как в оригинале.",
+    "Подсказку «неожиданный финал» нельзя записать в genres: такого жанра нет в списке. Поэтому genres: [хоррор], а развязка отражена в поле ending: twist. Жанр «мистика» не ставил: сверхъестественного в рассказе нет.",
+    "age: 16+ из-за content_notes (натуралистичная смерть: растерзанное горло, лужа крови).",
+    "Факты проверены по английской Википедии (статьи The Boarded Window, Tales of Soldiers and Civilians, Ambrose Bierce, Cougar). Сборник Tales of Soldiers and Civilians датирован на титуле 1891 годом, а фактически вышел в начале 1892-го, поэтому в факте сказано «на титуле стоит 1891 год». Влияние «Преждевременных похорон» По в note — мнение исследователей (Gale, An Ambrose Bierce Companion), так и подано.",
+    "Цитата для шеринга взята из 2-го абзаца, примерно 21% текста. В hook и teaser нет ни автора, ни его известных произведений.",
+    "Frontmatter разобран через gray-matter без ошибок: 21 ключ, 13 абзацев текста. Другие файлы проекта не изменялись."
+   ]
+  },
+  "edit": {
+   "slug": "zakolochennoe-okno",
+   "verdict": "fixed",
+   "completeness": "Перевод полный. Оригинал заново скачан через curl: Project Gutenberg #13334 (Collected Works, Vol. 2, 1909), строки 7113–7275. В нём 13 абзацев и 1811 слов, в переводе тоже 13 абзацев и 1560 слов. Начало («In 1830, only a few miles away…») и финал («…a fragment of the animal's ear.») совпадают. Я сверил с оригиналом все 13 абзацев, а не только 5 мест из середины: пропусков и добавлений нет. Wikisource через action=raw отдаёт только шаблон <pages> из djvu, без текста, но в его шапке указана первая публикация: Examiner, 12 апреля 1891 года. Для справки открыл и первое издание сборника 1891 года (archive.org, talesofsoldiersc1891bier). Русские переводы не открывал.",
+   "changes": [
+    "Абз. 6, ключевая правка смысла: «и так и отошла — по-видимому, без единого проблеска…» → «и так, по-видимому, и отошла — без единого проблеска…». У Бирса apparently относится к passed away: это намёк на то, что жена не умерла. В прежнем варианте намёк пропадал.",
+    "Абз. 1: «людьми пограничья» (калька) → «людьми фронтира»; «от которых только что добровольно отказались» → «от которых сами же добровольно отказались» (слов «только что» в оригинале нет); «один из тех, кто пришёл сюда самым первым» → «…в числе первых»; «никем не оспоренного» → «никем не оспариваемого» (undisturbed possession); «горел угасающим пламенем и догорел до покаянного пепла» → «горел слабеющим пламенем и угас в покаянном пепле».",
+    "Абз. 2: убрал повторы. «заколочено… не было заколочено» → «заколочено — и никто не помнил времени, когда было иначе»; «грелся на солнце… посылали солнце» → «заставали греющимся на пороге — если небеса, снизойдя к его нужде, посылали ему солнце».",
+    "Абз. 3: «Звали этого человека, как говорят» → «Звали его, говорят»; «седые» → «белые» (white); «Он был высок и сухопар и сутулился — как человек, несущий ношу» → «Он был высок, сухопар и сутулился, как человек под ношей».",
+    "Абз. 4: калька «из чувства уместности» (sense of the fitness of things) → «из чувства, что так будет правильно».",
+    "Абз. 5: «честной преданности» → «искренней преданности»; исправил порядок слов в «делила с ним опасности и лишения его доли охотно…»; убрал курсив *такой*, которого нет в оригинале (to a lot like that); «непоседливую душу» → «неугомонную душу».",
+    "Абз. 7: «натуры вроде его» (ошибка в грамматике) → «натуры такого склада»; «позволить себе дорисовать… в общем наброске» → «отважиться дорисовать… к беглому наброску» (venture, outline picture). В монологе «ведь её уже не будет видно» → «когда её уже не будет перед глазами» (when she is no longer in sight), «Не может всё быть так плохо» → «Не может быть всё так плохо».",
+    "Абз. 8: «сквозь его сознание проходило подспудное убеждение… и всё разъяснится» → «в глубине его сознания жила смутная уверенность… и всему найдётся объяснение»; добавил пропущенную запятую после скобки перед деепричастным оборотом «едва закончив»; «Снова, и ближе прежнего» → «И снова, уже ближе».",
+    "Абз. 10: «шаг… другой… звук» → «шаг… ещё один… звуки» (another, sounds).",
+    "Абз. 11: «стол так резко толкнуло ему в грудь» (неграмотная конструкция) → «стол так резко ударил его в грудь»; «Поднялась возня, и смешались звуки, описать которые невозможно» → «Послышалась возня и неописуемая мешанина звуков».",
+    "Абз. 12: исправил обособление в «метнулся к стене, немного пошарив, схватил» → «метнулся к стене, нашарил заряженное ружьё»; «помешанного» → «безумца»; «Во вспышке» → «В свете вспышки».",
+    "Абз. 13: «Одежда была сбита, волосы растрёпаны» → «Одежда была смята, длинные волосы разметались» (deranged, in disorder).",
+    "note: убрал подзаголовок «Случай из жизни пионера Огайо». Его нет в первом книжном издании 1891 года, а для публикации в Examiner первичного подтверждения не нашлось. Новая записка (210 знаков) указывает на ключевое слово «по-видимому» в 6-м абзаце и сохраняет мнение исследователей о влиянии «Преждевременных похорон» По (Wikipedia со ссылкой на Gale, An Ambrose Bierce Companion).",
+    "facts[0]: убрал недоказанное заглавие с подзаголовком. Оставил дату и место первой публикации (Examiner, 12.04.1891) и уточнение о сборнике: на титуле 1891 год, фактически книга вышла в начале 1892-го."
+   ],
+   "facts_checked": [
+    "Первая публикация: San Francisco Examiner, 12 апреля 1891 года. Подтверждают шапка en.wikisource, ambrosebierce.org/window.html и англоязычная Википедия.",
+    "Подзаголовок «An Incident in the Life of an Ohio Pioneer» встречается только во вступлении англоязычной Википедии. На ambrosebierce.org, на который она ссылается, его нет, в издании Steele 1891 года заглавие просто THE BOARDED WINDOW. Поэтому из note и facts подзаголовок удалён.",
+    "Tales of Soldiers and Civilians (E.L.G. Steele, San Francisco): на титуле 1891 год, фактически книга вышла, вероятно, в начале 1892-го. Источник — Wikipedia со ссылкой на Joshi & Schultz, Annotated Bibliography, с. 20–21. Рассказ входит в первое издание: в djvu на archive.org это с. 249.",
+    "Бирс родился 24 июня 1842 года в бревенчатой хижине у Хорс-Кейв-Крик, округ Мейгс, Огайо, а вырос в округе Коскиуско, Индиана (статья Wikipedia Ambrose Bierce, по Floyd 1999).",
+    "Пума (Puma concolor) называется в том числе panther. Восточная популяция считается в основном истреблённой с начала XX века; исключение — изолированная флоридская пантера (статья Wikipedia Cougar).",
+    "Влияние «Преждевременных похорон» По: Wikipedia, статья The Boarded Window, со ссылкой на Gale, An Ambrose Bierce Companion (2001). В note это подано как мнение исследователей.",
+    "Права: Бирс пропал в Мексике после 26 декабря 1913 года, годом смерти условно считается 1914-й. Это раньше 1955 года, значит, в РФ рассказ в общественном достоянии. В США он опубликован в 1891 году, то есть до 1931-го, и тоже в общественном достоянии. Год 1891 и оригинальное название The Boarded Window указаны верно.",
+    "hook — 97 знаков, без спойлера и без признаков автора. teaser — 3 предложения, без спойлера, автор не назван. quote дословно есть в тексте (абз. 2, около 20% объёма), 107 знаков. genres [хоррор], mood «жуткое», motif window, cloth oxblood — всё из списков брифа.",
+    "gray-matter разбирает frontmatter без ошибок: 21 ключ, 3 факта. В тексте 13 абзацев; «Мёрлок» везде через «ё» (10 раз); прямых кавычек, дефисов вместо тире и «...» нет."
+   ],
+   "remaining_risks": [
+    "Монолог Мёрлока оставлен внутри абзаца в «ёлочках» с авторской ремаркой через тире. Это нормальная русская пунктуация для прямой речи внутри абзаца, и так сохраняется число абзацев оригинала (13). При этом бриф буквально требует оформлять диалоги с новой строки через тире.",
+    "Подзаголовок «An Incident in the Life of an Ohio Pioneer» мог быть в газетной публикации 1891 года, но проверить это по первоисточнику не удалось, поэтому сведения удалены, а не исправлены.",
+    "Факты 2 и 3 (биография Бирса, пума) не раскрывают сюжет, но называют автора. Это допустимо, если блок facts показывается после чтения.",
+    "Резервная копия исходной версии файла: /private/tmp/claude-501/-Users-forkss-FantPub/c45b40ca-9f56-4e1a-a0be-c4513e876524/scratchpad/backup_zakolochennoe-okno.md"
+   ]
+  }
+ },
+ {
+  "slug": "zelenaya-lampa",
+  "prepare": {
+   "slug": "zelenaya-lampa",
+   "file": "/Users/forkss/FantPub/web/content/stories/zelenaya-lampa.md",
+   "words": 1382,
+   "complete": true,
+   "paragraphs": 45,
+   "source_used": "Text of the edition cited on the ru.wikisource page: Грин А. С., Собр. соч. в 6 т., т. 6, М.: Правда, 1980, с. 459–464, as transcribed at rvb.ru/20vek/grin/ss6/vol6/texts/182.html. Cross-checked word by word against ilibrary.ru/text/4554 (marked public domain there); only trivial differences. source_url in the frontmatter is left on ru.wikisource as the task required.",
+   "issues": [
+    "I took the text from rvb.ru (the 1980 edition that Wikisource itself names as its source), not from the Wikisource page (quality 2). The Wikisource version has transcription defects: 4 paragraphs merged (\"Экипаж…/Бродягу…\", \"с окном на улицу./Каждый вечер\", \"…к самой раме./Двое прохожих\", \"…с презрением./«Ив — классический дурак!\"); \"Беднягу\" where both the edition and ilibrary read \"Бродягу\"; a stray dash in the doctor's line \"мистер Стильтон? — Я — Джон Ив\"; and several punctuation and wording deviations (\"из дому\", \"надежду\", \"серьезный\", a missing \"!\").",
+    "Paragraph count: 45 in the file, matching the edition's 45 (ilibrary has 44 because it merges one paragraph). The beginning (\"В Лондоне в 1920 году…\") and the ending (\"…зажигайте… хотя бы спичку.\") were checked.",
+    "The chapter numbers I/II are replaced by one \"* * *\" line, as the brief requires. The author's date line \"11 июля 1930 г.\" was removed from the end of the body and moved into facts.",
+    "Typography: \"...\" changed to \"…\". Spelling follows the edition, with е for ё; I did not add ё.",
+    "original_title is left empty (YAML null, so the loader returns null). Frontmatter parses: 21 keys, 46 body chunks (45 paragraphs plus the scene break).",
+    "Checked against the catalog hints: \"неожиданный финал\" is not a genre, so it goes into ending: twist. Genres are [притча, реализм]; mood \"светлое\" is confirmed. The catalog note fits after reading but was reworded.",
+    "First publication per the notes to the 1980 edition: «Красная нива», 1930, № 23–24. The args words value was 1319; the actual count is 1382 (whitespace-separated, as the app counts)."
+   ]
+  },
+  "edit": {
+   "slug": "zelenaya-lampa",
+   "verdict": "fixed",
+   "completeness": "Полный текст. Я заново скачал издание через curl: Грин, Собр. соч. в 6 т., т. 6, М.: Правда, 1980, с. 459–464 (rvb.ru/20vek/grin/ss6/vol6/texts/182.html). Именно это издание указано источником на странице ru.wikisource. Абзацы, перенесённые через границу страницы (class=\"continuation\"), склеил. После этого тело файла совпало с изданием по всем абзацам: 45 абзацев плюс «* * *» вместо глав I/II, расхождений 0, если не считать замены «...» на «…». Отдельно проверены начало («В Лондоне в 1920 году, зимой…»), конец («…зажигайте… хотя бы спичку.») и места из середины: «Экипаж/Бродягу», «Каждый вечер, точно от пяти…», «№ 52 по Ривер-стрит», «Я — Джон Ив», «латынь и т. д.». В тексте нет номеров страниц, сносок, вики-разметки и строки с датой. Для сравнения скачал и версию с Wikisource (качество 2). В ней 41 абзац: несколько абзацев слиты, есть искажения («Беднягу», «серьезный», «надежду», лишнее тире в «Стильтон? — Я»). Поэтому текст подготовителя, взятый из издания 1980 года, правильный, а source_url я оставил на странице Wikisource.",
+   "changes": [
+    "Текст: «поллитра» исправлено на «пол-литра». По действующим правилам «пол-» перед «л» пишется через дефис, «пол-литра» приведено там как образец. Это единственная орфографическая правка, авторский текст больше не менялся.",
+    "source_url: адрес приведён к виду %28Грин%29, как в content_args.json и в других файлах ru.wikisource. Сама ссылка не изменилась.",
+    "facts[1]: «почти ровно через два года после того, как закончил „Зелёную лампу“» заменено на «…после даты, которой он подписал „Зелёную лампу“». Проверить можно только дату под текстом, а не время, когда Грин закончил рассказ.",
+    "facts[2]: вместо спорного «Обычно Грин селил героев в вымышленных городах… между Пикадилли и Сити» теперь: «Самые известные вещи Грина происходят в вымышленных городах — Зурбагане, Лиссе, Гель-Гью. Здесь же — настоящий Лондон: Пикадилли, Сити, театр Друри-Лейн». Ранний Грин много писал о России, так что «обычно» неверно. Формулировка «между Пикадилли и Сити» была неточной."
+   ],
+   "facts_checked": [
+    "Первая публикация: «Красная нива», 1930, № 23–24. Это подтверждают примечания Ю. Киркина к т. 6 издания «Правда» 1980 года (rvb.ru, notes.html, раздел comm-182) и znanierussia.ru.",
+    "Дата под текстом «11 июля 1930 г.» есть и в издании 1980 года, и на Wikisource (ДАТАСОЗДАНИЯ).",
+    "Смерть Грина 8 июля 1932 года в Старом Крыму подтверждена через WebSearch (calend.ru, cyclowiki и др.). 11.07.1930 и 08.07.1932: «почти ровно два года» верно, разница два года без трёх дней.",
+    "Зурбаган, Лисс и Гель-Гью — вымышленные города Грина («Бегущая по волнам», «Корабли в Лиссе», «Блистающий мир»). Подтверждено через WebSearch (статья «Гринландия» на dic.academic.ru). Пикадилли, Сити и Дрюриленский театр упоминаются в тексте.",
+    "Note: «автор „Алых парусов“», «летом 1930 года, за два года до смерти» верно. Совет про спичку есть в последней фразе текста. Длина 249 знаков из допустимых 300.",
+    "Hook: 85 знаков, без спойлера и без признаков автора. Teaser: без спойлера и без признаков автора, Лондон, зима 1920 года — верно.",
+    "Quote совпадает с текстом дословно, стоит на 9% длины текста (первая треть), 102 знака.",
+    "genres [притча, реализм], mood «светлое», motif lantern, cloth olive, ending twist, age 12+ — всё из списков брифа. year 1930 верен. original_title пустое (YAML null, загрузчик даёт null), original_lang ru, translation original.",
+    "Права: Грин (1880–1932) умер более 70 лет назад и в РФ находится в общественном достоянии. Участником ВОВ не был, репрессирован не был. Для США: опубликовано в 1930 году, то есть раньше 1931-го. Проблем нет.",
+    "Frontmatter разобран через node + gray-matter (web/node_modules): 21 ключ, 3 факта, 46 блоков тела (45 абзацев и разрыв сцены)."
+   ],
+   "remaining_risks": [
+    "Предлог «с Стильтоном» сохранён так, как он стоит в издании 1980 года. На Wikisource и по современной норме — «со Стильтоном». Это не опечатка, а вариант эпохи, поэтому авторский текст не правил.",
+    "Буква ё в тексте не используется (как в издании). В заголовке и метаданных она есть: «Зелёная». Такое смешение допустимо.",
+    "Текст сверен с изданием 1980 года на rvb.ru, а source_url ведёт на Wikisource. Там текст расшифрован с ошибками и примерно в 25 местах расходится с файлом в написании, пунктуации и делении на абзацы. Если читатель откроет источник, он увидит эти расхождения.",
+    "Подсказку «неожиданный финал» из content_args.json я учёл как ending: twist, а не как жанр. Число слов в args (1319) устарело: по пробелам в теле файла выходит 1379, а подготовитель называл 1382 — счёт загрузчика может немного отличаться."
+   ]
+  }
+ }
+]

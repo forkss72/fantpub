@@ -183,7 +183,12 @@
   transform: translateX(0) scaleX(0.92);
 }
 .stage[data-phase="open"] .book {
-  transform: rotateX(5deg) rotateY(-4deg) translateX(46%) scale(0.92) translateZ(20px);
+  transform: rotateX(5deg) rotateY(-4deg) translateX(46%) scale(var(--open-scale, 0.92)) translateZ(20px);
+}
+@media (max-width: 400px) {
+  .stage {
+    --open-scale: 0.74;
+  }
 }
 .stage[data-phase="open"] .frontCover {
   transform: translateZ(calc(var(--d) / 2)) rotateY(-158deg);

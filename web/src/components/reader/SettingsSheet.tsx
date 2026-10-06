@@ -91,7 +91,7 @@ export function SettingsSheet({ open, onClose }: { open: boolean; onClose: () =>
       <fieldset className={styles.group}>
         <legend>Размер</legend>
         <div className={styles.size}>
-          <button type="button" aria-label="Мельче" disabled={prefs.size <= 1} onClick={() => set({ size: Math.max(1, prefs.size - 1) as Prefs["size"] })}>
+          <button type="button" aria-label="Мельче" aria-disabled={prefs.size <= 1} onClick={() => set({ size: Math.max(1, prefs.size - 1) as Prefs["size"] })}>
             <span style={{ fontSize: 14 }}>А</span>
           </button>
           <div className={styles.dots} role="img" aria-label={`Размер ${prefs.size} из 5`}>
@@ -99,7 +99,7 @@ export function SettingsSheet({ open, onClose }: { open: boolean; onClose: () =>
               <span key={n} data-on={n <= prefs.size} />
             ))}
           </div>
-          <button type="button" aria-label="Крупнее" disabled={prefs.size >= 5} onClick={() => set({ size: Math.min(5, prefs.size + 1) as Prefs["size"] })}>
+          <button type="button" aria-label="Крупнее" aria-disabled={prefs.size >= 5} onClick={() => set({ size: Math.min(5, prefs.size + 1) as Prefs["size"] })}>
             <span style={{ fontSize: 22 }}>А</span>
           </button>
         </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageTransition } from "@/components/PageTransition";
 import { Masthead } from "@/components/Masthead";
 import { TodayHero } from "@/components/TodayHero";
 import { WeekShelf } from "@/components/WeekShelf";
@@ -13,7 +14,11 @@ import styles from "./page.module.css";
 // The issue rolls over at 00:00 MSK; a cron also revalidates right after midnight.
 export const revalidate = 300;
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default function Home() {
+  // server component re-rendered by ISR: "now" decides which issues are published
+  // eslint-disable-next-line react-hooks/purity
   const now = Date.now();
   const today = getTodayStory(now);
   const published = getPublishedStories(now);
@@ -36,7 +41,8 @@ export default function Home() {
     .map((s) => ({ slug: s.slug, title: s.title, minutes: s.minutes }));
 
   return (
-    <main className={`page page--wide ${styles.home}`}>
+    <PageTransition>
+      <main className={`page page--wide ${styles.home}`}>
       <Masthead right={<span className={`mono ${styles.date}`}>{weekday(today.date)}</span>} />
       <TodayHero
         story={{ ...toCard(today), hook: today.hook, paragraphs: today.blocks.filter((b) => b.type === "p").length }}
@@ -79,5 +85,6 @@ export default function Home() {
 
       <SiteFooter />
     </main>
+      </PageTransition>
   );
 }

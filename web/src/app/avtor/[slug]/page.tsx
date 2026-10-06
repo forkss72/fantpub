@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/PageTransition";
 import { notFound } from "next/navigation";
 import { Masthead } from "@/components/Masthead";
 import { StoryCardLink } from "@/components/StoryCardLink";
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/avtor/[slug]">): 
     title: `${a.name}: рассказы читать онлайн`,
     description: `${a.bio} ${n} ${plural(n, ["рассказ", "рассказа", "рассказов"])} в FantPub — с записками Пабчика и временем чтения.`,
     alternates: { canonical: `/avtor/${slug}` },
+    openGraph: { title: `${a.name} в FantPub`, description: a.bio, url: `/avtor/${slug}` },
     robots: n >= 2 ? undefined : { index: false, follow: true },
   };
 }
@@ -43,7 +45,8 @@ export default async function AuthorPage({ params }: PageProps<"/avtor/[slug]">)
     url: `${SITE_URL}/avtor/${slug}`,
   };
   return (
-    <main className={`page ${styles.page}`}>
+    <PageTransition>
+      <main className={`page ${styles.page}`}>
       <Masthead />
       <header className={styles.head}>
         <p className={`mono ${styles.kicker}`}>
@@ -67,5 +70,6 @@ export default async function AuthorPage({ params }: PageProps<"/avtor/[slug]">)
       <SiteFooter />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </main>
+      </PageTransition>
   );
 }

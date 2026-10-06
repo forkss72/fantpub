@@ -12,9 +12,10 @@ export const lora = Lora({
 export const literata = Literata({
   subsets: ["cyrillic", "latin"],
   style: ["normal", "italic"],
-  axes: ["opsz"],
   variable: "--font-literata",
   display: "swap",
+  // only the reader needs it; don't make every page pay ~150 KB upfront
+  preload: false,
 });
 
 /** «Классика»: revival of the Russian book face Chekhov and Grin were printed in. Loaded on demand. */

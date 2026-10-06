@@ -25,6 +25,7 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
   const [now, setNow] = useState(0);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- client clock + URL hash are post-mount facts
     setNow(Date.now());
     const m = location.hash.match(/key=([A-Za-z0-9_-]+)/);
     if (m) setPendingKey(m[1]);
@@ -125,7 +126,7 @@ export function ShelfView({ cards }: { cards: StoryCard[] }) {
               <ul className={styles.books}>
                 {row.map((c) => (
                   <li key={c.slug}>
-                    <Link href={`/rasskaz/${c.slug}` as Route} title={`${c.title} — ${c.authorName}`} className={styles.book}>
+                    <Link href={`/rasskaz/${c.slug}` as Route} title={`${c.title} — ${c.authorName}`} className={styles.book} prefetch={false}>
                       <Spine title={c.title} issue={c.issue} cloth={c.cloth} minutes={c.minutes} state="read" />
                       <span className="sr-only">
                         {c.title}, {c.authorName}

@@ -2,6 +2,14 @@
   display: grid;
   gap: 26px;
 }
+.wrap > *,
+.controls > * {
+  min-width: 0;
+}
+.group {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
 
 /* ─── controls ─── */
 .controls {
@@ -55,7 +63,7 @@
 }
 .chip {
   flex: none;
-  height: 36px;
+  height: 40px;
   padding: 0 14px;
   border: 0;
   border-radius: 999px;
@@ -75,6 +83,7 @@
 }
 .bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
@@ -241,6 +250,8 @@
   gap: 2px;
 }
 .capTitle {
+  overflow-wrap: anywhere;
+  hyphens: auto;
   font-family: var(--fp-font-display);
   font-weight: 600;
   font-size: 15px;

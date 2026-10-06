@@ -28,7 +28,7 @@
 .stamp {
   position: absolute;
   right: 0;
-  top: -26px;
+  top: -34px;
   padding: 4px 10px;
   border: 2px solid var(--fp-sage-ink);
   border-radius: 6px;
@@ -135,7 +135,8 @@
   }
 }
 .skip {
-  margin-top: 10px;
+  min-height: 44px;
+  margin-top: 6px;
   border: 0;
   background: none;
   color: var(--fp-ink-3);

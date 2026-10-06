@@ -37,9 +37,9 @@ export function CalendarView({ cards, todayIssue, totalIssues }: Props) {
             <h2 className={styles.title}>
               {MONTHS[m - 1]} <span>{y}</span>
             </h2>
-            <div className={styles.grid} role="grid">
+            <div className={styles.grid}>
               {DOW.map((d) => (
-                <span key={d} className={styles.dow} role="columnheader">
+                <span key={d} className={styles.dow} aria-hidden="true">
                   {d}
                 </span>
               ))}
@@ -58,6 +58,7 @@ export function CalendarView({ cards, todayIssue, totalIssues }: Props) {
                     <Link
                       key={iso}
                       href={`/rasskaz/${card.slug}` as Route}
+                      prefetch={false}
                       className={styles.cell}
                       data-today={isToday}
                       data-read={read}
@@ -71,7 +72,7 @@ export function CalendarView({ cards, todayIssue, totalIssues }: Props) {
                 }
                 if (future) {
                   return (
-                    <span key={iso} className={`${styles.cell} ${styles.parcel}`} aria-label={`${day} — выпуск запечатан`}>
+                    <span key={iso} className={`${styles.cell} ${styles.parcel}`} role="img" aria-label={`${day}-е — выпуск ещё запечатан`}>
                       <span className={styles.string} aria-hidden="true" />
                       <span className={styles.dot} aria-hidden="true" />
                       <span className={styles.day}>{day}</span>

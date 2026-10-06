@@ -54,7 +54,7 @@ export function BottomNav() {
           const active = it.match(pathname);
           return (
             <li key={it.href}>
-              <Link href={it.href} className={styles.item} aria-current={active ? "page" : undefined}>
+              <Link href={it.href} className={styles.item} aria-current={active ? "page" : undefined} prefetch={false}>
                 {it.icon}
                 <span>{it.label}</span>
               </Link>
