@@ -324,6 +324,9 @@
     bottom: 92px;
     width: 380px;
   }
+  .hint {
+    bottom: 60px;
+  }
   .title {
     font-size: 56px;
   }
