@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { Cover } from "./Cover";
 import { Countdown } from "./Countdown";
+import { CalendarView } from "./CalendarView";
 import { useHydrated, useShelf } from "@/lib/shelf";
 import { humanDate, plural } from "@/lib/date";
 import type { StoryCard } from "@/lib/types";
@@ -13,6 +14,8 @@ import styles from "./ArchiveView.module.css";
 type Props = {
   cards: StoryCard[];
   tomorrow: { mood: string; minutes: number; genres: string[]; issue: number; opensAt: number } | null;
+  todayIssue: number;
+  totalIssues: number;
 };
 
 const LENGTHS = [
@@ -28,7 +31,7 @@ function genreLabel(g: string) {
   return g === "хоррор" ? "жуткое" : g;
 }
 
-export function ArchiveView({ cards, tomorrow }: Props) {
+export function ArchiveView({ cards, tomorrow, todayIssue, totalIssues }: Props) {
   const shelf = useShelf();
   const hydrated = useHydrated();
   const [query, setQuery] = useState("");
@@ -36,7 +39,7 @@ export function ArchiveView({ cards, tomorrow }: Props) {
   const [genre, setGenre] = useState<string>("all");
   const [len, setLen] = useState<(typeof LENGTHS)[number]["key"]>("all");
   const [unread, setUnread] = useState(false);
-  const [view, setView] = useState<"shelf" | "list">("shelf");
+  const [view, setView] = useState<"shelf" | "calendar" | "list">("shelf");
 
   const genres = useMemo(() => {
     const counts = new Map<string, number>();
@@ -77,7 +80,7 @@ export function ArchiveView({ cards, tomorrow }: Props) {
           <input type="search" placeholder="Название, автор, настроение" value={query} onChange={(e) => setQuery(e.target.value)} enterKeyHint="search" />
         </label>
 
-        <div className={styles.chips} role="group" aria-label="Жанр">
+        <div className={styles.chips} role="group" aria-label="Жанр" hidden={view === "calendar"}>
           <button type="button" className={styles.chip} aria-pressed={genre === "all"} onClick={() => setGenre("all")}>
             Все жанры
           </button>
@@ -87,7 +90,7 @@ export function ArchiveView({ cards, tomorrow }: Props) {
             </button>
           ))}
         </div>
-        <div className={styles.chips} role="group" aria-label="Длина">
+        <div className={styles.chips} role="group" aria-label="Длина" hidden={view === "calendar"}>
           {LENGTHS.map((l) => (
             <button key={l.key} type="button" className={styles.chip} aria-pressed={len === l.key} onClick={() => setLen(l.key)}>
               {l.label}
@@ -106,6 +109,9 @@ export function ArchiveView({ cards, tomorrow }: Props) {
           <div className={styles.toggle} role="group" aria-label="Вид">
             <button type="button" aria-pressed={view === "shelf"} onClick={() => setView("shelf")}>
               Обложки
+            </button>
+            <button type="button" aria-pressed={view === "calendar"} onClick={() => setView("calendar")}>
+              Календарь
             </button>
             <button type="button" aria-pressed={view === "list"} onClick={() => setView("list")}>
               Список
@@ -131,7 +137,9 @@ export function ArchiveView({ cards, tomorrow }: Props) {
         </div>
       )}
 
-      {filtered.length === 0 && (
+      {view === "calendar" && <CalendarView cards={cards} todayIssue={todayIssue} totalIssues={totalIssues} />}
+
+      {view !== "calendar" && filtered.length === 0 && (
         <div className={styles.empty}>
           <img src="/pabchik/searching.webp" alt="" width={120} height={120} />
           <p>Пабчик обыскал все полки — такого нет. Попробуйте другой жанр или длину.</p>
@@ -150,7 +158,7 @@ export function ArchiveView({ cards, tomorrow }: Props) {
         </div>
       )}
 
-      {groups.map(([month, items]) => (
+      {view !== "calendar" && groups.map(([month, items]) => (
         <section key={month} className={styles.group} aria-label={month}>
           <h2 className={styles.month}>{month}</h2>
           {view === "shelf" ? (

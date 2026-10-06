@@ -1,0 +1,130 @@
+.wrap {
+  display: grid;
+  gap: 30px;
+}
+.month {
+  display: grid;
+  gap: 12px;
+}
+.title {
+  margin: 0;
+  font-family: var(--fp-font-display);
+  font-weight: 600;
+  font-size: 22px;
+}
+.title span {
+  font-weight: 400;
+  color: var(--fp-ink-3);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+@media (min-width: 720px) {
+  .grid {
+    gap: 12px;
+    max-width: 760px;
+  }
+}
+.dow {
+  font-family: var(--fp-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fp-ink-3);
+  text-align: center;
+  padding-bottom: 2px;
+}
+.cell {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  border-radius: 3px;
+}
+.cell > :first-child:not(.string):not(.day) {
+  box-shadow: 0 3px 6px -2px rgb(52 42 18 / 0.4);
+  transition: transform 300ms var(--fp-spring);
+}
+.cell:hover > :first-child:not(.string):not(.day) {
+  transform: translateY(-3px) rotate(-2deg);
+}
+.day {
+  position: absolute;
+  left: 3px;
+  bottom: 3px;
+  min-width: 18px;
+  padding: 1px 3px;
+  border-radius: 4px;
+  background: rgb(252 250 244 / 0.92);
+  color: #1d1c17;
+  font-family: var(--fp-font-mono);
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.4;
+}
+.cell[data-today="true"] {
+  outline: 2.5px solid var(--fp-sage);
+  outline-offset: 2px;
+}
+.cell[data-today="true"] .day {
+  background: var(--fp-sage);
+}
+.mark {
+  position: absolute;
+  top: -2px;
+  right: 14%;
+  width: 8px;
+  height: 14px;
+  background: var(--fp-sage);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+  opacity: 0;
+}
+.cell[data-read="true"] .mark {
+  opacity: 1;
+}
+
+/* the future, wrapped in kraft paper */
+.parcel {
+  background:
+    repeating-linear-gradient(115deg, rgb(255 255 255 / 0.05) 0 2px, transparent 2px 6px),
+    linear-gradient(160deg, #cfab72, #a7814b);
+  box-shadow: 0 3px 6px -2px rgb(60 40 10 / 0.4);
+}
+.string::before,
+.string::after {
+  content: "";
+  position: absolute;
+  background: #f1e6cc;
+  opacity: 0.8;
+}
+.string::before {
+  left: 48%;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+}
+.string::after {
+  top: 55%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+}
+.dot {
+  position: absolute;
+  left: calc(48% - 5px);
+  top: calc(55% - 5px);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e6f0c6, var(--fp-sage-wax) 50%, #7f9450);
+}
+.empty {
+  aspect-ratio: auto;
+  min-height: 28px;
+}
+.empty .day {
+  background: transparent;
+  color: var(--fp-ink-3);
+  opacity: 0.6;
+}

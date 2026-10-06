@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { fontVars } from "./fonts";
 import { SITE_DESCRIPTOR, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import { BottomNav } from "@/components/BottomNav";
+import { ServiceWorker } from "@/components/ServiceWorker";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </div>
         <BottomNav />
         <Analytics />
+        <ServiceWorker />
       </body>
     </html>
   );

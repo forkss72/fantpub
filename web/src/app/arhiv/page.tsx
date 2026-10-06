@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Masthead } from "@/components/Masthead";
 import { ArchiveView } from "@/components/ArchiveView";
 import { SiteFooter } from "@/components/SiteFooter";
-import { getPublishedStories, getTomorrowTeaser } from "@/lib/content";
+import { getAllStories, getPublishedStories, getTomorrowTeaser } from "@/lib/content";
 import { toCard } from "@/lib/cards";
-import { issueOpensAt, plural } from "@/lib/date";
+import { currentIssue, issueOpensAt, plural } from "@/lib/date";
 import styles from "./page.module.css";
 
 export const revalidate = 300;
@@ -31,6 +31,8 @@ export default function ArchivePage() {
       <ArchiveView
         cards={cards}
         tomorrow={tomorrow ? { ...tomorrow, opensAt: issueOpensAt(tomorrow.issue) } : null}
+        todayIssue={currentIssue(now)}
+        totalIssues={Math.max(0, ...getAllStories().map((s) => s.issue))}
       />
       <SiteFooter />
     </main>
