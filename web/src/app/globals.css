@@ -15,7 +15,7 @@
   --band-from: #ffffff;
   --band-to: #efeff2;
   --label: #000000;
-  --label-2: rgb(60 60 67 / 0.66);
+  --label-2: rgb(60 60 67 / 0.78);
   --label-3: rgb(60 60 67 / 0.36);
   --sep: rgb(60 60 67 / 0.2);
   --fill-1: rgb(120 120 128 / 0.2);
@@ -65,7 +65,7 @@
   /* reader defaults (overridden per theme below) */
   --paper: #ffffff;
   --ink: #141414;
-  --ink-2: rgb(20 20 20 / 0.55);
+  --ink-2: rgb(20 20 20 / 0.64);
   --reader-font: var(--font-serif);
   --reader-weight: 400;
   --read-size: 19px;
@@ -104,7 +104,7 @@
   --scrim: rgb(0 0 0 / 0.5);
   --paper: #000000;
   --ink: #e8e8e8;
-  --ink-2: rgb(232 232 232 / 0.55);
+  --ink-2: rgb(232 232 232 / 0.6);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-scheme]) {
@@ -138,18 +138,18 @@
 }
 
 /* ─── reader themes (Apple Books model: paper + typeface) ─── */
-:root[data-reader="original"] { --paper: #ffffff; --ink: #141414; --ink-2: rgb(20 20 20 / 0.52); --reader-font: var(--font-serif); --reader-weight: 400; }
-:root[data-reader="quiet"] { --paper: #4a4a4d; --ink: #d6d6d8; --ink-2: rgb(214 214 216 / 0.55); --reader-font: var(--font-serif); --reader-weight: 400; }
-:root[data-reader="paper"] { --paper: #f3f2ee; --ink: #27261f; --ink-2: rgb(39 38 31 / 0.55); --reader-font: var(--font-book); --reader-weight: 400; }
-:root[data-reader="bold"] { --paper: #ffffff; --ink: #000000; --ink-2: rgb(0 0 0 / 0.55); --reader-font: var(--font-ui); --reader-weight: 600; }
-:root[data-reader="calm"] { --paper: #f4e8d0; --ink: #4a3a26; --ink-2: rgb(74 58 38 / 0.6); --reader-font: var(--font-classic); --reader-weight: 400; }
-:root[data-reader="focus"] { --paper: #fdfdf8; --ink: #1d1d1a; --ink-2: rgb(29 29 26 / 0.55); --reader-font: var(--font-sans); --reader-weight: 420; }
-:root[data-scheme="dark"][data-reader="original"] { --paper: #000000; --ink: #e6e6e6; --ink-2: rgb(230 230 230 / 0.5); }
-:root[data-scheme="dark"][data-reader="quiet"] { --paper: #1c1c1e; --ink: #a1a1a6; --ink-2: rgb(161 161 166 / 0.6); }
-:root[data-scheme="dark"][data-reader="paper"] { --paper: #121211; --ink: #d9d7cf; --ink-2: rgb(217 215 207 / 0.5); }
-:root[data-scheme="dark"][data-reader="bold"] { --paper: #000000; --ink: #ffffff; --ink-2: rgb(255 255 255 / 0.55); }
-:root[data-scheme="dark"][data-reader="calm"] { --paper: #29221a; --ink: #e3d3b6; --ink-2: rgb(227 211 182 / 0.55); }
-:root[data-scheme="dark"][data-reader="focus"] { --paper: #0e0f0c; --ink: #e6e6de; --ink-2: rgb(230 230 222 / 0.5); }
+:root[data-reader="original"] { --paper: #ffffff; --ink: #141414; --ink-2: rgb(20 20 20 / 0.64); --reader-font: var(--font-serif); --reader-weight: 400; }
+:root[data-reader="quiet"] { --paper: #4a4a4d; --ink: #d6d6d8; --ink-2: rgb(214 214 216 / 0.82); --reader-font: var(--font-serif); --reader-weight: 400; }
+:root[data-reader="paper"] { --paper: #f3f2ee; --ink: #27261f; --ink-2: rgb(39 38 31 / 0.68); --reader-font: var(--font-book); --reader-weight: 400; }
+:root[data-reader="bold"] { --paper: #ffffff; --ink: #000000; --ink-2: rgb(0 0 0 / 0.64); --reader-font: var(--font-ui); --reader-weight: 600; }
+:root[data-reader="calm"] { --paper: #f4e8d0; --ink: #4a3a26; --ink-2: rgb(74 58 38 / 0.78); --reader-font: var(--font-classic); --reader-weight: 400; }
+:root[data-reader="focus"] { --paper: #fdfdf8; --ink: #1d1d1a; --ink-2: rgb(29 29 26 / 0.64); --reader-font: var(--font-sans); --reader-weight: 420; }
+:root[data-scheme="dark"][data-reader="original"] { --paper: #000000; --ink: #e6e6e6; --ink-2: rgb(230 230 230 / 0.6); }
+:root[data-scheme="dark"][data-reader="quiet"] { --paper: #1c1c1e; --ink: #a1a1a6; --ink-2: rgb(161 161 166 / 0.84); }
+:root[data-scheme="dark"][data-reader="paper"] { --paper: #121211; --ink: #d9d7cf; --ink-2: rgb(217 215 207 / 0.6); }
+:root[data-scheme="dark"][data-reader="bold"] { --paper: #000000; --ink: #ffffff; --ink-2: rgb(255 255 255 / 0.6); }
+:root[data-scheme="dark"][data-reader="calm"] { --paper: #29221a; --ink: #e3d3b6; --ink-2: rgb(227 211 182 / 0.62); }
+:root[data-scheme="dark"][data-reader="focus"] { --paper: #0e0f0c; --ink: #e6e6de; --ink-2: rgb(230 230 222 / 0.6); }
 :root[data-font="serif"] { --reader-font: var(--font-book); }
 :root[data-font="classic"] { --reader-font: var(--font-classic); }
 :root[data-font="sans"] { --reader-font: var(--font-sans); }
@@ -387,7 +387,7 @@ html[data-refract] .glass[data-refract] {
   display: none;
 }
 :root[data-blind="1"] .seal-mask {
-  display: inline;
+  display: inline-block;
 }
 .blind-only {
   display: none !important;
@@ -489,7 +489,10 @@ html[data-refract] .glass[data-refract] {
     --snappy: ease-out;
     --bouncy: ease-out;
   }
-  ::view-transition-group(*),
+  /* no travel: snapshots just crossfade */
+  ::view-transition-group(*) {
+    animation: none !important;
+  }
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation-duration: 0.18s !important;

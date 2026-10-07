@@ -33,7 +33,8 @@ const EMPTY: Record<Tab, { title: string; text: string; cta: string; href: Route
 
 function lists(cards: StoryCard[], s: ShelfState) {
   const pct = (c: StoryCard) => s.percent[c.slug] ?? 0;
-  const reading = cards.filter((c) => !s.read[c.slug] && pct(c) > 0).sort((a, b) => (s.opened[b.slug] ?? 0) - (s.opened[a.slug] ?? 0));
+  const last = (c: StoryCard) => s.touched[c.slug] ?? s.opened[c.slug] ?? 0;
+  const reading = cards.filter((c) => !s.read[c.slug] && pct(c) > 0).sort((a, b) => last(b) - last(a) || pct(b) - pct(a));
   const want = cards.filter((c) => s.want[c.slug] && !s.read[c.slug]).sort((a, b) => s.want[b.slug] - s.want[a.slug]);
   const read = cards.filter((c) => s.read[c.slug]).sort((a, b) => s.read[b.slug] - s.read[a.slug]);
   return { reading, want, read };
@@ -120,7 +121,7 @@ function Empty({ tab }: { tab: Tab }) {
       {tab === "read" && (
         <Ledge>
           {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized webp */}
-          <img className={styles.sleeper} src="/pabchik/sleeping.webp" alt="" width={150} height={150} decoding="async" />
+          <img className={styles.sleeper} src="/pabchik/sleeping.webp" alt="" width={150} height={150} fetchPriority="high" />
         </Ledge>
       )}
       <div className={styles.emptyText}>

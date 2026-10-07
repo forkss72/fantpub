@@ -46,7 +46,7 @@
   background: var(--fill-3);
   box-shadow: inset 0 0 0 0.5px var(--fill-1);
   font-size: 13px;
-  color: var(--label-3);
+  color: var(--label-2);
 }
 .slot[data-filled] .blank {
   background: var(--accent-soft);
@@ -62,7 +62,9 @@
 }
 .stepper button {
   inline-size: 44px;
-  block-size: 34px;
+  /* 44px hit area over the 34px Apple stepper */
+  block-size: 44px;
+  margin-block: -5px;
   border: 0;
   background: none;
   font-size: 22px;

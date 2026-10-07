@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <main className={`page ${styles.page}`}>
       {/* eslint-disable-next-line @next/next/no-img-element -- small pre-sized webp */}
-      <img className={styles.figure} src="/pabchik/sad.webp" alt="" width={152} height={152} decoding="async" />
+      <img className={styles.figure} src="/pabchik/sad.webp" alt="" width={152} height={152} decoding="async" loading="lazy" />
       <h1 className={`t-large ${styles.title}`}>Такой книги нет</h1>
       <p className={`t-sub ${styles.line}`}>Возможно, выпуск ещё не вышел или ссылка устарела.</p>
       <div className={styles.actions}>

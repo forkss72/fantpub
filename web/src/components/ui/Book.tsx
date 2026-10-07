@@ -3,7 +3,7 @@ import type { Cover } from "@/lib/types";
 import styles from "./Book.module.css";
 
 type Props = {
-  cover: Pick<Cover, "src" | "srcSmall" | "placeholder" | "colors">;
+  cover: Pick<Cover, "src" | "srcSmall" | "placeholder" | "colors"> & { srcMedium?: string };
   title?: string;
   issue?: number;
   /** rendered width; the cover keeps 2:3 */
@@ -50,7 +50,7 @@ export function Book({ cover, title, issue, width, sizes, depth, sheen, sealed, 
         <img
           className={styles.art}
           src={cover.srcSmall}
-          srcSet={`${cover.srcSmall} 360w, ${cover.src} 1000w`}
+          srcSet={`${cover.srcSmall} 360w, ${cover.srcMedium ? `${cover.srcMedium} 600w, ` : ""}${cover.src} 1000w`}
           sizes={sizes ?? w}
           alt=""
           width={1000}

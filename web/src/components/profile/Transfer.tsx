@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { Sheet } from "@/components/ui/Sheet";
 import { showHud } from "@/components/ui/Hud";
 import { exportKey, importKey, resetShelf, type ShelfState } from "@/lib/shelf";
-import { shareOrCopy } from "@/lib/share";
 import { parseKey, transferLink } from "@/components/shelf/key";
 import { Group } from "./Group";
 import styles from "./Profile.module.css";
@@ -15,6 +14,15 @@ export function Transfer({ shelf }: { shelf: ShelfState }) {
   const [error, setError] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const link = transferLink(exportKey(shelf));
+  const keyRef = useRef<HTMLSpanElement>(null);
+
+  function copy() {
+    navigator.clipboard
+      .writeText(link)
+      .then(() => showHud("Ключ скопирован", "link"))
+      // no clipboard (insecure context, denied): select the key so the reader can copy it by hand
+      .catch(() => keyRef.current && getSelection()?.selectAllChildren(keyRef.current));
+  }
 
   function submit(e: FormEvent) {
     e.preventDefault();
@@ -32,9 +40,11 @@ export function Transfer({ shelf }: { shelf: ShelfState }) {
         <div className={styles.row}>
           <span className={styles.label}>
             Ссылка-ключ
-            <span className={`${styles.keyLine} num`}>{link}</span>
+            <span ref={keyRef} className={`${styles.keyLine} num`}>
+              {link}
+            </span>
           </span>
-          <button type="button" className={`${styles.small} press`} onClick={() => void shareOrCopy(link, "Ключ от полки FantPub")}>
+          <button type="button" className={`${styles.small} press`} onClick={copy}>
             Скопировать
           </button>
         </div>

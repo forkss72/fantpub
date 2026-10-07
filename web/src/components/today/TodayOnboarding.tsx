@@ -2,14 +2,14 @@
 
 import dynamic from "next/dynamic";
 import { useHydrated, useShelf } from "@/lib/shelf";
-import type { TodayBook } from "./state";
+import type { FanBook } from "@/components/onboarding/Onboarding";
 
 // Only first-time visitors need it: keep it out of Today's bundle for everyone else.
 const Onboarding = dynamic(() => import("@/components/onboarding/Onboarding").then((m) => m.Onboarding), { ssr: false });
 
-/** First visit → the onboarding layer over Today, with the book of the day in front of its fan. */
-export function TodayOnboarding({ today }: { today: TodayBook }) {
+/** First visit → the onboarding layer over Today; `fan` = published issues, the book of the day first. */
+export function TodayOnboarding({ fan }: { fan: FanBook[] }) {
   const shelf = useShelf();
   const hydrated = useHydrated();
-  return hydrated && !shelf.onboarded ? <Onboarding today={today} /> : null;
+  return hydrated && !shelf.onboarded ? <Onboarding fan={fan} /> : null;
 }

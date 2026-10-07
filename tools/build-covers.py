@@ -3,12 +3,13 @@
 
 research/redesign/covers_src/<slug>.jpg  (downloaded once, not committed)
   -> web/public/covers/<slug>.webp      1000x1500, flat title band in the cover's dark tone
+  -> web/public/covers/<slug>-m.webp    600x900 for heroes and sheets
   -> web/public/covers/<slug>-s.webp    360x540 for shelves and grids
   -> web/content/covers.json            colours, credit, tiny placeholder
 
 Usage: python3 tools/build-covers.py [slug ...]
 """
-import base64, colorsys, io, json, os, sys
+import base64, colorsys, hashlib, io, json, os, sys
 from PIL import Image, ImageOps, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -129,13 +130,17 @@ def build(slug):
 
     os.makedirs(OUT, exist_ok=True)
     cover.save(os.path.join(OUT, slug + ".webp"), "WEBP", quality=80, method=6)
+    cover.resize((600, 900), Image.LANCZOS).save(os.path.join(OUT, slug + "-m.webp"), "WEBP", quality=78, method=6)
     cover.resize((360, 540), Image.LANCZOS).save(os.path.join(OUT, slug + "-s.webp"), "WEBP", quality=74, method=6)
+    # covers are served immutable: a content hash in the URL busts caches when art is re-rendered
+    v = hashlib.sha1(open(os.path.join(OUT, slug + ".webp"), "rb").read()).hexdigest()[:8]
     tiny = io.BytesIO()
     cover.resize((12, 18), Image.LANCZOS).save(tiny, "WEBP", quality=50)
 
     return {
-        "src": f"/covers/{slug}.webp",
-        "srcSmall": f"/covers/{slug}-s.webp",
+        "src": f"/covers/{slug}.webp?v={v}",
+        "srcMedium": f"/covers/{slug}-m.webp?v={v}",
+        "srcSmall": f"/covers/{slug}-s.webp?v={v}",
         "placeholder": "data:image/webp;base64," + base64.b64encode(tiny.getvalue()).decode(),
         "colors": colors,
         "duotone": bool(p.get("duotone")),

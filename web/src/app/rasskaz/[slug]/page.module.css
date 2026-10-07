@@ -20,6 +20,13 @@ html:has(.main) body {
   color: var(--ink);
 }
 
+/* --ink-2 carries real information here («Конец», bio, years, the share note…). Two themes keep it
+   under 4.5:1 on their paper — «Тихая» (≈4.0) and light «Спокойная» (4.499) — so there it is the ink. */
+:root[data-reader="quiet"] .main,
+:root[data-reader="calm"]:not([data-scheme="dark"]) .main {
+  --ink-2: var(--ink);
+}
+
 .article {
   max-width: var(--measure);
   margin-inline: auto;

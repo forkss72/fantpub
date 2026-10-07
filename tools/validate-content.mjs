@@ -1,4 +1,4 @@
-// Validates web/content: frontmatter, motifs/cloths, blind-reading leaks, quotes, issue sequence.
+// Validates web/content: frontmatter, covers, blind-reading leaks, quotes, issue sequence.
 // Usage: node tools/validate-content.mjs
 import fs from "node:fs";
 import path from "node:path";
@@ -7,10 +7,7 @@ const require = createRequire(import.meta.url);
 const matter = require("../web/node_modules/gray-matter");
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "web");
-const motifsSrc = fs.readFileSync(path.join(ROOT, "src/lib/motifs.ts"), "utf8");
-const MOTIFS = new Set([...motifsSrc.matchAll(/^  ([a-z]+):/gm)].map((m) => m[1]));
-const clothSrc = fs.readFileSync(path.join(ROOT, "src/lib/cloth.ts"), "utf8");
-const CLOTHS = new Set([...clothSrc.matchAll(/^  ([a-z]+): \{ bg/gm)].map((m) => m[1]));
+const COVERS = JSON.parse(fs.readFileSync(path.join(ROOT, "content/covers.json"), "utf8"));
 const GENRES = new Set(["фантастика", "хоррор", "мистика", "притча", "юмор", "детектив", "реализм", "приключения", "сказка"]);
 const authors = JSON.parse(fs.readFileSync(path.join(ROOT, "content/authors.json"), "utf8"));
 
@@ -30,11 +27,13 @@ for (const f of files) {
   }
   const p = (m) => problems.push(`${f}: ${m}`);
   const w = (m) => warn.push(`${f}: ${m}`);
-  for (const k of ["slug", "issue", "title", "author", "year", "translation", "genres", "mood", "age", "teaser", "hook", "note", "quote", "motif", "cloth"]) if (d[k] === undefined || d[k] === "" || d[k] === null) p(`missing ${k}`);
+  for (const k of ["slug", "issue", "title", "author", "year", "translation", "genres", "mood", "age", "teaser", "hook", "note", "quote"]) if (d[k] === undefined || d[k] === "" || d[k] === null) p(`missing ${k}`);
   if (d.slug && `${d.slug}.md` !== f) p(`slug ${d.slug} ≠ filename`);
   if (d.author && !authors[d.author]) p(`author ${d.author} not in authors.json`);
-  if (d.motif && !MOTIFS.has(d.motif)) p(`unknown motif ${d.motif}`);
-  if (d.cloth && !CLOTHS.has(d.cloth)) p(`unknown cloth ${d.cloth}`);
+  if (!COVERS[d.slug]) p(`no cover in content/covers.json (run tools/build-covers.py)`);
+  // blind reading: URLs are visible before the reveal, so a slug must not carry the author's name
+  const surname = String(d.author ?? "").split("-").at(-1);
+  if (surname && surname.length > 2 && String(d.slug).includes(surname)) p(`slug "${d.slug}" names the author`);
   for (const g of d.genres ?? []) if (!GENRES.has(g)) w(`genre «${g}» not in list`);
   if ((d.hook ?? "").length > 120) w(`hook ${d.hook.length} chars`);
   if ((d.note ?? "").length > 340) w(`note ${d.note.length} chars`);
@@ -58,7 +57,7 @@ for (const f of files) {
 }
 rows.sort((a, b) => a.issue - b.issue);
 for (let i = 1; i < rows.length; i++) {
-  if (rows[i].cloth === rows[i - 1].cloth) warn.push(`issues ${rows[i - 1].issue}/${rows[i].issue} share cloth ${rows[i].cloth}`);
+
   if (rows[i].motif === rows[i - 1].motif) warn.push(`issues ${rows[i - 1].issue}/${rows[i].issue} share motif ${rows[i].motif}`);
 }
 const issues = rows.map((r) => r.issue);

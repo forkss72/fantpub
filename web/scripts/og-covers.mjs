@@ -13,7 +13,7 @@ fs.mkdirSync(out, { recursive: true });
 
 let n = 0;
 for (const [slug, cover] of Object.entries(covers)) {
-  const src = path.join(root, "public", cover.src);
+  const src = path.join(root, "public", cover.src.split("?")[0]);
   await sharp(src).resize(480, 720, { fit: "cover" }).jpeg({ quality: 82, mozjpeg: true }).toFile(path.join(out, `${slug}.jpg`));
   n++;
 }

@@ -62,6 +62,7 @@ export function TabBar() {
               href={href}
               className={styles.tab}
               aria-current={active ? "page" : undefined}
+              aria-label={label}
               data-active={active ? "" : undefined}
               onClick={() => setMin(false)}
             >

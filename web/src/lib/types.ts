@@ -52,6 +52,7 @@ export type CoverCredit = {
 
 export type Cover = {
   src: string;
+  srcMedium: string;
   srcSmall: string;
   placeholder: string;
   colors: CoverColors;

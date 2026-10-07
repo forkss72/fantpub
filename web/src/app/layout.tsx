@@ -46,13 +46,13 @@ export const viewport: Viewport = {
  */
 const bootScript = `(function(){try{
 var d=document.documentElement,s=JSON.parse(localStorage.getItem('fantpub:v2')||'null');
-if(!s){var o=JSON.parse(localStorage.getItem('fantpub:v1')||'null')||{},op=o.prefs||{};s={read:o.read||{},prefs:{appearance:op.theme==='paper'?'light':(op.theme==='dusk'||op.theme==='night')?'dark':'auto',blind:op.blind!==false}}}
+if(!s){var o=JSON.parse(localStorage.getItem('fantpub:v1')||'null')||{},op=o.prefs||{};s={read:o.read||{},prefs:{appearance:op.theme==='paper'?'light':(op.theme==='dusk'||op.theme==='night')?'dark':'auto',blind:op.blind!==false,readerTheme:op.font==='classic'?'calm':op.font==='onest'?'focus':'original'}}}
 var p=s.prefs||{},a=p.appearance||'auto';if(a==='auto'){a=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
 d.dataset.scheme=a;d.dataset.reader=p.readerTheme||'original';d.dataset.font=p.font||'auto';d.dataset.size=String(p.size||4);d.dataset.leading=p.leading||'normal';d.dataset.justify=p.justify?'1':'0';d.dataset.glass=p.glass||'regular';
 var q=new URLSearchParams(location.search),seg=location.pathname.split('/'),f=q.get('z')==='1'?(seg[2]||'').replace(/[^a-z0-9-]/g,''):'';
 if(p.blind!==false||f){d.dataset.blind='1';var r=Object.keys(s.read||{}).map(function(k){return k.replace(/[^a-z0-9-]/g,'')}).filter(function(k){return k&&k!==f});
 if(r.length){var at=function(x){return r.map(function(k){return ':root[data-blind="1"] [data-seal="'+k+'"] '+x}).join(',')};var st=document.createElement('style');st.id='fp-read';st.textContent=at('.seal-real')+'{display:inline}'+at('.seal-mask')+'{display:none}'+at('.blind-only')+'{display:none!important}'+at('.reveal-only')+'{display:revert!important}';document.head.appendChild(st)}
-var sl=(seg[1]==='rasskaz'||seg[1]==='kniga')?(seg[2]||''):'';if(sl&&(sl===f||!(s.read||{})[sl])){document.addEventListener('DOMContentLoaded',function(){var h=document.querySelector('[data-seal-title]');if(h){d.dataset.realTitle=document.title;document.title='\u00ab'+h.textContent.trim()+'\u00bb \u2014 рассказ дня \u00b7 FantPub'}})}}
+var sl=(seg[1]==='rasskaz'||seg[1]==='kniga')?(seg[2]||'').replace(/[^a-z0-9-]/g,''):'';if(sl&&(sl===f||!(s.read||{})[sl])){document.addEventListener('DOMContentLoaded',function(){var h=document.querySelector('[data-seal="'+sl+'"] [data-seal-title]');if(h){d.dataset.realTitle=document.title;document.title='\u00ab'+h.textContent.trim()+'\u00bb \u2014 рассказ дня \u00b7 FantPub'}})}}
 }catch(e){}})();`;
 
 export default function RootLayout({ children, modal }: LayoutProps<"/">) {

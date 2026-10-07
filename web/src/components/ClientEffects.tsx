@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { applyPrefs, getShelf } from "@/lib/shelf";
+import { rememberLanding } from "@/lib/nav";
 
 type BIPEvent = Event & { prompt: () => Promise<void> };
 declare global {
@@ -19,15 +20,13 @@ declare global {
 export function ClientEffects() {
   const pathname = usePathname();
 
-  // count in-app navigations so the reader's back button knows whether history is ours
+  // safety net: re-apply appearance (error shells skip the head script) and the reader's bar colour
   useEffect(() => {
-    try {
-      const n = Number(sessionStorage.getItem("fantpub:depth") ?? "0") + 1;
-      sessionStorage.setItem("fantpub:depth", String(n));
-    } catch {}
+    applyPrefs(getShelf().prefs);
   }, [pathname]);
 
   useEffect(() => {
+    rememberLanding();
     const onBIP = (e: Event) => {
       e.preventDefault();
       window.__fpInstall = e as BIPEvent;

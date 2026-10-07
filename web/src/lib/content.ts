@@ -167,7 +167,8 @@ export function getTomorrowTeaser(now = Date.now()): TomorrowTeaser | null {
         minutes: next.minutes,
         genres: next.genres,
         issue: next.issue,
-        cover: { placeholder: next.cover.placeholder, colors: next.cover.colors, srcSmall: next.cover.srcSmall },
+        // never tomorrow's real file: its name and the unblurred art would give the story away
+        cover: { placeholder: next.cover.placeholder, colors: next.cover.colors, srcSmall: next.cover.placeholder },
       }
     : null;
 }

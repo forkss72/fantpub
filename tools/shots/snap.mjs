@@ -36,7 +36,7 @@ await page.addInitScript((s) => {
   const cur = JSON.parse(localStorage.getItem("fantpub:v2") || "null") || {};
   localStorage.setItem("fantpub:v2", JSON.stringify({ ...base, ...cur, ...(s ? JSON.parse(s) : {}) }));
 }, state);
-await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
+await page.goto(url, { waitUntil: "load", timeout: 60000 });
 const click = opt("click", null);
 if (click) {
   await page.click(click);

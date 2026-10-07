@@ -19,6 +19,8 @@ export function BookSheetModal({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
   // Esc inside the ••• menu closes the menu only
   const menuEsc = useRef(false);
+  // where focus goes back to: the dialog is unmounted, never close()d, so the browser won't restore it
+  const opener = useRef<{ el: Element | null; page: Element | null; href: string } | null>(null);
   // a slot keeps its last page after navigating elsewhere (e.g. «Читать»): render nothing there
   const open = pathname.startsWith("/kniga/");
 
@@ -42,14 +44,36 @@ export function BookSheetModal({ children }: { children: ReactNode }) {
     ref.current?.scrollTo({ top: 0 });
   }, [pathname]);
 
-  // the page under the card stays put
+  // the page under the card stays put; a reload (full page) must not inherit that page's scroll
   useEffect(() => {
     if (!open) return;
     const html = document.documentElement;
     const prev = html.style.overflow;
+    const prevRestore = history.scrollRestoration;
     html.style.overflow = "hidden";
+    history.scrollRestoration = "manual";
     return () => {
       html.style.overflow = prev;
+      history.scrollRestoration = prevRestore;
+    };
+  }, [open]);
+
+  // card gone: focus returns to what opened it (or the same book's link / the first link on that page)
+  useEffect(() => {
+    const d = ref.current;
+    if (!open || !d) return;
+    return () => {
+      const o = opener.current;
+      // card still in the document: Strict Mode's rehearsal
+      if (d.isConnected || !o) return;
+      opener.current = null;
+      // moved on to another page (the reader): focus is that page's business
+      if (!o.page?.isConnected) return;
+      const el =
+        o.el instanceof HTMLElement && o.el !== document.body && o.el.isConnected
+          ? o.el
+          : (o.page.querySelector<HTMLElement>(`a[href="${o.href}"]`) ?? o.page.querySelector<HTMLElement>("a[href]"));
+      el?.focus({ preventScroll: true });
     };
   }, [open]);
 
@@ -131,6 +155,7 @@ export function BookSheetModal({ children }: { children: ReactNode }) {
         ref={(d) => {
           // during the commit, so the view transition snapshots the open card
           if (d && !d.open) {
+            opener.current ??= { el: document.activeElement, page: document.querySelector("#app-root main"), href: pathname };
             d.showModal();
             // focus the card itself (its title is the accessible name), not the ✕
             d.focus({ preventScroll: true });

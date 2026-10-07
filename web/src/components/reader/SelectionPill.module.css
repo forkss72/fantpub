@@ -1,9 +1,15 @@
+/* --y: the spot by the selection, --sy: the scroll it was measured at (both in page px).
+   Clamped so the 44px pill stays on screen, clear of the notch and the home indicator. */
 .anchor {
+  --safe-t: calc(var(--sy) + env(safe-area-inset-top, 0px) + 8px);
+  --safe-b: calc(var(--sy) + 100dvh - env(safe-area-inset-bottom, 0px) - 8px);
   position: absolute;
   z-index: 40;
+  top: clamp(calc(var(--safe-t) + 44px), var(--y), var(--safe-b));
   translate: -50% -100%;
 }
 .anchor[data-below] {
+  top: clamp(var(--safe-t), var(--y), calc(var(--safe-b) - 44px));
   translate: -50% 0;
 }
 .pill {

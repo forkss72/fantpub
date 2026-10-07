@@ -71,6 +71,7 @@
   background: var(--fill-1);
 }
 .close {
+  position: relative;
   inline-size: 36px;
   block-size: 36px;
   border-radius: 50%;
@@ -79,6 +80,11 @@
   place-items: center;
   background: var(--fill-2);
   color: var(--label-2);
+}
+.close::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
 }
 .title {
   grid-column: 2;

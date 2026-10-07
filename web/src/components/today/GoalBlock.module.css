@@ -8,6 +8,9 @@
 .goal > h2 {
   margin-bottom: 22px;
 }
+.counted {
+  margin-top: 10px;
+}
 .week {
   inline-size: min(100%, 320px);
   margin-top: 26px;

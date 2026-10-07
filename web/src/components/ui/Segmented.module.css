@@ -5,11 +5,20 @@
   padding: 2px;
   border-radius: 10px;
   background: var(--fill-3);
-  block-size: 34px;
+  block-size: 36px;
   isolation: isolate;
 }
 .seg[data-size="s"] {
-  block-size: 30px;
+  block-size: 32px;
+}
+/* 44px hit area around a slimmer visual control */
+.opt {
+  position: relative;
+}
+.opt::before {
+  content: "";
+  position: absolute;
+  inset: -6px 0;
 }
 .thumb {
   position: absolute;

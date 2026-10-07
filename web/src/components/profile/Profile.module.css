@@ -178,7 +178,7 @@ label.row:active {
 .field {
   flex: 1;
   min-inline-size: 0;
-  block-size: 36px;
+  block-size: 44px;
   padding: 0 12px;
   border: 0;
   border-radius: 10px;
@@ -188,7 +188,7 @@ label.row:active {
   font-size: 17px;
 }
 .field::placeholder {
-  color: var(--label-3);
+  color: var(--label-2);
 }
 .time {
   flex: none;
@@ -203,6 +203,7 @@ label.row:active {
   font-variant-numeric: tabular-nums;
 }
 .small {
+  position: relative;
   flex: none;
   min-block-size: 36px;
   padding: 0 14px;
@@ -212,6 +213,12 @@ label.row:active {
   color: var(--label);
   font-size: 15px;
   font-weight: 600;
+}
+/* 44px hit area around the 36px pill */
+.small::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
 }
 .small:disabled {
   color: var(--label-3);

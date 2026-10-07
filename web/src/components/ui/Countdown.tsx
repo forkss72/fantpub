@@ -31,7 +31,10 @@ export function Countdown({ target }: { target: number }) {
       if (attempts.current >= 4 || t - target > 15 * 60 * 1000) return;
       if (t >= nextTry.current) {
         attempts.current += 1;
-        nextTry.current = t + (attempts.current === 1 ? 4000 : 25000 * attempts.current) + Math.random() * 15000;
+        nextTry.current =
+          t +
+          (attempts.current === 1 ? 4000 : 25000 * attempts.current) +
+          Math.random() * 15000;
         router.refresh();
       }
     };
@@ -40,8 +43,42 @@ export function Countdown({ target }: { target: number }) {
     return () => window.clearInterval(id);
   }, [target, router]);
 
+  // the issue is out but the cached page isn't fresh yet: offer a manual refresh instead of a frozen 00:00:00
+  // (callers print «через» before it)
+  if (now !== null && now >= target) {
+    return (
+      <>
+        <span>00:00:00 · </span>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            router.refresh();
+          }}
+          style={{
+            font: "inherit",
+            color: "inherit",
+            background: "none",
+            border: 0,
+            padding: 0,
+            textDecoration: "underline",
+            textUnderlineOffset: 3,
+            cursor: "pointer",
+          }}
+        >
+          обновить
+        </button>
+      </>
+    );
+  }
+
   return (
-    <time dateTime={new Date(target).toISOString()} suppressHydrationWarning style={{ fontVariantNumeric: "tabular-nums" }}>
+    <time
+      dateTime={new Date(target).toISOString()}
+      suppressHydrationWarning
+      style={{ fontVariantNumeric: "tabular-nums" }}
+    >
       {now === null ? "--:--:--" : fmt(target - now)}
     </time>
   );

@@ -49,7 +49,7 @@
 .week {
   font-size: 13px;
   font-weight: 600;
-  color: var(--label-3);
+  color: var(--label-2);
   text-align: center;
 }
 .grid {
@@ -106,9 +106,6 @@ a.cell:active {
 .empty .num {
   color: var(--label-2);
   text-shadow: none;
-}
-.empty .num {
-  color: var(--label-3);
 }
 
 .read {

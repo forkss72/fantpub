@@ -11,6 +11,15 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": ["./content/**/*", "./assets/**/*"],
   },
+  // early slugs named the author (blind reading leak); old links keep working
+  async redirects() {
+    const renamed = { "kuprin-tost": "tost", "odoevsky-bal": "bal" };
+    return Object.entries(renamed).flatMap(([from, to]) => [
+      { source: `/rasskaz/${from}/:rest*`, destination: `/rasskaz/${to}/:rest*`, permanent: true },
+      { source: `/rasskaz/${from}`, destination: `/rasskaz/${to}`, permanent: true },
+      { source: `/kniga/${from}`, destination: `/kniga/${to}`, permanent: true },
+    ]);
+  },
   async headers() {
     return [
       {

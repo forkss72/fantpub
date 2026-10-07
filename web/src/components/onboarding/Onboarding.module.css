@@ -60,6 +60,8 @@
   position: absolute;
   inset-inline: 0;
   inset-block-start: var(--top);
+  /* follows the open pane's vertical scroll (set from JS), so text never runs over the books */
+  margin-block-start: calc(var(--lift, 0px) * -1);
   block-size: var(--stage);
   perspective: 1100px;
   pointer-events: none;
@@ -143,9 +145,11 @@
 }
 
 /* ─── pages ─── */
+/* ends above the capsule: text scrolls out of view instead of under it */
 .pager {
   position: absolute;
-  inset: 0;
+  inset: 0 0 var(--bar-space);
+  mask-image: linear-gradient(#000 calc(100% - 12px), transparent);
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -167,7 +171,7 @@
   scrollbar-width: none;
   display: flex;
   flex-direction: column;
-  padding-block: var(--top) var(--bar-space);
+  padding-block: var(--top) 16px;
 }
 .stage {
   position: relative;
@@ -536,6 +540,71 @@
   }
   .fan[data-step="2"] {
     --spread: calc(var(--cw) * 0.7);
+  }
+}
+
+/* ─── short screens (landscape phones, 200% zoom): smaller stage, no Pabchik line ─── */
+@media (max-height: 560px) {
+  .layer {
+    --top: calc(env(safe-area-inset-top, 0px) + 48px);
+    --cw: clamp(80px, min(54vw, calc((100svh - 330px) / 1.5)), 220px);
+    --bar-space: calc(env(safe-area-inset-bottom, 0px) + 92px);
+  }
+  .says {
+    display: none;
+  }
+  .content {
+    gap: 16px;
+  }
+  .barWrap {
+    inset-block-end: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  }
+}
+/* …and when wide: books on the left, text on the right (scrolls on its own, above the capsule) */
+@media (max-height: 560px) and (orientation: landscape) {
+  .layer {
+    --cw: clamp(72px, min(14.5vw, calc((100svh - 140px) / 1.5)), 200px);
+  }
+  .fan {
+    inset-inline: 0 50%;
+    --spread: calc(var(--cw) * 0.36);
+  }
+  .fan[data-step="2"] {
+    --spread: calc(var(--cw) * 0.42);
+  }
+  .fan[data-step="3"] {
+    scale: 0.4;
+  }
+  .pager {
+    inset-block-end: 0;
+    mask-image: none;
+  }
+  .pane {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr);
+    padding: 0;
+    overflow: hidden;
+  }
+  .pane > .stage {
+    grid-column: 1;
+    align-self: start;
+    block-size: var(--stage);
+    margin: var(--top) 0 0;
+  }
+  .content {
+    grid-column: 2;
+    align-self: stretch;
+    align-content: start;
+    margin-block-end: var(--bar-space);
+    padding-block: var(--top) 12px;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    mask-image: linear-gradient(#000 calc(100% - 12px), transparent);
+  }
+  .barWrap {
+    inset-inline: calc(50% + 8px) max(16px, env(safe-area-inset-right, 0px));
   }
 }
 

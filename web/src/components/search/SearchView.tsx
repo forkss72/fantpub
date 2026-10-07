@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -28,7 +28,23 @@ type Props = { items: SearchItem[]; moods: MoodEntry[]; authors: AuthorEntry[]; 
 export function SearchView({ items, moods, authors, todayIssue }: Props) {
   const shelf = useShelf();
   const hydrated = useHydrated();
-  const [query, setQuery] = useState("");
+  const [query, setQueryState] = useState("");
+  // the query lives in ?q= (replaced, never pushed): a reload, a shared link or Back returns to the same results
+  const setQuery = (q: string) => {
+    setQueryState(q);
+    const url = new URL(location.href);
+    if (q) url.searchParams.set("q", q);
+    else url.searchParams.delete("q");
+    history.replaceState(history.state, "", url.pathname + url.search + url.hash);
+  };
+  useEffect(() => {
+    const sync = () => {
+      if (location.pathname === "/poisk") setQueryState(new URLSearchParams(location.search).get("q") ?? "");
+    };
+    sync();
+    addEventListener("popstate", sync);
+    return () => removeEventListener("popstate", sync);
+  }, []);
   const words = norm(query).trim().split(" ").filter(Boolean);
 
   // an author's name finds a story only once its seal is lifted: typing «Саки» must not point at an unread book

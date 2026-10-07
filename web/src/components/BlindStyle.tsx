@@ -60,7 +60,8 @@ export function BlindStyle() {
       return;
     }
     const apply = () => {
-      const h = document.querySelector("[data-seal-title]")?.textContent?.trim();
+      // the page's own story, not a sheet's story opened on top of it
+      const h = document.querySelector(`[data-seal="${slug}"] [data-seal-title]`)?.textContent?.trim();
       if (!h) return;
       const masked = `«${h}» — рассказ дня · FantPub`;
       if (document.title === masked) return;

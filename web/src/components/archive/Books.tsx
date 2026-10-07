@@ -15,6 +15,9 @@ import styles from "./Books.module.css";
 import { BookTransition as SharedBook } from "@/components/book/BookTransition";
 export { SharedBook };
 
+const NEUTRAL_ART = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 3'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='0' y2='1'%3E%3Cstop stop-color='%238a8a8e'/%3E%3Cstop offset='1' stop-color='%23545458'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='2' height='3' fill='url(%23g)'/%3E%3C/svg%3E";
+const NEUTRAL = { base: "#77777b", bg: "#5b5b60", dark: "#3f3f43", light: "#e4e4e6", tint: "#8e8e93" };
+
 type BookState = { kind: "read" } | { kind: "progress"; percent: number } | { kind: "want" } | { kind: "new" };
 
 /** Personal state of one book; null until hydrated (the server renders for a first-time visitor). */
@@ -62,34 +65,50 @@ function Status({ state }: { state: BookState | null }) {
 
 const TILE_SIZES = "(min-width: 900px) 190px, (min-width: 600px) 30vw, 45vw";
 
-/** Library grid cell: the book, then one status line (Apple Books Library). */
-export function BookTile({ item, today }: { item: ArchiveItem; today?: boolean }) {
+/**
+ * Library grid cell: the book, then one status line (Apple Books Library).
+ * `seal` (the author's page): the tile stays in the HTML for search engines, but in blind mode it
+ * shows only once this story is read; until then a blurred, untitled book stands in its place.
+ */
+export function BookTile({ item, today, seal }: { item: ArchiveItem; today?: boolean; seal?: boolean }) {
   const state = useBookState(item.slug);
+  const link = (
+    <Link href={href(item.slug)} scroll={false} className={styles.tileLink}>
+      <span className={styles.coverBox}>
+        <SharedBook slug={item.slug}>
+          <Book cover={item.cover} title={item.title} issue={item.issue} width="100cqi" sizes={TILE_SIZES} />
+        </SharedBook>
+      </span>
+      <span className="sr-only">
+        «{item.title}», выпуск № {item.issue}
+        {", "}
+      </span>
+      <span className={styles.status}>
+        {today ? (
+          <span className={styles.state}>
+            <span className={styles.today}>Сегодня</span>
+            {state?.kind === "read" && <Check size={13} weight="bold" role="img" aria-label="прочитано" />}
+            {state?.kind === "progress" && <span className="num">{state.percent}%</span>}
+          </span>
+        ) : (
+          <Status state={state} />
+        )}
+        <span className={`${styles.minutes} num`}>{item.minutes} мин</span>
+      </span>
+    </Link>
+  );
+  if (!seal) return <li className={styles.tile}>{link}</li>;
+  // a plain sealed book: neither the art nor its colours may hint at which story this is
+  const p = NEUTRAL_ART;
   return (
-    <li className={styles.tile}>
-      <Link href={href(item.slug)} scroll={false} className={styles.tileLink}>
+    <li className={styles.tile} data-seal={item.slug}>
+      <div className="reveal-only">{link}</div>
+      <div className="blind-only">
         <span className={styles.coverBox}>
-          <SharedBook slug={item.slug}>
-            <Book cover={item.cover} title={item.title} issue={item.issue} width="100cqi" sizes={TILE_SIZES} />
-          </SharedBook>
+          <Book cover={{ src: p, srcSmall: p, placeholder: p, colors: NEUTRAL }} width="100cqi" sizes="45vw" sealed />
         </span>
-        <span className="sr-only">
-          «{item.title}», выпуск № {item.issue}
-          {", "}
-        </span>
-        <span className={styles.status}>
-          {today ? (
-            <span className={styles.state}>
-              <span className={styles.today}>Сегодня</span>
-              {state?.kind === "read" && <Check size={13} weight="bold" role="img" aria-label="прочитано" />}
-              {state?.kind === "progress" && <span className="num">{state.percent}%</span>}
-            </span>
-          ) : (
-            <Status state={state} />
-          )}
-          <span className={`${styles.minutes} num`}>{item.minutes} мин</span>
-        </span>
-      </Link>
+        <p className={styles.status}>Откроется после прочтения</p>
+      </div>
     </li>
   );
 }

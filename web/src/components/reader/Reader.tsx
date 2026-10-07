@@ -6,10 +6,12 @@ import { GlassButton } from "@/components/ui/GlassButton";
 import { PillMenu, type PillItem } from "@/components/ui/PillMenu";
 import { showHud } from "@/components/ui/Hud";
 import { ArrowUUpLeft, DotsThree, Export, Headphones, Pause, Play, Quotes, Stop, TextAa, X } from "@/components/ui/icons";
-import { getShelf, logReading, markRead, saveProgress } from "@/lib/shelf";
+import { backOrHome } from "@/lib/nav";
+import { getShelf, logReading, markOpened, markRead, saveProgress } from "@/lib/shelf";
 import { shareOrCopy } from "@/lib/share";
 import { SITE_URL } from "@/lib/site";
 import { AppearanceSheet } from "./AppearanceSheet";
+import { onReached } from "./reached";
 import { currentParagraph, getSpeechStatus, pauseSpeech, resumeSpeech, speechSupported, startSpeech, stopSpeech, useSpeech } from "./speech";
 import styles from "./Reader.module.css";
 
@@ -101,6 +103,7 @@ export function Reader({ slug, title, minutes, paragraphs }: Props) {
 
   // first look at the shelf: resume where you stopped, or start listening for ?listen=1
   useEffect(() => {
+    markOpened(slug);
     const s = getShelf();
     const at = s.read[slug] ? 0 : (s.progress[slug] ?? 0);
     const q = new URLSearchParams(location.search);
@@ -121,20 +124,18 @@ export function Reader({ slug, title, minutes, paragraphs }: Props) {
     }
   }, [slug, paragraphs]);
 
-  // «Конец» in view → read. While the page is sealed, Finish marks it after the guess (marking lifts the seal).
+  // «Конец» scrolled into view and held there → read (a Tab jump to the finish doesn't count).
+  // While the page is sealed, Finish marks it after the guess (marking lifts the seal).
   useEffect(() => {
     const el = document.querySelector("[data-end-mark]");
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
-        io.disconnect();
+    return onReached(
+      el,
+      () => {
         if (document.documentElement.dataset.blind !== "1") markRead(slug);
       },
       { threshold: 0.9 },
     );
-    io.observe(el);
-    return () => io.disconnect();
   }, [slug]);
 
   // active reading time: visible tab + a scroll/tap in the last minute (or listening), flushed every 15 s
@@ -172,16 +173,6 @@ export function Reader({ slug, title, minutes, paragraphs }: Props) {
     return stopSpeech;
   }, [slug]);
 
-  function close() {
-    let depth = 0;
-    try {
-      depth = Number(sessionStorage.getItem("fantpub:depth") ?? "0");
-    } catch {}
-    // came from inside FantPub → back (to the book sheet); landed from outside → today
-    if (depth > 1 && history.length > 1) router.back();
-    else router.push("/");
-  }
-
   function listen(from = currentParagraph()) {
     setToast(null);
     if (!startSpeech(from, () => setToast({ kind: "listen", from }))) showHud("Нет русского голоса", "check", "Чтение вслух недоступно");
@@ -203,7 +194,7 @@ export function Reader({ slug, title, minutes, paragraphs }: Props) {
   return (
     <>
       <div className={styles.top} data-hidden={chromeHidden}>
-        <GlassButton icon={X} label="Закрыть" onClick={close} />
+        <GlassButton icon={X} label="Закрыть" onClick={() => backOrHome(router)} />
         <p className={`${styles.left} num`}>{left > 0 ? `осталось ~${left} мин` : ""}</p>
         <GlassButton icon={TextAa} label="Оформление" aria-haspopup="dialog" onClick={() => setSheet(true)} />
       </div>

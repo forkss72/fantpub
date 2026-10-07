@@ -1,7 +1,7 @@
 /* FantPub service worker — offline for stories you opened. No precache: pages are saved as you visit them.
    HTML: network-first (fresh issue wins), cached copy when offline.
    Covers and hashed assets: cache-first. Pabchik and icons: cached, refreshed in the background. API: never cached. */
-const VERSION = "fp-v3";
+const VERSION = "fp-v4";
 const PAGES = `${VERSION}-pages`;
 const STATIC = `${VERSION}-static`;
 const COVERS = `${VERSION}-covers`;

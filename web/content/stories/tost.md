@@ -1,5 +1,5 @@
 ---
-slug: kuprin-tost
+slug: tost
 issue: 10
 title: Тост
 author: alexander-kuprin

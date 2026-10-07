@@ -1,7 +1,32 @@
 {
+ "bal": {
+  "src": "/covers/bal.webp?v=fe049db7",
+  "srcMedium": "/covers/bal-m.webp?v=fe049db7",
+  "srcSmall": "/covers/bal-s.webp?v=fe049db7",
+  "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUABHXy9v/UAA+xx8ipXqveXzsFoYn5h98FGm+2rEf3v+PnWaOCP4drOqx98GSzulgxO9S59xxxPQAA==",
+  "colors": {
+   "base": "#a98255",
+   "bg": "#846848",
+   "dark": "#5b4933",
+   "light": "#e7dccf",
+   "tint": "#b28f66"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Adolph Menzel",
+   "title": "Das Ballsouper (Supper at the Ball)",
+   "year": "1878",
+   "museum": "Alte Nationalgalerie, Berlin (image via Wikimedia Commons / Google Art Project)",
+   "license": "Public domain (PD-Art; author d. 1905)",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg"
+  }
+ },
  "bolshoy-shlem": {
-  "src": "/covers/bolshoy-shlem.webp",
-  "srcSmall": "/covers/bolshoy-shlem-s.webp",
+  "src": "/covers/bolshoy-shlem.webp?v=a33cd7ba",
+  "srcMedium": "/covers/bolshoy-shlem-m.webp?v=a33cd7ba",
+  "srcSmall": "/covers/bolshoy-shlem-s.webp?v=a33cd7ba",
   "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwDLLBIxqPPhwAD+eLDJp3nz4Vs7CxwlYk1LgIwRIx910BHa6pM1U/aXglVVluJ0Axva8O4pGf97KjHdGTlFVMAAAA==",
   "colors": {
    "base": "#849597",
@@ -23,8 +48,9 @@
   }
  },
  "cherez-dvadtsat-let": {
-  "src": "/covers/cherez-dvadtsat-let.webp",
-  "srcSmall": "/covers/cherez-dvadtsat-let-s.webp",
+  "src": "/covers/cherez-dvadtsat-let.webp?v=2c9b5d73",
+  "srcMedium": "/covers/cherez-dvadtsat-let-m.webp?v=2c9b5d73",
+  "srcSmall": "/covers/cherez-dvadtsat-let-s.webp?v=2c9b5d73",
   "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZ2kfRgATmgAA/u+D8rxjR/kneoZpcfVZRDRKEiRxwq6eAGQPs1UAAAA=",
   "colors": {
    "base": "#404f64",
@@ -46,8 +72,9 @@
   }
  },
  "grobovshchik": {
-  "src": "/covers/grobovshchik.webp",
-  "srcSmall": "/covers/grobovshchik-s.webp",
+  "src": "/covers/grobovshchik.webp?v=0965afe6",
+  "srcMedium": "/covers/grobovshchik-m.webp?v=0965afe6",
+  "srcSmall": "/covers/grobovshchik-s.webp?v=0965afe6",
   "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUI7gBBpFdgAA/Zovygqruc+sOn/R6JBzlLJ1OogGSjOjSKIW6aPPFlHeH9NYKn4AAAA=",
   "colors": {
    "base": "#977b49",
@@ -69,8 +96,9 @@
   }
  },
  "ideofon": {
-  "src": "/covers/ideofon.webp",
-  "srcSmall": "/covers/ideofon-s.webp",
+  "src": "/covers/ideofon.webp?v=a9497e16",
+  "srcMedium": "/covers/ideofon-m.webp?v=a9497e16",
+  "srcSmall": "/covers/ideofon-s.webp?v=a9497e16",
   "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUABsRSr7j0Qpy4AA9rFCtGWJ7scyBu55YVf1v5vxkoLjPXY3Q3YvimrCGqOAAA==",
   "colors": {
    "base": "#80763d",
@@ -92,8 +120,9 @@
   }
  },
  "kak-eto-sluchilos": {
-  "src": "/covers/kak-eto-sluchilos.webp",
-  "srcSmall": "/covers/kak-eto-sluchilos-s.webp",
+  "src": "/covers/kak-eto-sluchilos.webp?v=4dcb57dc",
+  "srcMedium": "/covers/kak-eto-sluchilos-m.webp?v=4dcb57dc",
+  "srcSmall": "/covers/kak-eto-sluchilos-s.webp?v=4dcb57dc",
   "placeholder": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwAASmo/kUgUAAD+zMv8OELnxDYe8Qf+drUqWhYT1K/poYRgAA==",
   "colors": {
    "base": "#43453c",
@@ -115,8 +144,9 @@
   }
  },
  "koshki-ultara": {
-  "src": "/covers/koshki-ultara.webp",
-  "srcSmall": "/covers/koshki-ultara-s.webp",
+  "src": "/covers/koshki-ultara.webp?v=214cc90a",
+  "srcMedium": "/covers/koshki-ultara-m.webp?v=214cc90a",
+  "srcSmall": "/covers/koshki-ultara-s.webp?v=214cc90a",
   "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJaACdABntzhbiWQAA9ZwIz9izkJyDQGjBd3iDVqEAeq6BpdQgthgnG3AfX4tDfLBWMUa8kAo5BDqSA5bkXWrcpgv160tGYp9nbaIdK29eVpMAAAA=",
   "colors": {
    "base": "#d18b4c",
@@ -138,8 +168,9 @@
   }
  },
  "krasnaya-korona": {
-  "src": "/covers/krasnaya-korona.webp",
-  "srcSmall": "/covers/krasnaya-korona-s.webp",
+  "src": "/covers/krasnaya-korona.webp?v=271deb9f",
+  "srcMedium": "/covers/krasnaya-korona-m.webp?v=271deb9f",
+  "srcSmall": "/covers/krasnaya-korona-s.webp?v=271deb9f",
   "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZgC7ACFrtqzK46EAAP7Nw9TWvcIScXg/NG08mwjrRZTv4N5QtF8e9Wb1Uz3iwwU8zL2bwAA=",
   "colors": {
    "base": "#982f05",
@@ -161,8 +192,9 @@
   }
  },
  "krasnogubaya-gostya": {
-  "src": "/covers/krasnogubaya-gostya.webp",
-  "srcSmall": "/covers/krasnogubaya-gostya-s.webp",
+  "src": "/covers/krasnogubaya-gostya.webp?v=c690cde3",
+  "srcMedium": "/covers/krasnogubaya-gostya-m.webp?v=c690cde3",
+  "srcSmall": "/covers/krasnogubaya-gostya-s.webp?v=c690cde3",
   "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwC7ACHw0gkQggAA/u+OIHkGig/vOAQFhwBJWi4KrAte/X2/fNVwb6bu3V9ZEF8iQhAAAAA=",
   "colors": {
    "base": "#4f4233",
@@ -183,32 +215,10 @@
    "imageUrl": "https://images.metmuseum.org/CRDImages/ad/original/DP-29006-001.jpg"
   }
  },
- "kuprin-tost": {
-  "src": "/covers/kuprin-tost.webp",
-  "srcSmall": "/covers/kuprin-tost-s.webp",
-  "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwC2yCIAwq0gAAD+z0B43jmvLg35/N7242NXs67T6cR5P0dVgAAA",
-  "colors": {
-   "base": "#594532",
-   "bg": "#604c39",
-   "dark": "#392e23",
-   "light": "#e5dbd1",
-   "tint": "#ac8b6c"
-  },
-  "duotone": false,
-  "credit": {
-   "artist": "Frederic Edwin Church",
-   "title": "Aurora Borealis",
-   "year": "1865",
-   "museum": "Smithsonian American Art Museum (image via Wikimedia Commons / Google Art Project)",
-   "license": "Public domain (PD-Art; author d. 1900); SAAM image released under Smithsonian Open Access (CC0)",
-   "licenseUrl": "https://www.si.edu/openaccess",
-   "pageUrl": "https://commons.wikimedia.org/wiki/File:Frederic_Edwin_Church_-_Aurora_Borealis_-_Google_Art_Project.jpg",
-   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Frederic_Edwin_Church_-_Aurora_Borealis_-_Google_Art_Project.jpg"
-  }
- },
  "ledi-ili-tigr": {
-  "src": "/covers/ledi-ili-tigr.webp",
-  "srcSmall": "/covers/ledi-ili-tigr-s.webp",
+  "src": "/covers/ledi-ili-tigr.webp?v=6b9b6b4c",
+  "srcMedium": "/covers/ledi-ili-tigr-m.webp?v=6b9b6b4c",
+  "srcSmall": "/covers/ledi-ili-tigr-s.webp?v=6b9b6b4c",
   "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdAC0bYdpPYAD+8EDPyl6l8lAVHeLsyDStSu3uQkHxf98BLqr+iN6QfxmfYQXYRfe4AAA=",
   "colors": {
    "base": "#442e20",
@@ -230,8 +240,9 @@
   }
  },
  "maska-krasnoy-smerti": {
-  "src": "/covers/maska-krasnoy-smerti.webp",
-  "srcSmall": "/covers/maska-krasnoy-smerti-s.webp",
+  "src": "/covers/maska-krasnoy-smerti.webp?v=598e984e",
+  "srcMedium": "/covers/maska-krasnoy-smerti-m.webp?v=598e984e",
+  "srcSmall": "/covers/maska-krasnoy-smerti-s.webp?v=598e984e",
   "placeholder": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoAE8cAA/u2neXjFUOfRpKauoEoqs8pMS95iZm4A",
   "colors": {
    "base": "#674a2e",
@@ -252,55 +263,10 @@
    "imageUrl": "https://images.metmuseum.org/CRDImages/ep/original/DP162310.jpg"
   }
  },
- "maupassant-ruka": {
-  "src": "/covers/maupassant-ruka.webp",
-  "srcSmall": "/covers/maupassant-ruka-s.webp",
-  "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoADTqQTBJgAAP6RApB1GeIoXDD7aT6bTtRdZ51Xr4O9qHimwAA=",
-  "colors": {
-   "base": "#d0bca9",
-   "bg": "#81654b",
-   "dark": "#594736",
-   "light": "#e6dbd1",
-   "tint": "#ae8b6b"
-  },
-  "duotone": false,
-  "credit": {
-   "artist": "Jean-Baptiste Greuze",
-   "title": "Study of a Hand",
-   "year": "ca. 1760–80",
-   "museum": "The Metropolitan Museum of Art, New York",
-   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
-   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
-   "pageUrl": "https://www.metmuseum.org/art/collection/search/785410",
-   "imageUrl": "https://images.metmuseum.org/CRDImages/dp/original/DP880423.jpg"
-  }
- },
- "odoevsky-bal": {
-  "src": "/covers/odoevsky-bal.webp",
-  "srcSmall": "/covers/odoevsky-bal-s.webp",
-  "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUABHXy9v/UAA+xx8ipXqveXzsFoYn5h98FGm+2rEf3v+PnWaOCP4drOqx98GSzulgxO9S59xxxPQAA==",
-  "colors": {
-   "base": "#a98255",
-   "bg": "#846848",
-   "dark": "#5b4933",
-   "light": "#e7dccf",
-   "tint": "#b28f66"
-  },
-  "duotone": false,
-  "credit": {
-   "artist": "Adolph Menzel",
-   "title": "Das Ballsouper (Supper at the Ball)",
-   "year": "1878",
-   "museum": "Alte Nationalgalerie, Berlin (image via Wikimedia Commons / Google Art Project)",
-   "license": "Public domain (PD-Art; author d. 1905)",
-   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg",
-   "pageUrl": "https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg",
-   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg"
-  }
- },
  "otkrytoe-okno": {
-  "src": "/covers/otkrytoe-okno.webp",
-  "srcSmall": "/covers/otkrytoe-okno-s.webp",
+  "src": "/covers/otkrytoe-okno.webp?v=69f2cf3f",
+  "srcMedium": "/covers/otkrytoe-okno-m.webp?v=69f2cf3f",
+  "srcSmall": "/covers/otkrytoe-okno-s.webp?v=69f2cf3f",
   "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBYdsWgbio+VPkbAAM4/WhWlCWp1Uex3chi/RQxPGhDsSIp6rAUQEgl1VVor/DO5w2HVcuFENHZnEHL1HIAA",
   "colors": {
    "base": "#7f653a",
@@ -322,8 +288,9 @@
   }
  },
  "pered-zakonom": {
-  "src": "/covers/pered-zakonom.webp",
-  "srcSmall": "/covers/pered-zakonom-s.webp",
+  "src": "/covers/pered-zakonom.webp?v=55ae7269",
+  "srcMedium": "/covers/pered-zakonom-m.webp?v=55ae7269",
+  "srcSmall": "/covers/pered-zakonom-s.webp?v=55ae7269",
   "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYwCdACIaUHg49gFAgAD2r7Twy3PxPzFlO//8FbIC2JY9oEkN8Lm6BHPsQQUv8Ef0VDs+tlY83e0woeyW0CKbxsAAAA==",
   "colors": {
    "base": "#45301d",
@@ -345,8 +312,9 @@
   }
  },
  "peschanaya-uchitelnitsa": {
-  "src": "/covers/peschanaya-uchitelnitsa.webp",
-  "srcSmall": "/covers/peschanaya-uchitelnitsa-s.webp",
+  "src": "/covers/peschanaya-uchitelnitsa.webp?v=549018f5",
+  "srcMedium": "/covers/peschanaya-uchitelnitsa-m.webp?v=549018f5",
+  "srcSmall": "/covers/peschanaya-uchitelnitsa-s.webp?v=549018f5",
   "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQC7ACDEWGtezAAA/p1SWG26zOBf9zxn70JE1Qaa5lNYq9cMiKv/ZY0hC6uP0Byfjs9vGgAAAA==",
   "colors": {
    "base": "#ad9870",
@@ -368,8 +336,9 @@
   }
  },
  "peshchera": {
-  "src": "/covers/peshchera.webp",
-  "srcSmall": "/covers/peshchera-s.webp",
+  "src": "/covers/peshchera.webp?v=9a310496",
+  "srcMedium": "/covers/peshchera-m.webp?v=9a310496",
+  "srcSmall": "/covers/peshchera-s.webp?v=9a310496",
   "placeholder": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwDG9BIf/0/IgAD9RzB3ZqeSzGomdYwzaZV8fpuZY8AG2sHwF2MKprDAAA==",
   "colors": {
    "base": "#90877a",
@@ -391,8 +360,9 @@
   }
  },
  "premudry-piskar": {
-  "src": "/covers/premudry-piskar.webp",
-  "srcSmall": "/covers/premudry-piskar-s.webp",
+  "src": "/covers/premudry-piskar.webp?v=1c798159",
+  "srcMedium": "/covers/premudry-piskar-m.webp?v=1c798159",
+  "srcSmall": "/covers/premudry-piskar-s.webp?v=1c798159",
   "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdAB7H7U6Ah1f0+AD+s7AOW/rq7Dr+rbWqeRsyDQCwGA1cekV6dAPgFwCfOzC4EBZ70P0tDvqQZUeaUmqw9ifM6cKJKvREcxmu/JbLpC/tGAA=",
   "colors": {
    "base": "#bcc7b2",
@@ -414,8 +384,9 @@
   }
  },
  "robinzony": {
-  "src": "/covers/robinzony.webp",
-  "srcSmall": "/covers/robinzony-s.webp",
+  "src": "/covers/robinzony.webp?v=e7117cb1",
+  "srcMedium": "/covers/robinzony-m.webp?v=e7117cb1",
+  "srcSmall": "/covers/robinzony-s.webp?v=e7117cb1",
   "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYwCdMoADZM68Y04IsAD+61QnYoq4rMNxuzwtMmVCotzLpByFUn/o9IUXvP05CAxas/W56Dt1ef6t9SxyJSNkeya+9ddAAAA=",
   "colors": {
    "base": "#e3d9bb",
@@ -436,9 +407,34 @@
    "imageUrl": "https://images.metmuseum.org/CRDImages/ad/original/DP-21448-001.jpg"
   }
  },
+ "ruka": {
+  "src": "/covers/ruka.webp?v=110af050",
+  "srcMedium": "/covers/ruka-m.webp?v=110af050",
+  "srcSmall": "/covers/ruka-s.webp?v=110af050",
+  "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoADTqQTBJgAAP6RApB1GeIoXDD7aT6bTtRdZ51Xr4O9qHimwAA=",
+  "colors": {
+   "base": "#d0bca9",
+   "bg": "#81654b",
+   "dark": "#594736",
+   "light": "#e6dbd1",
+   "tint": "#ae8b6b"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Jean-Baptiste Greuze",
+   "title": "Study of a Hand",
+   "year": "ca. 1760–80",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/785410",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/dp/original/DP880423.jpg"
+  }
+ },
  "strashnaya-noch": {
-  "src": "/covers/strashnaya-noch.webp",
-  "srcSmall": "/covers/strashnaya-noch-s.webp",
+  "src": "/covers/strashnaya-noch.webp?v=90fcab74",
+  "srcMedium": "/covers/strashnaya-noch-m.webp?v=90fcab74",
+  "srcSmall": "/covers/strashnaya-noch-s.webp?v=90fcab74",
   "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdABrRq88qkAD+8t3KmcAw5PuVtVqhcl74416rRS8OvJHsFhUtizx+CaBbYi00ut4wAAA=",
   "colors": {
    "base": "#3e2111",
@@ -460,8 +456,9 @@
   }
  },
  "to-chego-ne-bylo": {
-  "src": "/covers/to-chego-ne-bylo.webp",
-  "srcSmall": "/covers/to-chego-ne-bylo-s.webp",
+  "src": "/covers/to-chego-ne-bylo.webp?v=b139f16c",
+  "srcMedium": "/covers/to-chego-ne-bylo-m.webp?v=b139f16c",
+  "srcSmall": "/covers/to-chego-ne-bylo-s.webp?v=b139f16c",
   "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYwC7ABwpE7iQgXWgAAD+xWMks0Onq/TR8o0wlLnwBZZCx+FPNXi/ctNoap+kwSInj9qwsUPRw71SANa0HObvdS79vuCZJIAAAA==",
   "colors": {
    "base": "#c4b38c",
@@ -482,9 +479,34 @@
    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Albrecht_D%C3%BCrer_-_Hirschk%C3%A4fer_%281505%29.jpg"
   }
  },
+ "tost": {
+  "src": "/covers/tost.webp?v=e014c50b",
+  "srcMedium": "/covers/tost-m.webp?v=e014c50b",
+  "srcSmall": "/covers/tost-s.webp?v=e014c50b",
+  "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwC2yCIAwq0gAAD+z0B43jmvLg35/N7242NXs67T6cR5P0dVgAAA",
+  "colors": {
+   "base": "#594532",
+   "bg": "#604c39",
+   "dark": "#392e23",
+   "light": "#e5dbd1",
+   "tint": "#ac8b6c"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Frederic Edwin Church",
+   "title": "Aurora Borealis",
+   "year": "1865",
+   "museum": "Smithsonian American Art Museum (image via Wikimedia Commons / Google Art Project)",
+   "license": "Public domain (PD-Art; author d. 1900); SAAM image released under Smithsonian Open Access (CC0)",
+   "licenseUrl": "https://www.si.edu/openaccess",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Frederic_Edwin_Church_-_Aurora_Borealis_-_Google_Art_Project.jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Frederic_Edwin_Church_-_Aurora_Borealis_-_Google_Art_Project.jpg"
+  }
+ },
  "volshebnaya-lavka": {
-  "src": "/covers/volshebnaya-lavka.webp",
-  "srcSmall": "/covers/volshebnaya-lavka-s.webp",
+  "src": "/covers/volshebnaya-lavka.webp?v=70b134b6",
+  "srcMedium": "/covers/volshebnaya-lavka-m.webp?v=70b134b6",
+  "srcSmall": "/covers/volshebnaya-lavka-s.webp?v=70b134b6",
   "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYgCdL1yBvVLKhWOQAP6lVVl7R7/cXDk/igmUGHN5WhxYMhuZDrlEp2gJOHvx1W+1oNBcsc6vgy5sdvUFfpfOTXErUwAA",
   "colors": {
    "base": "#d0af69",
@@ -506,8 +528,9 @@
   }
  },
  "zakolochennoe-okno": {
-  "src": "/covers/zakolochennoe-okno.webp",
-  "srcSmall": "/covers/zakolochennoe-okno-s.webp",
+  "src": "/covers/zakolochennoe-okno.webp?v=102f1dfa",
+  "srcMedium": "/covers/zakolochennoe-okno-m.webp?v=102f1dfa",
+  "srcSmall": "/covers/zakolochennoe-okno-s.webp?v=102f1dfa",
   "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOl65Aia54ojlMQAPcGyoKcTq53or3+RrINd0uObJOuV3Qb21vyoGyjSmwY9UToAA==",
   "colors": {
    "base": "#804117",
@@ -529,8 +552,9 @@
   }
  },
  "zelenaya-lampa": {
-  "src": "/covers/zelenaya-lampa.webp",
-  "srcSmall": "/covers/zelenaya-lampa-s.webp",
+  "src": "/covers/zelenaya-lampa.webp?v=1640a21b",
+  "srcMedium": "/covers/zelenaya-lampa-m.webp?v=1640a21b",
+  "srcSmall": "/covers/zelenaya-lampa-s.webp?v=1640a21b",
   "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoADT5tYP78/OMwAAP6l/j+a0/KMHgiNA1UEuUwTVsGNiD32CS+mLu9vq40eZBt7FciDrPWFz1YTkffQUQAAAA==",
   "colors": {
    "base": "#97c281",

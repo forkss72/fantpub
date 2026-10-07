@@ -18,7 +18,11 @@ export function GoalBlock({ books, serverNow }: { books: TodayBook[]; serverNow:
   const seconds = todaySeconds(shelf, now);
   const goal = shelf.goal.daily;
   const { current, record } = streak(shelf, now);
-  const next = seconds < goal * 60 ? pickContinue(shelf, books) : null;
+  const short = seconds < goal * 60;
+  const next = short ? pickContinue(shelf, books) : null;
+  const days7 = week(shelf, now);
+  // minutes still short, but a story finished today already counts the day (as the HUD said)
+  const counted = short && days7.some((d) => d.today && d.progress >= 1);
 
   const line =
     record === 0
@@ -33,8 +37,9 @@ export function GoalBlock({ books, serverNow }: { books: TodayBook[]; serverNow:
         Цель на день
       </h2>
       <GoalGauge seconds={seconds} goalMinutes={goal} />
+      {counted && <p className={`t-sub ${styles.counted}`}>Рассказ дочитан — день засчитан</p>}
       <div className={styles.week}>
-        <WeekDots days={week(shelf, now)} />
+        <WeekDots days={days7} />
       </div>
       <p className={`t-sub ${styles.streak}`}>{line}</p>
       {next && (

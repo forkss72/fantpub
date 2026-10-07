@@ -29,6 +29,14 @@ export async function GET(_req: NextRequest, ctx: RouteContext<"/api/reactions/[
   }
 }
 
+const MOVE_VOTE = `
+local prev = redis.call("HGET", KEYS[1], ARGV[1])
+if prev == ARGV[2] then return 0 end
+redis.call("HSET", KEYS[1], ARGV[1], ARGV[2])
+redis.call("HINCRBY", KEYS[2], ARGV[2], 1)
+if prev then redis.call("HINCRBY", KEYS[2], prev, -1) end
+return 1`;
+
 export async function POST(req: NextRequest, ctx: RouteContext<"/api/reactions/[slug]">) {
   const { slug } = await ctx.params;
   if (!getStory(slug)) return NextResponse.json({ error: "not found" }, { status: 404 });
@@ -47,16 +55,8 @@ export async function POST(req: NextRequest, ctx: RouteContext<"/api/reactions/[
   }
 
   try {
-    // one vote per device per story; changing the vote moves it
-    const pickKey = `fp:pick:${slug}`;
-    const prev = (await redis.hget<string>(pickKey, device)) as ReactionKey | null;
-    if (prev !== reaction) {
-      const tx = redis.multi();
-      tx.hset(pickKey, { [device]: reaction });
-      tx.hincrby(key(slug), reaction, 1);
-      if (prev && REACTION_KEYS.includes(prev)) tx.hincrby(key(slug), prev, -1);
-      await tx.exec();
-    }
+    // one vote per device per story; changing the vote moves it. Atomic, so two quick taps can't count twice.
+    await redis.eval(MOVE_VOTE, [`fp:pick:${slug}`, key(slug)], [device, reaction]);
     return NextResponse.json({ enabled: true, counts: await read(slug) });
   } catch {
     return NextResponse.json({ enabled: false, counts: EMPTY_COUNTS });

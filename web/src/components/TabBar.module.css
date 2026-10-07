@@ -72,28 +72,29 @@
   background: var(--glass-fill-strong);
 }
 
-/* minimized while scrolling down: only the current tab remains, both shapes shrink to 48px */
-.bar[data-min] {
+/* minimized while scrolling down: only the current tab remains, both shapes shrink to 48px.
+   Keyboard focus inside the bar expands it again (no invisible focus targets). */
+.bar[data-min]:not(:focus-within) {
   justify-content: space-between;
 }
-.bar[data-min] .tabs {
+.bar[data-min]:not(:focus-within) .tabs {
   max-inline-size: 48px;
   block-size: 48px;
   flex: 0 0 48px;
   align-self: flex-end;
 }
-.bar[data-min] .tab:not([data-active]) {
+.bar[data-min]:not(:focus-within) .tab:not([data-active]) {
   flex-grow: 0;
   opacity: 0;
   pointer-events: none;
 }
-.bar[data-min] .tab[data-active] {
+.bar[data-min]:not(:focus-within) .tab[data-active] {
   background: none;
 }
-.bar[data-min] .label {
+.bar[data-min]:not(:focus-within) .label {
   display: none;
 }
-.bar[data-min] .search {
+.bar[data-min]:not(:focus-within) .search {
   inline-size: 48px;
   block-size: 48px;
   align-self: flex-end;
@@ -103,4 +104,9 @@
   .bar {
     bottom: max(24px, env(safe-area-inset-bottom, 0px));
   }
+}
+
+/* the full-page book has its own controls; the bar stays visible (dimmed) under the sheet */
+:global(body:has(article[data-variant="page"][data-seal])) .bar {
+  display: none;
 }

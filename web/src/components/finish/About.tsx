@@ -23,9 +23,9 @@ function Sealed({ real, mask, masked }: { real: ReactNode; mask: string; masked:
   );
 }
 
-function Row({ k, children }: { k: string; children: ReactNode }) {
+function Row({ k, children, className }: { k: string; children: ReactNode; className?: string }) {
   return (
-    <div className={s.row}>
+    <div className={className ? `${s.row} ${className}` : s.row}>
       <dt>{k}</dt>
       <dd>{children}</dd>
     </div>
@@ -76,8 +76,9 @@ export function About({ story, masked }: { story: StoryMeta; masked: boolean }) 
           <Row k={isOriginal ? "Текст" : "Перевод"}>
             {isOriginal ? "По изданию в общественном достоянии" : story.translation === "fantpub" ? "Новый перевод FantPub, 2026" : story.translation}
           </Row>
-          {story.sourceUrl && (
-            <Row k="Источник">
+          {/* the source URL names the author (Wikisource): never while the guess is open, and only once unsealed */}
+          {story.sourceUrl && !masked && (
+            <Row k="Источник" className="reveal-only">
               <a href={story.sourceUrl} rel="noopener nofollow" target="_blank" className={s.link}>
                 {story.sourceLabel ?? "Оригинал"}
               </a>

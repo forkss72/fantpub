@@ -65,7 +65,7 @@ function Identity({ shelf }: { shelf: ShelfState }) {
     <>
       <Group footer="Имя и аватар видны только вам">
         <div className={`${styles.cell} ${p.identity}`}>
-          <button type="button" className={`${p.avatarBtn} press`} onClick={() => setPick(true)} aria-label="Выбрать аватар">
+          <button type="button" className={`${p.avatarBtn} press`} onClick={() => setPick(true)} aria-label="Изменить аватар">
             <Avatar avatar={avatar} name={name} size={64} />
             <span className={p.edit} aria-hidden="true">
               Изменить

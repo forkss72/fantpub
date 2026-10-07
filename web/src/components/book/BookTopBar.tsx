@@ -92,7 +92,7 @@ export function BookTopBar({ slug, title, minutes, variant }: Props) {
           placement="down-end"
           items={items}
           trigger={(p) => (
-            <button type="button" {...p} className={styles.groupBtn} aria-label="Ещё">
+            <button type="button" {...p} className={styles.groupBtn} aria-label="Действия">
               <DotsThree size={24} weight="bold" aria-hidden="true" />
             </button>
           )}

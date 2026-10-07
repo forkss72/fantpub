@@ -8,7 +8,7 @@ import { getAuthors, getPublishedStories } from "@/lib/content";
 import { plural } from "@/lib/date";
 import grouped from "@/components/archive/Grouped.module.css";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Авторы",

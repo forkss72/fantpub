@@ -1,5 +1,5 @@
 ---
-slug: odoevsky-bal
+slug: bal
 issue: 4
 title: Бал
 author: vladimir-odoevsky

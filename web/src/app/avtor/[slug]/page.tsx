@@ -5,23 +5,25 @@ import { GlassButton } from "@/components/ui/GlassButton";
 import { CaretLeft } from "@/components/ui/icons";
 import { BookTile } from "@/components/archive/Books";
 import { toItem } from "@/components/archive/items";
-import { getAllStories, getAuthors, getStoriesByAuthor, typograph } from "@/lib/content";
+import { getAuthors, getPublishedStories, getStoriesByAuthor, typograph } from "@/lib/content";
 import { currentIssue, plural } from "@/lib/date";
 import { SITE_URL } from "@/lib/site";
 import books from "@/components/archive/Books.module.css";
 import styles from "./page.module.css";
 
-export const revalidate = 3600;
+// midnight (MSK) publishes a new author: re-render often enough for the page to appear the same day
+export const revalidate = 300;
 
+// only authors with a published story; the rest render on demand (and 404 until their first issue)
 export function generateStaticParams() {
-  return Object.keys(getAuthors()).map((slug) => ({ slug }));
+  return [...new Set(getPublishedStories().map((s) => s.author.slug))].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/avtor/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const a = getAuthors()[slug];
-  if (!a) return { title: "Автор не найден", robots: { index: false } };
   const n = getStoriesByAuthor(slug).length;
+  if (!a || !n) return { title: "Автор не найден", robots: { index: false } };
   return {
     title: `${a.name}: рассказы читать онлайн`,
     description: `${a.bio} ${n} ${plural(n, ["рассказ", "рассказа", "рассказов"])} в FantPub — с записками Пабчика и временем чтения.`,
@@ -34,10 +36,11 @@ export async function generateMetadata({ params }: PageProps<"/avtor/[slug]">): 
 export default async function AuthorPage({ params }: PageProps<"/avtor/[slug]">) {
   const { slug } = await params;
   const author = getAuthors()[slug];
-  if (!author) notFound();
   // eslint-disable-next-line react-hooks/purity
   const now = Date.now();
   const items = getStoriesByAuthor(slug, now).map(toItem).reverse();
+  // no published story yet: even «coming soon» would say whose story tomorrow's is
+  if (!author || !items.length) notFound();
   const today = currentIssue(now);
   const jsonLd = {
     "@context": "https://schema.org",
@@ -61,17 +64,11 @@ export default async function AuthorPage({ params }: PageProps<"/avtor/[slug]">)
         <h2 className="t-title2" id="stories">
           Рассказы
         </h2>
-        {items.length > 0 ? (
-          <ul className={`${books.grid} ${styles.grid}`}>
-            {items.map((i) => (
-              <BookTile key={i.slug} item={i} today={i.issue === today} />
-            ))}
-          </ul>
-        ) : (
-          <p className={`t-sub ${styles.soon}`}>
-            {getAllStories().some((s) => s.author.slug === slug) ? "Первый откроется в ближайшие дни." : "Пока ни одного."}
-          </p>
-        )}
+        <ul className={`${books.grid} ${styles.grid}`}>
+          {items.map((i) => (
+            <BookTile key={i.slug} item={i} today={i.issue === today} seal />
+          ))}
+        </ul>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </main>

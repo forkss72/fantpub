@@ -7,6 +7,7 @@ import { currentIssue, issueOpensAt, plural } from "@/lib/date";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { StoryText } from "@/components/reader/StoryText";
 import { Reader } from "@/components/reader/Reader";
+import { PaperTransition } from "@/components/reader/PaperTransition";
 import { SelectionPill } from "@/components/reader/SelectionPill";
 import { Finish } from "@/components/finish/Finish";
 import type { FinishProps } from "@/components/reader/finish-props";
@@ -26,7 +27,8 @@ export async function generateMetadata({ params }: PageProps<"/rasskaz/[slug]">)
   if (!s) return { title: "Рассказ не найден", robots: { index: false } };
   const isTranslation = s.translation !== "original";
   return {
-    title: `${s.title} — ${s.author.name}: ${isTranslation && s.translation === "fantpub" ? "новый перевод" : "читать рассказ"}, ${s.minutes} мин`,
+    // no author in the tab title: blind reading would be spoiled before the guess (crawlers get it below)
+    title: `«${s.title}» — ${isTranslation && s.translation === "fantpub" ? "новый перевод" : "читать рассказ"}, ${s.minutes} мин`,
     description: `${s.hook} ${s.author.name}, ${s.year}. ${s.minutes} ${plural(s.minutes, ["минута", "минуты", "минут"])} чтения и записка Пабчика после финала.`.slice(0, 200),
     alternates: { canonical: `/rasskaz/${s.slug}` },
     openGraph: {
@@ -123,9 +125,11 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
   return (
     <>
       {/* the sheet's cover lands here and turns into paper (globals.css: .open-book) */}
-      <ViewTransition name={`book-${story.slug}`} share="open-book" default="none">
+      <PaperTransition slug={story.slug}>
         <div className={styles.paper} aria-hidden="true" />
-      </ViewTransition>
+      </PaperTransition>
+      {/* fixed chrome first: Tab reaches ✕ · Aa · ••• before the text and the finish */}
+      <Reader slug={story.slug} title={story.title} minutes={story.minutes} paragraphs={paragraphs} />
       <ViewTransition enter="page-in" default="none">
         <main className={styles.main} data-reader-page data-seal={story.slug}>
           <article className={styles.article} lang="ru" data-reader-article>
@@ -143,7 +147,6 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
           <Finish {...finish} />
         </main>
       </ViewTransition>
-      <Reader slug={story.slug} title={story.title} minutes={story.minutes} paragraphs={paragraphs} />
       <SelectionPill slug={story.slug} title={story.title} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </>

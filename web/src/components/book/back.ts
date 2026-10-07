@@ -1,4 +1,5 @@
 import type { useRouter } from "next/navigation";
+import { backOrHome } from "@/lib/nav";
 
 type Router = ReturnType<typeof useRouter>;
 
@@ -12,12 +13,7 @@ export function backOnce(router: Router) {
   router.back();
 }
 
-/** Full page: back if the visitor came from inside the app, otherwise to Today. */
+/** Full page ‹: back if the previous entry is inside the app, otherwise to Today. */
 export function leavePage(router: Router) {
-  let depth = 0;
-  try {
-    depth = Number(sessionStorage.getItem("fantpub:depth") ?? "0");
-  } catch {}
-  if (depth > 1 && history.length > 1) backOnce(router);
-  else router.push("/");
+  backOrHome({ back: () => backOnce(router), push: router.push });
 }

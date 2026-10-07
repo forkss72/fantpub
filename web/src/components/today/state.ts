@@ -21,12 +21,13 @@ export function inProgress(s: ShelfState, slug: string): number {
   return !s.read[slug] && p > 0 && p < 100 ? p : 0;
 }
 
-/** The story the reader opened most recently and hasn't finished. */
+/** The unfinished story the reader was in most recently (last progress save, else first opened). */
 export function pickContinue(s: ShelfState, books: TodayBook[], exclude?: string): TodayBook | null {
+  const last = (slug: string) => s.touched[slug] ?? s.opened[slug] ?? 0;
   let best: TodayBook | null = null;
   for (const b of books) {
     if (b.slug === exclude || !inProgress(s, b.slug)) continue;
-    if (!best || (s.opened[b.slug] ?? 0) > (s.opened[best.slug] ?? 0)) best = b;
+    if (!best || last(b.slug) > last(best.slug)) best = b;
   }
   return best;
 }

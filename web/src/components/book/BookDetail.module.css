@@ -205,8 +205,9 @@
   letter-spacing: -0.012em;
   white-space: nowrap;
 }
+/* a darkening fill: white on a light wash failed AA over pale covers */
 .listen {
-  background: rgb(255 255 255 / 0.2);
+  background: color-mix(in oklab, var(--cover-dark) 70%, rgb(0 0 0 / 0.25));
   color: #fff;
 }
 .read {
@@ -316,6 +317,12 @@
   font-weight: 600;
   color: var(--label);
   background: linear-gradient(90deg, transparent, var(--surface) 36px);
+}
+/* 44px tall hit area around the one-line button */
+.more::before {
+  content: "";
+  position: absolute;
+  inset: -10px -8px;
 }
 
 .chips {

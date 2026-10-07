@@ -60,7 +60,8 @@ export default function Today() {
       <ContinueCard books={all} todaySlug={today.slug} />
       <WeekShelf books={all.filter((b) => b.slug !== today.slug).slice(-6).reverse()} all={all} todaySlug={today.slug} tomorrow={tomorrow} />
       <GoalBlock books={all} serverNow={now} />
-      <TodayOnboarding today={hero} />
+      {/* the onboarding fan: the latest published issues only (no future cover reaches the client), today in front */}
+      <TodayOnboarding fan={all.slice(-7).reverse()} />
     </main>
   );
 }

@@ -1,7 +1,6 @@
 /* frosted-glass chip: the name is there, just not readable yet */
 .mask {
   position: relative;
-  display: inline-block;
   padding: 0.05em 0.6em;
   border-radius: 999px;
   background: color-mix(in oklab, currentColor 14%, transparent);

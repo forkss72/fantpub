@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { showHud } from "@/components/ui/Hud";
 import { addQuote } from "@/lib/shelf";
 import { SITE_URL } from "@/lib/site";
 import styles from "./SelectionPill.module.css";
 
-type Sel = { text: string; x: number; y: number; below: boolean };
+type Sel = { text: string; x: number; y: number; sy: number; below: boolean };
 
 /**
  * Select a phrase in the story → a small glass pill: save it to «Цитаты» or share it as a card.
- * On touch screens the pill sits under the selection, clear of the system callout.
+ * On touch screens the pill sits under the selection, clear of the system callout; with a mouse, above it.
+ * No room on that side → the other side; the CSS then keeps it inside the screen and its safe area.
  */
 export function SelectionPill({ slug, title }: { slug: string; title: string }) {
   const [sel, setSel] = useState<Sel | null>(null);
@@ -30,8 +31,12 @@ export function SelectionPill({ slug, title }: { slug: string; title: string }) 
         const text = s.toString().replace(/\s+/g, " ").trim();
         if (text.length < 8 || text.length > 260) return setSel(null);
         const r = range.getBoundingClientRect();
-        const below = matchMedia("(pointer: coarse)").matches;
-        setSel({ text, x: r.left + r.width / 2, y: (below ? r.bottom + 14 : r.top - 12) + window.scrollY, below });
+        const need = 44 + 14 + 34; // pill + gap + a home indicator's worth
+        const fitsBelow = window.innerHeight - r.bottom >= need;
+        const fitsAbove = r.top >= need;
+        const below = matchMedia("(pointer: coarse)").matches ? fitsBelow || !fitsAbove : !fitsAbove && fitsBelow;
+        const sy = window.scrollY;
+        setSel({ text, x: r.left + r.width / 2, y: (below ? r.bottom + 14 : r.top - 12) + sy, sy, below });
       }, 200);
     };
     document.addEventListener("selectionchange", onChange);
@@ -78,7 +83,11 @@ export function SelectionPill({ slug, title }: { slug: string; title: string }) 
   const left = Math.min(Math.max(sel.x, half + 8), window.innerWidth - half - 8);
 
   return (
-    <div className={styles.anchor} data-below={sel.below ? "" : undefined} style={{ left, top: sel.y }}>
+    <div
+      className={styles.anchor}
+      data-below={sel.below ? "" : undefined}
+      style={{ left, "--y": `${sel.y}px`, "--sy": `${sel.sy}px` } as CSSProperties}
+    >
       <div className={`${styles.pill} glass`} role="toolbar" aria-label="Выделенный текст" onPointerDown={(e) => e.preventDefault()}>
         <button type="button" className={styles.btn} onClick={save}>
           Сохранить цитату

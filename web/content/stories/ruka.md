@@ -1,5 +1,5 @@
 ---
-slug: maupassant-ruka
+slug: ruka
 issue: 19
 title: Рука
 author: guy-de-maupassant

@@ -566,9 +566,8 @@
   background: var(--fill-3);
   overflow: hidden;
 }
+/* block, not grid: a .reveal-only row comes back as display: revert */
 .row {
-  display: grid;
-  gap: 2px;
   padding: 11px 16px 12px;
 }
 .row + .row {
@@ -579,7 +578,7 @@
   color: var(--label-2);
 }
 .row dd {
-  margin: 0;
+  margin: 2px 0 0;
   font-size: 15px;
   line-height: 1.4;
   color: var(--label);

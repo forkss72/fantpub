@@ -38,6 +38,11 @@
   background: linear-gradient(var(--paper) 55%, color-mix(in oklab, var(--paper) 0%, transparent));
   pointer-events: none;
 }
+/* time left is information: in the two themes where --ink-2 stays under 4.5:1, use the ink (see page.module.css) */
+:root[data-reader="quiet"] .left,
+:root[data-reader="calm"]:not([data-scheme="dark"]) .left {
+  color: var(--ink);
+}
 .left {
   margin: 0;
   text-align: center;

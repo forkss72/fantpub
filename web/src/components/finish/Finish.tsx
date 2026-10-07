@@ -15,25 +15,57 @@ import { tick } from "@/lib/haptics";
 import { shareOrCopy } from "@/lib/share";
 import { getShelf, markRead, setGuess, useHydrated, useShelf, type ShelfState } from "@/lib/shelf";
 import { SITE_URL } from "@/lib/site";
-import { week } from "@/lib/stats";
+import { streak, todaySeconds, week } from "@/lib/stats";
 import type { StoryCard, StoryMeta } from "@/lib/types";
 import { About } from "./About";
 import { Reactions } from "./Reactions";
 import s from "./Finish.module.css";
 import { BookTransition } from "@/components/book/BookTransition";
+import { onReached } from "@/components/reader/reached";
 
 /**
  * static: the global seal CSS decides (first paint, or the story was already open);
  * guess / reveal: a sealed story's staged sequence, owned by this component from hydration on.
- * The reader marks the story read as «Конец» scrolls by; without the hand-off the seal would lift
- * under the reader's nose before they could answer.
+ * The reader marks the story read as «Конец» scrolls by, but not while sealed: marking lifts the seal,
+ * so a sealed story is marked by the reveal (or on leaving, if the end was seen and the guess left open).
  */
 type Phase = "static" | "guess" | "reveal";
 type Answer = { pick: string | null; right: boolean };
 
-const HUD_KEY = "fantpub:goal-hud";
-
 const todayProgress = (sh: ShelfState) => week(sh).find((d) => d.today)?.progress ?? 0;
+const goalMet = (sh: ShelfState) => todaySeconds(sh) >= sh.goal.daily * 60;
+
+/** True the first time today for this key (and when storage is unavailable). */
+function firstToday(key: string): boolean {
+  const day = mskDayKey();
+  try {
+    if (localStorage.getItem(key) === day) return false;
+    localStorage.setItem(key, day);
+  } catch {}
+  return true;
+}
+
+/**
+ * The «tomorrow» beat: the minutes goal crossed during this story, or — goal still short — the day
+ * that counts only because a story was finished. Each once a day.
+ */
+function celebrate(before: { met: boolean; counted: boolean }) {
+  const sh = getShelf();
+  if (goalMet(sh)) {
+    if (!before.met && firstToday("fantpub:goal-hud")) showHud("Цель на сегодня выполнена", "goal");
+    return;
+  }
+  if (before.counted || todayProgress(sh) < 1 || !firstToday("fantpub:day-hud")) return;
+  const n = streak(sh).current;
+  showHud("День засчитан", "goal", `Серия: ${n} ${plural(n, ["день", "дня", "дней"])}`);
+}
+
+/** Where the right answer sits among the options: a stable hash of the slug (same on server and client). */
+function slotFor(slug: string, n: number): number {
+  let h = 0;
+  for (const ch of slug) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return h % n;
+}
 
 /** One unread issue of the same mood, then one more unread, stable per story (no hydration drift). */
 function pickNext(next: StoryCard[], mood: string, read: Record<string, number>, seed: number): StoryCard[] {
@@ -51,7 +83,8 @@ export function Finish({ story, authors, tomorrow, next }: FinishProps) {
   const [answer, setAnswer] = useState<Answer | null>(null);
   const revealRef = useRef<HTMLDivElement>(null);
   const shareRef = useRef<HTMLDivElement>(null);
-  const baseline = useRef<number | null>(null);
+  const baseline = useRef({ met: true, counted: true });
+  const seenEnd = useRef(false);
 
   const forced = hydrated && new URLSearchParams(window.location.search).get("z") === "1";
   const sealed = hydrated && (forced || (shelf.prefs.blind && !shelf.read[slug]));
@@ -60,45 +93,46 @@ export function Finish({ story, authors, tomorrow, next }: FinishProps) {
 
   const decoys = authors.filter((a) => a.slug !== author.slug).slice(0, 2);
   const options = [...decoys];
-  options.splice(story.issue % (decoys.length + 1), 0, author);
+  options.splice(slotFor(slug, decoys.length + 1), 0, author);
 
-  // today's goal as it stood before this story: the HUD only celebrates the crossing
+  // today as it stood before this story: the HUD only celebrates a crossing
   useEffect(() => {
-    baseline.current = todayProgress(getShelf());
+    const sh = getShelf();
+    baseline.current = { met: goalMet(sh), counted: todayProgress(sh) >= 1 };
   }, []);
 
-  // Past the guess, the story counts as read even if it was left open: the reader leaves marking to us
-  // while blind (marking lifts the seal), and our phase is sticky, so the guess stays where it is.
-  // The goal HUD belongs to the «tomorrow» beat: after the reveal, when the share row scrolls in.
+  // The share row reached by scrolling (not by a Tab jump) = the end was seen.
+  // Guess open: marking would lift the seal mid-question, so only remember it — the reveal marks it,
+  // or leaving the page does (seen to the end counts as read). Otherwise: read, then the HUD beat.
   const guessing = phase === "guess";
   useEffect(() => {
     const el = shareRef.current;
     if (!el || !hydrated) return;
-    let t = 0;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
+    return onReached(
+      el,
+      () => {
+        if (guessing) {
+          seenEnd.current = true;
+          return;
+        }
         markRead(slug);
-        if (guessing) return;
-        io.disconnect();
-        t = window.setTimeout(() => {
-          if ((baseline.current ?? 1) >= 1 || todayProgress(getShelf()) < 1) return;
-          const day = mskDayKey();
-          try {
-            if (localStorage.getItem(HUD_KEY) === day) return;
-            localStorage.setItem(HUD_KEY, day);
-          } catch {}
-          showHud("Цель на сегодня выполнена", "goal");
-        }, 700);
+        celebrate(baseline.current);
       },
       { rootMargin: "0px 0px -20% 0px" },
     );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      window.clearTimeout(t);
-    };
   }, [hydrated, guessing, slug]);
+
+  useEffect(() => {
+    if (!guessing) return;
+    const leave = () => {
+      if (seenEnd.current) markRead(slug);
+    };
+    window.addEventListener("pagehide", leave);
+    return () => {
+      window.removeEventListener("pagehide", leave);
+      leave();
+    };
+  }, [guessing, slug]);
 
   function reveal() {
     markRead(slug);

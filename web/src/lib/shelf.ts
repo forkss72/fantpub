@@ -53,6 +53,8 @@ export type ShelfState = {
   progress: Record<string, number>;
   /** slug → 0…100 */
   percent: Record<string, number>;
+  /** slug → last time the reader was in it (Continue / «Читаю» order) */
+  touched: Record<string, number>;
   reactions: Record<string, ReactionKey>;
   /** slug → guessed the author right */
   guesses: Record<string, boolean>;
@@ -91,6 +93,7 @@ const EMPTY: ShelfState = {
   opened: {},
   progress: {},
   percent: {},
+  touched: {},
   reactions: {},
   guesses: {},
   want: {},
@@ -109,6 +112,14 @@ const listeners = new Set<() => void>();
 
 const THEMES: ReaderTheme[] = ["original", "quiet", "paper", "bold", "calm", "focus"];
 
+/** Slugs that named the author were renamed (blind reading); carry personal state over. */
+const RENAMED: Record<string, string> = { "kuprin-tost": "tost", "odoevsky-bal": "bal" };
+function renameKeys<T>(m: Record<string, T> | undefined): Record<string, T> {
+  const out: Record<string, T> = {};
+  for (const [k, v] of Object.entries(m ?? {})) out[RENAMED[k] ?? k] = v;
+  return out;
+}
+
 function sanitize(raw: Partial<ShelfState>): ShelfState {
   const prefs = { ...DEFAULT_PREFS, ...(raw.prefs ?? {}) };
   if (!THEMES.includes(prefs.readerTheme)) prefs.readerTheme = "original";
@@ -117,10 +128,18 @@ function sanitize(raw: Partial<ShelfState>): ShelfState {
     ...EMPTY,
     ...raw,
     v: 2,
+    read: renameKeys(raw.read),
+    opened: renameKeys(raw.opened),
+    touched: renameKeys(raw.touched),
+    progress: renameKeys(raw.progress),
+    percent: renameKeys(raw.percent),
+    reactions: renameKeys(raw.reactions),
+    guesses: renameKeys(raw.guesses),
+    want: renameKeys(raw.want),
     prefs,
     goal: { ...DEFAULT_GOAL, ...(raw.goal ?? {}) },
     profile: { ...EMPTY.profile, ...(raw.profile ?? {}) },
-    quotes: Array.isArray(raw.quotes) ? raw.quotes : [],
+    quotes: Array.isArray(raw.quotes) ? raw.quotes.map((q) => ({ ...q, slug: RENAMED[q.slug] ?? q.slug })) : [],
   };
 }
 
@@ -129,10 +148,14 @@ function migrate(v1: Record<string, unknown>): ShelfState {
   const p = (v1.prefs ?? {}) as Record<string, unknown>;
   const theme = p.theme as string | undefined;
   const font = p.font as string | undefined;
+  const read = (v1.read as ShelfState["read"]) ?? {};
+  const progress = (v1.progress as ShelfState["progress"]) ?? {};
   return sanitize({
-    read: (v1.read as ShelfState["read"]) ?? {},
+    read,
     opened: (v1.opened as ShelfState["opened"]) ?? {},
-    progress: (v1.progress as ShelfState["progress"]) ?? {},
+    progress,
+    // v1 kept paragraphs only; a non-zero percent keeps the story in Continue / «Читаю»
+    percent: Object.fromEntries(Object.keys(progress).filter((k) => !read[k]).map((k) => [k, 1])),
     reactions: (v1.reactions as ShelfState["reactions"]) ?? {},
     guesses: (v1.guesses as ShelfState["guesses"]) ?? {},
     prefs: {
@@ -142,6 +165,8 @@ function migrate(v1: Record<string, unknown>): ShelfState {
       blind: p.blind !== false,
     },
     installHintDismissed: Boolean(v1.installHintDismissed),
+    // returning readers already know the ritual
+    onboarded: Boolean(v1.introSeen) || Object.keys(read).length > 0,
   });
 }
 
@@ -154,6 +179,7 @@ function load(): ShelfState {
     else {
       const legacy = localStorage.getItem(LEGACY_KEY);
       state = legacy ? migrate(JSON.parse(legacy)) : EMPTY;
+      if (legacy) persist();
     }
   } catch {
     state = EMPTY;
@@ -237,7 +263,12 @@ export function saveProgress(slug: string, paragraph: number, percent: number) {
   updateShelf((s) =>
     s.progress[slug] === paragraph && s.percent[slug] === pct
       ? s
-      : { ...s, progress: { ...s.progress, [slug]: paragraph }, percent: { ...s.percent, [slug]: Math.max(pct, s.read[slug] ? 100 : 0) } },
+      : {
+          ...s,
+          progress: { ...s.progress, [slug]: paragraph },
+          percent: { ...s.percent, [slug]: Math.max(pct, s.read[slug] ? 100 : 0) },
+          touched: { ...s.touched, [slug]: Date.now() },
+        },
   );
 }
 
@@ -326,10 +357,11 @@ export function applyPrefs(p: Prefs) {
   html.dataset.leading = p.leading;
   html.dataset.justify = p.justify ? "1" : "0";
   html.dataset.glass = p.glass;
-  const meta = document.querySelector('meta[name="theme-color"]');
+  // the app's own appearance wins over the OS: rewrite every theme-color meta (they carry media queries);
   // in the reader the browser bar takes the paper colour of the chosen theme
   const paper = location.pathname.startsWith("/rasskaz/") ? getComputedStyle(html).getPropertyValue("--paper").trim() : "";
-  if (meta) meta.setAttribute("content", paper || (scheme === "dark" ? "#000000" : "#ffffff"));
+  const color = paper || (scheme === "dark" ? "#000000" : "#ffffff");
+  document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute("content", color));
 }
 
 /* ─── shelf key: move your shelf to another device without an account ─── */
