@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
+    ...stories.map((s) => ({
+      url: `${SITE_URL}/kniga/${s.slug}`,
+      lastModified: new Date(issueOpensAt(s.issue)),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     ...authors.map((a) => ({ url: `${SITE_URL}/avtor/${a}`, changeFrequency: "weekly" as const, priority: 0.6 })),
   ];
 }

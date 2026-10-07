@@ -1,0 +1,68 @@
+/* iOS inset grouped list on the canvas: flat fill, 0.5px separators from the text edge */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: var(--r-cell);
+  background: var(--fill-3);
+  overflow: hidden;
+}
+.list > li {
+  padding-inline-start: 16px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-block-size: 50px;
+  padding: 10px 14px 10px 0;
+}
+.list > li + li .row {
+  box-shadow: inset 0 0.5px 0 var(--sep);
+}
+.list > li:has(> a.row) {
+  transition: background-color 160ms ease-out;
+}
+.list > li:has(> a.row:active) {
+  background: var(--fill-2);
+  transition-duration: 0ms;
+}
+@media (hover: hover) {
+  .list > li:has(> a.row:hover) {
+    background: color-mix(in oklab, var(--fill-3) 60%, transparent);
+  }
+}
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 30px;
+  block-size: 30px;
+  border-radius: 8px;
+  background: var(--fill-2);
+  color: var(--label);
+}
+.text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.label {
+  font-size: 17px;
+  line-height: 1.3;
+}
+.sub {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--label-2);
+}
+.value {
+  flex: none;
+  font-size: 17px;
+  color: var(--label-2);
+}
+.chev {
+  flex: none;
+  color: var(--label-3);
+}

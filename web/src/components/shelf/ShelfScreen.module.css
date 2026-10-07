@@ -1,0 +1,90 @@
+.page {
+  display: flow-root;
+}
+.placeholder {
+  min-block-size: 60svh;
+}
+.summary {
+  margin-block: -8px 18px;
+}
+.seg {
+  max-inline-size: 460px;
+  margin-block-end: 30px;
+}
+.panel {
+  min-block-size: 40svh;
+}
+
+/* empty states: one serif line, one grey line, one capsule */
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  padding-block: 8px 24px;
+  text-align: center;
+}
+.empty > :first-child:not(.emptyText) {
+  justify-self: stretch;
+  margin-block-end: 18px;
+}
+.sleeper {
+  inline-size: 150px;
+  block-size: auto;
+  margin-inline-start: 18%;
+  justify-self: start;
+  user-select: none;
+}
+.emptyText {
+  display: grid;
+  gap: 6px;
+  max-inline-size: 300px;
+}
+.emptyTitle {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* black capsule (Apple's «Keep Reading») */
+.capsule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 50px;
+  padding-inline: 28px;
+  border: 0;
+  border-radius: 25px;
+  background: var(--label);
+  color: var(--bg);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.textBtn {
+  min-block-size: 44px;
+  border: 0;
+  background: none;
+  color: var(--label-2);
+  font-size: 17px;
+}
+
+.sheetBody {
+  display: grid;
+  gap: 14px;
+  padding-block: 4px 8px;
+}
+.sheetBody .capsule {
+  inline-size: 100%;
+}
+.sheetText {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--label-2);
+  text-align: center;
+  text-wrap: pretty;
+}

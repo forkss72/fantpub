@@ -61,3 +61,20 @@ export function plural(n: number, forms: [string, string, string]): string {
   if (b === 1) return forms[0];
   return forms[2];
 }
+
+/** Moscow calendar day of a timestamp: "2026-10-07". */
+export function mskDayKey(ts: number = Date.now()): string {
+  return new Date(ts + MSK_OFFSET_MS).toISOString().slice(0, 10);
+}
+
+/** "2026-10-07" shifted by n days. */
+export function addDays(day: string, n: number): string {
+  const [y, m, d] = day.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d + n)).toISOString().slice(0, 10);
+}
+
+/** 0 = Monday … 6 = Sunday (Russian week). */
+export function weekdayIndex(day: string): number {
+  const [y, m, d] = day.split("-").map(Number);
+  return (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7;
+}

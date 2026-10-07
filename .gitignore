@@ -24,3 +24,13 @@ research/mascot/**/log_*
 research/mascot/**/.log_*
 tools/shots/node_modules/
 .claude/
+
+# redesign research: large sources and third-party screenshots stay local
+research/redesign/covers_src/
+research/redesign/mobbin/
+research/redesign/02_refs/
+research/redesign/04_glass_proto/*.png
+research/redesign/03_trends_book.png
+.playwright-mcp/
+web/.impeccable/review/
+web/.impeccable/mocks/

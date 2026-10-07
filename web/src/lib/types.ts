@@ -26,6 +26,39 @@ export type ClothKey =
   | "slate"
   | "sage";
 
+export type CoverColors = {
+  /** dominant colour of the art */
+  base: string;
+  /** product-page field, white text passes AA on it */
+  bg: string;
+  /** gradient end, continue card */
+  dark: string;
+  /** tinted glass on the field */
+  light: string;
+  /** small accents, progress */
+  tint: string;
+};
+
+export type CoverCredit = {
+  artist: string;
+  title: string;
+  year: string;
+  museum: string;
+  license: string;
+  licenseUrl: string;
+  pageUrl: string;
+  imageUrl: string;
+};
+
+export type Cover = {
+  src: string;
+  srcSmall: string;
+  placeholder: string;
+  colors: CoverColors;
+  duotone: boolean;
+  credit: CoverCredit;
+};
+
 export type StoryMeta = {
   slug: string;
   issue: number;
@@ -52,6 +85,7 @@ export type StoryMeta = {
   motif: string;
   cloth: ClothKey;
   ending: string | null;
+  cover: Cover;
 };
 
 export type Story = StoryMeta & { blocks: Block[] };
@@ -59,7 +93,7 @@ export type Story = StoryMeta & { blocks: Block[] };
 /** Small, client-safe card used on shelves, archive, home. */
 export type StoryCard = Pick<
   StoryMeta,
-  "slug" | "issue" | "date" | "title" | "genres" | "mood" | "minutes" | "motif" | "cloth" | "year" | "age"
+  "slug" | "issue" | "date" | "title" | "genres" | "mood" | "minutes" | "motif" | "cloth" | "year" | "age" | "hook" | "cover"
 > & { authorName: string; authorSlug: string };
 
 export type ReactionKey = "wow" | "hooked" | "pondering" | "notmine";

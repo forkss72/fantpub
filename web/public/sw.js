@@ -1,32 +1,40 @@
-/* FantPub service worker — offline for stories you opened.
+/* FantPub service worker — offline for stories you opened. No precache: pages are saved as you visit them.
    HTML: network-first (fresh issue wins), cached copy when offline.
-   Static assets: cache-first. API: never cached. */
-const VERSION = "fp-v2";
+   Covers and hashed assets: cache-first. Pabchik and icons: cached, refreshed in the background. API: never cached. */
+const VERSION = "fp-v3";
 const PAGES = `${VERSION}-pages`;
 const STATIC = `${VERSION}-static`;
-const SHELL = ["/", "/arhiv", "/o-proekte", "/manifest.webmanifest", "/icons/icon-192.png", "/pabchik/sad.webp", "/pabchik/reading.webp"];
+const COVERS = `${VERSION}-covers`;
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(PAGES).then((c) => c.addAll(SHELL).catch(() => {})));
-  self.skipWaiting();
-});
+self.addEventListener("install", () => self.skipWaiting());
 
 self.addEventListener("activate", (event) => {
   if (self.registration.navigationPreload) event.waitUntil(self.registration.navigationPreload.enable().catch(() => {}));
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((k) => !k.startsWith(VERSION)).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => !k.startsWith(`${VERSION}-`)).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
 
-const OFFLINE_HTML = `<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Нет сети · FantPub</title><body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#f6f2e7;color:#1d1c17;font:17px/1.5 Georgia,serif;text-align:center;padding:24px"><div><p style="font-size:22px;margin:0 0 8px">Нет сети</p><p style="margin:0 0 16px;color:#4a473d">Эта страница ещё не сохранена на устройстве. Открытые раньше рассказы доступны и без интернета.</p><a href="/" style="color:#4e5d25">К рассказу дня</a></div></body></html>`;
+const OFFLINE_HTML = `<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><title>Нет сети · FantPub</title><style>:root{color-scheme:light dark;--bg:#fff;--label:#000;--label-2:rgb(60 60 67/.66);--fill:rgb(120 120 128/.14)}@media (prefers-color-scheme:dark){:root{--bg:#000;--label:#fff;--label-2:rgb(235 235 245/.64);--fill:rgb(120 120 128/.28)}}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:24px;box-sizing:border-box;background:var(--bg);color:var(--label);font:17px/1.35 system-ui,-apple-system,sans-serif;text-align:center}h1{margin:0 0 8px;font:700 34px/1.12 ui-serif,"New York",Georgia,serif}p{margin:0 0 28px;color:var(--label-2);font-size:15px}a{display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;background:var(--label);color:var(--bg);font-weight:600;text-decoration:none}</style><body><div><h1>Нет сети</h1><p>Эта страница ещё не сохранена. Открытые раньше рассказы доступны и без интернета.</p><a href="/">Рассказ дня</a></div></body></html>`;
 
 async function trim(cacheName, max) {
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
   for (let i = 0; i < keys.length - max; i++) await cache.delete(keys[i]);
+}
+
+/** Serve from cache; on a miss fetch, store (bounded) and return. */
+function cacheFirst(req, cacheName, max) {
+  return caches.open(cacheName).then(async (c) => {
+    const hit = await c.match(req);
+    if (hit) return hit;
+    const res = await fetch(req);
+    if (res.ok) c.put(req, res.clone()).then(() => trim(cacheName, max));
+    return res;
+  });
 }
 
 self.addEventListener("fetch", (event) => {
@@ -69,6 +77,12 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // cover art never changes under the same name (served immutable)
+  if (url.pathname.startsWith("/covers/")) {
+    event.respondWith(cacheFirst(req, COVERS, 120));
+    return;
+  }
+
   if (url.pathname.startsWith("/pabchik/") || url.pathname.startsWith("/icons/")) {
     // not content-hashed: serve cached, refresh in the background
     event.respondWith(
@@ -78,25 +92,17 @@ self.addEventListener("fetch", (event) => {
           if (res.ok) c.put(req, res.clone());
           return res;
         });
-        return hit || fresh;
+        if (hit) {
+          event.waitUntil(fresh.catch(() => {}));
+          return hit;
+        }
+        return fresh;
       }),
     );
     return;
   }
 
-  if (url.pathname.startsWith("/_next/static/") || /\.(woff2)$/.test(url.pathname)) {
-    event.respondWith(
-      caches.match(req).then(
-        (hit) =>
-          hit ||
-          fetch(req).then((res) => {
-            if (res.ok) {
-              const copy = res.clone();
-              caches.open(STATIC).then((c) => c.put(req, copy).then(() => trim(STATIC, 200)));
-            }
-            return res;
-          }),
-      ),
-    );
+  if (url.pathname.startsWith("/_next/static/") || url.pathname.endsWith(".woff2")) {
+    event.respondWith(cacheFirst(req, STATIC, 200));
   }
 });

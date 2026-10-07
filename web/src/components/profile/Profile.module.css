@@ -1,0 +1,318 @@
+/* grouped page: --bg-2 canvas, --bg-3 cells (Apple Settings) */
+:global(html):has(.page),
+:global(body):has(.page) {
+  background-color: var(--bg-2);
+}
+.page {
+  display: flow-root;
+}
+.placeholder {
+  min-block-size: 70svh;
+}
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  min-inline-size: 0;
+}
+@media (min-width: 1000px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+  .stack > .section:first-child {
+    margin-block-start: 0;
+  }
+}
+
+.section {
+  margin-block-start: 34px;
+  scroll-margin-block-start: 24px;
+}
+.section:first-child {
+  margin-block-start: 0;
+}
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: 10px;
+  padding-inline: 4px;
+}
+.aside {
+  font-size: 15px;
+  color: var(--label-2);
+}
+.group {
+  border-radius: var(--r-cell);
+  background: var(--bg-3);
+  overflow: clip;
+}
+.footer {
+  margin: 8px 0 0;
+  padding-inline: 16px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--label-2);
+  text-wrap: pretty;
+}
+
+/* a cell; consecutive cells get an inset hairline */
+.cell {
+  position: relative;
+  padding: 14px 16px;
+}
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-block-size: 52px;
+  padding: 8px 16px;
+  inline-size: 100%;
+  border: 0;
+  background: none;
+  font-size: 17px;
+  text-align: start;
+  color: var(--label);
+}
+.group > * + *::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 16px;
+  border-block-start: 0.5px solid var(--sep);
+}
+button.row,
+a.row,
+label.row {
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+button.row:active,
+a.row:active,
+label.row:active {
+  background: var(--fill-3);
+}
+.row:disabled {
+  cursor: default;
+}
+.row:disabled .label {
+  color: var(--label-2);
+}
+.label {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+.sub {
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--label-2);
+}
+.value {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  color: var(--label-2);
+  font-variant-numeric: tabular-nums;
+}
+.chev {
+  color: var(--label-3);
+}
+.action {
+  color: var(--accent);
+}
+.danger {
+  color: var(--danger);
+}
+.stackRow {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 14px 16px 16px;
+}
+
+/* iOS switch */
+.switch {
+  appearance: none;
+  flex: none;
+  position: relative;
+  inline-size: 51px;
+  block-size: 31px;
+  margin: 0;
+  border-radius: 16px;
+  background: var(--fill-1);
+  cursor: pointer;
+  transition: background-color 240ms ease;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 2px;
+  inline-size: 27px;
+  block-size: 27px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 3px 8px rgb(0 0 0 / 0.15),
+    0 3px 1px rgb(0 0 0 / 0.06),
+    0 0 0 0.5px rgb(0 0 0 / 0.04);
+  transition: translate 320ms var(--snappy);
+}
+.switch:checked {
+  background: var(--accent);
+}
+.switch:checked::after {
+  translate: 20px 0;
+}
+
+/* text field inside a cell */
+.field {
+  flex: 1;
+  min-inline-size: 0;
+  block-size: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fill-3);
+  color: var(--label);
+  font: inherit;
+  font-size: 17px;
+}
+.field::placeholder {
+  color: var(--label-3);
+}
+.time {
+  flex: none;
+  block-size: 34px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--fill-3);
+  color: var(--label);
+  font: inherit;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+.small {
+  flex: none;
+  min-block-size: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 18px;
+  background: var(--fill-2);
+  color: var(--label);
+  font-size: 15px;
+  font-weight: 600;
+}
+.small:disabled {
+  color: var(--label-3);
+}
+.keyLine {
+  font-size: 13px;
+  color: var(--label-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: all;
+}
+.error {
+  color: var(--danger);
+}
+
+/* sheets: flat fills inside the glass, never glass in glass */
+.sheetBody {
+  display: grid;
+  gap: 14px;
+  padding-block: 4px 8px;
+}
+.sheetText {
+  margin: 0 0 6px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--label-2);
+  text-align: center;
+  text-wrap: pretty;
+}
+.capsule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 50px;
+  padding-inline: 28px;
+  border: 0;
+  border-radius: 25px;
+  background: var(--label);
+  color: var(--bg);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.capsule[data-destructive] {
+  background: var(--fill-2);
+  color: var(--danger);
+}
+.textBtn {
+  min-block-size: 44px;
+  border: 0;
+  background: none;
+  color: var(--label-2);
+  font-size: 17px;
+}
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  border-radius: var(--r-cell);
+  background: var(--fill-3);
+}
+.steps li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-block-size: 52px;
+  padding: 8px 16px;
+  font-size: 17px;
+  counter-increment: step;
+}
+.steps li + li::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 54px;
+  border-block-start: 0.5px solid var(--sep);
+}
+.steps li > span:first-child {
+  inline-size: 26px;
+  block-size: 26px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--label);
+  color: var(--bg);
+  font-size: 15px;
+  font-weight: 600;
+}
+.inlineIcon {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-inline: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .switch::after {
+    transition: none;
+  }
+}

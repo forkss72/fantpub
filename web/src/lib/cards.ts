@@ -13,6 +13,8 @@ export function toCard(s: Story | StoryMeta): StoryCard {
     cloth: s.cloth,
     year: s.year,
     age: s.age,
+    hook: s.hook,
+    cover: s.cover,
     authorName: s.author.name,
     authorSlug: s.author.slug,
   };

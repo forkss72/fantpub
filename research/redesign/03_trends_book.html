@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{ --day:#7a2f22; }
+body{margin:0;min-height:100vh;display:grid;place-items:center;
+  background: radial-gradient(120% 80% at 50% 30%, color-mix(in oklab,var(--day) 55%, white) 0%, color-mix(in oklab,var(--day) 85%, black) 100%);
+  font-family: ui-serif, Georgia, serif;}
+.stage{perspective:1400px;position:relative}
+.stage::after{content:"";position:absolute;left:8%;right:-2%;bottom:-18px;height:28px;z-index:-1;
+  background:radial-gradient(closest-side,rgb(0 0 0/.55),transparent);filter:blur(8px)}
+.tabbar{position:fixed;left:20px;right:86px;bottom:20px;height:62px;border-radius:999px;display:flex;align-items:center;justify-content:space-around;
+  font:600 11px/1 system-ui;color:#1b1b1b;
+  background:rgb(255 255 255/.62);
+  -webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);
+  box-shadow:inset 0 1px 0 rgb(255 255 255/.85),inset 0 -1px 0 rgb(0 0 0/.05),0 0 0 .5px rgb(0 0 0/.14),0 10px 30px -10px rgb(0 0 0/.35)}
+.tabbar b{padding:10px 16px;border-radius:999px}
+.tabbar b.on{background:rgb(0 0 0/.07)}
+.fab{position:fixed;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:rgb(255 255 255/.62);
+  -webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);
+  box-shadow:inset 0 1px 0 rgb(255 255 255/.85),0 0 0 .5px rgb(0 0 0/.14),0 10px 30px -10px rgb(0 0 0/.35)}
+.book{--w:240px;--t:16px;width:var(--w);aspect-ratio:2/3;position:relative;transform-style:preserve-3d;
+  transform:rotateY(-22deg) rotateX(4deg);}
+.face{position:absolute;inset:0;backface-visibility:hidden}
+.cover{transform:translateZ(calc(var(--t)/2));border-radius:2px 6px 6px 2px;overflow:hidden;
+  background:linear-gradient(160deg,#c2553f,#7a2f22);color:#fff4e8;padding:28px 22px 22px 30px;box-sizing:border-box;
+  box-shadow:inset -1px 0 0 rgb(255 255 255/.18), inset 0 1px 0 rgb(255 255 255/.18)}
+.cover h1{margin:0;font-size:30px;line-height:1.05;font-weight:600}
+.cover p{margin:10px 0 0;font:500 13px/1.2 system-ui;opacity:.8;letter-spacing:.02em}
+/* hinge groove */
+.cover::before{content:"";position:absolute;inset:0 auto 0 0;width:10%;
+  background:linear-gradient(90deg,rgb(0 0 0/.35) 0 2%,rgb(255 255 255/.30) 4%,rgb(0 0 0/.28) 7%,rgb(255 255 255/.10) 9%,rgb(0 0 0/0) 14%);width:100%}
+/* sheen */
+.cover::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgb(255 255 255/.28) 46%,transparent 58%);
+  background-size:260% 100%;background-position:var(--sx,70%) 0;mix-blend-mode:soft-light}
+.back{transform:rotateY(180deg) translateZ(calc(var(--t)/2));background:#5c2218;border-radius:6px 2px 2px 6px}
+.pages{position:absolute;top:1.2%;bottom:1.2%;right:calc(var(--t)/-2);width:var(--t);
+  transform:rotateY(90deg);
+  background:repeating-linear-gradient(90deg,#f4f1ea 0 1px,#dcd6cb 1px 2px);
+  box-shadow:inset 0 0 6px rgb(0 0 0/.18)}
+.shadowx{position:absolute;left:4%;right:-6%;bottom:-6%;height:8%;transform:translateZ(calc(var(--t)/-2 - 1px)) ;
+  background:radial-gradient(closest-side,rgb(0 0 0/.45),transparent);filter:blur(6px)}
+</style></head>
+<body><div class="stage"><div class="book">
+  <div class="shadow"></div>
+  <div class="face back"></div>
+  <div class="pages"></div>
+  <div class="face cover"><h1>Сердце-обличитель</h1><p>Эдгар По · 14 мин</p></div>
+</div></div><nav class="tabbar"><b class="on">Сегодня</b><b>Полка</b><b>Архив</b></nav><div class="fab"></div></body></html>

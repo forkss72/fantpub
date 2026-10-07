@@ -1,0 +1,103 @@
+{
+ "grobovshchik": {
+  "pick": 0,
+  "duotone": [
+   "#1d1712",
+   "#dcb468"
+  ]
+ },
+ "pered-zakonom": {
+  "pick": 0
+ },
+ "zelenaya-lampa": {
+  "pick": 1,
+  "duotone": [
+   "#0f2a1c",
+   "#a8d58e"
+  ]
+ },
+ "odoevsky-bal": {
+  "pick": 0
+ },
+ "robinzony": {
+  "pick": 0
+ },
+ "ledi-ili-tigr": {
+  "pick": 0
+ },
+ "koshki-ultara": {
+  "pick": 0,
+  "duotone": [
+   "#1b130e",
+   "#f0a057"
+  ]
+ },
+ "to-chego-ne-bylo": {
+  "pick": 0
+ },
+ "kak-eto-sluchilos": {
+  "pick": 0
+ },
+ "kuprin-tost": {
+  "pick": 0
+ },
+ "otkrytoe-okno": {
+  "pick": 0
+ },
+ "strashnaya-noch": {
+  "pick": 0
+ },
+ "zakolochennoe-okno": {
+  "pick": 0
+ },
+ "volshebnaya-lavka": {
+  "pick": 0,
+  "focal": [
+   50,
+   64
+  ],
+  "zoom": 1.28
+ },
+ "bolshoy-shlem": {
+  "pick": 0
+ },
+ "cherez-dvadtsat-let": {
+  "pick": 0,
+  "duotone": [
+   "#0d1626",
+   "#a9c3e2"
+  ]
+ },
+ "premudry-piskar": {
+  "pick": 1
+ },
+ "ideofon": {
+  "pick": 1,
+  "duotone": [
+   "#191814",
+   "#dccb63"
+  ]
+ },
+ "maupassant-ruka": {
+  "pick": 0
+ },
+ "krasnaya-korona": {
+  "pick": 0
+ },
+ "peshchera": {
+  "pick": 0
+ },
+ "krasnogubaya-gostya": {
+  "pick": 0,
+  "focal": [
+   52,
+   36
+  ]
+ },
+ "peschanaya-uchitelnitsa": {
+  "pick": 1
+ },
+ "maska-krasnoy-smerti": {
+  "pick": 0
+ }
+}

@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 6px 18px;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+/* Apple News: a second line of the large title in secondary grey */
+.subtitle {
+  color: var(--label-2);
+  font-weight: 700;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 2px;
+  flex: none;
+}

@@ -1,23 +1,16 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/PageTransition";
-import Link from "next/link";
-import type { Route } from "next";
+import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
-import { getAuthors, getPublishedStories, getStory, getTomorrowTeaser } from "@/lib/content";
+import { getAuthors, getPublishedStories, getStory, getTomorrowTeaser, toMeta } from "@/lib/content";
 import { toCard } from "@/lib/cards";
-import { currentIssue, humanDate, issueOpensAt, plural } from "@/lib/date";
+import { currentIssue, issueOpensAt, plural } from "@/lib/date";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
-import { Cover } from "@/components/Cover";
-import { PabchikSays } from "@/components/Pabchik";
-import { ReaderBar } from "@/components/reader/ReaderBar";
-import { ReadingTracker } from "@/components/reader/ReadingTracker";
-import { BlindGate } from "@/components/reader/BlindGate";
-import { QuoteShare } from "@/components/reader/QuoteShare";
-import { EndOfStory } from "@/components/reader/EndOfStory";
-import { Colophon } from "@/components/reader/Colophon";
 import { StoryText } from "@/components/reader/StoryText";
-import { StoryCardLink } from "@/components/StoryCardLink";
-import type { Story } from "@/lib/types";
+import { Reader } from "@/components/reader/Reader";
+import { SelectionPill } from "@/components/reader/SelectionPill";
+import { Finish } from "@/components/finish/Finish";
+import type { FinishProps } from "@/components/reader/finish-props";
+import type { Author, Story } from "@/lib/types";
 import styles from "./page.module.css";
 
 export const revalidate = 300;
@@ -25,12 +18,6 @@ export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getPublishedStories().map((s) => ({ slug: s.slug }));
-}
-
-function translationLabel(s: Story): string {
-  if (s.translation === "original") return "";
-  if (s.translation === "fantpub") return "новый перевод FantPub";
-  return `перевод: ${s.translation}`;
 }
 
 export async function generateMetadata({ params }: PageProps<"/rasskaz/[slug]">): Promise<Metadata> {
@@ -56,43 +43,40 @@ export async function generateMetadata({ params }: PageProps<"/rasskaz/[slug]">)
   };
 }
 
+/** Two plausible decoys for «Кто это написал?»: same era first, same country a little closer. Stable per story. */
+function distractors(story: Story, authors: Author[]): Author[] {
+  const near = authors
+    .filter((a) => a.slug !== story.author.slug)
+    .map((a) => ({ a, d: Math.abs(a.born - story.author.born) + (a.country === story.author.country ? 0 : 15) }))
+    .sort((x, y) => x.d - y.d || x.a.slug.localeCompare(y.a.slug))
+    .slice(0, 4)
+    .map((x) => x.a);
+  return [...new Set([near[story.issue % near.length], near[(story.issue + 1) % near.length]])].filter(Boolean);
+}
+
 export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">) {
   const { slug } = await params;
   const story = getStory(slug);
   if (!story) notFound();
 
-  const published = getPublishedStories();
-  const authors = Object.values(getAuthors());
-  const idx = published.findIndex((s) => s.slug === slug);
-  const prev = idx > 0 ? published[idx - 1] : null;
-  const next = idx >= 0 && idx < published.length - 1 ? published[idx + 1] : null;
   // server component re-rendered by ISR: "now" decides which issues are published
   // eslint-disable-next-line react-hooks/purity
   const now = Date.now();
-  const isToday = story.issue === currentIssue(now);
-  const tomorrow = getTomorrowTeaser(now);
-  const nextOpensAt = isToday && tomorrow && issueOpensAt(tomorrow.issue) > now ? issueOpensAt(tomorrow.issue) : null;
+  const published = getPublishedStories(now);
+  const teaser = story.issue === currentIssue(now) ? getTomorrowTeaser(now) : null;
+  const opensAt = teaser ? issueOpensAt(teaser.issue) : 0;
 
-  // three-way riddle: the real author + two plausible decoys, stable per story
-  const decoys = authors
-    .filter((a) => a.slug !== story.author.slug)
-    .sort((a, b) => Math.abs(a.born - story.author.born) - Math.abs(b.born - story.author.born) || a.slug.localeCompare(b.slug))
-    .slice(0, 4);
-  const pick = [decoys[story.issue % decoys.length], decoys[(story.issue + 1) % decoys.length]].filter(Boolean);
-  const options = [story.author, ...pick]
-    .filter((a, i, arr) => arr.findIndex((x) => x.slug === a.slug) === i)
-    .map((a) => ({ slug: a.slug, name: a.name }))
-    .sort((a, b) => ((a.slug.charCodeAt(1) + story.issue) % 7) - ((b.slug.charCodeAt(1) + story.issue) % 7));
+  const others = published.filter((s) => s.slug !== slug).reverse();
+  const next = [...others.filter((s) => s.mood === story.mood), ...others.filter((s) => s.mood !== story.mood)].slice(0, 8).map(toCard);
 
-  const sameAuthor = published.filter((s) => s.author.slug === story.author.slug && s.slug !== slug).slice(-2);
-  const sameMood = published
-    .filter((s) => s.slug !== slug && s.author.slug !== story.author.slug && (s.mood === story.mood || s.genres.some((g) => story.genres.includes(g))))
-    .slice(-3);
-  const suggestions = [...sameAuthor, ...sameMood].slice(0, 3).map(toCard);
-  const short = published.filter((s) => s.slug !== slug && s.minutes <= 6).map(toCard);
+  const finish: FinishProps = {
+    story: toMeta(story),
+    authors: distractors(story, Object.values(getAuthors())),
+    tomorrow: teaser && opensAt > now ? { ...teaser, opensAt } : null,
+    next,
+  };
 
   const paragraphs = story.blocks.filter((b) => b.type === "p").length;
-  const tr = translationLabel(story);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -138,101 +122,29 @@ export default async function StoryPage({ params }: PageProps<"/rasskaz/[slug]">
 
   return (
     <>
-      <BlindGate slug={story.slug} title={story.title} />
-      <ReaderBar title={story.title} minutes={story.minutes} />
-      <PageTransition>
-      <main className={styles.main}>
-        <article className={styles.article} lang="ru">
-          <header className={styles.head}>
-            <div className={styles.thumb} aria-hidden="true">
-              <Cover title={story.title} issue={story.issue} motif={story.motif} cloth={story.cloth} label="compact" />
-            </div>
-            <p className={`mono ${styles.kicker}`}>
-              № {story.issue} · {humanDate(story.date)} · {story.genres.map((g) => (g === "хоррор" ? "жуткое" : g)).join(", ")}
+      {/* the sheet's cover lands here and turns into paper (globals.css: .open-book) */}
+      <ViewTransition name={`book-${story.slug}`} share="open-book" default="none">
+        <div className={styles.paper} aria-hidden="true" />
+      </ViewTransition>
+      <ViewTransition enter="page-in" default="none">
+        <main className={styles.main} data-reader-page data-seal={story.slug}>
+          <article className={styles.article} lang="ru" data-reader-article>
+            <header className={styles.head}>
+              <h1 className={styles.title} data-seal-title>
+                {story.title}
+              </h1>
+              <span className={styles.rule} aria-hidden="true" />
+            </header>
+            <StoryText blocks={story.blocks} />
+            <p className={styles.end} data-end-mark>
+              Конец
             </p>
-            <h1 className={`display ${styles.title}`}>{story.title}</h1>
-            <p className={styles.byline}>
-              <span className="fp-author-real">
-                <Link href={`/avtor/${story.author.slug}` as Route}>{story.author.name}</Link>
-                {" · "}
-                {story.year}
-                {tr && <> · {tr}</>}
-              </span>
-              <span className="fp-author-sealed">
-                <span className={styles.dots} aria-hidden="true">
-                  ●●●●●● ●●●●●
-                </span>{" "}
-                автор и год под печатью — узнаете в конце
-              </span>
-            </p>
-            <p className={`mono ${styles.meta}`}>
-              {story.minutes} мин · {story.words.toLocaleString("ru-RU")} {plural(story.words, ["слово", "слова", "слов"])} · {story.age}
-            </p>
-            {story.hook && (
-              <div className={styles.hook}>
-                <PabchikSays pose="reading">{story.hook}</PabchikSays>
-              </div>
-            )}
-          </header>
-
-          <StoryText blocks={story.blocks} />
-
-          <EndOfStory
-            slug={story.slug}
-            issue={story.issue}
-            title={story.title}
-            author={{ slug: story.author.slug, name: story.author.name, born: story.author.born, died: story.author.died }}
-            year={story.year}
-            note={story.note}
-            facts={story.facts}
-            minutes={story.minutes}
-            options={options}
-            isToday={isToday}
-            nextOpensAt={nextOpensAt}
-            shortPicks={short.slice(-8)}
-          />
-
-          <Colophon story={story} />
-        </article>
-
-        {suggestions.length > 0 && (
-          <section className={`fp-reveal-only ${styles.more}`} aria-labelledby="more">
-            <h2 id="more" className={styles.moreTitle}>
-              Похожее по настроению
-            </h2>
-            <div className={styles.moreGrid}>
-              {suggestions.map((c) => (
-                <StoryCardLink key={c.slug} card={c} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        <nav className={styles.pager} aria-label="Соседние выпуски">
-          {prev ? (
-            <Link href={`/rasskaz/${prev.slug}` as Route} className={styles.pagerLink}>
-              <span className="mono">← № {prev.issue}</span>
-              <span>{prev.title}</span>
-            </Link>
-          ) : (
-            <span />
-          )}
-          {next ? (
-            <Link href={`/rasskaz/${next.slug}` as Route} className={`${styles.pagerLink} ${styles.pagerNext}`}>
-              <span className="mono">№ {next.issue} →</span>
-              <span>{next.title}</span>
-            </Link>
-          ) : (
-            <Link href="/arhiv" className={`${styles.pagerLink} ${styles.pagerNext}`}>
-              <span className="mono">Архив →</span>
-              <span>Все выпуски</span>
-            </Link>
-          )}
-        </nav>
-      </main>
-      </PageTransition>
-      <ReadingTracker slug={story.slug} paragraphs={paragraphs} minutes={story.minutes} />
-      <QuoteShare slug={story.slug} title={story.title} />
+          </article>
+          <Finish {...finish} />
+        </main>
+      </ViewTransition>
+      <Reader slug={story.slug} title={story.title} minutes={story.minutes} paragraphs={paragraphs} />
+      <SelectionPill slug={story.slug} title={story.title} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </>
   );

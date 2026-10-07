@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/PageTransition";
 import Link from "next/link";
 import type { Route } from "next";
-import { Masthead } from "@/components/Masthead";
-import { SiteFooter } from "@/components/SiteFooter";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { CaretRight } from "@/components/ui/icons";
+import { surname } from "@/components/archive/items";
 import { getAuthors, getPublishedStories } from "@/lib/content";
 import { plural } from "@/lib/date";
-import styles from "./page.module.css";
+import grouped from "@/components/archive/Grouped.module.css";
 
 export const revalidate = 3600;
 
@@ -22,26 +22,30 @@ export default function AuthorsPage() {
   const authors = Object.values(getAuthors())
     .map((a) => ({ ...a, n: published.filter((s) => s.author.slug === a.slug).length }))
     .filter((a) => a.n > 0)
-    .sort((a, b) => a.name.split(" ").at(-1)!.localeCompare(b.name.split(" ").at(-1)!, "ru"));
+    .sort((a, b) => surname(a.name).localeCompare(surname(b.name), "ru"));
   return (
-    <PageTransition>
-      <main className={`page ${styles.page}`}>
-      <Masthead />
-      <h1 className={`display ${styles.title}`}>Авторы</h1>
-      <ul className={styles.list}>
+    <main className="page">
+      <div className="edge-top" aria-hidden="true" />
+      <PageHeader title="Авторы" subtitle={`${authors.length} ${plural(authors.length, ["имя", "имени", "имён"])}`} />
+      {/* names and counts only: which unread story is whose stays sealed */}
+      <ul className={grouped.list}>
         {authors.map((a) => (
           <li key={a.slug}>
-            <Link href={`/avtor/${a.slug}` as Route} className={styles.row}>
-              <span className={styles.name}>{a.name}</span>
-              <span className={`mono ${styles.meta}`}>
-                {a.born}–{a.died} · {a.n} {plural(a.n, ["рассказ", "рассказа", "рассказов"])}
+            <Link href={`/avtor/${a.slug}` as Route} className={grouped.row}>
+              <span className={grouped.text}>
+                <span className={grouped.label}>{a.name}</span>
+                <span className={`${grouped.sub} num`}>
+                  {a.country}, {a.born}–{a.died}
+                </span>
               </span>
+              <span className={`${grouped.value} num`}>
+                {a.n} {plural(a.n, ["рассказ", "рассказа", "рассказов"])}
+              </span>
+              <CaretRight size={15} weight="bold" className={grouped.chev} aria-hidden="true" />
             </Link>
           </li>
         ))}
       </ul>
-      <SiteFooter />
     </main>
-      </PageTransition>
   );
 }

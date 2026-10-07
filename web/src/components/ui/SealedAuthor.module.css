@@ -1,0 +1,14 @@
+/* frosted-glass chip: the name is there, just not readable yet */
+.mask {
+  position: relative;
+  display: inline-block;
+  padding: 0.05em 0.6em;
+  border-radius: 999px;
+  background: color-mix(in oklab, currentColor 14%, transparent);
+  box-shadow: inset 0 0 0 0.5px color-mix(in oklab, currentColor 22%, transparent);
+  font-size: 0.86em;
+  letter-spacing: 0;
+}
+.plain {
+  color: var(--label-3);
+}

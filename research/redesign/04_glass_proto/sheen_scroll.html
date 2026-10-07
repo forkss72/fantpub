@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;background:#f4f2ee} .spacer{height:900px}
+.cover{--w:150px;inline-size:var(--w);aspect-ratio:2/3;margin:0 auto;position:relative;overflow:hidden;border-radius:2px 3px 3px 2px;background:linear-gradient(160deg,#e9a487,#c8573a)}
+.cover::after{content:"";position:absolute;inset:0 -100%;pointer-events:none;
+  background:linear-gradient(105deg,transparent 42%,rgb(255 255 255/.35) 50%,transparent 58%);
+  mix-blend-mode:soft-light}
+@supports (animation-timeline: view()) {
+  .cover{view-timeline:--cover}
+  .cover::after{animation:sheen linear both;animation-timeline:--cover;}
+}
+@keyframes sheen{from{translate:-25% 0}to{translate:25% 0}}
+@media (prefers-reduced-motion: reduce){.cover::after{animation:none}}
+</style></head><body><div class="spacer"></div><div class="cover" id="c"></div><div class="spacer"></div></body></html>

@@ -1,0 +1,39 @@
+.seg {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  padding: 2px;
+  border-radius: 10px;
+  background: var(--fill-3);
+  block-size: 34px;
+  isolation: isolate;
+}
+.seg[data-size="s"] {
+  block-size: 30px;
+}
+.thumb {
+  position: absolute;
+  inset-block: 2px;
+  inset-inline-start: 2px;
+  inline-size: calc((100% - 4px) / var(--n));
+  translate: calc(var(--i) * 100%) 0;
+  border-radius: 8px;
+  background: var(--bg-3);
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.12), 0 0 0 0.5px rgb(0 0 0 / 0.04);
+  transition: translate 420ms var(--snappy);
+  z-index: -1;
+}
+:root[data-scheme="dark"] .thumb {
+  background: #636366;
+}
+.opt {
+  border: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--label);
+  border-radius: 8px;
+  white-space: nowrap;
+  padding-inline: 6px;
+}

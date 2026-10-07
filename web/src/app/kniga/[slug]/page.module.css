@@ -1,0 +1,4 @@
+.main {
+  min-block-size: 100dvh;
+  background: var(--bg);
+}

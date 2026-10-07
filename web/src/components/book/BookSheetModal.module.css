@@ -1,0 +1,73 @@
+/* Apple's card sheet: ~50px gap on top, 38px corners, the screen behind dimmed. */
+.sheet {
+  --gap: max(50px, calc(env(safe-area-inset-top, 0px) + 12px));
+  position: fixed;
+  inset: var(--gap) 0 0;
+  inline-size: 100%;
+  max-inline-size: none;
+  block-size: auto;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  background: var(--bg-3);
+  color: var(--label);
+  overflow-x: clip;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  box-shadow: 0 -12px 40px -18px rgb(0 0 0 / 0.45);
+  transition: translate 460ms var(--snappy);
+}
+.sheet:not([open]) {
+  display: none;
+}
+.sheet:focus {
+  outline: none;
+}
+.sheet::backdrop {
+  background: rgb(0 0 0 / 0.4);
+  transition: opacity 300ms ease;
+}
+
+/* browsers without view transitions still get the card rising from the bottom */
+@supports not (view-transition-name: none) {
+  @starting-style {
+    .sheet[open] {
+      translate: 0 100%;
+    }
+    .sheet[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+.sheet[data-closing] {
+  translate: 0 100%;
+  transition: translate 260ms cubic-bezier(0.4, 0, 1, 1);
+}
+.sheet[data-closing]::backdrop {
+  opacity: 0;
+}
+
+@media (min-width: 760px) {
+  .sheet {
+    inset: 0;
+    margin: auto;
+    inline-size: min(100% - 48px, 600px);
+    block-size: min(100dvh - 64px, 940px);
+    border-radius: var(--r-sheet);
+    box-shadow: 0 30px 90px -24px rgb(0 0 0 / 0.5);
+  }
+  .sheet[data-closing] {
+    translate: 0 calc(50dvh + 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .sheet[data-closing] {
+    transition: none;
+  }
+}

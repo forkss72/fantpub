@@ -1,0 +1,85 @@
+.today {
+  display: grid;
+  gap: 22px;
+  padding: 26px 20px 20px;
+}
+.streak {
+  margin: 0;
+  font-size: 15px;
+  color: var(--label-2);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.yearHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Apple's «Books Read This Year»: numbered slots that fill with covers */
+.slots {
+  list-style: none;
+  margin: 0 -16px;
+  padding: 4px 16px 6px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 16px;
+  scrollbar-width: none;
+}
+.slots::-webkit-scrollbar {
+  display: none;
+}
+.slot {
+  flex: none;
+  inline-size: 40px;
+  scroll-snap-align: start;
+}
+.blank {
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 60px;
+  border-radius: 3px;
+  background: var(--fill-3);
+  box-shadow: inset 0 0 0 0.5px var(--fill-1);
+  font-size: 13px;
+  color: var(--label-3);
+}
+.slot[data-filled] .blank {
+  background: var(--accent-soft);
+}
+
+.stepper {
+  flex: none;
+  display: flex;
+  align-items: center;
+  block-size: 34px;
+  border-radius: 9px;
+  background: var(--fill-3);
+}
+.stepper button {
+  inline-size: 44px;
+  block-size: 34px;
+  border: 0;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--label);
+}
+.stepper button:disabled {
+  color: var(--label-3);
+  cursor: default;
+}
+.stepper output {
+  min-inline-size: 40px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow:
+    -0.5px 0 0 var(--sep),
+    0.5px 0 0 var(--sep);
+  line-height: 18px;
+}

@@ -1,0 +1,49 @@
+.anchor {
+  position: absolute;
+  z-index: 40;
+  translate: -50% -100%;
+}
+.anchor[data-below] {
+  translate: -50% 0;
+}
+.pill {
+  display: flex;
+  align-items: center;
+  block-size: 44px;
+  padding-inline: 4px;
+  border-radius: 22px;
+  animation: pop 320ms var(--snappy) both;
+}
+.btn {
+  block-size: 100%;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 20px;
+  background: none;
+  color: var(--glass-on);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.btn:active {
+  background: var(--glass-selected);
+}
+.btn:disabled {
+  color: var(--label-2);
+}
+.sep {
+  inline-size: 0.5px;
+  block-size: 20px;
+  background: var(--sep);
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.86;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    animation: none;
+  }
+}

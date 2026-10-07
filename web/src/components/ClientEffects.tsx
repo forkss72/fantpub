@@ -14,7 +14,7 @@ declare global {
 /**
  * App-wide side effects, mounted once in the root layout:
  * service worker (prod only), the install prompt, in-app navigation depth for «Назад»,
- * and following the system theme while «Авто» is selected.
+ * following the system appearance while «Авто» is selected, and skipping our transition when iOS animates back.
  */
 export function ClientEffects() {
   const pathname = usePathname();
@@ -37,7 +37,7 @@ export function ClientEffects() {
     const mq = matchMedia("(prefers-color-scheme: dark)");
     const onScheme = () => {
       const p = getShelf().prefs;
-      if (p.theme === "auto") applyPrefs(p);
+      if (p.appearance === "auto") applyPrefs(p);
     };
     mq.addEventListener("change", onScheme);
 
@@ -46,7 +46,16 @@ export function ClientEffects() {
       if (document.readyState === "complete") register();
       else window.addEventListener("load", register, { once: true });
     }
+    // iOS edge-swipe back already animates: don't stack our view transition on top
+    const onPop = (e: PopStateEvent) => {
+      if (!(e as PopStateEvent & { hasUAVisualTransition?: boolean }).hasUAVisualTransition) return;
+      document.documentElement.dataset.uaNav = "";
+      setTimeout(() => delete document.documentElement.dataset.uaNav, 700);
+    };
+    addEventListener("popstate", onPop, { capture: true });
+
     return () => {
+      removeEventListener("popstate", onPop, { capture: true });
       window.removeEventListener("beforeinstallprompt", onBIP);
       mq.removeEventListener("change", onScheme);
     };

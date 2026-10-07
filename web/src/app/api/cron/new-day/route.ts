@@ -11,6 +11,8 @@ export async function GET(req: NextRequest) {
   revalidatePath("/arhiv");
   revalidatePath("/sitemap.xml");
   revalidatePath("/rasskaz/[slug]", "page");
+  revalidatePath("/kniga/[slug]", "page");
+  revalidatePath("/poisk");
   revalidatePath("/avtor/[slug]", "page");
   revalidatePath("/avtory");
   return NextResponse.json({ ok: true, at: new Date().toISOString() });

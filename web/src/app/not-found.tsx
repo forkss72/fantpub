@@ -1,27 +1,20 @@
 import Link from "next/link";
-import { Masthead } from "@/components/Masthead";
-import { Pabchik } from "@/components/Pabchik";
+import styles from "./status.module.css";
 
 export default function NotFound() {
   return (
-    <main className="page" style={{ display: "grid", gap: 24 }}>
-      <Masthead />
-      <div style={{ display: "grid", justifyItems: "center", gap: 14, textAlign: "center", paddingTop: 30 }}>
-        <Pabchik pose="sad" size={160} />
-        <h1 className="display" style={{ margin: 0, fontSize: 34 }}>
-          Такой книги на полке нет
-        </h1>
-        <p style={{ margin: 0, maxWidth: "34ch", color: "var(--fp-ink-2)", lineHeight: 1.5 }}>
-          Возможно, этот выпуск ещё запечатан и откроется позже. Или ссылка потерялась по дороге — Пабчик уже ищет.
-        </p>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
-          <Link href="/" className="pill">
-            К рассказу дня
-          </Link>
-          <Link href="/arhiv" className="pill pill--ghost">
-            Архив
-          </Link>
-        </div>
+    <main className={`page ${styles.page}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- small pre-sized webp */}
+      <img className={styles.figure} src="/pabchik/sad.webp" alt="" width={152} height={152} decoding="async" />
+      <h1 className={`t-large ${styles.title}`}>Такой книги нет</h1>
+      <p className={`t-sub ${styles.line}`}>Возможно, выпуск ещё не вышел или ссылка устарела.</p>
+      <div className={styles.actions}>
+        <Link href="/" className={`${styles.primary} press`}>
+          Рассказ дня
+        </Link>
+        <Link href="/arhiv" className={`${styles.secondary} press`}>
+          Архив
+        </Link>
       </div>
     </main>
   );

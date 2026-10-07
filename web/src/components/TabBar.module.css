@@ -1,0 +1,106 @@
+.bar {
+  position: fixed;
+  z-index: 50;
+  inset-inline: max(var(--tabbar-inset), env(safe-area-inset-left, 0px)) max(var(--tabbar-inset), env(safe-area-inset-right, 0px));
+  bottom: max(var(--tabbar-inset), env(safe-area-inset-bottom, 0px));
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.tabs,
+.search {
+  pointer-events: auto;
+}
+
+.tabs {
+  display: flex;
+  block-size: var(--tabbar-h);
+  inline-size: min(100%, 300px);
+  padding: 4px;
+  border-radius: calc(var(--tabbar-h) / 2);
+  flex: 1 1 auto;
+  max-inline-size: 300px;
+  transition:
+    max-inline-size 520ms var(--snappy),
+    block-size 520ms var(--snappy);
+}
+.tab {
+  position: relative;
+  flex: 1 1 0;
+  min-inline-size: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1px;
+  border-radius: calc(var(--tabbar-h) / 2 - 4px); /* concentric: 31 − 4 */
+  color: var(--glass-on);
+  opacity: 0.86;
+  transition:
+    flex-grow 520ms var(--snappy),
+    opacity 240ms ease,
+    background-color 200ms ease;
+  z-index: 2;
+}
+.tab[data-active] {
+  opacity: 1;
+  background: var(--glass-selected);
+}
+.tab:active {
+  background: var(--glass-selected);
+}
+.label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.search {
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: var(--tabbar-h);
+  block-size: var(--tabbar-h);
+  border-radius: 50%;
+  transition:
+    inline-size 520ms var(--snappy),
+    block-size 520ms var(--snappy);
+}
+.search[data-active] {
+  background: var(--glass-fill-strong);
+}
+
+/* minimized while scrolling down: only the current tab remains, both shapes shrink to 48px */
+.bar[data-min] {
+  justify-content: space-between;
+}
+.bar[data-min] .tabs {
+  max-inline-size: 48px;
+  block-size: 48px;
+  flex: 0 0 48px;
+  align-self: flex-end;
+}
+.bar[data-min] .tab:not([data-active]) {
+  flex-grow: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.bar[data-min] .tab[data-active] {
+  background: none;
+}
+.bar[data-min] .label {
+  display: none;
+}
+.bar[data-min] .search {
+  inline-size: 48px;
+  block-size: 48px;
+  align-self: flex-end;
+}
+
+@media (min-width: 760px) {
+  .bar {
+    bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  }
+}

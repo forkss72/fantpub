@@ -1,0 +1,46 @@
+.wrap {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 200;
+}
+.hud {
+  inline-size: 168px;
+  min-block-size: 156px;
+  padding: 22px 16px 18px;
+  border-radius: 26px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 8px;
+  text-align: center;
+  color: var(--label);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45), 0 18px 50px -14px rgb(0 0 0 / 0.35);
+  animation: hud-in 420ms var(--snappy) both;
+}
+.text {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.sub {
+  margin: 0;
+  font-size: 13px;
+  color: var(--label-2);
+}
+@keyframes hud-in {
+  from {
+    opacity: 0;
+    scale: 0.82;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud {
+    animation: none;
+  }
+}

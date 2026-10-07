@@ -1,0 +1,140 @@
+.wrap {
+  display: grid;
+  gap: 14px;
+  max-inline-size: 560px;
+}
+
+/* flat capsule «‹ Октябрь 2026 ›» (content layer: no glass) */
+.switcher {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  block-size: 44px;
+  border-radius: 999px;
+  background: var(--fill-3);
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--label);
+  transition: scale 420ms var(--snappy), opacity 160ms ease-out;
+}
+.arrow:active:not(:disabled) {
+  scale: 0.88;
+  transition-duration: 120ms;
+}
+.arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+.month {
+  margin: 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.week,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  column-gap: 6px;
+}
+.week {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--label-3);
+  text-align: center;
+}
+.grid {
+  row-gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.grid > li {
+  min-width: 0;
+}
+
+.cell {
+  position: relative;
+  display: block;
+  container-type: inline-size;
+  aspect-ratio: 2 / 3;
+  border-radius: 3px;
+  transition: opacity 260ms ease-out, scale 420ms var(--snappy);
+}
+a.cell:active {
+  scale: 0.94;
+  transition-duration: 120ms;
+}
+.cell[data-dim] {
+  opacity: 0.22;
+}
+/* today: a neutral ring with a hairline gap, like a selected day */
+.cell[data-today] {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--label);
+}
+
+.num {
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 5px;
+  z-index: 5;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  text-shadow: 0 0 4px rgb(0 0 0 / 0.45), 0 1px 1px rgb(0 0 0 / 0.3);
+  pointer-events: none;
+}
+
+/* days still to come: frosted, but flat (content never gets real glass) */
+.future {
+  background:
+    linear-gradient(165deg, color-mix(in oklab, var(--bg) 55%, transparent), transparent 65%),
+    var(--fill-3);
+  box-shadow: inset 0 0.5px 0 color-mix(in oklab, var(--bg) 80%, transparent);
+}
+.future .num,
+.empty .num {
+  color: var(--label-2);
+  text-shadow: none;
+}
+.empty .num {
+  color: var(--label-3);
+}
+
+.read {
+  position: absolute;
+  inset-block-end: -4px;
+  inset-inline-end: -4px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  inline-size: 16px;
+  block-size: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 0 0 2px var(--bg);
+}
+
+@media (min-width: 600px) {
+  .grid {
+    row-gap: 14px;
+  }
+  .week,
+  .grid {
+    column-gap: 10px;
+  }
+  .num {
+    font-size: 13px;
+  }
+}

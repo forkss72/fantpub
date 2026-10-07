@@ -1,0 +1,667 @@
+/* The finish sits on the reader's paper: every colour derives from --ink / --paper so all six themes hold. */
+.root {
+  --f-fill: color-mix(in oklab, var(--ink) 7%, transparent);
+  --f-fill-hover: color-mix(in oklab, var(--ink) 11%, transparent);
+  --f-sep: color-mix(in oklab, var(--ink) 16%, transparent);
+  --f-card: color-mix(in oklab, var(--ink) 5%, var(--paper));
+  --foil: var(--cover-tint);
+  display: grid;
+  justify-items: center;
+  gap: 56px;
+  margin-top: 44px;
+  padding-bottom: 8px;
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
+/* dark paper (dark scheme, or the «Тихая» theme): fills need more ink to read as surfaces */
+:root[data-scheme="dark"] .root,
+:root[data-reader="quiet"] .root {
+  --f-fill: color-mix(in oklab, var(--ink) 14%, transparent);
+  --f-fill-hover: color-mix(in oklab, var(--ink) 20%, transparent);
+  --f-sep: color-mix(in oklab, var(--ink) 22%, transparent);
+  --f-card: color-mix(in oklab, var(--ink) 11%, var(--paper));
+}
+.root > * {
+  inline-size: 100%;
+  max-inline-size: 440px;
+}
+
+/* ─── 1 · guess ─── */
+.moment {
+  display: grid;
+  text-align: center;
+}
+.cover {
+  position: relative;
+  justify-self: center;
+  inline-size: 120px;
+  margin-bottom: 26px;
+  container-type: inline-size;
+}
+/* mirrors Book's printed band (bottom 26% of the art) so the author line can be stamped on the object */
+.band {
+  position: absolute;
+  inset: 74% 0 0 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3.6cqw;
+  padding: 0 9cqw 0 11cqw;
+  color: #fff;
+  text-align: start;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+  pointer-events: none;
+}
+.bandTitle {
+  font-family: var(--font-book);
+  font-weight: 600;
+  font-size: 10.6cqw;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line2 {
+  display: grid;
+  align-items: center;
+  min-block-size: 6cqw;
+}
+.line2 > * {
+  grid-area: 1 / 1;
+}
+.plateWrap {
+  display: block;
+}
+.plate {
+  display: block;
+  inline-size: 60%;
+  block-size: 5.4cqw;
+  border-radius: 1.4cqw;
+  background: rgb(255 255 255 / 0.36);
+  box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / 0.55);
+}
+.stamp {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 5.6cqw;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guess {
+  display: grid;
+  justify-items: center;
+}
+.options,
+.share {
+  justify-self: center;
+}
+.question {
+  margin: 0 0 18px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.options {
+  display: grid;
+  gap: 10px;
+  inline-size: 100%;
+  max-inline-size: 340px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 52px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--f-fill);
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    scale 420ms var(--snappy);
+}
+@media (hover: hover) {
+  .option:not([aria-disabled]):hover {
+    background: var(--f-fill-hover);
+  }
+}
+.option:not([aria-disabled]):active {
+  scale: 0.97;
+  transition-duration: 120ms;
+}
+.option[aria-disabled] {
+  cursor: default;
+}
+.option[data-state="right"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.option[data-state="wrong"] {
+  color: var(--ink-2);
+  animation: shake 360ms ease-in-out both;
+}
+@keyframes shake {
+  20%,
+  60% {
+    translate: -6px 0;
+  }
+  40%,
+  80% {
+    translate: 6px 0;
+  }
+}
+.show {
+  margin-top: 6px;
+  min-block-size: 44px;
+  padding: 0 18px;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+@media (hover: hover) {
+  .show:hover {
+    color: var(--ink);
+  }
+}
+
+/* ─── 2 · reveal ─── */
+.after {
+  display: grid;
+  justify-items: center;
+  gap: 48px;
+}
+.after > * {
+  inline-size: 100%;
+}
+.reveal {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+  outline: none;
+}
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.verdict[data-right] {
+  color: var(--accent);
+  font-weight: 600;
+}
+.name {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+.nameLink {
+  color: inherit;
+}
+/* hot-foil: one specular band passes over the name, then the type is plain ink again */
+.foil {
+  position: absolute;
+  inset: 0;
+  color: var(--foil);
+  pointer-events: none;
+  opacity: 0;
+  -webkit-mask-image: linear-gradient(105deg, transparent 40%, #000 50%, transparent 60%);
+  mask-image: linear-gradient(105deg, transparent 40%, #000 50%, transparent 60%);
+  -webkit-mask-size: 300% 100%;
+  mask-size: 300% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+}
+.years {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.bio {
+  margin: 8px 0 0;
+  max-inline-size: 30em;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+/* ─── 3 · reactions ─── */
+.react {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+.reactTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.capsuleWrap {
+  position: relative;
+}
+.capsule {
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 999px;
+}
+.rx {
+  display: grid;
+  place-items: center;
+  inline-size: 52px;
+  block-size: 52px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--glass-on);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    scale 420ms var(--snappy);
+}
+@media (hover: hover) {
+  .rx:hover {
+    background: var(--glass-selected);
+  }
+}
+.rx:active {
+  scale: 0.88;
+  transition-duration: 120ms;
+}
+.rx[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.burst {
+  position: absolute;
+  bottom: 50%;
+  left: var(--x);
+  translate: -50% 50%;
+  color: var(--accent);
+  pointer-events: none;
+  animation: float 1150ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), calc(var(--rise) * -1)) scale(var(--sc)) rotate(var(--r));
+  }
+}
+.caption {
+  min-block-size: 18px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+/* ─── 4 · Pabchik's note: the one card on this screen ─── */
+.note {
+  box-sizing: border-box;
+  padding: 18px 20px 20px;
+  border-radius: var(--r-card);
+  background: var(--f-card);
+  text-align: start;
+}
+.noteHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.avatar {
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--f-fill);
+  flex: none;
+}
+.noteTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+}
+.noteText {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.facts {
+  margin-top: 10px;
+}
+.facts summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-block-size: 44px;
+  margin-block-end: -6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.facts summary::-webkit-details-marker {
+  display: none;
+}
+.facts summary svg {
+  color: var(--ink-2);
+  transition: rotate 300ms var(--snappy);
+}
+.facts[open] summary svg {
+  rotate: 90deg;
+}
+.facts ol {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: fact;
+  display: grid;
+  gap: 12px;
+}
+.facts li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  font-size: 15px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.facts li::before {
+  counter-increment: fact;
+  content: counter(fact);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── 5 · share ─── */
+.share {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-inline-size: 340px;
+}
+.cap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 48px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--f-fill);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  .cap:hover {
+    background: var(--f-fill-hover);
+  }
+}
+.capPrimary {
+  grid-column: 1 / -1;
+  min-block-size: 50px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 17px;
+}
+/* while the guess is open, the riddle button must not outshout the question */
+.capPrimary[data-quiet] {
+  background: color-mix(in oklab, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+@media (hover: hover) {
+  .capPrimary:not([data-quiet]):hover {
+    background: color-mix(in oklab, var(--ink) 86%, var(--paper));
+  }
+}
+.shareNote {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+/* ─── 6 · next ─── */
+.next {
+  display: grid;
+  gap: 18px;
+}
+.h {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.tomorrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tomorrowText {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  min-inline-size: 0;
+}
+.tomorrowTitle {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+}
+.tomorrowSub {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.books {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.bookLink {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  color: inherit;
+}
+.bookLink > :first-child {
+  margin-bottom: 8px;
+  transition: scale 420ms var(--snappy);
+}
+.bookLink:active > :first-child {
+  scale: 0.96;
+  transition-duration: 120ms;
+}
+.bookTitle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.008em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bookMeta {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+/* ─── 7 · Об издании ─── */
+.aboutRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+  min-block-size: 52px;
+  padding: 0;
+  border: 0;
+  border-top: 0.5px solid var(--f-sep);
+  background: none;
+  color: var(--ink-2);
+  font-size: 17px;
+  text-align: start;
+}
+@media (hover: hover) {
+  .aboutRow:hover {
+    color: var(--ink);
+  }
+}
+/* inside the sheet: flat fills, no glass in glass */
+.group {
+  margin: 0 0 8px;
+  border-radius: var(--r-cell);
+  background: var(--fill-3);
+  overflow: hidden;
+}
+.row {
+  display: grid;
+  gap: 2px;
+  padding: 11px 16px 12px;
+}
+.row + .row {
+  background: linear-gradient(var(--sep), var(--sep)) 16px 0 / calc(100% - 16px) 0.5px no-repeat;
+}
+.row dt {
+  font-size: 13px;
+  color: var(--label-2);
+}
+.row dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--label);
+  overflow-wrap: anywhere;
+}
+.groupHead {
+  margin: 22px 16px 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--label);
+}
+.link {
+  color: var(--accent);
+}
+
+/* ─── motion: the staged reveal only (a story opened already-read just sits there) ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .cover[data-enter] .stamp {
+    animation: stamp 620ms var(--ease-out) 140ms both;
+  }
+  .cover[data-enter] [data-out] {
+    animation: fade-out 260ms ease both;
+  }
+  .reveal[data-enter] > *,
+  .after[data-enter] > * {
+    animation: rise 520ms var(--snappy) both;
+  }
+  .reveal[data-enter] > :nth-child(2) {
+    animation-delay: 50ms;
+  }
+  .reveal[data-enter] > :nth-child(3) {
+    animation-delay: 110ms;
+  }
+  .reveal[data-enter] > :nth-child(4) {
+    animation-delay: 170ms;
+  }
+  .after[data-enter] > :nth-child(1) {
+    animation-delay: 320ms;
+  }
+  .after[data-enter] > :nth-child(2) {
+    animation-delay: 400ms;
+  }
+  .reveal[data-enter] .foil {
+    animation: foil 700ms cubic-bezier(0.45, 0, 0.3, 1) 380ms both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .option[data-state="wrong"] {
+    animation: none;
+  }
+  .burst {
+    display: none;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+@keyframes stamp {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes foil {
+  from {
+    opacity: 1;
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    opacity: 1;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}

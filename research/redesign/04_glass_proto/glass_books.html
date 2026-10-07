@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glass + Book prototype</title>
+<style>
+:root {
+  --page: #f4f2ee;
+  --ink: #1b1a17;
+  --cover-a: #e9a487;  /* dominant cover colour, would come from build-time palette extraction */
+  --cover-b: #c8573a;
+  --glass-tint: rgb(255 255 255 / 0.5);
+  color-scheme: light;
+}
+html, body { margin: 0; background: var(--page); color: var(--ink); font: 17px/1.55 Georgia, serif; }
+main { padding: 24px 20px 160px; }
+h1 { font: 700 34px/1.1 Georgia, serif; margin: 8px 0 20px; }
+
+/* ── stage behind the glass: something colourful so refraction is visible ── */
+.strip { display: flex; gap: 14px; margin: 28px 0; }
+.strip > div { flex: 1; height: 120px; border-radius: 3px; }
+.s1 { background: linear-gradient(135deg, #f2c94c, #f2994a); }
+.s2 { background: linear-gradient(135deg, #3d5afe, #8c9eff); }
+.s3 { background: linear-gradient(135deg, #e9a487, #c8573a); }
+
+/* ─────────────────────────────────────────────
+   1. APPLE-BOOKS COVER (flat, measured profile)
+   ───────────────────────────────────────────── */
+.cover {
+  --w: 150px;
+  position: relative;
+  inline-size: var(--w);
+  aspect-ratio: 2 / 3;
+  border-radius: calc(var(--w) * 0.012) calc(var(--w) * 0.02) calc(var(--w) * 0.02) calc(var(--w) * 0.012);
+  background: linear-gradient(160deg, var(--cover-a), var(--cover-b));
+  box-shadow:
+    0 1px 1px rgb(0 0 0 / 0.22),             /* contact */
+    0 4px 8px rgb(0 0 0 / 0.12),              /* key */
+    0 16px 26px -6px rgb(0 0 0 / 0.26);       /* ambient, falls downward */
+  overflow: hidden;
+  isolation: isolate;
+}
+.cover > .art { position: absolute; inset: 0; padding: 12% 10%; color: #fff; font: 700 17px/1.15 system-ui, sans-serif; }
+/* spine fold + edge light — stops measured from Apple Books iOS 26 @3x */
+.cover::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg,
+      rgb(0 0 0 / 0.20) 0%, rgb(0 0 0 / 0.18) 1%,
+      rgb(255 255 255 / 0.35) 1.4%, rgb(255 255 255 / 0.08) 2.2%, transparent 2.8%,
+      rgb(0 0 0 / 0.12) 3.4%, rgb(0 0 0 / 0.12) 4.4%,
+      rgb(255 255 255 / 0.20) 5.3%, transparent 6.6%,
+      transparent 98.2%, rgb(255 255 255 / 0.10) 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.28),    /* top edge catch-light */
+    inset 0 -1px 0 rgb(0 0 0 / 0.16);         /* bottom edge */
+  border-radius: inherit;
+  z-index: 2;
+}
+/* specular sheen that moves with tilt */
+.cover::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.28) 50%, transparent 62%) no-repeat;
+  background-size: 300% 100%;
+  background-position: calc(50% + var(--tilt-x, 0) * 60%) 0;
+  mix-blend-mode: soft-light;
+  opacity: calc(0.35 + var(--tilt-mag, 0) * 0.65);
+  z-index: 3;
+}
+
+/* ─────────────────────────────────────────────
+   2. 3D BOOK WITH THICKNESS
+   ───────────────────────────────────────────── */
+.scene { perspective: 900px; display: grid; place-items: center; padding: 30px 0 40px; }
+.book3d {
+  --w: 170px; --h: calc(var(--w) * 1.5); --d: calc(var(--w) * 0.07); /* a short story = a thin book */
+  position: relative;
+  inline-size: var(--w); block-size: var(--h);
+  transform-style: preserve-3d;
+  transform: rotateY(calc(-28deg + var(--tilt-x, 0) * 14deg)) rotateX(calc(6deg + var(--tilt-y, 0) * -8deg));
+  transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+}
+.book3d > * { position: absolute; backface-visibility: hidden; }
+.book3d .front { inset: 0; transform: translateZ(calc(var(--d) / 2)); --w: 170px; inline-size: auto; }
+.book3d .pages {
+  /* fore-edge: page block seen from the right */
+  inset-block: 1.5%; inset-inline-end: 0;
+  inline-size: var(--d);
+  transform: translateX(calc(var(--d) / 2 - 1px)) rotateY(90deg);
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.18), transparent 30%, transparent 70%, rgb(0 0 0 / 0.10)),
+    repeating-linear-gradient(90deg, #fbf8f1 0 1px, #e6dfcf 1px 2px);
+}
+.book3d .back {
+  inset: 0; border-radius: 2px;
+  transform: translateZ(calc(var(--d) / -2)) rotateY(180deg);
+  background: var(--cover-b);
+}
+.scene { position: relative; }
+.scene .floor {
+  /* 2D contact shadow — kept OUT of the preserve-3d tree (filters inside it flatten in WebKit) */
+  position: absolute; inline-size: 190px; block-size: 26px; bottom: 26px; left: 50%; translate: -46% 0;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.28), rgb(0 0 0 / 0.08) 60%, transparent);
+}
+
+/* ─────────────────────────────────────────────
+   3. LIQUID GLASS — cross-browser base
+   ───────────────────────────────────────────── */
+.glass {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  color: inherit;
+  border-radius: 999px;
+  /* rung 1: no backdrop support → nearly opaque */
+  background: rgb(250 250 248 / 0.92);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .glass {
+    background: var(--glass-tint);
+    -webkit-backdrop-filter: blur(14px) saturate(1.8) brightness(1.15);
+    backdrop-filter: blur(14px) saturate(1.8) brightness(1.15);
+  }
+}
+/* specular rim: 1px gradient ring, light from top-left, echo bottom-right */
+.glass::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(var(--light-angle, 135deg),
+    rgb(255 255 255 / 0.95), rgb(255 255 255 / 0.15) 30%, rgb(255 255 255 / 0.05) 55%, rgb(255 255 255 / 0.6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+/* inner glow + outer soft shadow */
+.glass::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 1px 6px rgb(255 255 255 / 0.55),
+    inset 0 -6px 12px -6px rgb(0 0 0 / 0.06),
+    0 6px 24px rgb(0 0 0 / 0.12),
+    0 1px 2px rgb(0 0 0 / 0.06);
+  pointer-events: none;
+  z-index: -1;
+}
+/* rung 3: Chromium-only refraction, toggled by JS UA gate (never by @supports — Safari/Firefox parse it and render nothing) */
+html[data-refract] .glass.refract {
+  -webkit-backdrop-filter: url(#lg-pill) blur(3px) saturate(1.8) brightness(1.15);
+  backdrop-filter: url(#lg-pill) blur(3px) saturate(1.8) brightness(1.15);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass, html[data-refract] .glass.refract { background: rgb(250 250 248 / 0.94); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+.tabbar {
+  position: fixed;
+  inset-inline: 16px 84px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  block-size: 62px;
+  display: grid; grid-template-columns: repeat(3, 1fr); align-items: center;
+  font: 600 11px/1 system-ui, sans-serif; text-align: center;
+}
+.tabbar span { padding-top: 26px; }
+.tabbar .on { margin: 4px; border-radius: 999px; background: rgb(0 0 0 / 0.06); padding-block: 26px 14px; }
+.fab {
+  position: fixed; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom));
+  inline-size: 62px; block-size: 62px; display: grid; place-items: center; font: 22px system-ui;
+}
+.topbtn { position: absolute; top: 16px; inline-size: 44px; block-size: 44px; display: grid; place-items: center; font: 20px system-ui; }
+.tinted { --glass-tint: color-mix(in oklab, var(--cover-a) 55%, rgb(255 255 255 / 0.35)); }
+.hero { position: relative; margin: -24px -20px 0; padding: 70px 0 30px; display: grid; place-items: center;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--cover-b) 80%, black), var(--cover-b)); }
+.edge-top {
+  /* iOS-26-style scroll edge effect: ONE backdrop layer, faded by a mask (not 7 stacked layers) */
+  position: fixed; inset: 0 0 auto; block-size: calc(env(safe-area-inset-top) + 72px);
+  background: linear-gradient(var(--page), rgb(244 242 238 / 0));
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(#000 35%, transparent);
+          mask-image: linear-gradient(#000 35%, transparent);
+  pointer-events: none; z-index: 5;
+}
+.book25 {
+  /* 2.5D: no preserve-3d, no raster/sorting risk; safe in scrolling lists */
+  --d: calc(var(--w, 150px) * 0.06);
+  position: relative;
+  inline-size: fit-content;
+  margin-inline-end: var(--d);
+}
+.book25::after {
+  /* page block, seen past the fore-edge */
+  content: "";
+  position: absolute;
+  inset-block: 1.2% 0.6%;
+  inset-inline-start: 100%;
+  inline-size: var(--d);
+  clip-path: polygon(0 0, 100% 2.5%, 100% 98.5%, 0 100%);
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.22), rgb(0 0 0 / 0.04) 45%, rgb(0 0 0 / 0.12)),
+    repeating-linear-gradient(90deg, #fbf8f1 0 0.75px, #ddd5c4 0.75px 1.5px);
+  translate: -1px 0;
+}
+.row25 { display: flex; gap: 22px; padding: 24px 0 36px; }
+.row25 .cover { --w: 96px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="lg-pill" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" primitiveUnits="userSpaceOnUse">
+    <feImage id="lg-map" x="0" y="0" result="map" preserveAspectRatio="none"/>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="0" id="lg-disp" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<main>
+  <div class="hero">
+    <button class="glass tinted topbtn" style="left:16px" aria-label="Закрыть">✕</button>
+    <button class="glass tinted topbtn" style="right:16px" aria-label="Ещё">⋯</button>
+    <div class="cover" id="cov"><div class="art">Шинель<br><small style="font-weight:500">Н. В. Гоголь</small></div></div>
+  </div>
+
+  <div class="scene"><div class="floor"></div><div class="book3d" id="b3">
+    <div class="back"></div><div class="pages"></div>
+    <div class="cover front"><div class="art">Нос</div></div>
+  </div></div>
+
+  <div class="row25">
+    <div class="book25"><div class="cover" style="--w:96px"><div class="art" style="font-size:12px">Нос</div></div></div>
+    <div class="book25"><div class="cover" style="--w:96px;--cover-a:#7aa0ff;--cover-b:#2f4bd8"><div class="art" style="font-size:12px">Вий</div></div></div>
+    <div class="book25"><div class="cover" style="--w:96px;--cover-a:#f7d36b;--cover-b:#d8932f"><div class="art" style="font-size:12px">Тамань</div></div></div>
+  </div>
+  <h1>Рассказ дня</h1>
+  <p>В департаменте... но лучше не называть, в каком департаменте. Ничего нет сердитее всякого рода департаментов, полков, канцелярий и, словом, всякого рода должностных сословий.</p>
+  <div class="strip"><div class="s1"></div><div class="s2"></div><div class="s3"></div></div>
+  <p>Теперь всякий частный человек считает в лице своем оскорбленным все общество. Говорят, весьма недавно поступила просьба от одного капитан-исправника, не помню какого-то города.</p>
+</main>
+
+<div class="edge-top" aria-hidden="true"></div>
+<nav class="glass refract tabbar" id="tb" aria-label="Навигация">
+  <span class="on">Сегодня</span><span>Архив</span><span>Полка</span>
+</nav>
+<button class="glass fab" aria-label="Поиск">⌕</button>
+
+<script>
+// ---- rung 3 gate: Blink only (Chrome, Edge, Samsung Internet, Yandex). WebKit/Gecko have no userAgentData.
+const isBlink = !!navigator.userAgentData?.brands?.some(b => b.brand === 'Chromium');
+const lowEnd = (navigator.deviceMemory ?? 8) < 4 || (navigator.hardwareConcurrency ?? 8) < 4;
+if (isBlink && !lowEnd && !matchMedia('(prefers-reduced-transparency: reduce)').matches) {
+  document.documentElement.dataset.refract = '';
+}
+
+// ---- displacement map for a pill: bezel lensing only, centre untouched
+function pillMap(w, h, bezel, dpr = 1) {
+  const W = Math.round(w * dpr), H = Math.round(h * dpr), R = H / 2, B = bezel * dpr;
+  const c = new OffscreenCanvas(W, H), ctx = c.getContext('2d');
+  const img = ctx.createImageData(W, H), d = img.data;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    // signed distance to the pill edge (negative inside)
+    const px = x + 0.5 - W / 2, py = y + 0.5 - H / 2;
+    const qx = Math.abs(px) - (W / 2 - R), qy = Math.abs(py) - (H / 2 - R);
+    const ox = Math.max(qx, 0), oy = Math.max(qy, 0);
+    const sd = Math.hypot(ox, oy) + Math.min(Math.max(qx, qy), 0) - R;
+    const inside = -sd;                         // px from the rim, inward
+    let nx = 0, ny = 0;
+    if (qx > 0 && qy > 0) { const l = Math.hypot(qx, qy) || 1; nx = qx / l * Math.sign(px); ny = qy / l * Math.sign(py); }
+    else if (qx > qy) nx = Math.sign(px); else ny = Math.sign(py);
+    // convex squircle bezel: slope is steep at the rim, flat at the inner edge
+    const t = Math.min(Math.max(inside / B, 0), 1);
+    const mag = Math.pow(1 - t, 2.2);           // 1 at rim → 0 at bezel end
+    const i = (y * W + x) * 4;
+    d[i]     = 128 - nx * mag * 127;            // sample inward (pull from the centre)
+    d[i + 1] = 128 - ny * mag * 127;
+    d[i + 2] = 128; d[i + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  return c.convertToBlob().then(b => URL.createObjectURL(b));
+}
+async function fitFilter(el) {
+  const r = el.getBoundingClientRect();
+  const url = await pillMap(r.width, r.height, 16);
+  const fe = document.getElementById('lg-map');
+  fe.setAttribute('href', url); fe.setAttribute('width', r.width); fe.setAttribute('height', r.height);
+  document.getElementById('lg-disp').setAttribute('scale', 28);
+}
+if ('refract' in document.documentElement.dataset) fitFilter(document.getElementById('tb'));
+
+// ---- tilt: pointer on desktop; on phones only after an explicit tap (iOS permission)
+const root = document.documentElement;
+function setTilt(x, y) { // x,y in -1..1
+  root.style.setProperty('--tilt-x', x.toFixed(3));
+  root.style.setProperty('--tilt-y', y.toFixed(3));
+  root.style.setProperty('--tilt-mag', Math.min(1, Math.hypot(x, y)).toFixed(3));
+}
+addEventListener('pointermove', e => {
+  if (e.pointerType !== 'mouse') return;
+  setTilt(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1);
+}, { passive: true });
+const q = new URLSearchParams(location.search);
+if (q.has('tx')) setTilt(+q.get('tx'), +q.get('ty') || 0);
+</script>
+</body>
+</html>

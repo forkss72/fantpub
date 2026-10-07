@@ -1,0 +1,21 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  inline-size: var(--size);
+  block-size: var(--size);
+  border-radius: 999px;
+  flex: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.capsule {
+  inline-size: auto;
+  padding-inline: 16px;
+}
+.capsule:has(> svg) {
+  padding-inline: 14px 18px;
+}

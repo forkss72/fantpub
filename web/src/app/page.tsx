@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { PageTransition } from "@/components/PageTransition";
-import { Masthead } from "@/components/Masthead";
-import { TodayHero } from "@/components/TodayHero";
-import { WeekShelf } from "@/components/WeekShelf";
-import { Countdown } from "@/components/Countdown";
-import { IntroCard } from "@/components/IntroCard";
-import { SiteFooter } from "@/components/SiteFooter";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { HeaderActions } from "@/components/today/HeaderActions";
+import { Hero } from "@/components/today/Hero";
+import { ContinueCard } from "@/components/today/ContinueCard";
+import { WeekShelf } from "@/components/today/WeekShelf";
+import { GoalBlock } from "@/components/today/GoalBlock";
+import { TodayOnboarding } from "@/components/today/TodayOnboarding";
+import type { TodayBook } from "@/components/today/state";
 import { getPublishedStories, getTodayStory, getTomorrowTeaser } from "@/lib/content";
-import { toCard } from "@/lib/cards";
-import { dayIndex, issueOpensAt, weekday } from "@/lib/date";
+import { humanDate, issueOpensAt, mskDayKey } from "@/lib/date";
+import type { Story } from "@/lib/types";
 import styles from "./page.module.css";
 
 // The issue rolls over at 00:00 MSK; a cron also revalidates right after midnight.
@@ -16,75 +16,51 @@ export const revalidate = 300;
 
 export const metadata = { alternates: { canonical: "/" } };
 
-export default function Home() {
+const slim = (s: Story): TodayBook => ({
+  slug: s.slug,
+  issue: s.issue,
+  title: s.title,
+  mood: s.mood || s.genres[0] || "",
+  minutes: s.minutes,
+  cover: { src: s.cover.src, srcSmall: s.cover.srcSmall, placeholder: s.cover.placeholder, colors: s.cover.colors },
+});
+
+export default function Today() {
   // server component re-rendered by ISR: "now" decides which issues are published
   // eslint-disable-next-line react-hooks/purity
   const now = Date.now();
   const today = getTodayStory(now);
   const published = getPublishedStories(now);
-  const tomorrow = getTomorrowTeaser(now);
+  const teaser = getTomorrowTeaser(now);
 
   if (!today) {
     return (
       <main className="page">
-        <Masthead />
-        <p>Первый выпуск скоро.</p>
+        <PageHeader title="Сегодня" subtitle={humanDate(mskDayKey(now))} />
+        <p className="t-sub">Первый выпуск откроется в полночь.</p>
       </main>
     );
   }
 
-  const week = published.slice(-7).map(toCard);
-  const alternatives = published
-    .filter((s) => s.slug !== today.slug && s.minutes <= 7)
-    .slice(-6)
-    .reverse()
-    .map((s) => ({ slug: s.slug, title: s.title, minutes: s.minutes }));
+  const all = published.map(slim);
+  const hero = slim(today);
+  const tomorrow = teaser && {
+    mood: teaser.mood || teaser.genres[0] || "",
+    minutes: teaser.minutes,
+    opensAt: issueOpensAt(teaser.issue),
+    // the sealed book shows only the blurred small art
+    cover: { ...teaser.cover, src: teaser.cover.srcSmall },
+  };
 
   return (
-    <PageTransition>
-      <main className={`page page--wide ${styles.home}`}>
-      <Masthead right={<span className={`mono ${styles.date}`}>{weekday(today.date)}</span>} />
-      <TodayHero
-        story={{ ...toCard(today), hook: today.hook, paragraphs: today.blocks.filter((b) => b.type === "p").length }}
-        dayIndex={dayIndex(now)}
-        alternatives={alternatives}
-      />
-
-      <IntroCard />
-
-      {tomorrow && (
-        <aside className={styles.tomorrow} aria-label="Следующий выпуск">
-          <span className={styles.tomorrowSeal} aria-hidden="true" />
-          <span>
-            Завтра: <strong>{tomorrow.mood || tomorrow.genres[0]}</strong>, {tomorrow.minutes} мин
-          </span>
-          <span className={styles.tomorrowTimer}>
-            через <Countdown target={issueOpensAt(tomorrow.issue)} />
-          </span>
-        </aside>
-      )}
-
-      <WeekShelf cards={week} todaySlug={today.slug} />
-
-      <section className={styles.rules} aria-labelledby="rules">
-        <h2 id="rules" className="sr-only">
-          Как это устроено
-        </h2>
-        <ol>
-          <li>
-            <strong>Один рассказ в день.</strong> Новый выпуск открывается в полночь по Москве.
-          </li>
-          <li>
-            <strong>Печать ломается один раз.</strong> Автор и год спрятаны до финала — угадаете?
-          </li>
-          <li>
-            <strong>Прошлое открыто всегда.</strong> Пропустили — ничего страшного, <Link href="/arhiv">архив</Link> никуда не денется.
-          </li>
-        </ol>
-      </section>
-
-      <SiteFooter />
+    <main className={`page ${styles.today}`}>
+      <div className="edge-top" aria-hidden="true" />
+      <PageHeader title="Сегодня" subtitle={humanDate(today.date)} actions={<HeaderActions serverNow={now} />} />
+      <Hero story={{ ...hero, authorName: today.author.name, year: today.year }} />
+      <ContinueCard books={all} todaySlug={today.slug} />
+      <WeekShelf books={all.filter((b) => b.slug !== today.slug).slice(-6).reverse()} all={all} todaySlug={today.slug} tomorrow={tomorrow} />
+      <GoalBlock books={all} serverNow={now} />
+      <TodayOnboarding today={hero} />
     </main>
-      </PageTransition>
   );
 }

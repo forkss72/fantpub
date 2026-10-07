@@ -1,0 +1,68 @@
+.controls {
+  display: grid;
+  gap: 14px;
+  margin-block-end: 8px;
+}
+.controls > :first-child {
+  max-inline-size: 420px;
+}
+
+/* active filter: one token under the control, tap to clear */
+.token {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--label-2);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  block-size: 32px;
+  padding: 0 12px 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--fill-2);
+  color: var(--label);
+  font-size: 15px;
+  font-weight: 500;
+  transition: scale 420ms var(--snappy);
+}
+.chip:active {
+  scale: 0.95;
+  transition-duration: 120ms;
+}
+
+.section {
+  margin-block-start: 22px;
+}
+.month {
+  margin-block-end: 16px;
+}
+
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding-block: 72px 24px;
+  text-align: center;
+}
+.empty :global(.t-title2) {
+  color: var(--label-2);
+}
+.reset {
+  margin-block-start: 14px;
+  block-size: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--fill-2);
+  color: var(--label);
+  font-size: 15px;
+  font-weight: 600;
+}
+.reset:active {
+  scale: 0.96;
+}

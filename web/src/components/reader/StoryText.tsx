@@ -1,9 +1,10 @@
+import type { ReactNode } from "react";
 import type { Block } from "@/lib/types";
 import styles from "./StoryText.module.css";
 
 /** Inline markdown-light: *italic*, **bold**. Text is ours (trusted content files). */
-function inline(text: string): React.ReactNode[] {
-  const out: React.ReactNode[] = [];
+function inline(text: string): ReactNode[] {
+  const out: ReactNode[] = [];
   const re = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
   let last = 0;
   let m: RegExpExecArray | null;
@@ -18,13 +19,12 @@ function inline(text: string): React.ReactNode[] {
   return out;
 }
 
-/** The story itself: server-rendered, readable without JS, indexable. */
+/**
+ * The story itself: server-rendered, readable without JS, indexable.
+ * Paragraphs carry `id="p{n}"` and `data-i` for progress, resume and read-aloud.
+ */
 export function StoryText({ blocks }: { blocks: Block[] }) {
-  // ::first-letter would swallow a dialogue dash and draw a green bar — no initial then
-  const firstIdx = blocks.findIndex((b) => b.type === "p");
-  const firstBlock = blocks[firstIdx];
-  const firstP = firstBlock && "text" in firstBlock && /^[—–-]/.test(firstBlock.text) ? -1 : firstIdx;
-  const pIndex = blocks.map((_, i) => blocks.slice(0, i).filter((b) => b.type === "p").length);
+  let n = 0;
   return (
     <div className={styles.text} data-story-text>
       {blocks.map((b, i) => {
@@ -45,10 +45,9 @@ export function StoryText({ blocks }: { blocks: Block[] }) {
         if (b.type === "epigraph") {
           // «строка / строка — Подпись»: verse lines and the signature on their own lines
           const [verse, sign] = b.text.split(/\s+—\s+(?=[^—]+$)/);
-          const lines = verse.split(/\s+\/\s+/);
           return (
             <blockquote key={i} className={styles.epigraph}>
-              {lines.map((l, j) => (
+              {verse.split(/\s+\/\s+/).map((l, j) => (
                 <span key={j} className={styles.verse}>
                   {inline(l)}
                 </span>
@@ -57,9 +56,9 @@ export function StoryText({ blocks }: { blocks: Block[] }) {
             </blockquote>
           );
         }
-        const idx = pIndex[i];
+        const idx = n++;
         return (
-          <p key={i} id={`p${idx}`} data-i={idx} className={i === firstP ? styles.first : undefined}>
+          <p key={i} id={`p${idx}`} data-i={idx}>
             {inline(b.text)}
           </p>
         );

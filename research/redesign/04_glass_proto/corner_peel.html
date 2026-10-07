@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;background:#f4f2ee;display:grid;place-items:center;min-height:100vh}
+@property --peel { syntax: '<length>'; inherits: true; initial-value: 0px; }
+.peel {
+  --peel: 0px;
+  position: relative;
+  inline-size: 180px; aspect-ratio: 2/3;
+  filter: drop-shadow(0 10px 14px rgb(0 0 0 / .22));   /* shadow follows the clipped shape */
+  transition: --peel 420ms cubic-bezier(.3,1.4,.5,1);
+}
+.peel:is(:hover, :focus-visible, .hint) { --peel: 34px; }
+.peel > .face {
+  position: absolute; inset: 0; border-radius: 2px 3px 3px 2px;
+  background: linear-gradient(160deg,#e9a487,#c8573a);
+  /* cut the corner that is being lifted */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--peel)), calc(100% - var(--peel)) 100%, 0 100%);
+}
+.peel::after {
+  /* the lifted flap = back of the cover folded over the diagonal; upper-left half of the corner box */
+  content: ""; position: absolute; right: 0; bottom: 0;
+  inline-size: var(--peel); block-size: var(--peel);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background: linear-gradient(315deg, transparent 50%, #fffaf0 50%, #ece3cf 78%, #d6cab0);
+  box-shadow: inset 2px 2px 4px rgb(0 0 0 / .12);
+}
+@media (prefers-reduced-motion: reduce) { .peel { transition: none; } }
+</style></head><body><a class="peel hint" href="#"><span class="face"></span></a></body></html>

@@ -1,0 +1,194 @@
+/* the page stays undimmed: you watch the text change while you pick */
+.sheet.sheet::backdrop {
+  background: transparent;
+}
+
+.view {
+  display: grid;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(104px, 0.72fr) 1.28fr;
+  gap: 10px;
+  align-items: center;
+}
+
+/* [ A | A ]: flat inside the sheet, no glass in glass */
+.size {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  block-size: 34px;
+  border-radius: 17px;
+  background: var(--fill-2);
+}
+.step {
+  position: relative;
+  block-size: 100%;
+  border: 0;
+  border-radius: 17px;
+  background: none;
+  color: var(--label);
+  display: grid;
+  place-items: center;
+}
+/* 44px target around a 34px capsule */
+.step::before {
+  content: "";
+  position: absolute;
+  inset: -5px 0;
+}
+.step:disabled {
+  color: var(--label-3);
+  cursor: default;
+}
+.step:not(:disabled):active {
+  background: var(--fill-2);
+}
+.aSmall,
+.aBig {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  line-height: 1;
+}
+.aSmall {
+  font-size: 15px;
+}
+.aBig {
+  font-size: 22px;
+}
+.divider {
+  inline-size: 1px;
+  block-size: 18px;
+  background: var(--sep);
+}
+
+.capsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  block-size: 48px;
+  border: 0;
+  border-radius: 24px;
+  background: var(--fill-2);
+  color: var(--label);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* «Настроить» */
+.back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-block-size: 44px;
+  margin: -10px 0 -8px -8px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 17px;
+}
+
+.list {
+  display: grid;
+  border-radius: var(--r-cell);
+  background: var(--fill-3);
+  overflow: hidden;
+}
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-block-size: 46px;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--label);
+  font-size: 17px;
+  text-align: start;
+}
+.cell + .cell::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 16px;
+  block-size: 0.5px;
+  background: var(--sep);
+}
+.cell:active {
+  background: var(--fill-3);
+}
+.check {
+  color: var(--accent);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+.caption {
+  padding-inline: 4px;
+  font-size: 13px;
+  color: var(--label-2);
+}
+
+.switchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-block-size: 50px;
+  padding: 0 12px 0 16px;
+  border-radius: var(--r-cell);
+  background: var(--fill-3);
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* iOS switch on a native checkbox */
+.switch {
+  appearance: none;
+  position: relative;
+  flex: none;
+  inline-size: 51px;
+  block-size: 31px;
+  margin: 0;
+  border-radius: 16px;
+  background: var(--fill-1);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 2px;
+  inline-size: 27px;
+  block-size: 27px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.15), 0 1px 1px rgb(0 0 0 / 0.1);
+  transition: translate 320ms var(--snappy);
+}
+.switch:checked {
+  background: var(--accent);
+}
+.switch:checked::after {
+  translate: 20px 0;
+}
+
+.reset {
+  justify-self: center;
+  min-block-size: 44px;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--danger);
+  font-size: 17px;
+}

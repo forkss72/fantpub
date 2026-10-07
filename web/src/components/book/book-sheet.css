@@ -1,0 +1,39 @@
+/* View-transition classes of the book sheet (global: CSS Modules would hash names inside the pseudo-element argument). */
+::view-transition-new(.book-sheet-in) {
+  animation: 560ms var(--ease-out) both book-sheet-rise;
+}
+::view-transition-old(.book-sheet-out) {
+  animation: 300ms cubic-bezier(0.4, 0, 1, 1) both book-sheet-drop;
+}
+/* «Читать»: the cover grows into the page, the card just lets go */
+::view-transition-old(.book-sheet-fade) {
+  animation: 260ms ease-in both book-sheet-fade-out;
+}
+@keyframes book-sheet-rise {
+  from {
+    translate: 0 100vh;
+  }
+}
+@keyframes book-sheet-drop {
+  to {
+    translate: 0 100vh;
+  }
+}
+@keyframes book-sheet-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes book-sheet-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(.book-sheet-in) {
+    animation-name: book-sheet-fade-in;
+  }
+  ::view-transition-old(.book-sheet-out) {
+    animation-name: book-sheet-fade-out;
+  }
+}

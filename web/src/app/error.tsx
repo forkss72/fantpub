@@ -1,23 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Pabchik } from "@/components/Pabchik";
+import styles from "./status.module.css";
 
 export default function Error({ retry }: { error: Error & { digest?: string }; retry: () => void }) {
   return (
-    <main className="page" style={{ display: "grid", justifyItems: "center", gap: 14, textAlign: "center", paddingTop: 60 }}>
-      <Pabchik pose="sad" size={150} />
-      <h1 className="display" style={{ margin: 0, fontSize: 30 }}>
-        Что-то застряло в типографии
-      </h1>
-      <p style={{ margin: 0, maxWidth: "34ch", color: "var(--fp-ink-2)", lineHeight: 1.5 }}>
-        Это наша вина, не ваша. Попробуйте ещё раз — обычно помогает. Полка и прогресс никуда не делись.
-      </p>
-      <div style={{ display: "flex", gap: 10 }}>
-        <button type="button" className="pill" onClick={() => retry()}>
-          Попробовать снова
+    <main className={`page ${styles.page}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- small pre-sized webp */}
+      <img className={styles.figure} src="/pabchik/sad.webp" alt="" width={152} height={152} decoding="async" />
+      <h1 className={`t-large ${styles.title}`}>Что-то пошло не так</h1>
+      <p className={`t-sub ${styles.line}`}>Попробуйте ещё раз. Полка и прогресс на месте.</p>
+      <div className={styles.actions}>
+        <button type="button" className={`${styles.primary} press`} onClick={() => retry()}>
+          Повторить
         </button>
-        <Link href="/" className="pill pill--ghost">
+        <Link href="/" className={`${styles.secondary} press`}>
           На главную
         </Link>
       </div>

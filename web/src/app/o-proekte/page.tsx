@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/PageTransition";
+import Image from "next/image";
 import Link from "next/link";
-import { Masthead } from "@/components/Masthead";
-import { Pabchik } from "@/components/Pabchik";
-import { SiteFooter } from "@/components/SiteFooter";
+import type { Route } from "next";
+import type { ReactNode } from "react";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { Books, BookmarkSimple, CaretRight, Clock, LockSimple, type IconType } from "@/components/ui/icons";
 import { VK_URL } from "@/lib/site";
+import grouped from "@/components/archive/Grouped.module.css";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -14,88 +16,112 @@ export const metadata: Metadata = {
   openGraph: { title: "О проекте FantPub", description: "Один короткий рассказ в день, слепое чтение, записки Пабчика и честные права на тексты.", url: "/o-proekte" },
 };
 
+const HOW: { icon: IconType; title: string; text: string }[] = [
+  { icon: Clock, title: "В полночь по Москве", text: "Открывается новый выпуск: рассказ от 3 до 10 минут, по выходным длиннее." },
+  { icon: LockSimple, title: "Автор под стеклом", text: "Имя и год скрыты до финала, в конце можно угадать. Выключается в профиле." },
+  { icon: Books, title: "Архив открыт всегда", text: "Пропустили неделю — все выпуски на месте." },
+  { icon: BookmarkSimple, title: "Полка растёт сама", text: "Дочитали до конца — книга встаёт на полку. Всё хранится в браузере, без регистрации." },
+];
+
+const LINKS: { href: Route; label: string }[] = [
+  { href: "/", label: "Рассказ дня" },
+  { href: "/arhiv", label: "Архив" },
+  { href: "/avtory", label: "Авторы" },
+];
+
+function Section({ id, title, children, aside }: { id: string; title: string; children: ReactNode; aside?: ReactNode }) {
+  return (
+    <section className={styles.section} id={id} aria-labelledby={`${id}-h`}>
+      <div className={styles.head}>
+        {aside}
+        <h2 className="t-title2" id={`${id}-h`}>
+          {title}
+        </h2>
+      </div>
+      {children}
+    </section>
+  );
+}
+
 export default function AboutPage() {
   return (
-    <PageTransition>
-      <main className={`page ${styles.page}`}>
-      <Masthead />
-      <header className={styles.hero}>
-        <Pabchik pose="sealed-book" size={170} />
-        <h1 className={`display ${styles.title}`}>
-          Дом историй, <em>открытый для всех</em>
-        </h1>
-        <p className={styles.lead}>
-          FantPub — это один короткий рассказ в день. Не лента и не библиотека на тысячу томов, а одна книга, которую кто-то выбрал и запечатал для вас.
-        </p>
-      </header>
+    <main className="page">
+      <div className="edge-top" aria-hidden="true" />
+      <PageHeader title="О проекте" />
+      <p className={styles.lead}>
+        FantPub — один короткий рассказ в день. Не лента и не библиотека на тысячу томов, а одна книга, которую кто-то выбрал и запечатал для вас.
+      </p>
 
-      <section className={styles.section}>
-        <h2 className={styles.h}>
-          <span className={styles.num}>I</span> Как это устроено
-        </h2>
-        <ul className={styles.list}>
-          <li>
-            <strong>Каждый день в полночь по Москве</strong> открывается новый выпуск. Рассказы на 3–10 минут, по выходным бывают длиннее.
-          </li>
-          <li>
-            <strong>Печать ломается один раз.</strong> Автор и год рассказа дня спрятаны до финала — в конце можно угадать, кто это написал. Выключается в настройках.
-          </li>
-          <li>
-            <strong>Архив открыт всегда.</strong> Пропустили неделю — ничего страшного. Стрика, который сгорает, здесь нет.
-          </li>
-          <li>
-            <strong>Полка растёт сама.</strong> Дочитали до слова «Конец» — книга встаёт на полку. Всё хранится в вашем браузере, регистрация не нужна.
-          </li>
+      <Section id="kak" title="Как это устроено">
+        <ul className={grouped.list}>
+          {HOW.map(({ icon: Icon, title, text }) => (
+            <li key={title}>
+              <div className={grouped.row}>
+                <span className={grouped.icon}>
+                  <Icon size={18} aria-hidden="true" />
+                </span>
+                <span className={grouped.text}>
+                  <span className={grouped.label}>{title}</span>
+                  <span className={grouped.sub}>{text}</span>
+                </span>
+              </div>
+            </li>
+          ))}
         </ul>
-      </section>
+      </Section>
 
-      <section className={styles.section}>
-        <h2 className={styles.h}>
-          <span className={styles.num}>II</span> Кто такой Пабчик
-        </h2>
+      <Section
+        id="pabchik"
+        title="Кто такой Пабчик"
+        aside={<Image src="/pabchik/avatar.webp" alt="" width={44} height={44} className={styles.avatar} />}
+      >
         <p className={styles.p}>
-          «Pub» — это сокращение от <em>public house</em>, дома, открытого для всех. У каждого дома есть домовой, у этого — Пабчик. Он живёт за корешками на нашей полке, прочитал всё, что когда-либо здесь оставляли, и каждое утро запечатывает одну книгу. Мех у него цвета дома, очки — от чтения при свечах.
+          «Pub» — сокращение от <i>public house</i>, дома, открытого для всех. У каждого дома есть домовой, у этого — Пабчик. Он живёт за корешками на нашей полке, прочитал всё, что здесь когда-либо оставляли, и каждое утро запечатывает одну книгу.
         </p>
         <p className={styles.p}>
-          После финала Пабчик оставляет записку: чем рассказ знаменит и почему его стоит знать. До финала — ни слова лишнего, он ненавидит спойлеры. Боится хоррора, но читает его первым.
+          До финала он молчит: спойлеры ненавидит. После финала оставляет записку — чем рассказ знаменит и почему его стоит знать. Боится хоррора, но читает его первым.
         </p>
-      </section>
+      </Section>
 
-      <section className={styles.section} id="prava">
-        <h2 className={styles.h}>
-          <span className={styles.num}>III</span> Права и переводы
-        </h2>
+      <Section id="prava" title="Права и переводы">
         <p className={styles.p}>
-          Мы публикуем только произведения в общественном достоянии: автор умер больше 70 лет назад, а для переводов — и переводчик тоже. Зарубежную классику мы переводим заново, поэтому эти тексты есть только здесь. В конце каждого рассказа есть «выходные данные»: оригинал, год, источник и статус прав.
+          Мы публикуем только произведения в общественном достоянии: автор умер больше 70 лет назад, а для переводов — и переводчик тоже. Зарубежную классику переводим заново, поэтому эти тексты есть только здесь. У каждого рассказа есть выходные данные: оригинал, год, источник и статус прав.
         </p>
         <p className={styles.p}>
-          Переводы FantPub можно цитировать со ссылкой. Нашли ошибку или неточность — напишите нам{" "}
-          <a href={VK_URL} target="_blank" rel="noopener">
+          Переводы FantPub можно цитировать со ссылкой. Нашли ошибку — напишите нам{" "}
+          <a href={VK_URL} target="_blank" rel="noopener" className={styles.a}>
             во ВКонтакте
           </a>
           .
         </p>
-      </section>
+      </Section>
 
-      <section className={styles.section}>
-        <h2 className={styles.h}>
-          <span className={styles.num}>IV</span> Немного истории
-        </h2>
+      <Section id="istoriya" title="Немного истории">
         <p className={styles.p}>
-          FantPub начинался в 2019 году как паблик «Читай короткие рассказы»: обложка, тизер в три строки, жанр и время чтения. Формат прижился — мы сделали для него собственный дом.
+          FantPub начинался в 2019 году как паблик «Читай короткие рассказы»: обложка, тизер в три строки, жанр и время чтения. Формат прижился, и мы построили для него собственный дом.
         </p>
-      </section>
+      </Section>
 
-      <div className={styles.cta}>
-        <Link href="/" className="pill">
-          К рассказу дня
-        </Link>
-        <Link href="/arhiv" className="pill pill--ghost">
-          Архив
-        </Link>
-      </div>
-      <SiteFooter />
+      <nav className={styles.section} aria-label="Разделы">
+        <ul className={grouped.list}>
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className={grouped.row}>
+                <span className={`${grouped.text} ${grouped.label}`}>{l.label}</span>
+                <CaretRight size={15} weight="bold" className={grouped.chev} aria-hidden="true" />
+              </Link>
+            </li>
+          ))}
+          <li>
+            <a href={VK_URL} target="_blank" rel="noopener" className={grouped.row}>
+              <span className={`${grouped.text} ${grouped.label}`}>
+                ВКонтакте<span className="sr-only"> (откроется в новой вкладке)</span>
+              </span>
+              <CaretRight size={15} weight="bold" className={grouped.chev} aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+      </nav>
     </main>
-      </PageTransition>
   );
 }

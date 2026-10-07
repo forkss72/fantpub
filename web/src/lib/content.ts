@@ -3,13 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { currentIssue, issueDate } from "./date";
-import type { Author, Block, Story, StoryMeta } from "./types";
+import type { Author, Block, Cover, Story, StoryMeta } from "./types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STORIES_DIR = path.join(CONTENT_DIR, "stories");
 
 let storiesCache: Story[] | null = null;
 let authorsCache: Record<string, Author> | null = null;
+let coversCache: Record<string, Cover> | null = null;
 
 const CACHE = process.env.NODE_ENV === "production";
 
@@ -18,6 +19,12 @@ export function getAuthors(): Record<string, Author> {
   const raw = fs.readFileSync(path.join(CONTENT_DIR, "authors.json"), "utf8");
   authorsCache = JSON.parse(raw) as Record<string, Author>;
   return authorsCache;
+}
+
+export function getCovers(): Record<string, Cover> {
+  if (coversCache && CACHE) return coversCache;
+  coversCache = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, "covers.json"), "utf8")) as Record<string, Cover>;
+  return coversCache;
 }
 
 const NBSP = " ";
@@ -69,6 +76,7 @@ function wordCount(blocks: Block[]): number {
 function loadAll(): Story[] {
   if (storiesCache && CACHE) return storiesCache;
   const authors = getAuthors();
+  const covers = getCovers();
   const files = fs.existsSync(STORIES_DIR) ? fs.readdirSync(STORIES_DIR).filter((f) => f.endsWith(".md")) : [];
   const stories = files.map((file) => {
     const { data, content } = matter(fs.readFileSync(path.join(STORIES_DIR, file), "utf8"));
@@ -76,8 +84,11 @@ function loadAll(): Story[] {
     const words = wordCount(blocks);
     const author = authors[data.author];
     if (!author) throw new Error(`Unknown author "${data.author}" in ${file}`);
+    const slug: string = data.slug ?? file.replace(/\.md$/, "");
+    const cover = covers[slug];
+    if (!cover) throw new Error(`No cover for "${slug}": run python3 tools/build-covers.py`);
     const story: Story = {
-      slug: data.slug ?? file.replace(/\.md$/, ""),
+      slug,
       issue: Number(data.issue),
       date: issueDate(Number(data.issue)),
       title: data.title,
@@ -101,6 +112,7 @@ function loadAll(): Story[] {
       motif: data.motif ?? "star",
       cloth: data.cloth ?? "forest",
       ending: data.ending ?? null,
+      cover,
       blocks,
     };
     return story;
@@ -138,9 +150,26 @@ export function getTodayStory(now = Date.now()): Story | null {
 }
 
 /** Teaser of the next issue — genre and length only, never the title. */
-export function getTomorrowTeaser(now = Date.now()): { mood: string; minutes: number; genres: string[]; issue: number } | null {
+export type TomorrowTeaser = {
+  mood: string;
+  minutes: number;
+  genres: string[];
+  issue: number;
+  /** blurred art and colours only: the title stays closed until 00:00 MSK */
+  cover: Pick<Cover, "placeholder" | "colors" | "srcSmall">;
+};
+
+export function getTomorrowTeaser(now = Date.now()): TomorrowTeaser | null {
   const next = loadAll().find((s) => s.issue === currentIssue(now) + 1);
-  return next ? { mood: next.mood, minutes: next.minutes, genres: next.genres, issue: next.issue } : null;
+  return next
+    ? {
+        mood: next.mood,
+        minutes: next.minutes,
+        genres: next.genres,
+        issue: next.issue,
+        cover: { placeholder: next.cover.placeholder, colors: next.cover.colors, srcSmall: next.cover.srcSmall },
+      }
+    : null;
 }
 
 export function getStoriesByAuthor(authorSlug: string, now = Date.now()): Story[] {

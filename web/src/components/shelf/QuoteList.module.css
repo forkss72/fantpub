@@ -1,0 +1,69 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  max-inline-size: 680px;
+}
+.item {
+  display: grid;
+  gap: 14px;
+  padding-block: 22px;
+  border-block-start: 0.5px solid var(--sep);
+}
+.item:first-child {
+  border-block-start: 0;
+  padding-block-start: 4px;
+}
+.text {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.008em;
+  text-wrap: pretty;
+  hanging-punctuation: first;
+}
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.source {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-inline-size: 0;
+}
+.sourceText {
+  display: grid;
+  min-inline-size: 0;
+}
+.title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.date {
+  font-size: 13px;
+  color: var(--label-2);
+}
+.more {
+  inline-size: 44px;
+  block-size: 44px;
+  margin-inline-end: -10px;
+  border: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: none;
+  color: var(--label-2);
+}
+.more[aria-expanded="true"] {
+  background: var(--fill-3);
+  color: var(--label);
+}

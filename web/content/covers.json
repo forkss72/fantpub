@@ -1,0 +1,554 @@
+{
+ "bolshoy-shlem": {
+  "src": "/covers/bolshoy-shlem.webp",
+  "srcSmall": "/covers/bolshoy-shlem-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwDLLBIxqPPhwAD+eLDJp3nz4Vs7CxwlYk1LgIwRIx910BHa6pM1U/aXglVVluJ0Axva8O4pGf97KjHdGTlFVMAAAA==",
+  "colors": {
+   "base": "#849597",
+   "bg": "#5e6c6e",
+   "dark": "#424b4c",
+   "light": "#d8dede",
+   "tint": "#839496"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Paul Cézanne",
+   "title": "The Card Players",
+   "year": "1890–92",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/435868",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ep/original/DP231550.jpg"
+  }
+ },
+ "cherez-dvadtsat-let": {
+  "src": "/covers/cherez-dvadtsat-let.webp",
+  "srcSmall": "/covers/cherez-dvadtsat-let-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZ2kfRgATmgAA/u+D8rxjR/kneoZpcfVZRDRKEiRxwq6eAGQPs1UAAAA=",
+  "colors": {
+   "base": "#404f64",
+   "bg": "#424f62",
+   "dark": "#2a323d",
+   "light": "#d3dae3",
+   "tint": "#7388a5"
+  },
+  "duotone": true,
+  "credit": {
+   "artist": "Alfred Stieglitz",
+   "title": "An Icy Night, New York",
+   "year": "1898",
+   "museum": "Art Institute of Chicago",
+   "license": "CC0 1.0 — AIC Open Access (is_public_domain=True)",
+   "licenseUrl": "https://www.artic.edu/open-access/open-access-images",
+   "pageUrl": "https://www.artic.edu/artworks/66258",
+   "imageUrl": "https://www.artic.edu/iiif/2/4affa44a-d7ba-2f99-ddb8-e1e9f61660b4/full/1686,/0/default.jpg"
+  }
+ },
+ "grobovshchik": {
+  "src": "/covers/grobovshchik.webp",
+  "srcSmall": "/covers/grobovshchik-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUI7gBBpFdgAA/Zovygqruc+sOn/R6JBzlLJ1OogGSjOjSKIW6aPPFlHeH9NYKn4AAAA=",
+  "colors": {
+   "base": "#977b49",
+   "bg": "#866f46",
+   "dark": "#5d4d32",
+   "light": "#e8dfcf",
+   "tint": "#b49864"
+  },
+  "duotone": true,
+  "credit": {
+   "artist": "Hans Holbein the Younger",
+   "title": "Coat-of-Arms of Death, from \"The Dance of Death\"",
+   "year": "ca. 1526, published 1538",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/365213",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/dp/original/DP-23051-001.jpg"
+  }
+ },
+ "ideofon": {
+  "src": "/covers/ideofon.webp",
+  "srcSmall": "/covers/ideofon-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUABsRSr7j0Qpy4AA9rFCtGWJ7scyBu55YVf1v5vxkoLjPXY3Q3YvimrCGqOAAA==",
+  "colors": {
+   "base": "#80763d",
+   "bg": "#7d7440",
+   "dark": "#534d2d",
+   "light": "#e8e4cf",
+   "tint": "#b5a964"
+  },
+  "duotone": true,
+  "credit": {
+   "artist": "Odilon Redon",
+   "title": "Armor",
+   "year": "1891",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/339671",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/dp/original/DP139626.jpg"
+  }
+ },
+ "kak-eto-sluchilos": {
+  "src": "/covers/kak-eto-sluchilos.webp",
+  "srcSmall": "/covers/kak-eto-sluchilos-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwAASmo/kUgUAAD+zMv8OELnxDYe8Qf+drUqWhYT1K/poYRgAA==",
+  "colors": {
+   "base": "#43453c",
+   "bg": "#4f5148",
+   "dark": "#2f312b",
+   "light": "#ddded9",
+   "tint": "#919484"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "John Atkinson Grimshaw",
+   "title": "Lane Scene at Night",
+   "year": "1872",
+   "museum": "Art Institute of Chicago",
+   "license": "CC0 1.0 — AIC Open Access (is_public_domain=True)",
+   "licenseUrl": "https://www.artic.edu/open-access/open-access-images",
+   "pageUrl": "https://www.artic.edu/artworks/273331",
+   "imageUrl": "https://www.artic.edu/iiif/2/cf36b3c1-c792-8529-822e-ddcacfcc26e2/full/1686,/0/default.jpg"
+  }
+ },
+ "koshki-ultara": {
+  "src": "/covers/koshki-ultara.webp",
+  "srcSmall": "/covers/koshki-ultara-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJaACdABntzhbiWQAA9ZwIz9izkJyDQGjBd3iDVqEAeq6BpdQgthgnG3AfX4tDfLBWMUa8kAo5BDqSA5bkXWrcpgv160tGYp9nbaIdK29eVpMAAAA=",
+  "colors": {
+   "base": "#d18b4c",
+   "bg": "#9c6330",
+   "dark": "#6b4624",
+   "light": "#ebdacb",
+   "tint": "#c68953"
+  },
+  "duotone": true,
+  "credit": {
+   "artist": "Édouard Manet",
+   "title": "The Cats' Rendezvous",
+   "year": "1868",
+   "museum": "Art Institute of Chicago",
+   "license": "CC0 1.0 — AIC Open Access (is_public_domain=True)",
+   "licenseUrl": "https://www.artic.edu/open-access/open-access-images",
+   "pageUrl": "https://www.artic.edu/artworks/68825",
+   "imageUrl": "https://www.artic.edu/iiif/2/752c8b28-5873-2ddb-f7cd-6ea9e4766195/full/1686,/0/default.jpg"
+  }
+ },
+ "krasnaya-korona": {
+  "src": "/covers/krasnaya-korona.webp",
+  "srcSmall": "/covers/krasnaya-korona-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZgC7ACFrtqzK46EAAP7Nw9TWvcIScXg/NG08mwjrRZTv4N5QtF8e9Wb1Uz3iwwU8zL2bwAA=",
+  "colors": {
+   "base": "#982f05",
+   "bg": "#7a3c23",
+   "dark": "#492517",
+   "light": "#ebd4cb",
+   "tint": "#c67453"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Arkhyp Kuindzhi (Arkhip Ivanovich Kuindzhi)",
+   "title": "Red Sunset",
+   "year": "1905–8",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/436833",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ep/original/DT2557.jpg"
+  }
+ },
+ "krasnogubaya-gostya": {
+  "src": "/covers/krasnogubaya-gostya.webp",
+  "srcSmall": "/covers/krasnogubaya-gostya-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwC7ACHw0gkQggAA/u+OIHkGig/vOAQFhwBJWi4KrAte/X2/fNVwb6bu3V9ZEF8iQhAAAAA=",
+  "colors": {
+   "base": "#4f4233",
+   "bg": "#5b4e3e",
+   "dark": "#362f25",
+   "light": "#e3dcd4",
+   "tint": "#a58e74"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "John Singer Sargent",
+   "title": "Madame X (Virginie Amélie Avegno Gautreau)",
+   "year": "1883–84",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/12127",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ad/original/DP-29006-001.jpg"
+  }
+ },
+ "kuprin-tost": {
+  "src": "/covers/kuprin-tost.webp",
+  "srcSmall": "/covers/kuprin-tost-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwC2yCIAwq0gAAD+z0B43jmvLg35/N7242NXs67T6cR5P0dVgAAA",
+  "colors": {
+   "base": "#594532",
+   "bg": "#604c39",
+   "dark": "#392e23",
+   "light": "#e5dbd1",
+   "tint": "#ac8b6c"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Frederic Edwin Church",
+   "title": "Aurora Borealis",
+   "year": "1865",
+   "museum": "Smithsonian American Art Museum (image via Wikimedia Commons / Google Art Project)",
+   "license": "Public domain (PD-Art; author d. 1900); SAAM image released under Smithsonian Open Access (CC0)",
+   "licenseUrl": "https://www.si.edu/openaccess",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Frederic_Edwin_Church_-_Aurora_Borealis_-_Google_Art_Project.jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Frederic_Edwin_Church_-_Aurora_Borealis_-_Google_Art_Project.jpg"
+  }
+ },
+ "ledi-ili-tigr": {
+  "src": "/covers/ledi-ili-tigr.webp",
+  "srcSmall": "/covers/ledi-ili-tigr-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdAC0bYdpPYAD+8EDPyl6l8lAVHeLsyDStSu3uQkHxf98BLqr+iN6QfxmfYQXYRfe4AAA=",
+  "colors": {
+   "base": "#442e20",
+   "bg": "#654734",
+   "dark": "#3c2b20",
+   "light": "#e8d8ce",
+   "tint": "#b68363"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Jean-Léon Gérôme",
+   "title": "Woman at a Balcony",
+   "year": "1887–88",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/685040",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ep/original/DP354143.jpg"
+  }
+ },
+ "maska-krasnoy-smerti": {
+  "src": "/covers/maska-krasnoy-smerti.webp",
+  "srcSmall": "/covers/maska-krasnoy-smerti-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoAE8cAA/u2neXjFUOfRpKauoEoqs8pMS95iZm4A",
+  "colors": {
+   "base": "#674a2e",
+   "bg": "#674c32",
+   "dark": "#3d2e1f",
+   "light": "#e9dbce",
+   "tint": "#b88b60"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Francesco Guardi",
+   "title": "The Ridotto Pubblico at Palazzo Dandolo",
+   "year": "ca. 1765–68",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/438024",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ep/original/DP162310.jpg"
+  }
+ },
+ "maupassant-ruka": {
+  "src": "/covers/maupassant-ruka.webp",
+  "srcSmall": "/covers/maupassant-ruka-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoADTqQTBJgAAP6RApB1GeIoXDD7aT6bTtRdZ51Xr4O9qHimwAA=",
+  "colors": {
+   "base": "#d0bca9",
+   "bg": "#81654b",
+   "dark": "#594736",
+   "light": "#e6dbd1",
+   "tint": "#ae8b6b"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Jean-Baptiste Greuze",
+   "title": "Study of a Hand",
+   "year": "ca. 1760–80",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/785410",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/dp/original/DP880423.jpg"
+  }
+ },
+ "odoevsky-bal": {
+  "src": "/covers/odoevsky-bal.webp",
+  "srcSmall": "/covers/odoevsky-bal-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOmUABHXy9v/UAA+xx8ipXqveXzsFoYn5h98FGm+2rEf3v+PnWaOCP4drOqx98GSzulgxO9S59xxxPQAA==",
+  "colors": {
+   "base": "#a98255",
+   "bg": "#846848",
+   "dark": "#5b4933",
+   "light": "#e7dccf",
+   "tint": "#b28f66"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Adolph Menzel",
+   "title": "Das Ballsouper (Supper at the Ball)",
+   "year": "1878",
+   "museum": "Alte Nationalgalerie, Berlin (image via Wikimedia Commons / Google Art Project)",
+   "license": "Public domain (PD-Art; author d. 1905)",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Adolph_Menzel_-_Das_Ballsouper_-_Google_Art_Project.jpg"
+  }
+ },
+ "otkrytoe-okno": {
+  "src": "/covers/otkrytoe-okno.webp",
+  "srcSmall": "/covers/otkrytoe-okno-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBYdsWgbio+VPkbAAM4/WhWlCWp1Uex3chi/RQxPGhDsSIp6rAUQEgl1VVor/DO5w2HVcuFENHZnEHL1HIAA",
+  "colors": {
+   "base": "#7f653a",
+   "bg": "#7c643d",
+   "dark": "#52432a",
+   "light": "#e9dfce",
+   "tint": "#b79761"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Caspar David Friedrich",
+   "title": "Frau am Fenster (Woman at a Window)",
+   "year": "1822",
+   "museum": "Alte Nationalgalerie, Berlin (image via Wikimedia Commons / Google Art Project)",
+   "license": "Public domain (PD-Art; author d. 1840)",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Frau_am_Fenster_-_Google_Art_Project.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Frau_am_Fenster_-_Google_Art_Project.jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Caspar_David_Friedrich_-_Frau_am_Fenster_-_Google_Art_Project.jpg"
+  }
+ },
+ "pered-zakonom": {
+  "src": "/covers/pered-zakonom.webp",
+  "srcSmall": "/covers/pered-zakonom-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYwCdACIaUHg49gFAgAD2r7Twy3PxPzFlO//8FbIC2JY9oEkN8Lm6BHPsQQUv8Ef0VDs+tlY83e0woeyW0CKbxsAAAA==",
+  "colors": {
+   "base": "#45301d",
+   "bg": "#694b30",
+   "dark": "#3e2d1e",
+   "light": "#eadbcd",
+   "tint": "#bb8a5d"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Vasily Vereshchagin",
+   "title": "Двери Тимура (Тамерлана) / Doors of Tamerlane",
+   "year": "1872",
+   "museum": "State Tretyakov Gallery (image via Wikimedia Commons)",
+   "license": "Public domain (PD-Art; author d. 1904)",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:%D0%94%D0%B2%D0%B5%D1%80%D0%B8_%D0%A2%D0%B8%D0%BC%D1%83%D1%80%D0%B0_(%D0%A2%D0%B0%D0%BC%D0%B5%D1%80%D0%BB%D0%B0%D0%BD%D0%B0).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:%D0%94%D0%B2%D0%B5%D1%80%D0%B8_%D0%A2%D0%B8%D0%BC%D1%83%D1%80%D0%B0_(%D0%A2%D0%B0%D0%BC%D0%B5%D1%80%D0%BB%D0%B0%D0%BD%D0%B0).jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a1/%D0%94%D0%B2%D0%B5%D1%80%D0%B8_%D0%A2%D0%B8%D0%BC%D1%83%D1%80%D0%B0_%28%D0%A2%D0%B0%D0%BC%D0%B5%D1%80%D0%BB%D0%B0%D0%BD%D0%B0%29.jpg"
+  }
+ },
+ "peschanaya-uchitelnitsa": {
+  "src": "/covers/peschanaya-uchitelnitsa.webp",
+  "srcSmall": "/covers/peschanaya-uchitelnitsa-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQC7ACDEWGtezAAA/p1SWG26zOBf9zxn70JE1Qaa5lNYq9cMiKv/ZY0hC6uP0Byfjs9vGgAAAA==",
+  "colors": {
+   "base": "#ad9870",
+   "bg": "#7f6e4d",
+   "dark": "#584d37",
+   "light": "#e5ded2",
+   "tint": "#ab966d"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Ivan Shishkin",
+   "title": "Сосны, освещённые солнцем (Pines Lit by the Sun)",
+   "year": "1886",
+   "museum": "State Tretyakov Gallery (image via Wikimedia Commons)",
+   "license": "Public domain (PD-Art; author d. 1898)",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D1%81%D0%BD%D1%8B,_%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5_%D1%81%D0%BE%D0%BB%D0%BD%D1%86%D0%B5%D0%BC_(%D0%A8%D0%B8%D1%88%D0%BA%D0%B8%D0%BD).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D1%81%D0%BD%D1%8B,_%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5_%D1%81%D0%BE%D0%BB%D0%BD%D1%86%D0%B5%D0%BC_(%D0%A8%D0%B8%D1%88%D0%BA%D0%B8%D0%BD).jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/%D0%A1%D0%BE%D1%81%D0%BD%D1%8B%2C_%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5_%D1%81%D0%BE%D0%BB%D0%BD%D1%86%D0%B5%D0%BC_%28%D0%A8%D0%B8%D1%88%D0%BA%D0%B8%D0%BD%29.jpg"
+  }
+ },
+ "peshchera": {
+  "src": "/covers/peshchera.webp",
+  "srcSmall": "/covers/peshchera-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZwDG9BIf/0/IgAD9RzB3ZqeSzGomdYwzaZV8fpuZY8AG2sHwF2MKprDAAA==",
+  "colors": {
+   "base": "#90877a",
+   "bg": "#6e685e",
+   "dark": "#4d4842",
+   "light": "#dfdcd8",
+   "tint": "#978e82"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Hammershøi, Vilhelm",
+   "title": "Interiør. Den gamle bilæggerovn. Albertines Lyst, Lyngby",
+   "year": "1888",
+   "museum": "SMK – Statens Museum for Kunst, Copenhagen",
+   "license": "Public Domain Mark 1.0 — SMK Open (public_domain=True)",
+   "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+   "pageUrl": "https://open.smk.dk/artwork/image/KMS7246",
+   "imageUrl": "https://iip.smk.dk/iiif/jp2/d504rp385_KMS7246.tif.reconstructed.tif.jp2/full/!3000,3000/0/default.jpg"
+  }
+ },
+ "premudry-piskar": {
+  "src": "/covers/premudry-piskar.webp",
+  "srcSmall": "/covers/premudry-piskar-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdAB7H7U6Ah1f0+AD+s7AOW/rq7Dr+rbWqeRsyDQCwGA1cekV6dAPgFwCfOzC4EBZ70P0tDvqQZUeaUmqw9ifM6cKJKvREcxmu/JbLpC/tGAA=",
+  "colors": {
+   "base": "#bcc7b2",
+   "bg": "#657458",
+   "dark": "#47513e",
+   "light": "#dbe1d6",
+   "tint": "#8b9e7a"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Katsushika Taito II",
+   "title": "Carp",
+   "year": "c. 1830/44",
+   "museum": "Art Institute of Chicago",
+   "license": "CC0 1.0 — AIC Open Access (is_public_domain=True)",
+   "licenseUrl": "https://www.artic.edu/open-access/open-access-images",
+   "pageUrl": "https://www.artic.edu/artworks/7610",
+   "imageUrl": "https://www.artic.edu/iiif/2/1bcb308b-c97e-9e90-5b25-4f80ce6dc60d/full/1455,/0/default.jpg"
+  }
+ },
+ "robinzony": {
+  "src": "/covers/robinzony.webp",
+  "srcSmall": "/covers/robinzony-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYwCdMoADZM68Y04IsAD+61QnYoq4rMNxuzwtMmVCotzLpByFUn/o9IUXvP05CAxas/W56Dt1ef6t9SxyJSNkeya+9ddAAAA=",
+  "colors": {
+   "base": "#e3d9bb",
+   "bg": "#5f522b",
+   "dark": "#342d19",
+   "light": "#eae3cc",
+   "tint": "#bca45c"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Winslow Homer",
+   "title": "Palm Tree, Nassau",
+   "year": "1898",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/11131",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ad/original/DP-21448-001.jpg"
+  }
+ },
+ "strashnaya-noch": {
+  "src": "/covers/strashnaya-noch.webp",
+  "srcSmall": "/covers/strashnaya-noch-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdABrRq88qkAD+8t3KmcAw5PuVtVqhcl74416rRS8OvJHsFhUtizx+CaBbYi00ut4wAAA=",
+  "colors": {
+   "base": "#3e2111",
+   "bg": "#744125",
+   "dark": "#442718",
+   "light": "#ebd7cb",
+   "tint": "#c67c53"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Georges de La Tour",
+   "title": "The Penitent Magdalen",
+   "year": "ca. 1640",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/436839",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/ep/original/DP-27910-001.jpg"
+  }
+ },
+ "to-chego-ne-bylo": {
+  "src": "/covers/to-chego-ne-bylo.webp",
+  "srcSmall": "/covers/to-chego-ne-bylo-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYwC7ABwpE7iQgXWgAAD+xWMks0Onq/TR8o0wlLnwBZZCx+FPNXi/ctNoap+kwSInj9qwsUPRw71SANa0HObvdS79vuCZJIAAAA==",
+  "colors": {
+   "base": "#c4b38c",
+   "bg": "#847248",
+   "dark": "#5b4f34",
+   "light": "#e7e0d0",
+   "tint": "#b19b67"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Albrecht Dürer",
+   "title": "Stag Beetle (Hirschkäfer)",
+   "year": "1505",
+   "museum": "J. Paul Getty Museum (image via Getty Open Content / Wikimedia Commons)",
+   "license": "Getty Open Content Program, free of restrictions (PD)",
+   "licenseUrl": "https://www.getty.edu/projects/open-content-program/",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Hirschk%C3%A4fer_(1505).jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Albrecht_D%C3%BCrer_-_Hirschk%C3%A4fer_%281505%29.jpg"
+  }
+ },
+ "volshebnaya-lavka": {
+  "src": "/covers/volshebnaya-lavka.webp",
+  "srcSmall": "/covers/volshebnaya-lavka-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJYgCdL1yBvVLKhWOQAP6lVVl7R7/cXDk/igmUGHN5WhxYMhuZDrlEp2gJOHvx1W+1oNBcsc6vgy5sdvUFfpfOTXErUwAA",
+  "colors": {
+   "base": "#d0af69",
+   "bg": "#655024",
+   "dark": "#372c15",
+   "light": "#ebe1cb",
+   "tint": "#c6a153"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Strobridge Lithographing Co.",
+   "title": "Kellar (magician's poster)",
+   "year": "c. 1900",
+   "museum": "Library of Congress, Prints & Photographs (image via Wikimedia Commons)",
+   "license": "Public domain (published 1900; no known restrictions)",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Kellar_poster.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Kellar_poster.jpg",
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Kellar_poster.jpg"
+  }
+ },
+ "zakolochennoe-okno": {
+  "src": "/covers/zakolochennoe-okno.webp",
+  "srcSmall": "/covers/zakolochennoe-okno-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoMABIAPtFUo0uoJKMhsAgBABoJQBOl65Aia54ojlMQAPcGyoKcTq53or3+RrINd0uObJOuV3Qb21vyoGyjSmwY9UToAA==",
+  "colors": {
+   "base": "#804117",
+   "bg": "#774422",
+   "dark": "#462916",
+   "light": "#ebd8cb",
+   "tint": "#c68153"
+  },
+  "duotone": false,
+  "credit": {
+   "artist": "Sanford Robinson Gifford (American, 1823–1880)",
+   "title": "A Home in the Wilderness",
+   "year": "1866",
+   "museum": "The Cleveland Museum of Art",
+   "license": "CC0 1.0 — CMA Open Access (share_license_status=CC0)",
+   "licenseUrl": "https://www.clevelandart.org/open-access",
+   "pageUrl": "https://clevelandart.org/art/1970.162",
+   "imageUrl": "https://openaccess-cdn.clevelandart.org/1970.162/1970.162_print.jpg"
+  }
+ },
+ "zelenaya-lampa": {
+  "src": "/covers/zelenaya-lampa.webp",
+  "srcSmall": "/covers/zelenaya-lampa-s.webp",
+  "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoMABIAPtFUo0uoJKMhsAgBABoJZQCdMoADT5tYP78/OMwAAP6l/j+a0/KMHgiNA1UEuUwTVsGNiD32CS+mLu9vq40eZBt7FciDrPWFz1YTkffQUQAAAA==",
+  "colors": {
+   "base": "#97c281",
+   "bg": "#3e5a2f",
+   "dark": "#23321b",
+   "light": "#d7e8cf",
+   "tint": "#7fb464"
+  },
+  "duotone": true,
+  "credit": {
+   "artist": "James McNeill Whistler",
+   "title": "Reading by Lamplight",
+   "year": "1859",
+   "museum": "The Metropolitan Museum of Art, New York",
+   "license": "CC0 1.0 — Met Open Access (isPublicDomain=True)",
+   "licenseUrl": "https://www.metmuseum.org/hubs/open-access",
+   "pageUrl": "https://www.metmuseum.org/art/collection/search/372692",
+   "imageUrl": "https://images.metmuseum.org/CRDImages/dp/original/DP813284.jpg"
+  }
+ }
+}
